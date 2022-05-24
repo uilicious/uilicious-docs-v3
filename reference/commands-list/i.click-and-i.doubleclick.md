@@ -62,7 +62,7 @@ I.click("Amazon")
 
 #### **Click on element using CSS selectors: ID and Class**
 
-In the example below, we can click on the Track Order link on the site, [Far East Flora](https://www.fareastflora.com), with its `id` property, `#track-order`.
+In the example below, we can click on the Track Order link on the site, [Far East Flora](https://www.fareastflora.com/), with its `id` property, `#track-order`.
 
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1651703866/ui-licious/i.click%20and%20i.doubleclick/i.click-a3.gif)
 
