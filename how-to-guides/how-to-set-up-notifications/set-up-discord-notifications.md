@@ -1,6 +1,6 @@
 # Set up Discord Notifications
 
-In this section, you will learn how to set up notifications on Discording using their provided webhook.
+In this section, you will learn how to set up notifications on Discord using their provided webhook.
 
 This section will guide you through the steps of setting up and integrating Discord Webhooks with UIlicious. It will provide you with a brief overview of Discord.
 
