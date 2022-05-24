@@ -2,14 +2,14 @@
 
 ## Introduction
 
-When scheduling an automated job, you also can be notified about the results of your test runs through [email alerts](set-up-email-notifications.md) or by setting up alerts on your communication platforms using webhooks.
+When scheduling an automated job, you also can be notified about the results of your test runs through [email alerts](../schedule-an-automated-job/set-up-email-notifications.md) or by setting up alerts on your communication platforms using webhooks.
 
 We currently support the following communication platforms:
 
-* [Slack](set-up-slack-notifications.md)
-* [Microsoft Teams](set-up-teams-notifications.md)
+* [Slack](../schedule-an-automated-job/set-up-slack-notifications.md)
+* [Microsoft Teams](../schedule-an-automated-job/set-up-teams-notifications.md)
 * [Discord](set-up-discord-notifications.md)
-* [Telegram](set-up-teams-notifications.md)
+* [Telegram](../schedule-an-automated-job/set-up-teams-notifications.md)
 
 ### Schedule New Job: Notifications
 

@@ -23,12 +23,12 @@ Once you have created and scheduled a job, you can configure them to send instan
 
 In this section, we will learn how to:
 
-* [Create a scheduled job ](schedule-an-automated-job.md#schedule-a-job)
-* [Delete a job](schedule-an-automated-job.md#how-to-delete-a-job)
-* [Disable a job](schedule-an-automated-job.md#how-to-disable-a-job)
-* [Check Job Status](schedule-an-automated-job.md#view-status-of-a-job)
+* [Create a scheduled job ](./#schedule-a-job)
+* [Delete a job](./#how-to-delete-a-job)
+* [Disable a job](./#how-to-disable-a-job)
+* [Check Job Status](./#view-status-of-a-job)
 
-If you are interested in setting up notifications to receive status updates about your scheduled job, check out our [How to Set Up Notifications](how-to-set-up-notifications/) section.
+If you are interested in setting up notifications to receive status updates about your scheduled job, check out our [How to Set Up Notifications](../how-to-set-up-notifications/) section.
 
 ### Using the Editor
 
@@ -128,4 +128,4 @@ Under **Status**, click the dropdown menu to reveal more options.
 
 ### Set Up Notifications
 
-If you are interested in learning more about setting up your notifications (whether it be email or an application of your choice), view our [How to Set Up Notifications](how-to-set-up-notifications/) section.
+If you are interested in learning more about setting up your notifications (whether it be email or an application of your choice), view our [How to Set Up Notifications](../how-to-set-up-notifications/) section.

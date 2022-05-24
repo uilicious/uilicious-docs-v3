@@ -22,6 +22,8 @@ If you are interested in learning more about semantic HTML, please take a look a
 
 Let's imagine a scenario where we are going to use Google Maps to search for a specific place on the map, and use the following script in UIlicious to tell the tool we want to search:
 
+#### UIlicious Script Example:
+
 ```javascript
 // UIlicious Script for Google Map Search​
 // Step 1
@@ -36,9 +38,13 @@ UIlicious can successfully complete Step 1 and Step 2, but how does our tool kno
 
 Let's take a look at the HTML code behind our Google Maps.
 
+#### Example:
+
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1651536726/ui-licious/ui-licious:%20conceptual%20guide/Screen\_Shot\_2022-05-02\_at\_7.10.42\_PM\_dy05mu.png)
 
 Using the Inspect tool provided by our browser, we can see that our Search `<button>` is given an accessible name using  `aria-label="Search"`.
+
+#### Example:
 
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1652156462/ui-licious/ui-licious:%20conceptual%20guide/Screenshot\_of\_Google\_Map\_Search\_Button.png)
 
@@ -62,9 +68,13 @@ UIlicious will also look at your previous commands to identify the target elemen
 
 For example, on the Twitter page below, the "Log In" button appears twice on the page.
 
+#### Example:
+
 ![The UI.licious Studio displays the left panel of a given website and the right panel of UI.licious commands.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1651596744/ui-licious/ui-licious:%20conceptual%20guide/conceptual-guide-1.png)
 
 UIlicious will infer that it should target the closest button element to submit the form because the previous commands were to fill in the username and password.
+
+#### UIlicious Script Example:
 
 ```javascript
 // UIlicious Script for Twitter Login
@@ -82,45 +92,48 @@ I.click("Log in")
 
 #### Using the `I.see` command
 
-You can use `I.see` to give clues to the UIlicious tool on where your target element is located near. Also, I.see uses the five previous commands used in your script for context.
+Sometimes, we want UIlicious to click on a target element that may look ambiguous or difficult to distinguish from other similar elements on the same webpage.&#x20;
 
-For example, let's say we want to purchase roses for a friend from a popular flower shop called [Far East Flora](https://www.fareastflora.com/catalogsearch/result/?q=roses). We also know that we want to purchase a specific type of roses called "Love, Actually".&#x20;
+In other automation tools, it can require you to write a script using the position of the element or CSS or XPath selectors, which can be faulty since both can change over time.
 
-Using the `I.see` command, we can give clues to UIlicious to indicate the "PY06 - Love, Actually" flowers are to be added to our cart.
+Instead, we can use the **`I.see`** command to validate an element that exists on a page and give an anchor point for the UIlicious tool to focus on.
 
-![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1652158000/ui-licious/ui-licious:%20conceptual%20guide/Far%20East%20Flora%20-%20Love%2C%20Actually.png)
+Let's say we want to purchase a specific type of rose called "Love, Actually" for a friend from a popular flower shop called [Far East Flora](https://www.fareastflora.com/catalogsearch/result/?q=roses).&#x20;
 
-In the example below,  you can view `I.see("PY06 - Love, Actually")` being selected by the UIlicious test engine from the blue dot.&#x20;
+In the example below, we can see that there are several types of roses with the same "View Details" button.&#x20;
 
-{% tabs %}
-{% tab title="UIlicious Studio" %}
-![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1652158716/ui-licious/ui-licious:%20conceptual%20guide/UIlicious%20Studio%20shows%20Love%20Actually%20Flowers%20chosen.png)
-{% endtab %}
+Using the **`I.see`** command in our script, we can give clues to UIlicious to set its anchor point specifically on the **"PY06 - Love, Actually"** roses.&#x20;
 
-{% tab title="UIlicious Script" %}
+Then, the UIlicious test engine is smart enough to infer that you would like to specifically click the "View Details" button under **"PY06 - Love, Actually"** roses.
+
+#### Example:
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1653357686/ui-licious/ui-licious:%20conceptual%20guide/fareastflora-roses.png)
+
+#### UIlicious Script Example:
+
 ```javascript
 I.goTo("https://www.fareastflora.com")
 
-
-//Let's Search for Love Actually
+// Let's search for roses
 I.fill("Search", "Roses")
 I.pressEnter();
+
+// Use the I.see command to give UIlicious a focus point
 I.see("PY06 - Love, Actually")
 I.click("PY06 - Love, Actually")
+
+// Let's add the flowers to our cart
 I.click("Add To Cart")
+
+// Checkout the flowers
 I.click("Checkout")
 I.click("Continue as a Guest")
 ```
-{% endtab %}
-{% endtabs %}
 
-#### Hinting with `I.see.hint` command
+#### \*\*\* Hinting with `I.see.hint` command
 
-You can also use `I.see.hint` to give hints to the UIlicious tool about the element.
-
-Unlike I.see, `I.see.hint` only looks at a single element and _ignores previous commands._
-
-Using our previous example, we could write a script such as:
+`I.see.hint` sets the focus for the next command on where to focus and searching for the element to match
 
 ```javascript
 // Start by going to a web page first, like this:
@@ -140,9 +153,19 @@ I.click("Continue as a Guest")
 
 #### Limiting the scan area using `UI.Context`
 
-`UI.context` can specify the region where UIlicious will scan to identify target elements.&#x20;
+In some cases, we need to limit the scan area for the UIlicious test engine to identify target elements.&#x20;
 
-For example, in the Codepen below, there are two forms for UIlicious to scan: **Login Form** and **Register Form**.​​&#x20;
+In the [example](how-targeting-works-in-uilicious.md#example-4) below, there are two identical forms to log in and create an account.
+
+This can be confusing for UIlicious to decide which form to fill in since both have an identical set of usernames and passwords.&#x20;
+
+Let's say we want to specifically target the login form.&#x20;
+
+To solve this issue, we can use `UI.context` to specify a region, the login form, so that UIlicious will scan and identify our target element.&#x20;
+
+See the [UIlicious script](how-targeting-works-in-uilicious.md#uilicious-code-example-1) below.
+
+#### Example:
 
 {% tabs %}
 {% tab title="Login Form & Register Form" %}
@@ -174,6 +197,8 @@ Please log in to your Qacker News account or create one to continue.
 
 To limit the scan area to the login form, we can set the `UI.context` to use a CSS id Selector, `#login-form`, that identifies the Login Form like this:
 
+#### UIlicious Code Example:
+
 ```javascript
 I.see("Please log in") // This looks at the entire page for this phrase.
 
@@ -183,6 +208,20 @@ I.fill("password", "password")
 I.click("login")
 })
 ```
+
+#### Handling `<iframe>` using `UI.Context`
+
+In some cases such as targeting an `<iframe>`, using the commands, I.see or I.see.hint, is not a choice because of how the `<iframe>` element is composed, like a pop-up or modal. As a result, the UIlicious test engine cannot access or target the elements inside of an `<iframe>`.&#x20;
+
+To interact with elements in an `<iframe>`, you must explicitly select the iframe as the context using `UI.context`.
+
+Inside of the UI.context brackets, { } , all of the commands listed will only apply to that specific `<iframe>` or element.&#x20;
+
+In the example below, we have a pop-up window that has a unique class of `.trust_popframe`. We cannot target the content of this pop-up window with I.see or I.see.hint because it is located within an `<iframe>`.
+
+#### Example:
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1653361446/ui-licious/ui-licious:%20conceptual%20guide/jackdaniel.png)
 
 #### Using CSS/XPath Selectors
 

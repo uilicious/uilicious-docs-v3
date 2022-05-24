@@ -17,7 +17,7 @@ Once you have properly configured your webhook URL and added it to your Notifica
 ### Prerequisites
 
 * Active Discord Account
-* Know how to [Schedule an Automated Job](../schedule-an-automated-job.md)
+* Know how to [Schedule an Automated Job](../schedule-an-automated-job/)
 * Basic Knowledge of Webhooks
 
 ### What is Discord?
