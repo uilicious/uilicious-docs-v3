@@ -28,8 +28,6 @@ In this section, we will learn how to:
 * [Disable a job](./#how-to-disable-a-job)
 * [Check Job Status](./#view-status-of-a-job)
 
-If you are interested in setting up notifications to receive status updates about your scheduled job, check out our [How to Set Up Notifications](../how-to-set-up-notifications/) section.
-
 ### Using the Editor
 
 In the editor, click the **Schedule** button.
@@ -86,7 +84,7 @@ Scroll down to the scheduled job you would like to delete.
 
 Click the **three dots (...)** next to the blue **Run** button, and select **Delete**.
 
-![Click the Delete button next to a scheduled job to delete the job.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649287592/UI-licious:%20Monitoring/ScheduleaJob-7\_cvelit.png)
+![alt\_text](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649287592/UI-licious:%20Monitoring/ScheduleaJob-7\_cvelit.png)
 
 Then, click the red **Delete** button.
 
@@ -126,6 +124,4 @@ Under **Status**, click the dropdown menu to reveal more options.
 
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649781432/UI-licious:%20Monitoring/ScheduleaJob11.png)
 
-### Set Up Notifications
-
-If you are interested in learning more about setting up your notifications (whether it be email or an application of your choice), view our [How to Set Up Notifications](../how-to-set-up-notifications/) section.
+### See More:

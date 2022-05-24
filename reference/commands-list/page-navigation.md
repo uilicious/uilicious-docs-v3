@@ -71,8 +71,8 @@ The following table shows where the browser will be navigated to depending on th
 
 | Before                                                   | After                                                  |
 | -------------------------------------------------------- | ------------------------------------------------------ |
-| [https://storeA.com](https://storea.com/)                | [https://storeA.com/shoes](https://storea.com/shoes)   |
-| [https://storeB.com](https://storeb.com/)                | [https://storeB.com/shoes](https://storeb.com/shoes)   |
+| [https://storeA.com](https://storea.com)                 | [https://storeA.com/shoes](https://storea.com/shoes)   |
+| [https://storeB.com](https://storeb.com)                 | [https://storeB.com/shoes](https://storeb.com/shoes)   |
 | [https://mystore.com/wallet](https://mystore.com/wallet) | [https://mystore.com/shoes](https://mystore.com/shoes) |
 
 **Reference current folder using "."**
@@ -137,7 +137,7 @@ The following table shows where the browser will be navigated to depending on th
 I.goTo("https://mystore.com", {newTab: true})
 ```
 
-Set `newTab` option to `true` to open "[https://mystore.com](https://mystore.com/)" in a new tab.
+Set `newTab` option to `true` to open "[https://mystore.com](https://mystore.com)" in a new tab.
 
 ***
 
@@ -169,11 +169,11 @@ I.amAt("http://mystore.com")
 
 Matches the following:
 
-* [http://mystore.com](http://mystore.com/)
+* [http://mystore.com](http://mystore.com)
 
 Does not match:
 
-* [https://mystore.com](https://mystore.com/)
+* [https://mystore.com](https://mystore.com)
 
 **Without protocol**
 
@@ -183,8 +183,8 @@ I.amAt("://mystore.com")
 
 Matches the following:
 
-* [http://mystore.com](http://mystore.com/)
-* [https://mystore.com](https://mystore.com/)
+* [http://mystore.com](http://mystore.com)
+* [https://mystore.com](https://mystore.com)
 
 **Relative URL**
 

@@ -52,7 +52,7 @@ Now, that we have named our first project, we will need to name our first test, 
 
 Let's name our test, **myfirstScript**.
 
-Type in the URL: [https://www.amazon.com/](https://www.amazon.com/).
+Type in the URL: [https://www.amazon.com/](https://www.amazon.com).
 
 ![Setting up your first test in UI-licious requires a new test name and the URL of the website.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649112961/ui-licious/amazon-getting-started-example/Signup-3\_fyzee8.png)
 
@@ -92,7 +92,7 @@ Next, we want our user to click the yellow **Sign in** button on the current pag
 {% hint style="info" %}
 **NOTE**:\
 \
-Use our throwaway e-mail service, [https://inboxkitten.com/](https://inboxkitten.com/), to test the user sign-up flows in your online apps.
+Use our throwaway e-mail service, [https://inboxkitten.com/](https://inboxkitten.com), to test the user sign-up flows in your online apps.
 {% endhint %}
 
 Now, let's have our user log in using their email.
