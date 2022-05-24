@@ -32,7 +32,7 @@ In the example below, there is a green button element labeled "Enter".
 
 When using the command, `I.click("Enter")`, UIlicious will make an educated guess based on the element's semantic text.
 
-![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1651598658/ui-licious/i.click%20and%20i.doubleclick/i.click-a1.gif)
+![The browser's developer tools help you view the code behind the selected element. We can view the code behind the green Enter button on the element panel on the left side of the web page.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1651598658/ui-licious/i.click%20and%20i.doubleclick/i.click-a1.gif)
 
 ```javascript
 I.click("Enter")
@@ -53,7 +53,7 @@ You can click on images and icons using the `aria-label` or `title` attribute se
 In the example below, there is an Amazon logo. The logo has an aria-label called \
 `aria-label="Amazon"`.&#x20;
 
-![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1653363583/ui-licious/ui-licious:%20conceptual%20guide/amazon-blurred-background.png)
+![The browser's developer tools help you view the code behind the selected element. In this case, we can see the code behind the Amazon logo on the element panel on the left side of the web page.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1653363583/ui-licious/ui-licious:%20conceptual%20guide/amazon-blurred-background.png)
 
 For example, click on the image using its' `aria-label`.&#x20;
 
@@ -65,7 +65,7 @@ I.click("Amazon")
 
 In the example below, we can click on the Track Order link on the site, [Far East Flora](https://www.fareastflora.com/), with its `id` property, `#track-order`.
 
-![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1653363819/ui-licious/ui-licious:%20conceptual%20guide/far-east-flora-track-order.png)
+![The browser's developer tools help you view the code behind the selected element. We can view the code behind the Track Order logo on the element panel on the left side of the web page.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1653363819/ui-licious/ui-licious:%20conceptual%20guide/far-east-flora-track-order.png)
 
 In UIlicious, we can use the script below target the element.
 
@@ -75,7 +75,7 @@ I.click("#track-order")
 
 In the example below, we can click on the Shopping Cart icon using its `class` property set to `shopping-class`.
 
-![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1653364083/ui-licious/ui-licious:%20conceptual%20guide/far-east-flora-shopping-icon.png)
+![The browser's developer tools help you view the code behind the selected element. We can view the code behind the shopping icon on the element panel on the left side of the web page.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1653364083/ui-licious/ui-licious:%20conceptual%20guide/far-east-flora-shopping-icon.png)
 
 We can use the script below in UIlicious to target the shopping icon by its' class.
 
