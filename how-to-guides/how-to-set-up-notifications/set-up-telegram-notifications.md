@@ -36,7 +36,9 @@ Then, click on the **Schedule New Job** button.
 
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1653413563/ui-licious/setting-up-notifications/scheduleajob\_c9hyqi.png)
 
-Scroll down to the **Notifications** section.
+Name your job.
+
+Then, scroll down to the **Notifications** section.
 
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1652652712/ui-licious/setting-up-notifications/scroll-to-notifications-section.gif)
 
