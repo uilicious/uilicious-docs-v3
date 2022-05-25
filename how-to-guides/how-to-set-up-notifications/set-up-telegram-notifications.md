@@ -10,7 +10,7 @@ This section will guide you through the steps of setting up and integrating Tele
   * Step 1: [View the Notifications Section in UIlicious](set-up-telegram-notifications.md#step-1-view-the-notifications-section-in-uilicious)
   * Step 2: [Making a Webhook with Integram](set-up-telegram-notifications.md#step-2-making-a-webhook-in-discord)&#x20;
   * Step 3: [Add the Webhook URL to Your UIlicious Notification Settings](set-up-telegram-notifications.md#step-3-add-the-webhook-url-to-your-uilicious-notification-settings)
-  * UIlicious Notification in Telegram Example
+  * [UIlicious Notification in Telegram Example](set-up-telegram-notifications.md#uilicious-notification-in-telegram-example)
 
 Once you have properly configured your webhook URL and added it to your Notification Settings, UIlicious can send test run alerts to your Telegram channel.
 
@@ -112,3 +112,7 @@ Now, that we have our Webhook URL, let's add it to our UIlicious Notification Se
 Then, click the blue **Schedule** button.
 
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1653502480/ui-licious/setting-up-notifications/telegram/telegram-notif-10\_y7cnnc.png)
+
+### UIlicious Notification in Telegram Example
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1653504594/ui-licious/setting-up-notifications/telegram/telegram-example.png)
