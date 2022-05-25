@@ -42,7 +42,7 @@ Scroll down to the **Notifications** section.
 
 Click the toggle next to **Notify by Webhook**.
 
-Then, open the dropdown menu next to **Webhook** and select Others.
+Then, open the dropdown menu next to **Webhook** and select **Others**.
 
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1652652028/ui-licious/setting-up-notifications/toggle\_on\_webhooks.gif)
 
