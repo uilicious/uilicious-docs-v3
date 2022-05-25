@@ -103,7 +103,7 @@ Otherwise, it will use the x and values to offset the click on the selected elem
 
 In some cases, we are not able to target an element by its label, XPath or CSS selector.
 
-In the example below, we want to target the elements on the map but we are unable to access a label, XPath or CSS selector.&#x20;
+In the example below, we want to target the elements on the map but we are unable to access a label, XPath, or CSS selector.&#x20;
 
 Instead, we can use **offset** and target our element by its x and y coordinates like so, `I.click("//canvas", 550, 480)`.
 
