@@ -22,7 +22,11 @@ If the parameters, x and y, are not specified, UIlicious will target the center 
 
 To learn more about clicking on a target element with offset, view the [I.click offset](i.click-and-i.doubleclick.md#click-on-elements-id-or-class-with-offset) section.&#x20;
 
+**In this section, we will use** [**Far East Flora**](https://www.fareastflora.com/) **as the test site in the examples listed below.**
+
 ### Examples:
+
+**Click on an element with text**
 
 {% hint style="info" %}
 To view the source code of any webpage, right-click any element on the site you would like to inspect and select **Inspect**.
@@ -34,11 +38,23 @@ When using the command, `I.click("Enter")`, UIlicious will make an educated gues
 
 ![The browser's developer tools help you view the code behind the selected element. We can view the code behind the green Enter button on the element panel on the left side of the web page.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1651598658/ui-licious/i.click%20and%20i.doubleclick/i.click-a1.gif)
 
+Let's say we want to click on the text, Log In.
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1650571116/ui-licious/i.click%20and%20i.doubleclick/I.clickExamples-1.png)
+
+
+
+Use the I.click command to specifically click on an element with text.
+
 ```javascript
 I.click("Enter")
 
 // The command will click an element with the text "Enter"
 ```
+
+In UI-licious, it should look similar to the example below:
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1650573219/ui-licious/i.click%20and%20i.doubleclick/I.click.Examples.2.gif)
 
 **Click on images and icons using the `aria-label` or `title`**
 
