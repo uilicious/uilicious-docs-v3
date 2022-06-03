@@ -20,7 +20,7 @@
   * [Set up Discord Notifications](how-to-guides/how-to-set-up-notifications/set-up-discord-notifications.md)
   * [Set up Telegram Notifications](how-to-guides/how-to-set-up-notifications/set-up-telegram-notifications.md)
   * [Set up Slack Notifications](how-to-guides/schedule-an-automated-job/set-up-slack-notifications.md)
-  * [Set up Teams Notifications](how-to-guides/schedule-an-automated-job/set-up-teams-notifications.md)
+  * [Set up Microsoft Teams Notifications](how-to-guides/how-to-set-up-notifications/set-up-microsoft-teams-notifications.md)
 * [Manage Test Data](how-to-guides/manage-test-data/README.md)
   * [Generate Sample Data](how-to-guides/manage-test-data/generate-sample-data.md)
   * [Load Test Data from File](how-to-guides/manage-test-data/load-test-data-from-file/README.md)
