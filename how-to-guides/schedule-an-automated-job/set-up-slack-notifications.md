@@ -5,7 +5,6 @@ In this section, you will learn how to set up notifications on Slack.
 This section will guide you through the steps of setting up and integrating Slack with UIlicious by using Incoming Webhooks. Incoming Webhooks are unique URLs that allow us to post our alerts from UIlicious into Slack.
 
 * [Prerequisites](set-up-slack-notifications.md#prerequisites)
-* [What is Slack](set-up-slack-notifications.md#what-is-slack)
 * Setting up Slack Notifications in UIlicious
   * Step 1: [View the Notifications Section in UIlicious](set-up-slack-notifications.md#step-1-view-the-notifications-section-in-uilicious)
   * Step 2: [Making a Webhook with Slack](set-up-slack-notifications.md#step-2-making-a-webhook-with-slack)
@@ -18,10 +17,6 @@ Once you have properly configured your webhook URL and added it to your Notifica
 
 * Active Slack Account
 * Know how to [Schedule an Automated Job](./)
-
-### What is Slack
-
-Slack is a messaging app used by organizations and businesses to communicate and work together.
 
 ### Step 1: View the Notifications Section in UIlicious
 

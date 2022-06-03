@@ -5,7 +5,6 @@ In this section, you will learn how to set up notifications on Discord using the
 This section will guide you through the steps of setting up and integrating Discord Webhooks with UIlicious. It will provide you with a brief overview of Discord.
 
 * [Prerequisites](set-up-discord-notifications.md#prerequisites)
-* [What is Discord](set-up-discord-notifications.md#what-is-discord)
 * Setting up Discord Notifications in UIlicious
   * Step 1: [View the Notifications Section in UIlicious](set-up-discord-notifications.md#step-1-view-the-notifications-section-in-uilicious)
   * Step 2: [Making a Webhook URL in Discord](set-up-discord-notifications.md#step-2-making-a-webhook-in-discord)
@@ -19,10 +18,6 @@ Once you have properly configured your webhook URL and added it to your Notifica
 * Active Discord Account
 * Know how to [Schedule an Automated Job](../schedule-an-automated-job/)
 * Basic Knowledge of Webhooks
-
-### What is Discord?
-
-Discord is an online communication platform that allows users to collaborate and discuss topics through instant messaging, group messaging, and voice chat.
 
 ### Step 1: View the Notifications Section in UIlicious
 

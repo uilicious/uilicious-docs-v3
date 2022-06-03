@@ -5,7 +5,6 @@ In this section, you will learn how to set up notifications on Telegram using a 
 This section will guide you through the steps of setting up and integrating Telegram with UIlicious. It will provide you with a brief overview of Telegram as well.
 
 * [Prerequisites](set-up-telegram-notifications.md#prerequisites)
-* [What is Telegram](set-up-telegram-notifications.md#what-is-discord)
 * Setting up Telegram Notifications in UIlicious
   * Step 1: [View the Notifications Section in UIlicious](set-up-telegram-notifications.md#step-1-view-the-notifications-section-in-uilicious)
   * Step 2: [Making a Webhook with Integram](set-up-telegram-notifications.md#step-2-making-a-webhook-in-discord)&#x20;
@@ -19,10 +18,6 @@ Once you have properly configured your webhook URL and added it to your Notifica
 * Active Telegram Account
 * Telegram Installed (through App Store or Google Play)
 * Know how to [Schedule an Automated Job](../schedule-an-automated-job/)
-
-### What is Telegram?
-
-Telegram is a free and encrypted messenger and calling application that can be used across multiple devices such as phones, laptops, and more.&#x20;
 
 ### Step 1: View the Notifications Section in UIlicious
 
