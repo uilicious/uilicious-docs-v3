@@ -71,3 +71,27 @@
 ## Release Notes
 
 * [Product Updates](release-notes/product-updates.md)
+
+## Others
+
+* [How UI-licious works](others/how-ui-licious-works.md)
+* [IP List](others/ip-list.md)
+* [Testing Salesforce](others/testing-salesforce.md)
+* [Applitools Integration](others/applitools-integration.md)
+* [Utility commands](others/utility-commands.md)
+* [Window resize commands](others/window-resize-commands.md)
+* [Local Storage commands](others/local-storage-commands.md)
+* [Handling Cookies](others/handling-cookies.md)
+* [Handling Alerts](others/handling-alerts.md)
+* [Validate page status](others/validate-page-status.md)
+* [Executing HTTP requests](others/executing-http-requests.md)
+* [Executing Javascript](others/executing-javascript.md)
+* [Get and assert element attributes](others/get-and-assert-element-attributes.md)
+* [Extract Page Content](others/extract-page-content.md)
+* [Screenshot commands](others/screenshot-commands.md)
+* [Write Custom Logs](others/write-custom-logs.md)
+* [Managing environment variables](others/managing-environment-variables.md)
+* [Loading test data from File](others/loading-test-data-from-file.md)
+* [Generate Sample Data](others/generate-sample-data.md)
+* [Loops and Conditionals](others/loops-and-conditionals.md)
+* [Reusing Tests](others/reusing-tests.md)
