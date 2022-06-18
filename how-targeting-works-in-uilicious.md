@@ -135,9 +135,13 @@ I.click("Continue as a Guest")
 
 `I.see.hint` is a command that allows you to explicitly focus on a specific element within the page that cannot be seen by the command `I.see`.&#x20;
 
-The difference between `I.see` and `I.see.hint` is that when certain texts or CSS elements are nested inside another element, they cannot be seen by just I.see. So to target the nested element, we must use another command such as I.see.hint.&#x20;
+The difference between `I.see` and `I.see.hint` is that when certain texts or CSS elements are nested inside another element, they cannot be seen by just I.see. So to target the nested element, we must use another command such as `I.see.hint`.&#x20;
 
-\[INSERT EXAMPLE]
+Take a look at the example below.&#x20;
+
+On the [James Hardie](https://www.jameshardie.ca/forms/request-a-sample) site, there are multiple Siding Samples to select from. To pick which Siding Sample we want UIlicious to select, we can use `I.see.hint` to give a hint to UIlicious to focus on a specific Siding Sample. UIlicious is smart enough to infer that our next commands will relate to that specific Siding Sample.
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1655513518/ui-licious/ui-licious:%20conceptual%20guide/i.see.hint-example.png)
 
 #### Limiting the scan area using `UI.Context`
 
