@@ -49,10 +49,44 @@ Then, open the dropdown menu next to **Webhook** and **** select **Microsoft Tea
 
 ### Step 2: Making a Webhook with Teams
 
+First, launch the Microsoft Teams application.
 
+Next, click the **Apps** icon.
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1655512636/ui-licious/setting-up-notifications/teams/teams-1\_kt8y4q.png)
+
+Then, search for "**Incoming Webhooks**".
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1655512636/ui-licious/setting-up-notifications/teams/teams-2\_xsejxr.png)
+
+Click the **Add to a team** button.
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1655512636/ui-licious/setting-up-notifications/teams/teams-3\_cl2brx.png)
+
+Then, click **Setup a Connector**.
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1655512636/ui-licious/setting-up-notifications/teams/teams-5\_pydcb6.png)
+
+Click **Configure,** and add a name for your Webhook.
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1655512636/ui-licious/setting-up-notifications/teams/teams-7\_kdtxkn.png)
+
+Name your Webhook.
+
+Then, click **Create**.
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1655512638/ui-licious/setting-up-notifications/teams/teams-9\_eyn6fo.png)
+
+Next, copy your Webhook URL as we will use this in your UIlicious Notifications Settings.
 
 ### Step 3: Add the Webhook URL to Your UIlicious Notification Settings&#x20;
 
+Head back to UIlicious and scroll down to the Notifications section.
 
+Next to Webhook URL, paste in the URL that you copied earlier.
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1655513147/ui-licious/setting-up-notifications/teams/teams-example.png)
 
 ### UIlicious Notification in Teams Example
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1655512637/ui-licious/setting-up-notifications/teams/teams-10\_rrca2m.png)
