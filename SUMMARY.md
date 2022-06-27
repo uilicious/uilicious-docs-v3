@@ -28,6 +28,7 @@
   * [Datasets](how-to-guides/manage-test-data/datasets.md)
   * [Secure Test Data](how-to-guides/manage-test-data/secure-test-data.md)
 * [Loops, Conditionals & Variables](how-to-guides/loops-conditionals-and-variables.md)
+* [Executing HTTP Requests](how-to-guides/executing-http-requests.md)
 
 ## Frameworks
 
@@ -49,20 +50,29 @@
 
 * [Assertion Commands](reference/assertion-commands.md)
 * [API Documentation](reference/api-documentation/README.md)
-  * [Keyboard Actions](reference/api-documentation/keyboard-actions.md)
-  * [Form Actions](reference/api-documentation/form-actions.md)
-  * [Mouse Actions](reference/api-documentation/mouse-actions.md)
   * [Aplitools Eyes](reference/api-documentation/aplitools-eyes.md)
 * [Configurations](reference/configurations/README.md)
   * [IP Whitelisting](reference/configurations/ip-whitelisting.md)
   * [Region Testing](reference/configurations/region-testing.md)
 * [Commands List](reference/commands-list/README.md)
+  * [Loading Test Data from File](reference/commands-list/loading-test-data-from-file.md)
+  * [Write Custom Logs](reference/commands-list/write-custom-logs.md)
+  * [Take a Screenshot Command](reference/commands-list/take-a-screenshot-command.md)
+  * [Extract Page Content Commands](reference/commands-list/extract-page-content-commands.md)
+  * [Get and Assert Attributes Commands](reference/commands-list/get-and-assert-attributes-commands.md)
+  * [Executing JavaScript Commands](reference/commands-list/executing-javascript-commands.md)
+  * [Handling Cookies Commands](reference/commands-list/handling-cookies-commands.md)
+  * [Handling Alerts Commands](reference/commands-list/handling-alerts-commands.md)
+  * [Local Storage Commands](reference/commands-list/local-storage-commands.md)
   * [Assertion commands](reference/commands-list/assertion-commands.md)
   * [Keyboard commands](reference/commands-list/keyboard-commands.md)
   * [Mouse commands](reference/commands-list/mouse-commands.md)
   * [Form commands](reference/commands-list/form-commands.md)
   * [Page Navigation](reference/commands-list/page-navigation.md)
   * [I.click and I.doubleclick](reference/commands-list/i.click-and-i.doubleclick.md)
+  * [Utility Commands](reference/commands-list/utility-commands.md)
+  * [Window Resize Commands](reference/commands-list/window-resize-commands.md)
+  * [Validate Page Status Commands](reference/commands-list/validate-page-status-commands.md)
 
 ## Best Practices
 
@@ -74,8 +84,10 @@
 
 ## Others
 
+* [Keyboard Actions](others/keyboard-actions.md)
+* [Form Actions](others/form-actions.md)
+* [Mouse Actions](others/mouse-actions.md)
 * [How UI-licious works](others/how-ui-licious-works.md)
-* [IP List](others/ip-list.md)
 * [Testing Salesforce](others/testing-salesforce.md)
 * [Applitools Integration](others/applitools-integration.md)
 * [Utility commands](others/utility-commands.md)

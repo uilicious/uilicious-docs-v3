@@ -7,9 +7,9 @@ When scheduling an automated job, you also can be notified about the results of 
 We currently support the following communication platforms:
 
 * [Slack](../schedule-an-automated-job/set-up-slack-notifications.md)
-* [Microsoft Teams](../schedule-an-automated-job/set-up-teams-notifications.md)
+* [Microsoft Teams](set-up-microsoft-teams-notifications.md)
 * [Discord](set-up-discord-notifications.md)
-* [Telegram](../schedule-an-automated-job/set-up-teams-notifications.md)
+* [Telegram](set-up-microsoft-teams-notifications.md)
 
 ### Schedule New Job: Notifications
 

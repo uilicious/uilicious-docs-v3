@@ -109,11 +109,11 @@ Otherwise, it will use the x and values to offset the click on the selected elem
 
 **To see how that looks visually, look at our** [**offset example**](i.click-and-i.doubleclick.md#offset-example).
 
-| Parameter  | Description                                                                     | Type   | Notes                                                                              |
-| ---------- | ------------------------------------------------------------------------------- | ------ | ---------------------------------------------------------------------------------- |
-| **target** | Keyword to identify the element to click.                                       | string | <p>Required.<br>Case-insensitive.<br>Must be in quotations; ex. ("#idElement")</p> |
-| **x**      | Offset the click x pixels right from the top-left corner of the target element. | number | <p>Optional.<br>Can be positive or negative value.</p>                             |
-| **y**      | Offset the click y pixels down from the top-left corner of the target element.  | number | <p>Optional.<br>Can be positive or negative value.</p>                             |
+| Parameter  | Description                                                                                                                                                    | Type   |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| **target** | <p><strong>Keyword to identify the element to click.</strong> <br><br>Required.<br>Case-insensitive.<br>Must be in quotations; ex. ("#idElement")</p>          | string |
+| **x**      | <p><strong>Offset the click x pixels right from the top-left corner of the target element.</strong><br><br>Optional.<br>Can be positive or negative value.</p> | number |
+| **y**      | <p><strong>Offset the click y pixels down from the top-left corner of the target element.</strong><br><br>Optional.<br>Can be positive or negative value.</p>  | number |
 
 #### Offset Example&#x20;
 
@@ -122,5 +122,7 @@ In some cases, we are not able to target an element by its label, XPath or CSS s
 In the example below, we want to target the elements on the map but we are unable to access a label, XPath, or CSS selector.&#x20;
 
 Instead, we can use **offset** and target our element by its x and y coordinates like so, `I.click("//canvas", 550, 480)`.
+
+`//canvas` is an element that typically contains graphics such as the canvas below.
 
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1653364606/ui-licious/ui-licious:%20conceptual%20guide/offset-map-example.png)
