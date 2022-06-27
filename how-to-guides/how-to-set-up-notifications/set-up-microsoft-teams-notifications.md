@@ -79,6 +79,10 @@ Then, click **Create**.
 
 Next, copy your Webhook URL as we will use this in your UIlicious Notifications Settings.
 
+Just a heads-up, this is what successfully setting up a Webhook looks like:
+
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1655512637/ui-licious/setting-up-notifications/teams/teams-10\_rrca2m.png)
+
 ### Step 3: Add the Webhook URL to Your UIlicious Notification Settings&#x20;
 
 Head back to UIlicious and scroll down to the Notifications section.
@@ -89,4 +93,4 @@ Next to Webhook URL, paste in the URL that you copied earlier.
 
 ### UIlicious Notification in Teams Example
 
-![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1655512637/ui-licious/setting-up-notifications/teams/teams-10\_rrca2m.png)
+![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1656342911/ui-licious/setting-up-notifications/teams/successful-notification-microsoft-teams\_rrnb90.png)
