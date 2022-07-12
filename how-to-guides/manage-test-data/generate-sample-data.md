@@ -1,2 +1,0 @@
-# Generate Sample Data
-

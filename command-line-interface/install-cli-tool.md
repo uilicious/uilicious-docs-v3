@@ -1,2 +1,0 @@
-# Install CLI Tool
-

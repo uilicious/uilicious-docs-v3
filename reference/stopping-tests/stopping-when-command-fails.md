@@ -1,0 +1,2 @@
+# Stopping when command fails
+
