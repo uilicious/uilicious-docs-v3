@@ -5,13 +5,10 @@
 ## Getting Started
 
 * [Write your first test](getting-started/write-your-first-test/README.md)
-  * [Running your Test \[ToDo\]](getting-started/write-your-first-test/running-your-test-todo.md)
   * [Share Test Reports](getting-started/write-your-first-test/share-test-reports.md)
-* [Invite your friends to collaborate](getting-started/invite-your-friends-to-collaborate.md)
 
 ## Core Concepts
 
-* [Test user journeys, not HTML](core-concepts/test-user-journeys-not-html.md)
 * [How Targeting Works in UIlicious](core-concepts/how-targeting-works-in-uilicious.md)
 
 ## How to Guides
@@ -23,38 +20,17 @@
     * [Set up Telegram Notifications](how-to-guides/schedule-a-job/setup-notifications/set-up-telegram-notifications.md)
     * [Set up Slack Notifications](how-to-guides/schedule-a-job/setup-notifications/set-up-slack-notifications.md)
     * [Set up Microsoft Teams Notifications](how-to-guides/schedule-a-job/setup-notifications/set-up-microsoft-teams-notifications.md)
-* [Use Cases \[ToDo\]](how-to-guides/use-cases-todo.md)
 
 ## Reference
 
 * [Configurations](reference/configurations/README.md)
   * [IP Whitelisting](reference/configurations/ip-whitelisting.md)
-  * [Region Testing](reference/configurations/region-testing.md)
-* [Commands List](reference/commands-list/README.md)
-  * [Loading Test Data from File](reference/commands-list/loading-test-data-from-file.md)
-  * [Write Custom Logs](reference/commands-list/write-custom-logs.md)
-  * [Take a Screenshot Command](reference/commands-list/take-a-screenshot-command.md)
-  * [Extract Page Content Commands](reference/commands-list/extract-page-content-commands.md)
-  * [Get and Assert Attributes Commands](reference/commands-list/get-and-assert-attributes-commands.md)
-  * [Executing JavaScript Commands](reference/commands-list/executing-javascript-commands.md)
-  * [Handling Cookies Commands](reference/commands-list/handling-cookies-commands.md)
-  * [Handling Alerts Commands](reference/commands-list/handling-alerts-commands.md)
-  * [Local Storage Commands](reference/commands-list/local-storage-commands.md)
-  * [Assertion commands](reference/commands-list/assertion-commands.md)
-  * [Keyboard commands](reference/commands-list/keyboard-commands.md)
-  * [Mouse commands](reference/commands-list/mouse-commands.md)
-  * [Form commands](reference/commands-list/form-commands.md)
-  * [Page Navigation](reference/commands-list/page-navigation.md)
-  * [Utility Commands](reference/commands-list/utility-commands.md)
-  * [Window Resize Commands](reference/commands-list/window-resize-commands.md)
-  * [Validate Page Status Commands](reference/commands-list/validate-page-status-commands.md)
+* [Commands List](reference/commands-list.md)
 * [Page Navigation](reference/page-navigation/README.md)
   * [Go to a URL](reference/page-navigation/go-to-a-url.md)
   * [Refresh Page](reference/page-navigation/refresh-page.md)
-  * [Go back / forward](reference/page-navigation/go-back-forward.md)
   * [Switch Tabs](reference/page-navigation/switch-tabs.md)
   * [Close Tab](reference/page-navigation/close-tab.md)
-  * [Validate URL](reference/page-navigation/validate-url.md)
   * [Get and Validate page title](reference/page-navigation/get-and-validate-page-title.md)
   * [Validate Page Status](reference/page-navigation/validate-page-status.md)
 * [Mouse Interactions](reference/mouse-interactions/README.md)
@@ -83,12 +59,7 @@
 * [Handling cookies](reference/handling-cookies.md)
 * [Handling local storage](reference/handling-local-storage.md)
 * [Wait Commands](reference/wait-commands/README.md)
-  * [Implicit Wait](reference/wait-commands/implicit-wait.md)
   * [Explicit Wait](reference/wait-commands/explicit-wait.md)
-* [Browser and Resolution Settings](reference/browser-and-resolution-settings/README.md)
-  * [TEST.browser read-only variable](reference/browser-and-resolution-settings/test.browser-read-only-variable.md)
-  * [Resizing the Window](reference/browser-and-resolution-settings/resizing-the-window.md)
-  * [TEST.height and TEST.width read-only variable](reference/browser-and-resolution-settings/test.height-and-test.width-read-only-variable.md)
 * [Using Javascript](reference/using-javascript/README.md)
   * [Use Javascript in your test](reference/using-javascript/use-javascript-in-your-test/README.md)
     * [Loops and Conditionals](reference/using-javascript/use-javascript-in-your-test/loops-and-conditionals.md)
@@ -99,7 +70,6 @@
   * [Info Logs](reference/custom-reporting/info-logs.md)
   * [Success status Logs](reference/custom-reporting/success-status-logs.md)
   * [Failure status Logs](reference/custom-reporting/failure-status-logs.md)
-  * [Error and Log Suppression](reference/custom-reporting/error-and-log-suppression.md)
 * [Dynamic Test Data](reference/dynamic-test-data/README.md)
   * [Load test data from File](reference/dynamic-test-data/load-test-data-from-file.md)
   * [Generate Sample Data](reference/dynamic-test-data/generate-sample-data.md)
@@ -114,23 +84,14 @@
   * [Count number of page elements](reference/read-and-validate-page-elements/count-number-of-page-elements.md)
 * [Reusing Tests](reference/reusing-tests/README.md)
   * [Running another test](reference/reusing-tests/running-another-test.md)
-  * [Loading utility functions](reference/reusing-tests/loading-utility-functions.md)
-  * [Page Object Model](reference/reusing-tests/page-object-model.md)
 * [Stopping Tests](reference/stopping-tests/README.md)
-  * [Stopping when command fails](reference/stopping-tests/stopping-when-command-fails.md)
   * [Stop Command](reference/stopping-tests/stop-command.md)
-* [Integrations](reference/integrations/README.md)
-  * [Visual Regression](reference/integrations/visual-regression/README.md)
-    * [Applitools](reference/integrations/visual-regression/applitools.md)
 
 ## Best Practices
 
-* [Page Object Model](best-practices/page-object-model.md)
 * [Salesforce](best-practices/salesforce.md)
 
 ***
 
 * [Product and Support](product-and-support/README.md)
   * [Release Notes](product-and-support/release-notes.md)
-  * [Product Roadmap](product-and-support/product-roadmap.md)
-  * [Support](product-and-support/support.md)

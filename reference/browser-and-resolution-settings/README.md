@@ -1,2 +1,0 @@
-# Select Browsers & Resolutions
-

@@ -42,25 +42,25 @@
 
 ### Mouse Commands <a href="#mouse-commands" id="mouse-commands"></a>
 
-| Command                                                                                                                                   | Description                                                               |
-| ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| <p><code></code><a href="../mouse-interactions/click-on-objects/"><code>I.click</code><br><code>I.doubleClick</code></a><code></code></p> | Click or double click on an element                                       |
-| [`I.rightClick`](https://docs.uilicious.com/scripting/mouse.html#irightclick)                                                             | Right click on an element                                                 |
-| [`I.hoverOn`](https://docs.uilicious.com/scripting/mouse.html#ihoverOn)                                                                   | Hover on an element                                                       |
-| [`I.dragTo`](https://docs.uilicious.com/scripting/mouse.html#idragto)                                                                     | Drag an element to another target element                                 |
-| [`I.dragBy`](https://docs.uilicious.com/scripting/mouse.html#idragby)                                                                     | Drag an element directionally by (x,y) pixel offset                       |
-| [`I.dragUp`](https://docs.uilicious.com/scripting/mouse.html#idragup)                                                                     | Drag an element to the up by a given number of pixel                      |
-| [`I.dragDown`](https://docs.uilicious.com/scripting/mouse.html#idragdown)                                                                 | Drag an element to the down by a given number of pixel                    |
-| [`I.dragLeft`](https://docs.uilicious.com/scripting/mouse.html#idragleft)                                                                 | Drag an element to the left by a given number of pixel                    |
-| [`I.dragRight`](https://docs.uilicious.com/scripting/mouse.html#idragright)                                                               | Drag an element to the right by a given number of pixel                   |
-| [`I.scrollBy`](https://docs.uilicious.com/scripting/mouse.html#iscrollby)                                                                 | Scrolls the page horizontally and vertically by a given number of pixels. |
-| [`I.scrollUp`](https://docs.uilicious.com/scripting/mouse.html#iscrollup)                                                                 | Scrolls the page up by a given number of pixels                           |
-| [`I.scrollDown`](https://docs.uilicious.com/scripting/mouse.html#iscrolldown)                                                             | Scrolls the page down by a given number of pixels                         |
-| [`I.scrollLeft`](https://docs.uilicious.com/scripting/mouse.html#iscrollleft)                                                             | Scrolls the page left by a given number of pixels                         |
-| [`I.scrollRight`](https://docs.uilicious.com/scripting/mouse.html#iscrollright)                                                           | Scrolls the page right by a given number of pixels                        |
-| [`I.scrollTo`](https://docs.uilicious.com/scripting/mouse.html#iscrollto)                                                                 | Scrolls to a coordinate on the page                                       |
-| [`I.scrollToTop`](https://docs.uilicious.com/scripting/mouse.html#iscrolltotop)                                                           | Scroll to the top of the page                                             |
-| [`I.scrollToBottom`](https://docs.uilicious.com/scripting/mouse.html#iscrolltobottom)                                                     | Scroll to the bottom of the page                                          |
+| Command                                                                                                                                | Description                                                               |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| <p><code></code><a href="mouse-interactions/click-on-objects/"><code>I.click</code><br><code>I.doubleClick</code></a><code></code></p> | Click or double click on an element                                       |
+| [`I.rightClick`](https://docs.uilicious.com/scripting/mouse.html#irightclick)                                                          | Right click on an element                                                 |
+| [`I.hoverOn`](https://docs.uilicious.com/scripting/mouse.html#ihoverOn)                                                                | Hover on an element                                                       |
+| [`I.dragTo`](https://docs.uilicious.com/scripting/mouse.html#idragto)                                                                  | Drag an element to another target element                                 |
+| [`I.dragBy`](https://docs.uilicious.com/scripting/mouse.html#idragby)                                                                  | Drag an element directionally by (x,y) pixel offset                       |
+| [`I.dragUp`](https://docs.uilicious.com/scripting/mouse.html#idragup)                                                                  | Drag an element to the up by a given number of pixel                      |
+| [`I.dragDown`](https://docs.uilicious.com/scripting/mouse.html#idragdown)                                                              | Drag an element to the down by a given number of pixel                    |
+| [`I.dragLeft`](https://docs.uilicious.com/scripting/mouse.html#idragleft)                                                              | Drag an element to the left by a given number of pixel                    |
+| [`I.dragRight`](https://docs.uilicious.com/scripting/mouse.html#idragright)                                                            | Drag an element to the right by a given number of pixel                   |
+| [`I.scrollBy`](https://docs.uilicious.com/scripting/mouse.html#iscrollby)                                                              | Scrolls the page horizontally and vertically by a given number of pixels. |
+| [`I.scrollUp`](https://docs.uilicious.com/scripting/mouse.html#iscrollup)                                                              | Scrolls the page up by a given number of pixels                           |
+| [`I.scrollDown`](https://docs.uilicious.com/scripting/mouse.html#iscrolldown)                                                          | Scrolls the page down by a given number of pixels                         |
+| [`I.scrollLeft`](https://docs.uilicious.com/scripting/mouse.html#iscrollleft)                                                          | Scrolls the page left by a given number of pixels                         |
+| [`I.scrollRight`](https://docs.uilicious.com/scripting/mouse.html#iscrollright)                                                        | Scrolls the page right by a given number of pixels                        |
+| [`I.scrollTo`](https://docs.uilicious.com/scripting/mouse.html#iscrollto)                                                              | Scrolls to a coordinate on the page                                       |
+| [`I.scrollToTop`](https://docs.uilicious.com/scripting/mouse.html#iscrolltotop)                                                        | Scroll to the top of the page                                             |
+| [`I.scrollToBottom`](https://docs.uilicious.com/scripting/mouse.html#iscrolltobottom)                                                  | Scroll to the bottom of the page                                          |
 
 ### Keyboard Commands <a href="#keyboard-commands" id="keyboard-commands"></a>
 

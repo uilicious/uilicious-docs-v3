@@ -1,2 +1,0 @@
-# Resizing the Window
-
