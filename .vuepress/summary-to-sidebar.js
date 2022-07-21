@@ -22,11 +22,14 @@ const DEFAULT_CONFIG = {
 	// Major vue press version
 	VUEPRESS_MAJOR_VER: 2,
 
+	// Collapsible sidebar
+	COLLAPSIBLE: true,
+
 	// Load default summary.md
 	LOAD_DEFAULT: true,
 
 	// The defaault file path
-	LOAD_DEFAULT_PATH: "./summary.md"
+	LOAD_DEFAULT_PATH: "./SUMMARY.md"
 }
 
 //----------------------------------------------------------------------------
@@ -83,7 +86,7 @@ function extractMdLinkPair( line ) {
  * Recursively scan through the config arr, and normalize the results 
  * (mostly mapping links withoout "children" in the link format)
  **/
-function finalCleanupSidebarConfig( configArr, VUEPRESS_MAJOR_VER = 2 ) {
+function finalCleanupSidebarConfig( configArr, VUEPRESS_MAJOR_VER = 2, COLLAPSIBLE = true ) {
 	for(let i=0; i<configArr.length; ++i) {
 		let obj = configArr[i];
 
@@ -98,7 +101,14 @@ function finalCleanupSidebarConfig( configArr, VUEPRESS_MAJOR_VER = 2 ) {
 
 		// Recursively normalize the child objects if present
 		if( obj.children && obj.children.length > 0 ) {
-			finalCleanupSidebarConfig(obj.children);
+
+			// Cleanup child obj
+			finalCleanupSidebarConfig(obj.children, VUEPRESS_MAJOR_VER, COLLAPSIBLE);
+
+			// Add collapsible flag
+			if( COLLAPSIBLE ) {
+				obj.collapsible = true;
+			}
 			continue;
 		}
 
@@ -240,7 +250,7 @@ class SummaryToSidebarConfig {
 		}
 
 		// Final cleanup
-		retArr = finalCleanupSidebarConfig(retArr, this.getConfig("VUEPRESS_MAJOR_VER"));
+		retArr = finalCleanupSidebarConfig(retArr, this.getConfig("VUEPRESS_MAJOR_VER"),  this.getConfig("COLLAPSIBLE"));
 
 		// The fully computed arr
 		return retArr;
@@ -302,7 +312,10 @@ class SummaryToSidebarConfig {
 	 * Get and return the config value, either by default, or set for this class
 	 */
 	getConfig(name) {
-		return (this.config[name] || DEFAULT_CONFIG[name]);
+		if( this.config[name] != null ) {
+			return this.config[name];
+		}
+		return DEFAULT_CONFIG[name];
 	}
 }
 
