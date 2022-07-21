@@ -20,7 +20,13 @@ const DEFAULT_CONFIG = {
 	TAB_SIZE: 2,
 
 	// Major vue press version
-	VUEPRESS_MAJOR_VER: 2
+	VUEPRESS_MAJOR_VER: 2,
+
+	// Load default summary.md
+	LOAD_DEFAULT: true,
+
+	// The defaault file path
+	LOAD_DEFAULT_PATH: "./summary.md"
 }
 
 //----------------------------------------------------------------------------
@@ -300,8 +306,29 @@ class SummaryToSidebarConfig {
 	}
 }
 
-// Map the SUMMAR.md by default, and return it
-SummaryToSidebarConfig.default = (new SummaryToSidebarConfig()).convertSummaryFile("./SUMMARY.md");
+//----------------------------------------------------------------------------
+//
+//  Generate the default, and watch accordingly
+//
+//----------------------------------------------------------------------------
+
+if( DEFAULT_CONFIG.LOAD_DEFAULT ) {
+	if( fs.existsSync(DEFAULT_CONFIG.LOAD_DEFAULT_PATH) ) {
+		// Map the SUMMARY.md by default, and return it
+		SummaryToSidebarConfig.default = (new SummaryToSidebarConfig()).convertSummaryFile(DEFAULT_CONFIG.LOAD_DEFAULT_PATH);
+	
+		// Watch it for changes
+		fs.watchFile(DEFAULT_CONFIG.LOAD_DEFAULT_PATH, (curr, prev) => {
+			console.info(`${DEFAULT_CONFIG.LOAD_DEFAULT_PATH} file Changed`);
+
+			// "touch" the config file, and trigger a config reload
+			const time = new Date();
+			fs.utimes("./.vuepress/config.js", time, time, err => {
+				// Does nothing, if file does not exists
+			});
+		});
+	}
+}
 
 //----------------------------------------------------------------------------
 //
