@@ -17,7 +17,10 @@ const DEFAULT_CONFIG = {
 
 	// Tab size to use for indentation
 	// this is used to detirmine the "nesting" hirachy
-	TAB_SIZE: 2
+	TAB_SIZE: 2,
+
+	// Major vue press version
+	VUEPRESS_MAJOR_VER: 2
 }
 
 //----------------------------------------------------------------------------
@@ -74,9 +77,18 @@ function extractMdLinkPair( line ) {
  * Recursively scan through the config arr, and normalize the results 
  * (mostly mapping links withoout "children" in the link format)
  **/
-function finalCleanupSidebarConfig( configArr ) {
+function finalCleanupSidebarConfig( configArr, VUEPRESS_MAJOR_VER = 2 ) {
 	for(let i=0; i<configArr.length; ++i) {
 		let obj = configArr[i];
+
+		// Remap properties, for v2
+		if( VUEPRESS_MAJOR_VER == 2 ) {
+			obj.text = obj.text || obj.title;
+			obj.link = obj.link || obj.path;
+
+			delete obj.title;
+			delete obj.path;
+		}
 
 		// Recursively normalize the child objects if present
 		if( obj.children && obj.children.length > 0 ) {
@@ -88,8 +100,10 @@ function finalCleanupSidebarConfig( configArr ) {
 		delete obj.children;
 
 		// Normalize to title path pairing
-		if( obj.path && obj.title ) {
-			configArr[i] = [ obj.path, obj.title ];
+		if( VUEPRESS_MAJOR_VER == 1 ) {
+			if( obj.path && obj.title ) {
+				configArr[i] = [ obj.path, obj.title ];
+			}
 		}
 	}
 
@@ -220,7 +234,7 @@ class SummaryToSidebarConfig {
 		}
 
 		// Final cleanup
-		return finalCleanupSidebarConfig(retArr);
+		retArr = finalCleanupSidebarConfig(retArr, this.getConfig("VUEPRESS_MAJOR_VER"));
 
 		// The fully computed arr
 		return retArr;

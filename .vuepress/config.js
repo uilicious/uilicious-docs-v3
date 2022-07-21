@@ -1,14 +1,15 @@
 // .vuepress/config.js
 
 //
-// !!! Note that the following config is for v1.9+
-// 
-// There is major breaking changes to how theme config is handled from 2.0-alpha 
+// !!! Note that the following config is for v2.0-alpha ++
 //
+// It is not compatible with vuepress 1++
+//
+
+const { defaultTheme } = require('@vuepress/theme-default')
+
 module.exports = {
-	themeConfig: {
+	theme: defaultTheme({
 		sidebar: require("./summary-to-sidebar").default
-		
-		//require("./summary-to-sidebar").default
-	}
+	})
 }
