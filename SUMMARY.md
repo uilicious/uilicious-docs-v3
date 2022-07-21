@@ -91,7 +91,7 @@
 
 * [Salesforce](best-practices/salesforce.md)
 
-***
+## Product Notes
 
 * [Product and Support](product-and-support/README.md)
   * [Release Notes](product-and-support/release-notes.md)
