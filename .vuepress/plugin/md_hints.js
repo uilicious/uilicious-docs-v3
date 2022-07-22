@@ -9,7 +9,7 @@
 // NOTE: Due to the incredible lack of documentation on how to write a markdown-it plugin
 //       code commentry here will be extreamly verbose, to better aid future plugin authors.
 //
-//       In addition variable naming favours generic discription, over multiple potential 
+//       In addition variable naming favours generic discriptions, over multiple potential 
 //       use cases (instead of being specific for our use case), to help make the 
 //       "aha" moment easier for another author.
 //
@@ -75,8 +75,12 @@ module.exports = (md, pluginOptions) => {
 	md.block.ruler.before(
 		// "fence" refers to the markdown-it stage before code blocks are processed
 		// plugins generally hook into before this stage, for some reasons (dunno)
+		//
 		// see : https://github.com/markdown-it/markdown-it/issues/289
 		// for the full list of ruler stages
+		//
+		// If you want to only do processing after some of the first few items are processed
+		// you can opt for an alternative stage of the process.
 		"fence", 
 		// What we name our plugin : hintblock
 		"hintblock", 
@@ -132,8 +136,17 @@ module.exports = (md, pluginOptions) => {
 //    ....
 // }
 // ```
-//
-function hintblockPlugin(state, startLine, endLine, silent) {
+/**
+ * Plugin function for the md-it "ruler" operations
+ * 
+ * @param {Object}  state obj representing the current markdown process/file
+ * @param {int}     startLine number of the line being processed
+ * @param {int}     lastLine number of the "file" (or string) being processed
+ * @param {boolean} silentValidation flag, if true, function should only return true, or false
+ *                  only if it have a relevent starting token. It must not modify if silent.
+ *                  (example of how this flag is used is in the function)
+ **/
+function hintblockPlugin(state, startLine, endLine, silentValidation) {
 
 	//---------------------------------------------------------------------------------------
 	//
@@ -228,8 +241,8 @@ function hintblockPlugin(state, startLine, endLine, silent) {
 
 	// ---
 	// Minor note: The additional 2nd / 3rd char check is not really needed, im just obsessive. 
-	//             Most plugin's i seen stop optimizing their early false return with the first one or 2
-	//             characters as its typically "good enough".
+	//             Most plugin's I seen stop optimizing their early false return with the first
+	//             1 or 2 characters as its typically "good enough" I guess  ¯\(o_o)/¯
 	// ---
 
 	// Lets check the 2nd character, and fail that quickly too if possible
@@ -237,10 +250,13 @@ function hintblockPlugin(state, startLine, endLine, silent) {
 		return false;
 	}
 
+	// Lets get the markdown instance
+	const md = state.md;
+
 	// Lets check that the 3rd character, for whitespace (for our use case)
 	// to avoid needing to figure out the various UTF-8 implemention of whitespaces
 	// you can use the provided `md.utils.isWhitespace(charCode)` tool
-	if( md.utils.isWhitespace( state.src.charCodeAt(startPos+2) ) === false ) {
+	if( md.utils.isWhiteSpace( state.src.charCodeAt(startPos+2) ) === false ) {
 		return false;
 	}
 
@@ -249,21 +265,68 @@ function hintblockPlugin(state, startLine, endLine, silent) {
 	// ## Lets process the opening line (more casually)
 	//
 	// Now that we have optimized quick returns in the above, you can now start
-	// processing the strings, without the obsession in performance.
+	// processing the strings, without the obsession in performance. 
+	// (I prefer to make code readable as much as possible)
 	//
-	// We can be confident that anything past this line, has a resonably high chance
-	// of being part of our use case, 
+	// We can be somewhat confident that anything past this line, has a resonably chance
+	// of being part of our use case.
+	//
+	// However, as it is still possible for the line to be not relevent for our use case, 
+	// as such we should code defensively to account for such flows.
 	//
 	//---------------------------------------------------------------------------------------
 
-	// For example, we know the following is our opening and closing tag for our use case
+	// You can get the full line from the first non-whitespace character with the following
+	// --- 
+	// let markdownLine = state.src.slice(startOfLine, endinOfLine);
+
+	// However we can also opt for a more truncated string (without the opening "{%")
+	let markdownLine = state.src.slice(startPos+3, endinOfLine)
+
+	// Let me setup the opening and closing tokens
 	const open = "{%"
 	const close = "%}"
 
-	// Get the markup line, so we can process it
-	let markLine = state.src.slice(start, max);
+	// Lets check for closing token, if its not found. We return false once again
+	let closeTokenOffset = markdownLine.indexOf(close);
+	if( closeTokenOffset <= 0 ) {
+		// No match, exit
+		return false;
+	}
 
-	// 
+	// Ok we finally found a valid starting and closing pair, 
+	// lets get the opening block inner string
+	let openBlockStr = markdownLine.slice(0, closeTokenOffset).trim();
+
+	// While our blocks can support multiple parameters
+	// what is more critical is that our first word starts with "hint" for our use case
+	let openBlockArr = openBlockStr.split(/[\s]+/);
+	if( openBlockArr[0].toLowerCase() !== "hint" ) {
+		return false;
+	}
+
+	//---------------------------------------------------------------------------------------
+	//
+	// ## Lock in, and handle silent flag
+	//
+	// Now that we are absolutely sure that the line presented to us is relevent.
+	// with proper opening and closing bracker for the opening block.
+	//
+	// We will report success, if the silentValidation flag is set to true.
+	//
+	// Assumingly, after reporting true, the function will be called again to perform
+	// the actual state processing. And only then will we be allowed to modify states.
+	//
+	//---------------------------------------------------------------------------------------
+
+	// Exit with success, if its in silent validation mode.
+	if( silentValidation ) {
+		return true;
+	}
+
+	// lets compute the closeTokenPos
+	let closeTokenPos = startPos+3+closeTokenPos;
+	
 
 
 	return false;
