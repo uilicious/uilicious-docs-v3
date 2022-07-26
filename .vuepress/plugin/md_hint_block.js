@@ -167,7 +167,7 @@ module.exports = (md, pluginOptions) => {
  * 
  * @param {Object}  state obj representing the current markdown process/file
  * @param {int}     startLine number of the line being processed
- * @param {int}     lastLine number of the "file" (or string) being processed
+ * @param {int}     endLine number of the "file" (or string) being processed
  * @param {boolean} silentValidation flag, if true, function should only return true, or false
  *                  only if it have a relevent starting token. It must not modify if silent.
  *                  (example of how this flag is used is in the function)
@@ -226,9 +226,9 @@ function hintblockPlugin(state, startLine, endLine, silentValidation) {
 	// }
 	// ---
 
-	// So alternatively, we scan the line character by character with the startPos var,
+	// So alternatively, we scan the line character by character with the openBlockStartPos var,
 	// which we will use this for tracking "start of block"
-	let startPos;
+	let openBlockStartPos;
 
 	// We use lastCheckingPos, instead of endinOfline, because at minimum we would need to 
 	// match against "{% hint %}", or 10 characters in total.
@@ -245,23 +245,23 @@ function hintblockPlugin(state, startLine, endLine, silentValidation) {
 
 	// Note that if lastValidStartPos is < startOfLine (less then 10 characters)
 	// it means the line is less then 10 characters, so lets ignore this line for our use case.
-	if( lastValidStartPos <= startPos ) {
+	if( lastValidStartPos <= openBlockStartPos ) {
 		return false;
 	}
 
 	// Lets loop for each character one-by-one
-	for(startPos=startOfLine; startPos<=lastValidStartPos; ++startPos) {
-		if( state.src.charCodeAt(startPos) === openChar1 ) {
+	for(openBlockStartPos=startOfLine; openBlockStartPos<=lastValidStartPos; ++openBlockStartPos) {
+		if( state.src.charCodeAt(openBlockStartPos) === openChar1 ) {
 			break;
 		}
 	}
 
-	// If startPos is not found within the lastValidStartPos bound. Its either not on the current line at all,
+	// If openBlockStartPos is not found within the lastValidStartPos bound. Its either not on the current line at all,
 	// or the opening character "{" is in the last 9 characters, and might mean something else and is not 
 	// relevent for our use case.
 	//
-	// If startPos <= lastValidStartPos, a match is found
-	if( startPos > lastValidStartPos ) {
+	// If openBlockStartPos <= lastValidStartPos, a match is found
+	if( openBlockStartPos > lastValidStartPos ) {
 		return false;
 	}
 
@@ -274,7 +274,7 @@ function hintblockPlugin(state, startLine, endLine, silentValidation) {
 	// ---
 
 	// Lets check the 2nd character, and fail that quickly too if possible
-	if( state.src.charCodeAt(startPos+1) !== openChar2 ) {
+	if( state.src.charCodeAt(openBlockStartPos+1) !== openChar2 ) {
 		return false;
 	}
 
@@ -292,7 +292,7 @@ function hintblockPlugin(state, startLine, endLine, silentValidation) {
 	// There are also other useful commands on the state object itself here
 	// See: https://github.com/markdown-it/markdown-it/blob/a1c9381/lib/rules_block/state_block.js
 	//
-	if( md.utils.isWhiteSpace( state.src.charCodeAt(startPos+2) ) === false ) {
+	if( md.utils.isWhiteSpace( state.src.charCodeAt(openBlockStartPos+2) ) === false ) {
 		return false;
 	}
 
@@ -317,12 +317,12 @@ function hintblockPlugin(state, startLine, endLine, silentValidation) {
 	// let markdownLine = state.src.slice(startOfLine, endinOfLine);
 
 	// However we can also opt for a more truncated string (without the opening "{%")
-	let markdownLine = state.src.slice(startPos+3, endinOfLine)
+	let markdownLine = state.src.slice(openBlockStartPos+3, endinOfLine)
 
 	// Let's define the opening and closing tokens strings
 	// this is used for both the "opening block" and the "closing block"
 	// which is "{% hint %}" and "{% endhint %}" respectively
-	const openBracket = "{%"
+	const openBlock = "{%"
 	const closeBracket = "%}"
 
 	// Lets check for closing token, if its not found. We return false once again
@@ -365,12 +365,16 @@ function hintblockPlugin(state, startLine, endLine, silentValidation) {
 	//---------------------------------------------------------------------------------------
 
 	// Exit with success, if its in silent validation mode.
+	// Everything after here will involve state manipulation
 	if( silentValidation ) {
 		return true;
 	}
 
-	// lets compute the openBlockCloseTokenPos, we will need this later
-	let openBlockCloseTokenPos = startPos+3+openBlockCloseTokenOffset;
+	// lets compute the openBlockCloseTokenPos, for the "%" character in the opening "%}" block
+	let openBlockCloseTokenPos = openBlockStartPos+3+openBlockCloseTokenOffset;
+
+	// and the open block ending pos (after the %} characters)
+	let openBlockEndinPos = openBlockCloseTokenPos+2;
 	
 	//---------------------------------------------------------------------------------------
 	//
@@ -392,14 +396,17 @@ function hintblockPlugin(state, startLine, endLine, silentValidation) {
 	//
 	// Closing block regex, this is used to find our {% endhint %} block
 	//
-	// /                     # Start of regex
-	// (                     # Opening capture group
-	//   \{\%[\s]+           # Match against "{% " and any number of white space
-	//   endhint[\s]+        # Match against "endhint " including an ending whitespace, case insensitive
-	//   [.]*\%\}            # Match against "%}" including any random parameters which would ignore
+	// /                     # - Start of regex
+	// (                     # - Opening capture group 1
+	//   \{\%                # - Match "{%"
+	//   [\s]+               # - Match any number of white space
+	//   endhint             # - Match "endhint " including an ending whitespace
+	//   [\s]+               # - Match any number of white space
+	//   [.]*                # - Match any random parameters which would ignore
 	//                       #   ( Eg: "param=xyz %}" )
-	// )                     # Closing capture group
-	// /img                  # End of regex, indicated as case insensitive, 
+	//   \%\}                # - Match "%}" 
+	// )                     # - Closing capture group 1
+	// /img                  # - End of regex, indicated as case insensitive, 
 	//                       #   multi-line, and global match
 	//
 	const closeBlockRegex = /(\{\%[\s]+endhint[\s]+[.]*\%\})/img;
@@ -424,7 +431,7 @@ function hintblockPlugin(state, startLine, endLine, silentValidation) {
 		// this makes sense for oru use case, it may not make sense for use cases
 		// where multiple lines is a gurantee.
 		if( nextLine == startLine ) {
-			start = openBlockCloseTokenPos+2;
+			start = openBlockEndinPos;
 		}
 
 		// Get the line string, if possible code your check to avoid this 
@@ -443,17 +450,30 @@ function hintblockPlugin(state, startLine, endLine, silentValidation) {
 	// ---
 
 	// Modify the RegExp "lastIndex", to begin a search from a specified point onwards
-	closeBlockRegex.lastIndex = openBlockCloseTokenPos + 2;
+	closeBlockRegex.lastIndex = openBlockEndinPos;
 
 	// And perform the search, if this returns null, it means no match is found.
 	// it also means we would need to "auto close" at the end of the document
 	let closeBlockMatch = closeBlockRegex.exec( state.src );
 
+	// Lets compute some of the positions we would need
+	let closeBlockEndinPos = closeBlockRegex.lastIndex;
+	let closeBlockStartPos = closeBlockMatch.index;
+
+	// Lets figure out the last line of the close block
+	let lastLine = startLine;
+	for(lastLine; lastLine < endLine; ++lastLine) {
+		// Increment until the last line is reached
+		if( state.eMarks[lastLine] >= closeBlockEndinPos ) {
+			break;
+		}
+	}
+
 	// Note, you still can return false, and exit here, and abort your matching logic
 	// and may do so until you actually need to modify the state. For example
 	//
 	// If this is not official intended behaviour, well there are a few plugins who does this
-	// do =l
+	// so YMMV =l
 	// ---
 	// if( closeBlockMatch == null ) {
 	// 	return false;
@@ -467,14 +487,53 @@ function hintblockPlugin(state, startLine, endLine, silentValidation) {
 	//
 	//---------------------------------------------------------------------------------------
 
-	// First lets get the 
+	// There are two ways to do state manipulation in general 
+	// either at the line-by-line level (using the block API)
+	// or character-by-character level (using the inline API)
+	//
+	// Im focusing on inline API, because its more universal
 
-	console.log(openBlockStr)
-	// console.log(state);
+	// First lets get the original position
+	let oriPos    = state.pos;
+	let oriPosMax = state.posMax;
+
+	// Lets insert a set of "open" token
+	// if you implement a new token type, you will need to add a renderer later
+	// if you reuse an existing totken type, it will be rendered by an existing renderer
+	//
+	// For our use case, we will be creating a new token name "hint"
+
+	let token;
+
+	// Generate the token, and store its markup, "1" means it's an opening token
+	// state.push("<type>", "<html tag to use>", <open/self-closing/close>);
+	token = state.push("hint_open", 'div', 1);
+	token.markup = state.src.slice(openBlockStartPos, openBlockEndinPos);
+	
+	// Lets generate the "inline" token, which from what I understand
+	// somehow gets processed recursively?
+	token = state.push("inline", "", 0);
+	token.content = state.src.slice(openBlockEndinPos, closeBlockStartPos);
+	token.children = [];
+
+	// Lets close the block
+	token = state.push("hint_close", 'div', -1);
+	token.markup = state.src.slice(closeBlockStartPos, closeBlockEndinPos);
+
+	// Reset the state position, to after the current closing block
+	state.pos    = closeBlockEndinPos;
+	state.line   = lastLine + 1;
+	state.posMax = oriPosMax;
+
+	// console.log( state.src.slice(openBlockStartPos, closeBlockEndinPos) );
+	console.log( Object.assign({}, state, { src: "" }) );
+	// True for success token setup
+	// return true;
 
 	return false;
 }
 
 function hintblockRender(tokens, idx, options, env, slf) {
-	return '<summary><span class="details-marker">&nbsp;</span>' + slf.renderInline(tokens[idx].children, options, env) + "</summary>";
+	return "";
+	// return '<summary><span class="details-marker">&nbsp;</span>' + slf.renderInline(tokens[idx].children, options, env) + "</summary>";
 }
