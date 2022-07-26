@@ -1,9 +1,3 @@
-/*************************************************************************************************
- * 
- * markdown-it plugin function, which will add {% hint %} and {% endhint %} blocks support.
- * 
- *************************************************************************************************/
-
 //--------------------------------------------------------------------------------------------
 //
 // NOTE: Due to the incredible lack of documentation on how to write a markdown-it plugin,
@@ -39,32 +33,38 @@
 //
 //--------------------------------------------------------------------------------------------
 
-//
-// md : is the markdown-it instance
-//
-// In general most plugin are initialized by calling the function, and providing the
-// markdown-it instance. By design the plugin should not require a dependency on md-it
-// as this instance will be passed into the plugin
-//
-// For example in vuepress 2 it would be something like the following in config.js
-// ```
-// { 
-//    ... // other config.js stuff
-//    extendsMarkdown: (md) => {
-//	    require("custom/md-it/plugin")(md, pluginOptions);
-//    },
-//    ...
-// }
-// ```
-//
-// For example with markdown-it directly
-//
-// ```
-// var md = require('markdown-it')();
-// md.use( require("custom/md-it/plugin"), pluginOptions);
-// ```
-//
+/*************************************************************************************************
+ * 
+ * markdown-it plugin function, which will add {% hint %} and {% endhint %} blocks support.
+ * 
+ *************************************************************************************************/
 module.exports = (md, pluginOptions) => {
+
+	//##---
+	// md : is the markdown-it instance
+	//
+	// In general most plugin are initialized by calling the function, and providing the
+	// markdown-it instance. By design the plugin should not require a dependency on md-it
+	// as this instance will be passed into the plugin
+	//
+	// For example in vuepress 2 it would be something like the following in config.js
+	// ```
+	// { 
+	//    ... // other config.js stuff
+	//    extendsMarkdown: (md) => {
+	//	    require("custom/md-it/plugin")(md, pluginOptions);
+	//    },
+	//    ...
+	// }
+	// ```
+	//
+	// For example with markdown-it directly
+	//
+	// ```
+	// var md = require('markdown-it')();
+	// md.use( require("custom/md-it/plugin"), pluginOptions);
+	// ```
+	//##---
 
 	// md.block.ruler.before : this register the plugin hook into markdown-it
 	//
@@ -104,8 +104,8 @@ module.exports = (md, pluginOptions) => {
 	// In our example, we will generate 2 tokens, named "hintblock_open", 
 	// "hintblock_close". 
 	//
-	// Strictly speaking, for our use case we could have implemented, without it
-	// but im adding it here anyway. (you can see why later)
+	// Strictly speaking, for our use case we could have implemented, without a custom renderer
+	// but im adding it here anyway. To properly show how to "use it"
 	//
 	md.renderer.rules.hintblock_open  = hintblockRender;
 	md.renderer.rules.hintblock_close = hintblockRender;
@@ -372,11 +372,41 @@ function hintblockPlugin(state, startLine, endDocumentLine, silentValidation) {
 		return true;
 	}
 
+	//---------------------------------------------------------------------------------------
+	//
+	// ## Process opening block parameters
+	//
+	//---------------------------------------------------------------------------------------
+
 	// lets compute the openBlockCloseTokenPos, for the "%" character in the opening "%}" block
 	let openBlockCloseTokenPos = openBlockStartPos+3+openBlockCloseTokenOffset;
 
 	// and the open block ending pos (after the %} characters)
 	let openBlockEndinPos = openBlockCloseTokenPos+2;
+
+	// Lets also process the opening block "parameters"
+	let openBlockParam = {};
+	for(let i=1; i<openBlockStrArr.length; ++i) {
+		let pair = openBlockStrArr[i].split("=")
+		let key = pair[0];
+		let value = pair[1];
+
+		// Just register true, if no value is provided
+		if( value == null ) {
+			openBlockParam[key] = true;
+			continue;
+		}
+
+		// Lets cleanup any starting or ending quotes
+		while( value.startsWith('"') || value.startsWith("'") ) {
+			value = value.slice(1);
+		}
+		while( value.endsWith('"') || value.endsWith("'") ) {
+			value = value.slice(0, value.length - 1);
+		}
+		// And save the value
+		openBlockParam[key] = value;
+	}
 	
 	//---------------------------------------------------------------------------------------
 	//
@@ -569,7 +599,7 @@ function hintblockPlugin(state, startLine, endDocumentLine, silentValidation) {
 	
 	// You can additionally, fill it up with additional custom data,
 	// which can be used by your renderer (unique to your use case)
-	token.meta = { openBlockStrArr: openBlockStrArr, type:"open" };
+	token.meta = { openBlockParam: openBlockParam, type:"open" };
 	
 	//##---
 	//## 3) And process all the inline content (between {% hint %} and {% endhint %})
@@ -582,7 +612,7 @@ function hintblockPlugin(state, startLine, endDocumentLine, silentValidation) {
 	token.map = [startLine, lastLine];
 
 	//##---
-	//## 4B) With the closing block once again
+	//## 4) With the closing block once again
 	//##---
 
 	// We have two major scenerios, 
@@ -604,7 +634,7 @@ function hintblockPlugin(state, startLine, endDocumentLine, silentValidation) {
 	}
 	
 	//##---
-	//## 5B) Followed by any trailing inline text content after {% endhint %}
+	//## 5) Followed by any trailing inline text content after {% endhint %}
 	//##---
 	if( closeBlockMatch != null && closeBlockEndinPos < state.eMarks[lastLine] ) {
 		content = state.src.slice( closeBlockEndinPos, state.eMarks[lastLine] ).trim();
@@ -662,18 +692,43 @@ function hintblockRender(tokenArr, idx, options, env, slf) {
 	// Lets get the token we are supposed to process
 	let token = tokenArr[idx];
 
-	console.log(token);
-
 	// Lets handle opening or closing respectively
 	if( token.meta.type == "open" ) {
 		// Our default block type is "tip", for vuepress
 		let containerTyper = "tip";
 
-		// Lets generate the opening container, without title
-		return `<div class="custom-container ${containerTyper}">`
+		// Lets get the block param
+		let blockParam = token.meta.openBlockParam;
+		let style = blockParam.style;
 
-		// The format for titles is, if you want that included
-		// <p class="custom-container-title">${TITLE TEXT}</p>
+		// While its not one to one, we can loosely map most of the common style types to vue press 2 equivalent
+		// This is unique to our use case if its not obvious (not related to markdown-it)
+		//
+		// See: https://v2.vuepress.vuejs.org/reference/default-theme/markdown.html#custom-containers
+		if( style == "info" || style == "success" ) {
+			containerTyper = "tip";
+		} else if( style == "warning" ) {
+			containerTyper = "warning";
+		} else if( style == "danger" ) {
+			containerTyper = "danger";
+		} else if( style == "details" ) {
+			containerTyper = "details";
+		}
+
+		// Lets generate the opening container, without title
+		let retStr = `<div class="custom-container ${containerTyper} hint hint-${style}">`
+
+		// Include the custom title if its provided
+		if( blockParam.title ) {
+			retStr += `<p class="custom-container-title">${blockParam.title}</p>`
+		}
+		
+		// Notice, that because im just customizing attributes for simple HTML objects
+		// I could have implemented all of these, without a custom renderer, and use the 
+		// default renderer with the "attrs"-ibute parameter.
+
+		// return the finished str
+		return retStr;
 	} else {
 		// Closing block is straight forward, just close the div
 		return "</div>"
