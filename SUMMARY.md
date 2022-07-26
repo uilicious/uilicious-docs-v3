@@ -23,7 +23,7 @@
 ## Reference
 
 * Configurations
-  * [IP Whitelisting](reference/configurations/ip-whitelisting.md)
+  * [IP Allowlisting](reference/configurations/ip-whitelisting.md)
 * [Commands List](reference/commands-list.md)
 * Page Navigation
   * [Go to a URL](reference/page-navigation/go-to-a-url.md)

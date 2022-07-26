@@ -1,0 +1,69 @@
+/**
+ * This file provides style overwrites for the theme
+ *
+ * See: https://v2.vuepress.vuejs.org/reference/default-theme/styles.html#palette-file
+ **/
+
+// :root {
+//     // scroll-behavior: smooth;
+// }
+
+// Navbar color overwrites
+//---------------------------------------------
+.navbar {
+    background-color: rgb(17,207,117);
+}
+html.dark .navbar {
+    background-color: rgb(1,77,41);
+}
+
+// Logo animation on color scheme change
+//---------------------------------------------
+
+// duplicate names is used to transition between different
+// animations, on theme changes, as the animation is reset
+@keyframes fadein_1 {
+    0% { opacity: 0.01 }
+    20% { opacity: 0.01 }
+    100% { opacity: 1 }
+}
+@keyframes fadein_2 {
+    0% { opacity: 0.01 }
+    20% { opacity: 0.01 }
+    100% { opacity: 1 }
+}
+html:not(.dark) .navbar .logo {
+    animation: fadein_1 1s;
+    content:url("/static/logo-black-text.png")
+}
+html.dark .navbar .logo {
+    animation: fadein_2 1s;
+    content:url("/static/logo-white-text.png")
+}
+
+// We preload the logo, alternative image, to make sure animation is snappy
+// and does not need to wait for loading the alternative image on click
+html .navbar .logo::after {
+    width:1px;
+    height:1px;
+    opacity:0;
+}
+html:not(.dark) .navbar .logo::after {
+    background-image: url("/static/logo-black-text.png");
+}
+html.dark .navbar .logo::after {
+    background-image: url("/static/logo-white-text.png");
+}
+
+// Navbar links
+//---------------------------------------------
+html.dark .navbar .navbar-item a {
+    color:white;
+}
+
+// Size limiting content images
+//---------------------------------------------
+.theme-default-content img {
+    max-width: min( 75vw, 75vh );
+    max-height: min( 75vw, 75vh );
+}
