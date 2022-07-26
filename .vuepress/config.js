@@ -19,7 +19,7 @@ module.exports = {
 		navbar: [
 			{ text:"Discord", link:"https://discord.gg/DZCmSRFwq8" },
 			{ text:"Blog", link:"https://uilicious.com/blog" },
-			{ text:"Login", link:"https://user.uilicious.com/login/" }
+			{ text:"Uilicious.com", link:"https://uilicious.com/" }
 		],
 
 		// Load the sidebar menu, from summary.md
