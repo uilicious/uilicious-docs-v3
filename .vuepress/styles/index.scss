@@ -55,15 +55,71 @@ html.dark .navbar .logo::after {
     background-image: url("/static/logo-white-text.png");
 }
 
-// Navbar links
+// Navbar links styling tweaks
 //---------------------------------------------
 html.dark .navbar .navbar-item a {
     color:white;
 }
 
-// Size limiting content images
+// Size limiting content images 
+// to resonable levels
 //---------------------------------------------
 .theme-default-content img {
     max-width: min( 75vw, 75vh );
     max-height: min( 75vw, 75vh );
 }
+
+//---------------------------------------------
+// Hint block styling overwrites
+//---------------------------------------------
+
+// We use "html . page" for higher specificity then the
+// default CSS rules, to overwrite the padding settings
+html .page .custom-container {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+// Lets define custom contentblock styling for "info" class
+:root {
+    --c-info: rgba(52,109,219,1.00)
+}
+
+// Lets overwrite for info class
+html .page .custom-container.hint-info {
+    border-color: var(--c-info);
+}
+
+// Lets do some flexbox alignment
+// it just makes the icon alignment works
+html .page .custom-container.hint {
+    display: flex;
+}
+
+// Lets support the custom custom icons 
+// position and alignment
+.custom-container.hint .hint-icon {
+    font-size: 1em;
+    margin-left: -0.6em;
+    margin-right: 0.6em;
+    font-weight: bolder;
+}
+
+// Lets inject the various icons (for the respective mode)
+.custom-container.hint-warning .hint-icon::after {
+    content: "⚠";
+    color: var(--c-warning);
+}
+.custom-container.hint-danger .hint-icon::after {
+    content: "⚠";
+    color: var(--c-danger);
+}
+.custom-container.hint-info .hint-icon::after {
+    content: "ⓘ";
+    color: var(--c-info);
+}
+.custom-container.hint-success .hint-icon::after {
+    content: "☑";
+    color: var(--c-tip);
+}
+

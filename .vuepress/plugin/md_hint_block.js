@@ -38,7 +38,7 @@
  * markdown-it plugin function, which will add {% hint %} and {% endhint %} blocks support.
  * 
  *************************************************************************************************/
-module.exports = (md, pluginOptions) => {
+ module.exports = (md, pluginOptions) => {
 
 	//##---
 	// md : is the markdown-it instance
@@ -104,8 +104,8 @@ module.exports = (md, pluginOptions) => {
 	// In our example, we will generate 2 tokens, named "hintblock_open", 
 	// "hintblock_close". 
 	//
-	// Strictly speaking, for our use case we could have implemented, without a custom renderer
-	// but im adding it here anyway. To properly show how to "use it"
+	// Strictly speaking, if all you are doing is rendering a single simple "div", 
+	// you do not need a custom renderer, and can use the default renderer (more on this later)
 	//
 	md.renderer.rules.hintblock_open  = hintblockRender;
 	md.renderer.rules.hintblock_close = hintblockRender;
@@ -716,21 +716,17 @@ function hintblockRender(tokenArr, idx, options, env, slf) {
 		}
 
 		// Lets generate the opening container, without title
-		let retStr = `<div class="custom-container ${containerTyper} hint hint-${style}">`
+		let retStr = `<div class="custom-container ${containerTyper} hint hint-${style}"><div class="hint-icon"></div><div class="hint-content">`
 
 		// Include the custom title if its provided
 		if( blockParam.title ) {
 			retStr += `<p class="custom-container-title">${blockParam.title}</p>`
 		}
 		
-		// Notice, that because im just customizing attributes for simple HTML objects
-		// I could have implemented all of these, without a custom renderer, and use the 
-		// default renderer with the "attrs"-ibute parameter.
-
 		// return the finished str
 		return retStr;
 	} else {
 		// Closing block is straight forward, just close the div
-		return "</div>"
+		return "</div></div>"
 	}
 }
