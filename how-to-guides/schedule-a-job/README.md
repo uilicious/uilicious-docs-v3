@@ -98,8 +98,8 @@ Confirm you have deleted the selected job.
 
 {% hint style="info" %}
 **Good to know:**\
-****\
-****Once a job is disabled, the user can still access reports.
+\
+Once a job is disabled, the user can still access reports.
 {% endhint %}
 
 To view all scheduled jobs, go to the **Monitoring** pane.
