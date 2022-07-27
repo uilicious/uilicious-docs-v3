@@ -107,682 +107,682 @@
 	md.renderer.rules.tabspanel_open    = tabspanel_open;
 	md.renderer.rules.tabspanel_inline  = tabspanel_inline;
 	md.renderer.rules.tabspanel_close   = tabspanel_close;
-}
+		
+	// This is a counter used to track globally, the number of "generated" tabs block
+	// used to ensure "unique" id's are issued for each tabs block
+	let gen_num = 0;
 
-// This is a counter used to track globally, the number of "generated" tabs block
-// used to ensure "unique" id's are issued for each tabs block
-let gen_num = 0;
-
-//
-// In general the plugin function seems to be called once for ever line of the markdown file
-// that is not empty whitespace. Or is not "taken by another plugin" function
-// (for lack of better words)
-//
-// These plugin functions are also called "ruler plugins" as the manager for it is called a "ruler"
-// (according to the markdown-it docs), to avoid confusion with the "render" plugin (later).
-//
-// The ruler, and its plugins are suppose to take the markdown string, and convert it into
-// "tokens" (similar to AST), these tokens are then converted into the rendered HTML with the
-// "render" plugin functions.
-// 
-// So very vaguely you can think of the following loop occuring, when the ruler plugin is called
-// for every markdown file. To get the rough idea whats going on for now.
-//
-// (the following is definately wrong, actual code is way more complicated,
-//  as various plugins can modify the state, do recursion, etc. But it gives a good
-//  enough idea on how it would work for most plugins, from their limited point of view)
-//
-// ```
-// let state = { ... state object with various things ... }
-// let mdContent = "... raw content from str ..."
-//
-// // Lets set the state src value
-// state.src = mdContent;
-//
-// // The number of lines to update
-// let mdContentArr = mdContent.split("\n");
-// let endDocumentLine = mdContentArr.length;
-//
-// // Final block output
-// let blockOutput = [];
-//
-// // Iterating each line
-// for(let startLine=0; startLine<endDocumentLine; startLine++) {
-//
-//    // Skip blank lines
-//    if( mdContentArr[startLine].trim() == "" ) {
-//      continue;  
-//    }
-//
-//    // Call the various plugins, including this function,
-//    // we will cover silent mode later
-//    blockOutput = ruler.callAllThePlugins( state, startLine, endDocumentLine )    
-//
-//    // Does various complex things to modify the state obj, etc
-//    ....
-// }
-//
-// // Convert the blockOutput, into the HTML string
-// return renderer.allAllThePlugins( blockOutput );
-//
-// ```
-/**
- * Plugin function for the md-it "ruler" operations
- * 
- * @param {Object}  state obj representing the current markdown process/file
- * @param {int}     startLine number of the line being processed
- * @param {int}     endDocumentLine number of the "file" (or string) being processed
- * @param {boolean} silentValidation flag, if true, function should only return true, or false
- *                  only if it have a relevent starting token. It must not modify if silent.
- *                  (example of how this flag is used is in the function)
- **/
-function tabsblockPlugin(state, startLine, endDocumentLine, silentValidation) {
-
-	//---------------------------------------------------------------------------------------
 	//
-	// ## Find out where your line starts (or ends)
+	// In general the plugin function seems to be called once for ever line of the markdown file
+	// that is not empty whitespace. Or is not "taken by another plugin" function
+	// (for lack of better words)
 	//
-	// First, given the startLine, we should extract out the
-	// starting character number, and ending character number of the line
+	// These plugin functions are also called "ruler plugins" as the manager for it is called a "ruler"
+	// (according to the markdown-it docs), to avoid confusion with the "render" plugin (later).
 	//
-	// This can be done using the following values prepopulated by md-it
-	//
-	// state.bMarks[lineNum] : Character number of "start of line"
-	// state.eMarks[lineNum] : Character number of "ending of line"
-	// state.tShift[lineNum] : Offset from bMarks, to the first non white-space character,
-	//                         this is useful, if your content uses the prefix whitespace
-	//                         as some indicator of "level" or "hirachy", if not for most,
-	//                         you will add this together with "start of line" value
-	//
-	//---------------------------------------------------------------------------------------
-	let startOfLine = state.bMarks[startLine] + state.tShift[startLine];
-	let endinOfLine = state.eMarks[startLine];
-
-	//---------------------------------------------------------------------------------------
-	//
-	// ## Early return false when possible (or markdown-it will be ssslllooowww...)
-	//
-	// Typically for "performance", you try to return `false` as soon as possible
-	// if you are certain the line does not contain anything relevent to your plugin.
-	//
-	// In this stage when possible, we avoid heavy regex, and "slicing" for the line
-	// string, until we have some indicator that we found a match.
-	//
-	//---------------------------------------------------------------------------------------
-
-	// For example, we know that "{%", and "%}" is our opening and closing tag for our use case
-	// So, lets get the chracter numbers for them, so we can check for them efficently
-	//
-	// `"{%".charCodeAt(0)`, gives 123
-	// `"{%".charCodeAt(1)`, gives 37
-	const openChar1 = 123; 
-	const openChar2 = 37; 
-
-	// ---
-	// IF: your plugin is designed to be only the start of a new line, you can fail quickly
-	//     if the desired character is not at the start of the line, return false on the spot.
-	//     
-	//     However this is not the case for us as of now
-	// ---
-	// // If it does not match, return false
-	// if( state.src.charCodeAt(start) != openChar1 ) {
-	//     return false;
-	// }
-	// ---
-
-	// So alternatively, we scan the line character by character with the openBlockStartPos var,
-	// which we will use this for tracking "start of block"
-	let openBlockStartPos;
-
-	// We use lastCheckingPos, instead of endinOfline, because at minimum we would need to 
-	// match against "{% tabs %}", or 10 characters in total.
-	//
-	// For our use case, we do not allow this block to be split across multiple lines, 
-	// if you do so for yours, you may want to check only for the starting 2 characters only. 
+	// The ruler, and its plugins are suppose to take the markdown string, and convert it into
+	// "tokens" (similar to AST), these tokens are then converted into the rendered HTML with the
+	// "render" plugin functions.
 	// 
-	// If your use case uses a block of only 1 character, its generally considered "bad design"
-	// due to the high possibility of triggering it in normal valid text.
+	// So very vaguely you can think of the following loop occuring, when the ruler plugin is called
+	// for every markdown file. To get the rough idea whats going on for now.
 	//
-	// In our case, if the first of the last 10 character is not a valid match, 
-	// we do not need to check against all other remiaing 9 characters.
-	let lastValidStartPos = endinOfLine - 10;
-
-	// Note that if lastValidStartPos is < startOfLine (less then 10 characters)
-	// it means the line is less then 10 characters, so lets ignore this line for our use case.
-	if( lastValidStartPos <= openBlockStartPos ) {
-		return false;
-	}
-
-	// Lets loop for each character one-by-one
-	for(openBlockStartPos=startOfLine; openBlockStartPos<=lastValidStartPos; ++openBlockStartPos) {
-		if( state.src.charCodeAt(openBlockStartPos) === openChar1 ) {
-			break;
-		}
-	}
-
-	// If openBlockStartPos is not found within the lastValidStartPos bound. Its either not on the current line at all,
-	// or the opening character "{" is in the last 9 characters, and might mean something else and is not 
-	// relevent for our use case.
+	// (the following is definately wrong, actual code is way more complicated,
+	//  as various plugins can modify the state, do recursion, etc. But it gives a good
+	//  enough idea on how it would work for most plugins, from their limited point of view)
 	//
-	// If openBlockStartPos <= lastValidStartPos, a match is found
-	if( openBlockStartPos > lastValidStartPos ) {
-		return false;
-	}
-
-	// ---
-	// Minor note: The additional 2nd / 3rd char check is not really needed, im just obsessive. 
-	//             Most plugin's I seen stop optimizing their early false return with the first
-	//             1 or 2 characters as its typically "good enough" I guess  ¯\(o_o)/¯
+	// ```
+	// let state = { ... state object with various things ... }
+	// let mdContent = "... raw content from str ..."
 	//
-	//             Its also a good excuse for me to use the md.utils (which is useful to some ppl)
-	// ---
-
-	// Lets check the 2nd character, and fail that quickly too if possible
-	if( state.src.charCodeAt(openBlockStartPos+1) !== openChar2 ) {
-		return false;
-	}
-
-	// Lets get the markdown instance
-	const md = state.md;
-
+	// // Lets set the state src value
+	// state.src = mdContent;
 	//
-	// Lets check that the 3rd character, for whitespace (for our use case)
-	// to avoid needing to figure out the various UTF-8 implemention of whitespaces
-	// you can use the provided `md.utils.isWhitespace(charCode)` tool
+	// // The number of lines to update
+	// let mdContentArr = mdContent.split("\n");
+	// let endDocumentLine = mdContentArr.length;
 	//
-	// You can find the commands here
-	// See: https://github.com/markdown-it/markdown-it/blob/a1c9381/lib/common/utils.js
+	// // Final block output
+	// let blockOutput = [];
 	//
-	// There are also other useful commands on the state object itself here
-	// See: https://github.com/markdown-it/markdown-it/blob/a1c9381/lib/rules_block/state_block.js
+	// // Iterating each line
+	// for(let startLine=0; startLine<endDocumentLine; startLine++) {
 	//
-	if( md.utils.isWhiteSpace( state.src.charCodeAt(openBlockStartPos+2) ) === false ) {
-		return false;
-	}
+	//    // Skip blank lines
+	//    if( mdContentArr[startLine].trim() == "" ) {
+	//      continue;  
+	//    }
+	//
+	//    // Call the various plugins, including this function,
+	//    // we will cover silent mode later
+	//    blockOutput = ruler.callAllThePlugins( state, startLine, endDocumentLine )    
+	//
+	//    // Does various complex things to modify the state obj, etc
+	//    ....
+	// }
+	//
+	// // Convert the blockOutput, into the HTML string
+	// return renderer.allAllThePlugins( blockOutput );
+	//
+	// ```
+	/**
+	 * Plugin function for the md-it "ruler" operations
+	 * 
+	 * @param {Object}  state obj representing the current markdown process/file
+	 * @param {int}     startLine number of the line being processed
+	 * @param {int}     endDocumentLine number of the "file" (or string) being processed
+	 * @param {boolean} silentValidation flag, if true, function should only return true, or false
+	 *                  only if it have a relevent starting token. It must not modify if silent.
+	 *                  (example of how this flag is used is in the function)
+	 **/
+	function tabsblockPlugin(state, startLine, endDocumentLine, silentValidation) {
 
-	//---------------------------------------------------------------------------------------
-	//
-	// ## Lets process the opening line (more casually)
-	//
-	// Now that we have optimized quick false returns in the above, you can now start
-	// processing the strings, without the obsession in performance. 
-	// (I prefer to make code readable as much as possible)
-	//
-	// We can be somewhat confident that anything past this line, has a resonably chance
-	// of being part of our use case.
-	//
-	// However, as it is still possible for the line to be not relevent for our use case, 
-	// as such we should code defensively to account for such flows.
-	//
-	//---------------------------------------------------------------------------------------
-
-	// You can get the full line from the first non-whitespace character with the following
-	// --- 
-	// let markdownLine = state.src.slice(startOfLine, endinOfLine);
-
-	// However we can also opt for a more truncated string (without the opening "{%")
-	let markdownLine = state.src.slice(openBlockStartPos+3, endinOfLine)
-
-	// Let's define the opening and closing tokens strings
-	// this is used for both the "opening block" and the "closing block"
-	// which is "{% tabs %}" and "{% endtab %}" respectively
-	const openBlock = "{%"
-	const closeBracket = "%}"
-
-	// Lets check for closing token, if its not found. We return false once again
-	let openBlockCloseTokenOffset = markdownLine.indexOf(closeBracket);
-	if( openBlockCloseTokenOffset <= 0 ) {
-		// No match, exit
-		return false;
-	}
-
-	// Ok we finally found a valid starting and closing pair, 
-	// lets get the opening block inner string
-	let openBlockStr = markdownLine.slice(0, openBlockCloseTokenOffset).trim();
-
-	// While our blocks can support multiple parameters
-	// what is more critical is that our first word starts with "tabs" for our use case
-	let openBlockStrArr = openBlockStr.split(/[\s]+/);
-	if( openBlockStrArr[0].toLowerCase() !== "tabs" ) {
-		return false;
-	}
-
-	//---------------------------------------------------------------------------------------
-	//
-	// ## Process opening block parameters
-	//
-	//---------------------------------------------------------------------------------------
-
-	// lets compute the openBlockCloseTokenPos, for the "%" character in the opening "%}" block
-	let openBlockCloseTokenPos = openBlockStartPos+3+openBlockCloseTokenOffset;
-
-	// and the open block ending pos (after the %} characters)
-	let openBlockEndinPos = openBlockCloseTokenPos+2;
-
-	//---------------------------------------------------------------------------------------
-	//
-	// ## Find the closing block set 
-	//
-	// Lets find the closing block set, if its not found, we will presumingly just
-	// use all remaining lines as the "summary" block between the opening and closing.
-	//
-	//---------------------------------------------------------------------------------------
-
-	// ---
-	// NOTE: how to deal with the closing block search is very "use case sensitive"
-	//
-	//       There is a resonable chance the logic here does not fit your use case.
-	//       if so, figure out how to get the closing block position "on your own",
-	//       and use this codebase as a refrence on what to do after that.
-	// ---
-
-	//
-	// Closing block regex, this is used to find our {% endtab %} block
-	//
-	// /                     # - Start of regex
-	// (                     # - Opening capture group 1
-	//   \{\%                # - Match "{%"
-	//   [\s]+               # - Match any number of white space
-	//   endtabs             # - Match "endtabs " including an ending whitespace
-	//   [\s]+               # - Match any number of white space
-	//   [.]*                # - Match any random parameters which would ignore
-	//                       #   ( Eg: "param=xyz %}" )
-	//   \%\}                # - Match "%}" 
-	// )                     # - Closing capture group 1
-	// /img                  # - End of regex, indicated as case insensitive, 
-	//                       #   multi-line, and global match
-	//
-	const closeBlockRegex = /(\{\%[\s]+endtabs[\s]+[.]*\%\})/img;
-
-	// ---
-	// I added the following "nextLine" loop here, as a large number of plugin's performs this
-	// action in one way or another, due to the requirements of their use case.
-	//
-	// This might be useful for you, if needed. It isn't in my current use case.
-	// ---
-	/***
-	// Lets start iterating all the lines from here onwards hopefully its in an early line block
-	let nextLine = startLine;
-	for(nextLine; nextLine < endDocumentLine; nextLine++) {
-
-		// Lets get start and max of line
-		let start = state.bMarks[nextLine] + state.tShift[nextLine];
-		let max = state.eMarks[nextLine];
-
-		// Lets skip to "after" the current block for first line
+		//---------------------------------------------------------------------------------------
 		//
-		// this makes sense for oru use case, it may not make sense for use cases
-		// where multiple lines is a gurantee.
-		if( nextLine == startLine ) {
-			start = openBlockEndinPos;
+		// ## Find out where your line starts (or ends)
+		//
+		// First, given the startLine, we should extract out the
+		// starting character number, and ending character number of the line
+		//
+		// This can be done using the following values prepopulated by md-it
+		//
+		// state.bMarks[lineNum] : Character number of "start of line"
+		// state.eMarks[lineNum] : Character number of "ending of line"
+		// state.tShift[lineNum] : Offset from bMarks, to the first non white-space character,
+		//                         this is useful, if your content uses the prefix whitespace
+		//                         as some indicator of "level" or "hirachy", if not for most,
+		//                         you will add this together with "start of line" value
+		//
+		//---------------------------------------------------------------------------------------
+		let startOfLine = state.bMarks[startLine] + state.tShift[startLine];
+		let endinOfLine = state.eMarks[startLine];
+
+		//---------------------------------------------------------------------------------------
+		//
+		// ## Early return false when possible (or markdown-it will be ssslllooowww...)
+		//
+		// Typically for "performance", you try to return `false` as soon as possible
+		// if you are certain the line does not contain anything relevent to your plugin.
+		//
+		// In this stage when possible, we avoid heavy regex, and "slicing" for the line
+		// string, until we have some indicator that we found a match.
+		//
+		//---------------------------------------------------------------------------------------
+
+		// For example, we know that "{%", and "%}" is our opening and closing tag for our use case
+		// So, lets get the chracter numbers for them, so we can check for them efficently
+		//
+		// `"{%".charCodeAt(0)`, gives 123
+		// `"{%".charCodeAt(1)`, gives 37
+		const openChar1 = 123; 
+		const openChar2 = 37; 
+
+		// ---
+		// IF: your plugin is designed to be only the start of a new line, you can fail quickly
+		//     if the desired character is not at the start of the line, return false on the spot.
+		//     
+		//     However this is not the case for us as of now
+		// ---
+		// // If it does not match, return false
+		// if( state.src.charCodeAt(start) != openChar1 ) {
+		//     return false;
+		// }
+		// ---
+
+		// So alternatively, we scan the line character by character with the openBlockStartPos var,
+		// which we will use this for tracking "start of block"
+		let openBlockStartPos;
+
+		// We use lastCheckingPos, instead of endinOfline, because at minimum we would need to 
+		// match against "{% tabs %}", or 10 characters in total.
+		//
+		// For our use case, we do not allow this block to be split across multiple lines, 
+		// if you do so for yours, you may want to check only for the starting 2 characters only. 
+		// 
+		// If your use case uses a block of only 1 character, its generally considered "bad design"
+		// due to the high possibility of triggering it in normal valid text.
+		//
+		// In our case, if the first of the last 10 character is not a valid match, 
+		// we do not need to check against all other remiaing 9 characters.
+		let lastValidStartPos = endinOfLine - 10;
+
+		// Note that if lastValidStartPos is < startOfLine (less then 10 characters)
+		// it means the line is less then 10 characters, so lets ignore this line for our use case.
+		if( lastValidStartPos <= openBlockStartPos ) {
+			return false;
 		}
 
-		// Get the line string, if possible code your check to avoid this 
-		// (slice in a loop is expensive)
-		let lineStr = state.src.slice(start, max)
-
-		// .... Do matching logic ???
-		let match = lineStr.match( closeBlockRegex )
-
-		// .... More matching logic ???
-	}
-	***/
-
-	// ---
-	// Instead I opt to do the following with RegExp
-	// ---
-
-	// Modify the RegExp "lastIndex", to begin a search from a specified point onwards
-	closeBlockRegex.lastIndex = openBlockEndinPos;
-
-	// And perform the search, if this returns null, it means no match is found.
-	// it also means we would need to "auto close" at the end of the document
-	let closeBlockMatch = closeBlockRegex.exec( state.src );
-
-	// Prepare ending position calculations (if found)
-	let closeBlockEndinPos = null;
-	let closeBlockStartPos = null; 
-
-	// If no match was found, the last line will be "end of document"
-	let lastLine = endDocumentLine;
-	
-	// Lets compute some of the positions we would need
-	// (only valid if a match was found)
-	if( closeBlockMatch != null ) {
-		closeBlockEndinPos = closeBlockRegex.lastIndex;
-		closeBlockStartPos = closeBlockMatch.index;
-	
-		// Lets figure out the last line of the close block
-		for(lastLine = startLine; lastLine < endDocumentLine; ++lastLine) {
-			// Increment until the last line is reached
-			if( state.eMarks[lastLine] >= closeBlockEndinPos ) {
+		// Lets loop for each character one-by-one
+		for(openBlockStartPos=startOfLine; openBlockStartPos<=lastValidStartPos; ++openBlockStartPos) {
+			if( state.src.charCodeAt(openBlockStartPos) === openChar1 ) {
 				break;
 			}
 		}
-	}
 
-	// Exit if closing block is not found
-	// ---
-	if( closeBlockMatch == null ) {
-		return false;
-	}
+		// If openBlockStartPos is not found within the lastValidStartPos bound. Its either not on the current line at all,
+		// or the opening character "{" is in the last 9 characters, and might mean something else and is not 
+		// relevent for our use case.
+		//
+		// If openBlockStartPos <= lastValidStartPos, a match is found
+		if( openBlockStartPos > lastValidStartPos ) {
+			return false;
+		}
 
-	//---------------------------------------------------------------------------------------
-	//
-	// ## Lock in, and handle silent flag
-	//
-	// Now that we are absolutely sure that the line presented to us is relevent.
-	// with proper opening and closing bracker for the opening block.
-	//
-	// We will report success, if the silentValidation flag is set to true.
-	//
-	// Assumingly, after reporting true, the function will be called again to perform
-	// the actual state processing. And only then will we be allowed to modify states.
-	//
-	// Some plugin documentation seems to imply supporting this is optional
-	// but I could not find any means, to safely "not support" this behaviour.
-	//
-	// So make sure to add the check i suppose.
-	//
-	// ¯\(o_o)/¯
-	//
-	//---------------------------------------------------------------------------------------
+		// ---
+		// Minor note: The additional 2nd / 3rd char check is not really needed, im just obsessive. 
+		//             Most plugin's I seen stop optimizing their early false return with the first
+		//             1 or 2 characters as its typically "good enough" I guess  ¯\(o_o)/¯
+		//
+		//             Its also a good excuse for me to use the md.utils (which is useful to some ppl)
+		// ---
 
-	// Exit with success, if its in silent validation mode.
-	// Everything after here will involve state manipulation
-	if( silentValidation ) {
+		// Lets check the 2nd character, and fail that quickly too if possible
+		if( state.src.charCodeAt(openBlockStartPos+1) !== openChar2 ) {
+			return false;
+		}
+
+		// Lets get the markdown instance
+		const md = state.md;
+
+		//
+		// Lets check that the 3rd character, for whitespace (for our use case)
+		// to avoid needing to figure out the various UTF-8 implemention of whitespaces
+		// you can use the provided `md.utils.isWhitespace(charCode)` tool
+		//
+		// You can find the commands here
+		// See: https://github.com/markdown-it/markdown-it/blob/a1c9381/lib/common/utils.js
+		//
+		// There are also other useful commands on the state object itself here
+		// See: https://github.com/markdown-it/markdown-it/blob/a1c9381/lib/rules_block/state_block.js
+		//
+		if( md.utils.isWhiteSpace( state.src.charCodeAt(openBlockStartPos+2) ) === false ) {
+			return false;
+		}
+
+		//---------------------------------------------------------------------------------------
+		//
+		// ## Lets process the opening line (more casually)
+		//
+		// Now that we have optimized quick false returns in the above, you can now start
+		// processing the strings, without the obsession in performance. 
+		// (I prefer to make code readable as much as possible)
+		//
+		// We can be somewhat confident that anything past this line, has a resonably chance
+		// of being part of our use case.
+		//
+		// However, as it is still possible for the line to be not relevent for our use case, 
+		// as such we should code defensively to account for such flows.
+		//
+		//---------------------------------------------------------------------------------------
+
+		// You can get the full line from the first non-whitespace character with the following
+		// --- 
+		// let markdownLine = state.src.slice(startOfLine, endinOfLine);
+
+		// However we can also opt for a more truncated string (without the opening "{%")
+		let markdownLine = state.src.slice(openBlockStartPos+3, endinOfLine)
+
+		// Let's define the opening and closing tokens strings
+		// this is used for both the "opening block" and the "closing block"
+		// which is "{% tabs %}" and "{% endtab %}" respectively
+		const openBlock = "{%"
+		const closeBracket = "%}"
+
+		// Lets check for closing token, if its not found. We return false once again
+		let openBlockCloseTokenOffset = markdownLine.indexOf(closeBracket);
+		if( openBlockCloseTokenOffset <= 0 ) {
+			// No match, exit
+			return false;
+		}
+
+		// Ok we finally found a valid starting and closing pair, 
+		// lets get the opening block inner string
+		let openBlockStr = markdownLine.slice(0, openBlockCloseTokenOffset).trim();
+
+		// While our blocks can support multiple parameters
+		// what is more critical is that our first word starts with "tabs" for our use case
+		let openBlockStrArr = openBlockStr.split(/[\s]+/);
+		if( openBlockStrArr[0].toLowerCase() !== "tabs" ) {
+			return false;
+		}
+
+		//---------------------------------------------------------------------------------------
+		//
+		// ## Process opening block parameters
+		//
+		//---------------------------------------------------------------------------------------
+
+		// lets compute the openBlockCloseTokenPos, for the "%" character in the opening "%}" block
+		let openBlockCloseTokenPos = openBlockStartPos+3+openBlockCloseTokenOffset;
+
+		// and the open block ending pos (after the %} characters)
+		let openBlockEndinPos = openBlockCloseTokenPos+2;
+
+		//---------------------------------------------------------------------------------------
+		//
+		// ## Find the closing block set 
+		//
+		// Lets find the closing block set, if its not found, we will presumingly just
+		// use all remaining lines as the "summary" block between the opening and closing.
+		//
+		//---------------------------------------------------------------------------------------
+
+		// ---
+		// NOTE: how to deal with the closing block search is very "use case sensitive"
+		//
+		//       There is a resonable chance the logic here does not fit your use case.
+		//       if so, figure out how to get the closing block position "on your own",
+		//       and use this codebase as a refrence on what to do after that.
+		// ---
+
+		//
+		// Closing block regex, this is used to find our {% endtab %} block
+		//
+		// /                     # - Start of regex
+		// (                     # - Opening capture group 1
+		//   \{\%                # - Match "{%"
+		//   [\s]+               # - Match any number of white space
+		//   endtabs             # - Match "endtabs " including an ending whitespace
+		//   [\s]+               # - Match any number of white space
+		//   [.]*                # - Match any random parameters which would ignore
+		//                       #   ( Eg: "param=xyz %}" )
+		//   \%\}                # - Match "%}" 
+		// )                     # - Closing capture group 1
+		// /img                  # - End of regex, indicated as case insensitive, 
+		//                       #   multi-line, and global match
+		//
+		const closeBlockRegex = /(\{\%[\s]+endtabs[\s]+[.]*\%\})/img;
+
+		// ---
+		// I added the following "nextLine" loop here, as a large number of plugin's performs this
+		// action in one way or another, due to the requirements of their use case.
+		//
+		// This might be useful for you, if needed. It isn't in my current use case.
+		// ---
+		/***
+		// Lets start iterating all the lines from here onwards hopefully its in an early line block
+		let nextLine = startLine;
+		for(nextLine; nextLine < endDocumentLine; nextLine++) {
+
+			// Lets get start and max of line
+			let start = state.bMarks[nextLine] + state.tShift[nextLine];
+			let max = state.eMarks[nextLine];
+
+			// Lets skip to "after" the current block for first line
+			//
+			// this makes sense for oru use case, it may not make sense for use cases
+			// where multiple lines is a gurantee.
+			if( nextLine == startLine ) {
+				start = openBlockEndinPos;
+			}
+
+			// Get the line string, if possible code your check to avoid this 
+			// (slice in a loop is expensive)
+			let lineStr = state.src.slice(start, max)
+
+			// .... Do matching logic ???
+			let match = lineStr.match( closeBlockRegex )
+
+			// .... More matching logic ???
+		}
+		***/
+
+		// ---
+		// Instead I opt to do the following with RegExp
+		// ---
+
+		// Modify the RegExp "lastIndex", to begin a search from a specified point onwards
+		closeBlockRegex.lastIndex = openBlockEndinPos;
+
+		// And perform the search, if this returns null, it means no match is found.
+		// it also means we would need to "auto close" at the end of the document
+		let closeBlockMatch = closeBlockRegex.exec( state.src );
+
+		// Prepare ending position calculations (if found)
+		let closeBlockEndinPos = null;
+		let closeBlockStartPos = null; 
+
+		// If no match was found, the last line will be "end of document"
+		let lastLine = endDocumentLine;
+		
+		// Lets compute some of the positions we would need
+		// (only valid if a match was found)
+		if( closeBlockMatch != null ) {
+			closeBlockEndinPos = closeBlockRegex.lastIndex;
+			closeBlockStartPos = closeBlockMatch.index;
+		
+			// Lets figure out the last line of the close block
+			for(lastLine = startLine; lastLine < endDocumentLine; ++lastLine) {
+				// Increment until the last line is reached
+				if( state.eMarks[lastLine] >= closeBlockEndinPos ) {
+					break;
+				}
+			}
+		}
+
+		// Exit if closing block is not found
+		// ---
+		if( closeBlockMatch == null ) {
+			return false;
+		}
+
+		//---------------------------------------------------------------------------------------
+		//
+		// ## Lock in, and handle silent flag
+		//
+		// Now that we are absolutely sure that the line presented to us is relevent.
+		// with proper opening and closing bracker for the opening block.
+		//
+		// We will report success, if the silentValidation flag is set to true.
+		//
+		// Assumingly, after reporting true, the function will be called again to perform
+		// the actual state processing. And only then will we be allowed to modify states.
+		//
+		// Some plugin documentation seems to imply supporting this is optional
+		// but I could not find any means, to safely "not support" this behaviour.
+		//
+		// So make sure to add the check i suppose.
+		//
+		// ¯\(o_o)/¯
+		//
+		//---------------------------------------------------------------------------------------
+
+		// Exit with success, if its in silent validation mode.
+		// Everything after here will involve state manipulation
+		if( silentValidation ) {
+			return true;
+		}
+
+		//---------------------------------------------------------------------------------------
+		//
+		// ## Perform STATE MANIPULATION !
+		//
+		// This is probably the most confusing part, but i will try my best (" -_-)
+		//
+		//---------------------------------------------------------------------------------------
+
+		// We will be resuing some variables a fair bit, so lets initilaize them
+
+		let token; // The token we are currently setting up
+		let content; // Content string, where applicable
+
+		// ---
+		// In general you modify the state, by generating your relevent tokens,
+		// and inserting them into the state list. 
+		//
+		// Once you have processed such lines, you should also move "the state forward", 
+		// so that the next processor who picks up the next lines will skip processing,
+		// the lines you have processed.
+		// ---
+
+		//##---
+		//## 1) we will process any text "before" the {% tabs %} token
+		//##---
+		
+		// For a vast majority of "block" processor this step is not needed, as typically
+		// by design, their blocks are meant to be the start of the line. Note we only,
+		// process the text, if we they are present (and skip if they are not)
+		//
+		// This condition is only try if {% tabs %} was not the start of the line
+		if( startOfLine < openBlockStartPos ) {
+			content = state.src.slice( startOfLine, openBlockStartPos ).trim();
+			if( content.length > 0 ) {
+				// Lets setup an "inline" block, which will be revaluated for any markup
+				// this is probably using an inbuilt "inline" block processor (somewhere)
+				//
+				// The "inline" block is an existing predefined block type
+				// which basically revaluates itself recursively.
+				token = state.push("inline", "", 0);
+
+				// The content to render inline
+				token.content = content;
+
+				// Child nodes will be processed and initialized inside here, using the "content"
+				//
+				// NOTE: if you do not initialize the array for the default inline renderer, 
+				//       you will get a cryptic array error
+				token.children = [];
+
+				// The lines affected by this block, not sure if 
+				// this actually has any purpose other then documentation ?
+				token.map = [startLine, startLine];
+			}
+		}
+
+		//##---
+		//## 2) We then Generate the opening tabs block
+		//##---
+
+		// Generate the token, and store its markup, where we will increase its block level by 1
+		// using an opening token.
+		// ---
+		// state.push("<type>", "<html tag to use>", <open:1/self-closing:0/close:-1>);
+
+		// We set this up using our new "type", which will map to the renderer (later)
+		// note that if you do not need to "modify" the tag used, you would not need a custom renderer
+		//
+		// If you need custom attributes, you could also just add it to the existing HTML block
+		// `token.attrs = { class: "classname" }`
+		//
+		// The default renderer, will simply open/close with the given HTML block
+		token = state.push("tabsblock_open", "div", 1);
+
+		// We provide the raw markup, this is really just common convention (we dun use it)
+		token.markup = state.src.slice(openBlockStartPos, openBlockEndinPos);
+
+		// And the line numbers it affects (optional)
+		token.map = [startLine, startLine];
+		
+		// Generate a "random" id as the tabsID t character prefix
+		// note that this is NOT "crypto secure", however its not needed in our use case
+		// as we already put an additional gen_num, as a safety measure.
+		//
+		// Do not use this example, unless you are sure you do not need crypto random
+		// as this is INSECURE random.
+		//
+		// Note that the additional timestamp was added as theoractically, it is possible
+		// for the random string to be blank. And we will cover that low probabilty scenerio
+		//
+		// See: https://stackoverflow.com/a/38622545
+		//
+		// On the plus side, this requires no dependencies
+		let gen_prefix = (Math.random().toString(36) + (""+Date.now()) ).slice(2, 7)
+		let tabsID = gen_prefix+"_"+gen_num;
+		gen_num++;
+
+		// Lets setup the tabs metadata info, which we will need later
+		let tabsPanelArr = [];
+		let tabsMeta = { 
+			panelArr:tabsPanelArr,
+			tabsID: tabsID
+		};
+
+		// We add to the token additional custom "meta" data,
+		// which can be used by your renderer (unique to your use case)
+		token.meta = tabsMeta;
+		
+		//##---
+		//## 3) process all the inline content (between {% tabs %} and {% endtab %})
+		//##    including any sub {% tab %} panels {% endtab %}
+		//##---
+
+		// Regex used to extract each individual "tab panels" (not tabs)
+		// this is meant to search for `{% tab any=params %}content{% endtab %}`
+		//
+		// With the following capture group details
+		// - 1 : Capture the whole `{% tab any=params %}`
+		// - 2 : Capture `any=params` if its present
+		// - 3 : Capture the inner `content`
+		// - 4 : Capture the `{% endtab %}` tag
+		//
+		// See: https://regexr.com/6qkbt for more details
+		let tabPageRegex = /(\{\%\s*tab\s*(.*?)\%\})((?:\s*)|(?:\s*?[\S]+?[\s\S]*?))(\{\%\s*endtab\s*.*\%\})/ig
+
+		// Lets extract the raw content between {% tabs %} and {% endtabs %}
+		content = state.src.slice(openBlockEndinPos, closeBlockStartPos);
+
+		// Lets iterate through each regex match, and process every set we can find
+		let regexMatch = null;
+		let tabIndex = 0;
+
+		// console.log( content )
+
+		// While loop it!
+		while( (regexMatch = tabPageRegex.exec(content)) !== null ) {
+			// A match is found, lets process it
+			// ---
+
+			// Increment the loop
+			tabIndex++;
+
+			// Lets update the metadata information, we extracted from the tab
+			let tabMeta = extractBlockParams( regexMatch[2] );
+			tabMeta._tabIndex = tabIndex;
+			tabMeta._tabsID = tabsID;
+			tabsPanelArr.push( tabMeta );
+
+			// Lets create the "tab" opening block
+			token = state.push("tabspanel_open", "div", 1);
+			token.markup = regexMatch[1];
+			token.map = [startLine, lastLine];
+			token.meta = tabMeta;
+			
+			// Lets inject the tab content as "inline"
+			token = state.push("tabspanel_inline", "div", 0);
+			token.content = (regexMatch[3] || "").trim();
+			token.map = [startLine, lastLine];
+			// token.children = [];
+
+			// Lets create the "tab" closing block
+			token = state.push("tabspanel_close", "div", -1);
+			token.markup = regexMatch[4];
+			token.map = [startLine, lastLine];
+			token.meta = tabMeta;
+			
+		}
+
+		//##---
+		//## 4) With the closing block once again
+		//##---
+
+		// We have two major scenerios, 
+		// one where the closing block is found, another when there is none
+		//
+		// However not much needs to be done here, as lastLine is already normalized
+		// to handle this use case to the last line of the document, if the block is not found.
+
+		token = state.push("tabsblock_close", "div", -1);
+		token.map = [lastLine, lastLine];
+		token.meta = { type:"close" };
+
+		if( closeBlockMatch != null ) {
+			// We have a closing block, lets return its markup
+			token.markup = state.src.slice(closeBlockStartPos, closeBlockEndinPos);
+		} else {
+			// No markup, no cry
+			token.markup = "";
+		}
+		
+		//##---
+		//## 5) Followed by any trailing inline text content after {% endtab %}
+		//##---
+		if( closeBlockMatch != null && closeBlockEndinPos < state.eMarks[lastLine] ) {
+			content = state.src.slice( closeBlockEndinPos, state.eMarks[lastLine] ).trim();
+			if( content.length > 0 ) {
+				
+				// Hello inline block once again, you are so useful in gluing things together
+				token = state.push("inline", "", 0);
+				token.content = content;
+				token.children = [];
+				token.map = [lastLine, lastLine];
+			}
+		}
+
+		//---------------------------------------------------------------------------------------
+		//
+		// ## Cleanup and return
+		//
+		//---------------------------------------------------------------------------------------
+
+		// Finally, we update the state line, to the "next line",
+		// so that the next processor, will start only from the next line onwards,
+		// preventing several possible infinite loop events
+		state.line   = lastLine + 1;
+		
+		// True for success token setup, to apply your changes to the state object
+		// False will prevent your changes from being applied (somehow?)
 		return true;
 	}
 
-	//---------------------------------------------------------------------------------------
 	//
-	// ## Perform STATE MANIPULATION !
+	// Now that you have all your "tokens" generated, lets hook the renderer's for those custom blocks
 	//
-	// This is probably the most confusing part, but i will try my best (" -_-)
+	// The renderer will be called multiple times, for each block.
 	//
-	//---------------------------------------------------------------------------------------
 
-	// We will be resuing some variables a fair bit, so lets initilaize them
+	/**
+	 * Plugin renderer for the md-it "renderer" operations
+	 * 
+	 * @param {Array}   tokenArr array of tokens being processed
+	 * @param {int}     idx of the array that is being processed
+	 * @param {Object}  options : dunno
+	 * @param {Object}  env     : dunno
+	 * @param {Object}  slf     : dunno, im guessing this is the markdown instance
+	 * 
+	 * @return HTML string to be rendered
+	 **/
 
-	let token; // The token we are currently setting up
-	let content; // Content string, where applicable
-
-	// ---
-	// In general you modify the state, by generating your relevent tokens,
-	// and inserting them into the state list. 
-	//
-	// Once you have processed such lines, you should also move "the state forward", 
-	// so that the next processor who picks up the next lines will skip processing,
-	// the lines you have processed.
-	// ---
-
-	//##---
-	//## 1) we will process any text "before" the {% tabs %} token
-	//##---
-	
-	// For a vast majority of "block" processor this step is not needed, as typically
-	// by design, their blocks are meant to be the start of the line. Note we only,
-	// process the text, if we they are present (and skip if they are not)
-	//
-	// This condition is only try if {% tabs %} was not the start of the line
-	if( startOfLine < openBlockStartPos ) {
-		content = state.src.slice( startOfLine, openBlockStartPos ).trim();
-		if( content.length > 0 ) {
-			// Lets setup an "inline" block, which will be revaluated for any markup
-			// this is probably using an inbuilt "inline" block processor (somewhere)
-			//
-			// The "inline" block is an existing predefined block type
-			// which basically revaluates itself recursively.
-			token = state.push("inline", "", 0);
-
-			// The content to render inline
-			token.content = content;
-
-			// Child nodes will be processed and initialized inside here, using the "content"
-			//
-			// NOTE: if you do not initialize the array for the default inline renderer, 
-			//       you will get a cryptic array error
-			token.children = [];
-
-			// The lines affected by this block, not sure if 
-			// this actually has any purpose other then documentation ?
-			token.map = [startLine, startLine];
-		}
+	/** Handling tabs block opening */
+	function tabsblock_open(tokenArr, idx, options, env, slf) {
+		return `<div class="tabset">\n`;
 	}
-
-	//##---
-	//## 2) We then Generate the opening tabs block
-	//##---
-
-	// Generate the token, and store its markup, where we will increase its block level by 1
-	// using an opening token.
-	// ---
-	// state.push("<type>", "<html tag to use>", <open:1/self-closing:0/close:-1>);
-
-	// We set this up using our new "type", which will map to the renderer (later)
-	// note that if you do not need to "modify" the tag used, you would not need a custom renderer
-	//
-	// If you need custom attributes, you could also just add it to the existing HTML block
-	// `token.attrs = { class: "classname" }`
-	//
-	// The default renderer, will simply open/close with the given HTML block
-	token = state.push("tabsblock_open", "div", 1);
-
-	// We provide the raw markup, this is really just common convention (we dun use it)
-	token.markup = state.src.slice(openBlockStartPos, openBlockEndinPos);
-
-	// And the line numbers it affects (optional)
-	token.map = [startLine, startLine];
-	
-	// Generate a "random" id as the tabsID t character prefix
-	// note that this is NOT "crypto secure", however its not needed in our use case
-	// as we already put an additional gen_num, as a safety measure.
-	//
-	// Do not use this example, unless you are sure you do not need crypto random
-	// as this is INSECURE random.
-	//
-	// Note that the additional timestamp was added as theoractically, it is possible
-	// for the random string to be blank. And we will cover that low probabilty scenerio
-	//
-	// See: https://stackoverflow.com/a/38622545
-	//
-	// On the plus side, this requires no dependencies
-	let gen_prefix = (Math.random().toString(36) + (""+Date.now()) ).slice(2, 7)
-	let tabsID = gen_prefix+"_"+gen_num;
-	gen_num++;
-
-	// Lets setup the tabs metadata info, which we will need later
-	let tabsPanelArr = [];
-	let tabsMeta = { 
-		panelArr:tabsPanelArr,
-		tabsID: tabsID
-	};
-
-	// We add to the token additional custom "meta" data,
-	// which can be used by your renderer (unique to your use case)
-	token.meta = tabsMeta;
-	
-	//##---
-	//## 3) process all the inline content (between {% tabs %} and {% endtab %})
-	//##    including any sub {% tab %} panels {% endtab %}
-	//##---
-
-	// Regex used to extract each individual "tab panels" (not tabs)
-	// this is meant to search for `{% tab any=params %}content{% endtab %}`
-	//
-	// With the following capture group details
-	// - 1 : Capture the whole `{% tab any=params %}`
-	// - 2 : Capture `any=params` if its present
-	// - 3 : Capture the inner `content`
-	// - 4 : Capture the `{% endtab %}` tag
-	//
-	// See: https://regexr.com/6qkbt for more details
-	let tabPageRegex = /(\{\%\s*tab\s*(.*?)\%\})((?:\s*)|(?:\s*?[\S]+?[\s\S]*?))(\{\%\s*endtab\s*.*\%\})/ig
-
-	// Lets extract the raw content between {% tabs %} and {% endtabs %}
-	content = state.src.slice(openBlockEndinPos, closeBlockStartPos);
-
-	// Lets iterate through each regex match, and process every set we can find
-	let regexMatch = null;
-	let tabIndex = 0;
-
-	// console.log( content )
-
-	// While loop it!
-	while( (regexMatch = tabPageRegex.exec(content)) !== null ) {
-		// A match is found, lets process it
-		// ---
-
-		// Increment the loop
-		tabIndex++;
-
-		// Lets update the metadata information, we extracted from the tab
-		let tabMeta = extractBlockParams( regexMatch[2] );
-		tabMeta._tabIndex = tabIndex;
-		tabMeta._tabsID = tabsID;
-		tabsPanelArr.push( tabMeta );
-
-		// Lets create the "tab" opening block
-		token = state.push("tabspanel_open", "div", 1);
-		token.markup = regexMatch[1];
-		token.map = [startLine, lastLine];
-		token.meta = tabMeta;
-		
-		// Lets inject the tab content as "inline"
-		token = state.push("tabspanel_inline", "div", 0);
-		token.content = (regexMatch[3] || "").trim();
-		token.map = [startLine, lastLine];
-		// token.children = [];
-
-		// Lets create the "tab" closing block
-		token = state.push("tabspanel_close", "div", -1);
-		token.markup = regexMatch[4];
-		token.map = [startLine, lastLine];
-		token.meta = tabMeta;
-		
+	/** Handling tabs block closing */
+	function tabsblock_close(tokenArr, idx, options, env, slf) {
+		return "</div>\n";
 	}
+	/** Handling tabs panel opening */
+	function tabspanel_open(tokenArr, idx, options, env, slf) {
+		// Lets get the token we are supposed to process
+		let token = tokenArr[idx];
 
-	//##---
-	//## 4) With the closing block once again
-	//##---
+		// Lets get the tab panel meta information
+		let panelMeta = token.meta;
+		let tabsID = token.meta._tabsID;
+		let tabIndex = panelMeta._tabIndex;
+		let buttonID = tabsID+"_"+tabIndex;
+		let title = panelMeta.title || "Tab "+tabIdx;
 
-	// We have two major scenerios, 
-	// one where the closing block is found, another when there is none
-	//
-	// However not much needs to be done here, as lastLine is already normalized
-	// to handle this use case to the last line of the document, if the block is not found.
+		// And build the return string
+		let retStr = `<div class="tab">\n`;
 
-	token = state.push("tabsblock_close", "div", -1);
-	token.map = [lastLine, lastLine];
-	token.meta = { type:"close" };
+		// With the button
+		retStr += `<!-- Tab Button ${tabIndex} -->\n`
+		retStr += `<input type="radio" name="tabset" id="${buttonID}" aria-controls="${title}" ${(tabIndex==1)?"checked":""} style="display:none"/>\n`
+		retStr += `<label for="${buttonID}">${title}</label>\n`
 
-	if( closeBlockMatch != null ) {
-		// We have a closing block, lets return its markup
-		token.markup = state.src.slice(closeBlockStartPos, closeBlockEndinPos);
-	} else {
-		// No markup, no cry
-		token.markup = "";
+		// And the panel itself
+		retStr += `<!-- Tab Panel ${tabIndex} -->\n`
+		retStr += `<div class="tab-panel">\n`
+
+		// Return the tab str
+		return retStr;
 	}
-	
-	//##---
-	//## 5) Followed by any trailing inline text content after {% endtab %}
-	//##---
-	if( closeBlockMatch != null && closeBlockEndinPos < state.eMarks[lastLine] ) {
-		content = state.src.slice( closeBlockEndinPos, state.eMarks[lastLine] ).trim();
-		if( content.length > 0 ) {
-			
-			// Hello inline block once again, you are so useful in gluing things together
-			token = state.push("inline", "", 0);
-			token.content = content;
-			token.children = [];
-			token.map = [lastLine, lastLine];
-		}
+	/** Handling custom inline blocks, we use a custom renderer, to work around some format issues */
+	function tabspanel_inline(tokenArr, idx, options, env, slf) {
+		// Lets get the token we are supposed to process
+		let token = tokenArr[idx];
+
+		// Lets get the content
+		let content = token.content || "";
+
+		// And rerender it, using a fresh markdown call (work around some buggy issues)
+		return md.render(content);
 	}
-
-	//---------------------------------------------------------------------------------------
-	//
-	// ## Cleanup and return
-	//
-	//---------------------------------------------------------------------------------------
-
-	// Finally, we update the state line, to the "next line",
-	// so that the next processor, will start only from the next line onwards,
-	// preventing several possible infinite loop events
-	state.line   = lastLine + 1;
-	
-	// True for success token setup, to apply your changes to the state object
-	// False will prevent your changes from being applied (somehow?)
-	return true;
-}
-
-//
-// Now that you have all your "tokens" generated, lets hook the renderer's for those custom blocks
-//
-// The renderer will be called multiple times, for each block.
-//
-
-/**
- * Plugin renderer for the md-it "renderer" operations
- * 
- * @param {Array}   tokenArr array of tokens being processed
- * @param {int}     idx of the array that is being processed
- * @param {Object}  options : dunno
- * @param {Object}  env     : dunno
- * @param {Object}  slf     : dunno, im guessing this is the markdown instance
- * 
- * @return HTML string to be rendered
- **/
-
-/** Handling tabs block opening */
-function tabsblock_open(tokenArr, idx, options, env, slf) {
-	return `<div class="tabset">\n`;
-}
-/** Handling tabs block closing */
-function tabsblock_close(tokenArr, idx, options, env, slf) {
-	return "</div>\n";
-}
-/** Handling tabs panel opening */
-function tabspanel_open(tokenArr, idx, options, env, slf) {
-	// Lets get the token we are supposed to process
-	let token = tokenArr[idx];
-
-	// Lets get the tab panel meta information
-	let panelMeta = token.meta;
-	let tabsID = token.meta._tabsID;
-	let tabIndex = panelMeta._tabIndex;
-	let buttonID = tabsID+"_"+tabIndex;
-	let title = panelMeta.title || "Tab "+tabIdx;
-
-	// And build the return string
-	let retStr = `<div class="tab">\n`;
-
-	// With the button
-	retStr += `<!-- Tab Button ${tabIndex} -->\n`
-	retStr += `<input type="radio" name="tabset" id="${buttonID}" aria-controls="${title}" ${(tabIndex==1)?"checked":""}/>\n`
-	retStr += `<label for="${buttonID}">${title}</label>\n`
-
-	// And the panel itself
-	retStr += `<!-- Tab Panel ${tabIndex} -->\n`
-	retStr += `<div class="tab-panel">\n`
-
-	// Return the tab str
-	return retStr;
-}
-/** Handling custom inline blocks, we use a custom renderer, to work around some format issues */
-function tabspanel_inline(tokenArr, idx, options, env, slf) {
-	// Lets get the token we are supposed to process
-	let token = tokenArr[idx];
-
-	// Lets get the content
-	let content = token.content || "";
-
-	// And rerender it, using a fresh markdown call (work around some buggy issues)
-	return "";
-}
-/** Handling tabs panel closing */
-function tabspanel_close(tokenArr, idx, options, env, slf) {
-	return "</div></div>\n";
-}
+	/** Handling tabs panel closing */
+	function tabspanel_close(tokenArr, idx, options, env, slf) {
+		return "</div></div>\n";
+	}
+ }
 
 //--------------------------------------------------------------------------------------------
 //
