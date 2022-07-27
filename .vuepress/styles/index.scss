@@ -135,3 +135,95 @@ html .page .custom-container.hint {
     color: var(--c-tip);
 }
 
+//---------------------------------------------------------------------
+// Tabs block styling overwrites
+//---------------------------------------------------------------------
+
+// ---
+// Pure CSS tab showing / hiding logic
+// ---
+
+// Show the sections, for the relevent checked input
+.tabset input.tab-radio[type=radio]:checked + label.tab-label + section.tab-panel {
+    display: inline-flex;
+}
+
+// Hide the section for the respective unchecked input
+.tabset input.tab-radio[type=radio]:not(:checked) + label.tab-label + section.tab-panel {
+    display: none; 
+}
+
+// Lets get the input out of the way
+.tabset input.tab-radio {
+    display: none;
+}
+
+// ---
+// Flexbox sizing & alignment
+// ---
+body .tabset {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.tabset label.tab-label {
+    // Bias this to the start
+    justify-content: flex-start;
+
+    // Sequence this before the panels
+    order: 1;
+}
+
+.tabset section.tab-panel {
+    // Set it to be full width
+    flex: 1 0 100%;
+
+    // Sequence this after the labels
+    order: 10;
+}
+
+// ---
+// Flexbox styling
+// ---
+
+body .tabset {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.tabset label.tab-label {
+    // Ensure some content padding
+    padding: 0.8em 1em 0.6em 1em; //top,right,bottom,left
+    margin: 0;
+    margin-right: -2px;
+
+    // Give it a general button border
+    border: 2px solid var(--c-border);
+    border-bottom: 5px solid var(--c-border);
+
+    // Border radius near the top
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+// Give the relevent border outline for selected
+.tabset input.tab-radio[type=radio]:checked + label.tab-label {
+    border-bottom: 5px solid var(--c-text-accent);
+}
+
+// Add the clickable cursor where relvent, and grey the background out
+.tabset input.tab-radio[type=radio]:not(:checked) + label.tab-label {
+    cursor: pointer;
+    background: var(--c-border);
+}
+
+.tabset section.tab-panel {
+    border: 2px solid var(--c-border);
+    padding: 5px;
+    // border-radius: 2px;
+
+    display: flex;
+    break-inside: avoid;
+    justify-content: space-around;
+}

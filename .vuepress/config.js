@@ -36,5 +36,6 @@ module.exports = {
 
 	extendsMarkdown: (md) => {
 		require("./plugin/md_hint_block")(md);
+		require("./plugin/md_tabs_block")(md);
 	}
 }

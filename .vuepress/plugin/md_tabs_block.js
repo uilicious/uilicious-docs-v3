@@ -753,16 +753,16 @@
 		let title = panelMeta.title || "Tab "+tabIdx;
 
 		// And build the return string
-		let retStr = `<div class="tab">\n`;
+		let retStr = ``;
 
 		// With the button
 		retStr += `<!-- Tab Button ${tabIndex} -->\n`
-		retStr += `<input type="radio" name="tabset" id="${buttonID}" aria-controls="${title}" ${(tabIndex==1)?"checked":""} style="display:none"/>\n`
-		retStr += `<label for="${buttonID}">${title}</label>\n`
+		retStr += `<input class="tab-radio" type="radio" name="tabset_${tabsID}" id="${buttonID}" aria-controls="${title}" ${(tabIndex==1)?"checked":""} style="display:none"/>\n`
+		retStr += `<label class="tab-label" for="${buttonID}">${title}</label>\n`
 
 		// And the panel itself
 		retStr += `<!-- Tab Panel ${tabIndex} -->\n`
-		retStr += `<div class="tab-panel">\n`
+		retStr += `<section class="tab-panel">\n`
 
 		// Return the tab str
 		return retStr;
@@ -780,7 +780,7 @@
 	}
 	/** Handling tabs panel closing */
 	function tabspanel_close(tokenArr, idx, options, env, slf) {
-		return "</div></div>\n";
+		return "</section>\n";
 	}
  }
 
