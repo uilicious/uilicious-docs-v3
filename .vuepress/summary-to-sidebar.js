@@ -26,7 +26,8 @@ const DEFAULT_CONFIG = {
 	COLLAPSIBLE: true,
 
 	// Load default summary.md
-	LOAD_DEFAULT: true,
+	AUTO_LOAD_DEFAULT: true,
+	AUTO_RELOAD_DEFAULT: false,
 
 	// The defaault file path
 	LOAD_DEFAULT_PATH: "./SUMMARY.md"
@@ -325,21 +326,23 @@ class SummaryToSidebarConfig {
 //
 //----------------------------------------------------------------------------
 
-if( DEFAULT_CONFIG.LOAD_DEFAULT ) {
+if( DEFAULT_CONFIG.AUTO_LOAD_DEFAULT ) {
 	if( fs.existsSync(DEFAULT_CONFIG.LOAD_DEFAULT_PATH) ) {
 		// Map the SUMMARY.md by default, and return it
 		SummaryToSidebarConfig.default = (new SummaryToSidebarConfig()).convertSummaryFile(DEFAULT_CONFIG.LOAD_DEFAULT_PATH);
 	
 		// Watch it for changes
-		fs.watchFile(DEFAULT_CONFIG.LOAD_DEFAULT_PATH, (curr, prev) => {
-			console.info(`${DEFAULT_CONFIG.LOAD_DEFAULT_PATH} file Changed`);
-
-			// "touch" the config file, and trigger a config reload
-			const time = new Date();
-			fs.utimes("./.vuepress/config.js", time, time, err => {
-				// Does nothing, if file does not exists
+		if( DEFAULT_CONFIG.AUTO_RELOAD_DEFAULT ) {
+			fs.watchFile(DEFAULT_CONFIG.LOAD_DEFAULT_PATH, (curr, prev) => {
+				console.info(`${DEFAULT_CONFIG.LOAD_DEFAULT_PATH} file Changed`);
+	
+				// "touch" the config file, and trigger a config reload
+				const time = new Date();
+				fs.utimes("./.vuepress/config.js", time, time, err => {
+					// Does nothing, if file does not exists
+				});
 			});
-		});
+		}
 	}
 }
 

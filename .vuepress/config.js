@@ -10,6 +10,12 @@ const { defaultTheme } = require('@vuepress/theme-default')
 const { searchPlugin } = require('@vuepress/plugin-search')
 
 module.exports = {
+
+	// Lets tweak base path to /v3/
+	base: "/v3/",
+
+	// Lets load the default theme, with customization
+	// thankfully we already share the similarlish green theme
 	theme: defaultTheme({
 		// Logo support
 		logo: "/static/logo-black-text.png",
@@ -28,12 +34,14 @@ module.exports = {
 		sidebarDepth:10
 	}),
 
+	// Lets tweak the search plugin
 	plugins: [
 		searchPlugin({
 			maxSuggestions: 10
 		}),
 	],
 
+	// And extend our markdown
 	extendsMarkdown: (md) => {
 		require("./plugin/md_hint_block")(md);
 		require("./plugin/md_tabs_block")(md);
