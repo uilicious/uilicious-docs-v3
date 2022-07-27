@@ -1,4 +1,4 @@
-# IP Whitelisting
+# IP Allowlisting
 
 {% hint style="info" %}
 **Good to know:** This is applicable only to UI-licious Cloud users. If you are using UI-licious On Premise, please check with your System Administrator.
