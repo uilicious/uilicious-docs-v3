@@ -65,8 +65,17 @@ html.dark .navbar .navbar-item a {
 // to max resonable levels
 //---------------------------------------------
 .theme-default-content img.medium-zoom-image:not(.medium-zoom-image--opened) {
-    max-width: min( 75vw, 75vh );
-    max-height: min( 75vw, 75vh );
+    max-width: min( 75vw, 75vh, var(--content-width) );
+    max-height: min( 75vw, 75vh, var(--content-width) );
+
+    // Helps center align images where possible
+    text-align:center;
+}
+
+// Drop shadow styling
+//---------------------------------------------
+.theme-default-content img.medium-zoom-image:not(.medium-zoom-image--opened) {
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
 }
 
 //---------------------------------------------------------------------
@@ -79,6 +88,36 @@ html.dark .navbar .navbar-item a {
 
 body.medium-zoom--opened .medium-zoom-image.medium-zoom-image--opened {
     filter: drop-shadow(0 0 1rem rgba(0,0,0,0.5));
+}
+
+//---------------------------------------------------------------------
+// Image figcaption support
+//---------------------------------------------------------------------
+
+// Reset som padding and margin boundaries
+body div.image-figwrap, figure.image-figure,
+body div.image-figwrap {
+    padding:0;
+    margin:0;
+}
+
+body div.image-figwrap {
+    display: flex;
+    flex-direction: column;
+}
+
+body div.image-figwrap figure.image-figure,
+body div.image-figwrap figure.image-figure image {
+    text-align:center;
+}
+
+body div.image-figwrap figcaption.image-figcaption {
+    text-align:center;
+    
+    font-size:0.8em;
+
+    padding-left:2em;
+    padding-right:2em;
 }
 
 //---------------------------------------------------------------------
@@ -176,11 +215,19 @@ body .tabset {
 }
 
 .tabset section.tab-panel {
-    // Set it to be full width
+    // Limit the length to 90% screen width
+    max-width: 90vw;
+
+    // Set it to be full width when possible
     flex: 1 0 100%;
 
     // Sequence this after the labels
     order: 10;
+}
+
+// Patch code block sizing issues
+.tabset section.tab-panel div[class*=language] {
+    max-width:90vw;
 }
 
 // ---
@@ -220,8 +267,11 @@ body .tabset {
 
 .tabset section.tab-panel {
     border: 2px solid var(--c-border);
-    padding: 5px;
-    // border-radius: 2px;
+
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top:10px;
+    padding-bottom:10px;
 
     display: flex;
     break-inside: avoid;
