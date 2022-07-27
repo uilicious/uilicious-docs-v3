@@ -803,7 +803,7 @@ function extractBlockParams( str ) {
 		}
 
 		// Else save the value
-		retParam[key] = value;
+		retParam[key] = val;
 
 		// And get the next match
 		match = argRegex.exec( str );
