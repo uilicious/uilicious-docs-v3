@@ -38,7 +38,7 @@
  * markdown-it plugin function, which will add {% tabs %} and {% endtab %} blocks support.
  * 
  *************************************************************************************************/
- module.exports = (md, pluginOptions) => {
+module.exports = (md, pluginOptions) => {
 
 	//##---
 	// md : is the markdown-it instance

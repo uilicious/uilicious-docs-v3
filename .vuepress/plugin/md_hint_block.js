@@ -38,7 +38,7 @@
  * markdown-it plugin function, which will add {% hint %} and {% endhint %} blocks support.
  * 
  *************************************************************************************************/
- module.exports = (md, pluginOptions) => {
+module.exports = (md, pluginOptions) => {
 
 	//##---
 	// md : is the markdown-it instance
