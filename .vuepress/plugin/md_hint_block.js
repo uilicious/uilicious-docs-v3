@@ -547,6 +547,9 @@ function hintblockPlugin(state, startLine, endDocumentLine, silentValidation) {
 			token.content = content;
 
 			// Child nodes will be processed and initialized inside here, using the "content"
+			//
+			// NOTE: if you do not initialize the array for the default inline renderer, 
+			//       you will get a cryptic array error
 			token.children = [];
 
 			// The lines affected by this block, not sure if 
@@ -783,15 +786,15 @@ function extractBlockParams( str ) {
 	// This returns the key in capture group 1,
 	// and the value in capture group 2
 	//
-	// See: https://regexr.com/6qk4m for details (hopefully the link work)
+	// See: https://regexr.com/6qkeh for details (hopefully the link work)
 	//
-	let argRegex = /((?:\".*\")|(?:\'.*\')|(?:[\w-]*))(?:[\s]*=[\s]*((?:\".*\")|(?:\'.*\')|(?:[\w-]*))){0,1}/ig
+	let argRegex = /((?:\".*?\")|(?:\'.*?\')|(?:[\w-]+))(?:[\s]*=[\s]*((?:\".*?\")|(?:\'.*?\')|(?:[\w-]+))){0,1}/ig
 
 	// Lets do some matching
-	let match = argRegex.exec( str );
+	let match = null;
 
-	// A match is found, process it
-	while( match != null ) {
+	// Lets keep looping for each match found
+	while( (match = argRegex.exec( str )) !== null ) {
 		// Get key and value
 		let key = quotesUnwrap( match[1] );
 		let val = quotesUnwrap( match[2] );
@@ -799,14 +802,10 @@ function extractBlockParams( str ) {
 		// Just register true, if no value is provided
 		if( val == null ) {
 			retParam[key] = true;
-			continue;
+		} else {
+			// Else save the value
+			retParam[key] = val;
 		}
-
-		// Else save the value
-		retParam[key] = val;
-
-		// And get the next match
-		match = argRegex.exec( str );
 	}
 
 	// Return full param
