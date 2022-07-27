@@ -339,9 +339,11 @@ function hintblockPlugin(state, startLine, endDocumentLine, silentValidation) {
 	let openBlockStr = markdownLine.slice(0, openBlockCloseTokenOffset).trim();
 
 	// While our blocks can support multiple parameters
-	// what is more critical is that our first word starts with "hint" for our use case
-	let openBlockStrArr = openBlockStr.split(/[\s]+/);
-	if( openBlockStrArr[0].toLowerCase() !== "hint" ) {
+	// what is more critical is that our first word starts with "hint " for our use case
+	if( openBlockStr.slice(0,4).toLowerCase() !== "hint" ) {
+		return false;
+	}
+	if( md.utils.isWhiteSpace( state.src.charCodeAt(openBlockStartPos+3+4) ) === false ) {
 		return false;
 	}
 
@@ -384,29 +386,9 @@ function hintblockPlugin(state, startLine, endDocumentLine, silentValidation) {
 	// and the open block ending pos (after the %} characters)
 	let openBlockEndinPos = openBlockCloseTokenPos+2;
 
-	// Lets also process the opening block "parameters"
-	let openBlockParam = {};
-	for(let i=1; i<openBlockStrArr.length; ++i) {
-		let pair = openBlockStrArr[i].split("=")
-		let key = pair[0];
-		let value = pair[1];
-
-		// Just register true, if no value is provided
-		if( value == null ) {
-			openBlockParam[key] = true;
-			continue;
-		}
-
-		// Lets cleanup any starting or ending quotes
-		while( value.startsWith('"') || value.startsWith("'") ) {
-			value = value.slice(1);
-		}
-		while( value.endsWith('"') || value.endsWith("'") ) {
-			value = value.slice(0, value.length - 1);
-		}
-		// And save the value
-		openBlockParam[key] = value;
-	}
+	// Lets also process the opening block {% hint parameters=value %}, which maybe blank (no params).
+	// This function is implemented near the end of this file. (not relvent to md-it integration)
+	let openBlockParam = extractBlockParams( openBlockStr.slice(5) );
 	
 	//---------------------------------------------------------------------------------------
 	//
@@ -729,4 +711,104 @@ function hintblockRender(tokenArr, idx, options, env, slf) {
 		// Closing block is straight forward, just close the div
 		return "</div></div>"
 	}
+}
+
+//--------------------------------------------------------------------------------------------
+//
+// ## Utility functions
+//
+// These has usually have nothing to do with markdown-it, but used for our use case.
+//
+//--------------------------------------------------------------------------------------------
+
+/**
+ * Given the input string, unwrap it surrounding quote's if it has one.
+ */
+ function quotesUnwrap( str ) {
+	// Handle null
+	if( str == null ) {
+		return null;
+	}
+
+	// lets trim it first
+	str = str.trim();
+
+	// We can't unwrap string without atleast 1 quote
+	if( str.length <= 1 ) {
+		return str;
+	}
+
+	// lets detect either quote type
+	if( ( str.startsWith(`"`) && str.endsWith(`"`) ) ||
+		( str.startsWith(`'`) && str.endsWith(`'`) ) ) {
+		// And remove its wrapping
+		return str.slice(1, str.length - 1);
+	}
+
+	// No unwrapping needed, use it as it is
+	return str;
+}
+
+/**
+ * Given the string or string array containing "key=value" pairs
+ * and return the parameters as an object.
+ * 
+ * If an =value is not present, true is used instead.
+ * 
+ * @param  str with key=value pairs, example `a=b x='123'`
+ * @return object map containing the key value pairs
+ */
+function extractBlockParams( str ) {
+	// Throw on null
+	if( str == null ) {
+		throw "Provided str param is null"
+	}
+
+	// Ensure its a string, join back if it was an array
+	if( Array.isArray(str) ) {
+		str = str.join(" ");
+	}
+
+	// Return param
+	let retParam = {};
+
+	//
+	// Regex parameter for extracting parameters, this, is by no means perfect
+	// and does handle quotes within quotes well.
+	//
+	// But it should work I suppose =x
+	//
+	// If someone has a better regex please provide one
+	//
+	// This returns the key in capture group 1,
+	// and the value in capture group 2
+	//
+	// See: https://regexr.com/6qk4m for details (hopefully the link work)
+	//
+	let argRegex = /((?:\".*\")|(?:\'.*\')|(?:[\w-]*))(?:[\s]*=[\s]*((?:\".*\")|(?:\'.*\')|(?:[\w-]*))){0,1}/ig
+
+	// Lets do some matching
+	let match = argRegex.exec( str );
+
+	// A match is found, process it
+	while( match != null ) {
+		// Get key and value
+		let key = quotesUnwrap( match[1] );
+		let val = quotesUnwrap( match[2] );
+
+		// Just register true, if no value is provided
+		if( val == null ) {
+			retParam[key] = true;
+			continue;
+		}
+
+		// Else save the value
+		retParam[key] = value;
+
+		// And get the next match
+		match = argRegex.exec( str );
+	}
+
+	// Return full param
+	return retParam;
 }
