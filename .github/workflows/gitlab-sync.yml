@@ -12,6 +12,8 @@ jobs:
       with:
         fetch-depth: 10
     - name: Setup gitlab remote
+      env:
+        GITLAB_PUSH_URL_WITH_TOKEN: ${{ secrets.GITLAB_PUSH_URL_WITH_TOKEN }}
       run: git remote add target ${GITLAB_PUSH_URL_WITH_TOKEN}
     - name: Push the changes
       run: git push -f --all target
