@@ -1,0 +1,53 @@
+stages:
+  - build
+  - merge
+  - deploy
+  - prd-deploy
+
+#======================================================
+# Build template
+#======================================================
+
+# The build template
+.dev-build-template:
+  stage: build
+  image: node:16-buster
+  variables:
+    # Use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
+    # this ensure all submodules are initiazlied correctly
+    GIT_SUBMODULE_STRATEGY: recursive
+  # Lets optimize the node_modules cache
+  cache:
+    - key:
+        files:
+          - package-lock.json
+      paths:
+        - node_modules
+  # The main script
+  script:
+    # NPM ci, is a more consistent varient of npm install
+    - npm ci
+    # Let do the dev build
+    - npm run build
+    # Lets add some build info for debugging 
+    - echo "$CI_COMMIT_SHORT_SHA - $ENV_KEY" > ./.vuepress/dist/_buildinfo.txt
+    # Let set the robots.txt to disallow all
+    - "echo 'User-agent: *' > ./.vuepress/dist/_buildinfo.txt"
+    - "echo 'Disallow: /' >> ./.vuepress/dist/_buildinfo.txt"
+  artifacts:
+    paths:
+      - .vuepress/dist/
+    # Package can get abit too big, 
+    # so lets quickly discard it if possible
+    expire_in: 24 hour
+
+# ======================================================
+# General / DEV NPM build
+# ======================================================
+
+dev-build:
+  extends: .dev-build-template
+  variables:
+    ENV_KEY: "dev"
+  except:
+    - main
