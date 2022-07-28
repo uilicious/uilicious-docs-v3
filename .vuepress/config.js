@@ -14,6 +14,9 @@ module.exports = {
 	// Lets tweak base path to /v3/
 	base: "/v3/",
 
+	// Change the destribution build dir
+	dest: ".dist/v3/",
+
 	// Lets load the default theme, with customization
 	// thankfully we already share the similarlish green theme
 	theme: defaultTheme({
