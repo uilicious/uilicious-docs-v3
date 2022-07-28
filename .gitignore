@@ -1,0 +1,24 @@
+# Generally ignore common hidden files
+.*/*
+
+# Ignore nodejs nodemodules
+node_modules
+node_modules/*
+
+# Keep track of of .gitignore, .gitbook files
+!.gitignore
+!.gitbook/*
+
+# Ignore vuepress cache/tmp files
+.vuepress/.cache
+.vuepress/.cache/*
+.vuepress/.temp
+.vuepress/.temp/*
+
+# Keep track of .vuepress JS / configfiles
+!.vuepress/*.js
+
+# Keep track of .vuepress public/styles folder
+!.vuepress/public
+!.vuepress/styles
+!.vuepress/plugin

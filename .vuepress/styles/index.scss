@@ -1,0 +1,279 @@
+/**
+ * This file provides style overwrites for the theme
+ *
+ * See: https://v2.vuepress.vuejs.org/reference/default-theme/styles.html#palette-file
+ **/
+
+// :root {
+//     // scroll-behavior: smooth;
+// }
+
+// Navbar color overwrites
+//---------------------------------------------
+.navbar {
+    background-color: rgb(17,207,117);
+}
+html.dark .navbar {
+    background-color: rgb(1,77,41);
+}
+
+// Logo animation on color scheme change
+//---------------------------------------------
+
+// duplicate names is used to transition between different
+// animations, on theme changes, as the animation is reset
+@keyframes fadein_1 {
+    0% { opacity: 0.01 }
+    20% { opacity: 0.01 }
+    100% { opacity: 1 }
+}
+@keyframes fadein_2 {
+    0% { opacity: 0.01 }
+    20% { opacity: 0.01 }
+    100% { opacity: 1 }
+}
+html:not(.dark) .navbar .logo {
+    animation: fadein_1 1s;
+    content:url("/static/logo-black-text.png")
+}
+html.dark .navbar .logo {
+    animation: fadein_2 1s;
+    content:url("/static/logo-white-text.png")
+}
+
+// We preload the logo, alternative image, to make sure animation is snappy
+// and does not need to wait for loading the alternative image on click
+html .navbar .logo::after {
+    width:1px;
+    height:1px;
+    opacity:0;
+}
+html:not(.dark) .navbar .logo::after {
+    background-image: url("/static/logo-black-text.png");
+}
+html.dark .navbar .logo::after {
+    background-image: url("/static/logo-white-text.png");
+}
+
+// Navbar links styling tweaks
+//---------------------------------------------
+html.dark .navbar .navbar-item a {
+    color:white;
+}
+
+// Size limiting content images 
+// to max resonable levels
+//---------------------------------------------
+.theme-default-content img.medium-zoom-image:not(.medium-zoom-image--opened) {
+    max-width: min( 75vw, 75vh, var(--content-width) );
+    max-height: min( 75vw, 75vh, var(--content-width) );
+
+    // Helps center align images where possible
+    text-align:center;
+}
+
+// Drop shadow styling
+//---------------------------------------------
+.theme-default-content img.medium-zoom-image:not(.medium-zoom-image--opened) {
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+}
+
+//---------------------------------------------------------------------
+// Image preview zoom overwrites
+//---------------------------------------------------------------------
+
+:root {
+    --medium-zoom-opacity: 0.5;
+}
+
+body.medium-zoom--opened .medium-zoom-image.medium-zoom-image--opened {
+    filter: drop-shadow(0 0 1rem rgba(0,0,0,0.5));
+}
+
+//---------------------------------------------------------------------
+// Image figcaption support
+//---------------------------------------------------------------------
+
+// Reset som padding and margin boundaries
+body div.image-figwrap, figure.image-figure,
+body div.image-figwrap {
+    padding:0;
+    margin:0;
+}
+
+body div.image-figwrap {
+    display: flex;
+    flex-direction: column;
+}
+
+body div.image-figwrap figure.image-figure,
+body div.image-figwrap figure.image-figure image {
+    text-align:center;
+}
+
+body div.image-figwrap figcaption.image-figcaption {
+    text-align:center;
+    
+    font-size:0.8em;
+
+    padding-left:2em;
+    padding-right:2em;
+}
+
+//---------------------------------------------------------------------
+// Hint block styling overwrites
+//---------------------------------------------------------------------
+
+// We use "html . page" for higher specificity then the
+// default CSS rules, to overwrite the padding settings
+html .page .custom-container {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+// Lets define custom contentblock styling for "info" class
+:root {
+    --c-info: rgba(52,109,219,1.00)
+}
+
+// Lets overwrite for info class
+html .page .custom-container.hint-info {
+    border-color: var(--c-info);
+}
+
+// Lets do some flexbox alignment
+// it just makes the icon alignment works
+html .page .custom-container.hint {
+    display: flex;
+}
+
+// Lets support the custom custom icons 
+// position and alignment
+.custom-container.hint .hint-icon {
+    font-size: 1em;
+    margin-left: -0.6em;
+    margin-right: 0.6em;
+    font-weight: bolder;
+}
+
+// Lets inject the various icons (for the respective mode)
+.custom-container.hint-warning .hint-icon::after {
+    content: "⚠";
+    color: var(--c-warning);
+}
+.custom-container.hint-danger .hint-icon::after {
+    content: "⚠";
+    color: var(--c-danger);
+}
+.custom-container.hint-info .hint-icon::after {
+    content: "ⓘ";
+    color: var(--c-info);
+}
+.custom-container.hint-success .hint-icon::after {
+    content: "☑";
+    color: var(--c-tip);
+}
+
+//---------------------------------------------------------------------
+// Tabs block styling overwrites
+//---------------------------------------------------------------------
+
+// ---
+// Pure CSS tab showing / hiding logic
+// ---
+
+// Show the sections, for the relevent checked input
+.tabset input.tab-radio[type=radio]:checked + label.tab-label + section.tab-panel {
+    display: inline-flex;
+}
+
+// Hide the section for the respective unchecked input
+.tabset input.tab-radio[type=radio]:not(:checked) + label.tab-label + section.tab-panel {
+    display: none; 
+}
+
+// Lets get the input out of the way
+.tabset input.tab-radio {
+    display: none;
+}
+
+// ---
+// Flexbox sizing & alignment
+// ---
+body .tabset {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.tabset label.tab-label {
+    // Bias this to the start
+    justify-content: flex-start;
+
+    // Sequence this before the panels
+    order: 1;
+}
+
+.tabset section.tab-panel {
+    // Limit the length to 90% screen width
+    max-width: 90vw;
+
+    // Set it to be full width when possible
+    flex: 1 0 100%;
+
+    // Sequence this after the labels
+    order: 10;
+}
+
+// Patch code block sizing issues
+.tabset section.tab-panel div[class*=language] {
+    max-width:90vw;
+}
+
+// ---
+// Flexbox styling
+// ---
+
+body .tabset {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.tabset label.tab-label {
+    // Ensure some content padding
+    padding: 0.8em 1em 0.6em 1em; //top,right,bottom,left
+    margin: 0;
+    margin-right: -2px;
+
+    // Give it a general button border
+    border: 2px solid var(--c-border);
+    border-bottom: 5px solid var(--c-border);
+
+    // Border radius near the top
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+// Give the relevent border outline for selected
+.tabset input.tab-radio[type=radio]:checked + label.tab-label {
+    border-bottom: 5px solid var(--c-text-accent);
+}
+
+// Add the clickable cursor where relvent, and grey the background out
+.tabset input.tab-radio[type=radio]:not(:checked) + label.tab-label {
+    cursor: pointer;
+    background: var(--c-border);
+}
+
+.tabset section.tab-panel {
+    border: 2px solid var(--c-border);
+
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top:10px;
+    padding-bottom:10px;
+
+    display: flex;
+    break-inside: avoid;
+    justify-content: space-around;
+}

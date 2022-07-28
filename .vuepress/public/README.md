@@ -1,0 +1,1 @@
+This is where all the public/static files will reside
