@@ -5,11 +5,10 @@ stages:
   - prd-deploy
 
 #======================================================
-# Build template
+# Initial vuepress build
 #======================================================
 
-# The build template
-.dev-build-template:
+vuepress-build:
   stage: build
   image: node:16-buster
   variables:
@@ -31,9 +30,6 @@ stages:
     - npm run build
     # Lets add some build info for debugging 
     - echo "$CI_COMMIT_SHORT_SHA - $ENV_KEY" > ./.vuepress/dist/_buildinfo.txt
-    # Let set the robots.txt to disallow all
-    - "echo 'User-agent: *' > ./.vuepress/dist/_buildinfo.txt"
-    - "echo 'Disallow: /' >> ./.vuepress/dist/_buildinfo.txt"
   artifacts:
     paths:
       - .vuepress/dist/
@@ -44,10 +40,3 @@ stages:
 # ======================================================
 # General / DEV NPM build
 # ======================================================
-
-dev-build:
-  extends: .dev-build-template
-  variables:
-    ENV_KEY: "dev"
-  except:
-    - main
