@@ -12,7 +12,7 @@ jobs:
       with:
         fetch-depth: 10
     - name: Setup gitlab remote
-      run: git remote add target https://${GITLAB_PUSH_USER}:${GITLAB_PUSH_TOKEN}@${GITLAB_PUSH_URL#https://}
+      run: git remote add target ${GITLAB_PUSH_URL_WITH_TOKEN}
     - name: Push the changes
       run: git push -f --all target
     - name: Push the tags
