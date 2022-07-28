@@ -5,6 +5,10 @@
 node_modules
 node_modules/*
 
+# Ignore the distr build dir
+.dist
+dist
+
 # Keep track of of .gitignore, .gitbook files
 !.gitignore
 !.gitbook/*
@@ -27,4 +31,5 @@ node_modules/*
 !.github
 !.github/*
 !.gitlab
+!.gitlab*
 !.gitlab/*

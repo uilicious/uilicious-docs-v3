@@ -8,35 +8,42 @@ stages:
 # Initial vuepress build
 #======================================================
 
-vuepress-build:
+vuepress-netlify-build:
   stage: build
   image: node:16-buster
   variables:
     # Use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
     # this ensure all submodules are initiazlied correctly
     GIT_SUBMODULE_STRATEGY: recursive
-  # Lets optimize the node_modules cache
+  # Lets optimize the node_modules + vuepress cache
   cache:
     - key:
         files:
           - package-lock.json
       paths:
         - node_modules
+        - .vuepress/.cache
   # The main script
   script:
     # NPM ci, is a more consistent varient of npm install
     - npm ci
+    # Setup dist dir, and setup netlify assets
+    - mkdir -p ./.dist
+    - cp -ar netlify-dist/* ./.dist/
     # Let do the dev build
     - npm run build
     # Lets add some build info for debugging 
-    - echo "$CI_COMMIT_SHORT_SHA - $ENV_KEY" > ./.vuepress/dist/_buildinfo.txt
+    - echo "$CI_COMMIT_SHORT_SHA - $ENV_KEY" > ./.dist/_buildinfo.txt
+    - echo "$CI_COMMIT_SHORT_SHA - $ENV_KEY" > ./.dist/v3/_buildinfo.txt
   artifacts:
     paths:
-      - .vuepress/dist/
+      - .dist/
     # Package can get abit too big, 
     # so lets quickly discard it if possible
     expire_in: 24 hour
 
-# ======================================================
+#======================================================
 # General / DEV NPM build
-# ======================================================
+#======================================================
+
+
