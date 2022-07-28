@@ -47,7 +47,7 @@ vuepress-netlify-build:
 #======================================================
 
 # Netlify deploy to our "dev" environment
-stg-deploy:
+dev-env-deploy:
   extends: .netlify-dist-prod-deploy
   variables:
     NETLIFY_SITE_KEY: "${NETLIFY_DEV_SITEID}"
