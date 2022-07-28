@@ -1,0 +1,19 @@
+name: GitlabSync
+
+on:
+  - push
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    name: Git Repo Sync
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 10
+    - name: Setup gitlab remote
+      run: git remote add target https://${GITLAB_PUSH_USER}:${GITLAB_PUSH_TOKEN}@${GITLAB_PUSH_URL#https://}
+    - name: Push the changes
+      run: git push -f --all target
+    - name: Push the tags
+      run: git push -f --tags target
