@@ -65,7 +65,7 @@ vuepress-netlify-build:
     # Lets move/rename the current build
     - mv dist new_build
     # Clone the historical build
-    - git clone --branch "$MERGE_BRANCH" https://oauth2:$GITLAB_MERGE_TOKEN@$GITLAB_MERGE_URL_WITHOUT_HTTPSdist
+    - git clone --branch "$MERGE_BRANCH" https://oauth2:$GITLAB_MERGE_TOKEN@$GITLAB_MERGE_URL_WITHOUT_HTTPS_PREFIX dist
     # Lets setup the cleanup script
     # See: https://stackoverflow.com/questions/65441034/removing-versions-of-files-older-than-90-days-in-git
     - echo "#!/bin/bash"                                                   >  dist/.git-cleanup.sh   
@@ -130,18 +130,6 @@ prd-merge:
   when: manual
 
 #======================================================
-# Netlify deployments
-#======================================================
-
-# Netlify deploy to our "stg" environment
-stg-env-deploy:
-  extends: .netlifydist-prod-deploy
-  variables:
-    NETLIFY_SITE_KEY: "${NETLIFY_DEV_SITEID}"
-  only:
-    - main
-
-#======================================================
 # Netlify deployment templates
 #======================================================
 
@@ -169,3 +157,14 @@ stg-env-deploy:
     # for some reason the latest versions of netlify cannot be installed in our gitlab CI/CD runners reliably
     - cd dist && netlify deploy --dir=. --functions=./netlify/functions --auth "$NETLIFY_DEVOPS_DEPLOY_KEY" --site "$NETLIFY_SITE_KEY" --prod
 
+#======================================================
+# Netlify deployments
+#======================================================
+
+# Netlify deploy to our "stg" environment
+stg-env-deploy:
+  extends: .netlifydist-prod-deploy
+  variables:
+    NETLIFY_SITE_KEY: "${NETLIFY_DEV_SITEID}"
+  only:
+    - main
