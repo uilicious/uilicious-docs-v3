@@ -20,11 +20,18 @@
   * [Set up Slack Notifications](how-to-guides/schedule-a-job/setup-notifications/set-up-slack-notifications.md)
   * [Set up Microsoft Teams Notifications](how-to-guides/schedule-a-job/setup-notifications/set-up-microsoft-teams-notifications.md)
 
-## Reference
+## Quick Reference
+
+* [Commands List](reference/commands-list.md)
+
+## Best Practices
+
+* [Salesforce](best-practices/salesforce.md)
+
+## Full Reference
 
 * Configurations
   * [Uilicious IP List](reference/configurations/cloud-ip-list.md)
-* [Commands List](reference/commands-list.md)
 * Page Navigation
   * [Go to a URL](reference/page-navigation/go-to-a-url.md)
   * [Refresh Page](reference/page-navigation/refresh-page.md)
@@ -85,10 +92,6 @@
   * [Running another test](reference/reusing-tests/running-another-test.md)
 * Stopping Tests
   * [Stop Command](reference/stopping-tests/stop-command.md)
-
-## Best Practices
-
-* [Salesforce](best-practices/salesforce.md)
 
 ## Product Notes
 
