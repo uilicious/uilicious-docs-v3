@@ -26,9 +26,11 @@ vuepress-netlify-build:
   script:
     # NPM ci, is a more consistent varient of npm install
     - npm ci
+    # Setup _redirect file inside netlify-dist
+    - cd netlify-dist/ ; ./_redirect_build.sh ; cd ..
     # Setupdist dir, and setup netlify assets
     - mkdir -p ./dist
-    - cp -ar netlifydist/* ./dist/
+    - cp -ar netlify-dist/* ./dist/
     # Let do the build
     - npm run build
     # Lets add some build info for debugging 
