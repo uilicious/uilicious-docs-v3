@@ -23,7 +23,7 @@
 ## Reference
 
 * Configurations
-  * [IP Allowlisting](reference/configurations/ip-Allowlisting.md)
+  * [IP List](reference/configurations/ip-list.md)
 * [Commands List](reference/commands-list.md)
 * Page Navigation
   * [Go to a URL](reference/page-navigation/go-to-a-url.md)
