@@ -166,7 +166,7 @@ stg-env-deploy:
   extends: .netlifydist-prod-deploy
   variables:
     NETLIFY_SITE_KEY: "${NETLIFY_DEV_SITEID}"
-  dependencies:
+  needs:
     - stg-merge
   only:
     - main
@@ -176,7 +176,7 @@ prd-env-deploy:
   extends: .netlifydist-prod-deploy
   variables:
     NETLIFY_SITE_KEY: "${NETLIFY_PRD_SITEID}"
-  dependencies:
+  needs:
     - prd-merge
   only:
     - main
@@ -186,7 +186,7 @@ preview-env-deploy:
   extends: .netlifydist-preview-deploy
   variables:
     NETLIFY_SITE_KEY: "${NETLIFY_DEV_SITEID}"
-  dependencies:
+  needs:
     - preview-merge
   except:
     - main
