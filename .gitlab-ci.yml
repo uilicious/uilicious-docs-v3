@@ -166,5 +166,27 @@ stg-env-deploy:
   extends: .netlifydist-prod-deploy
   variables:
     NETLIFY_SITE_KEY: "${NETLIFY_DEV_SITEID}"
+  dependencies:
+    - stg-merge
   only:
+    - main
+
+# Netlify deploy to our "prd" environment
+prd-env-deploy:
+  extends: .netlifydist-prod-deploy
+  variables:
+    NETLIFY_SITE_KEY: "${NETLIFY_PRD_SITEID}"
+  dependencies:
+    - prd-merge
+  only:
+    - main
+
+# Netlify deploy preview (for all other branches)
+preview-env-deploy:
+  extends: .netlifydist-preview-deploy
+  variables:
+    NETLIFY_SITE_KEY: "${NETLIFY_DEV_SITEID}"
+  dependencies:
+    - preview-merge
+  except:
     - main
