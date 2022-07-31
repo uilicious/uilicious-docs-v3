@@ -1,0 +1,129 @@
+##############################################################
+# !!! WARNING - this file is generated, do not modify it !!! #
+##############################################################
+
+#####################################################################
+#
+# _redirect_base file, is merged with the _redirect_v1 file
+# to build the final _redirect file, used by netlify
+#
+#####################################################################
+
+# Redirecting the base path
+/                   /v3/   302
+/v3                 /v3/   302
+/index.html         /v3/   302
+
+# Redirecting /v1/ URL
+/v1                https://docs-v1.uilicious.com/         302
+/v1/               https://docs-v1.uilicious.com/         302
+/v1/*              https://docs-v1.uilicious.com/:splat   302
+
+#####################################################################
+#
+# The following are all the v1 pages, and their redirect rules.
+# When possible, please change this to the updated v3 versions.
+#
+#####################################################################
+/todo         https://docs-v1.uilicious.com/todo    302
+/todo/        https://docs-v1.uilicious.com/todo    302
+/todo.html    https://docs-v1.uilicious.com/todo    302
+/faqs         https://docs-v1.uilicious.com/faqs    302
+/faqs/        https://docs-v1.uilicious.com/faqs    302
+/faqs.html    https://docs-v1.uilicious.com/faqs    302
+/release_notes         https://docs-v1.uilicious.com/release_notes    302
+/release_notes/        https://docs-v1.uilicious.com/release_notes    302
+/release_notes.html    https://docs-v1.uilicious.com/release_notes    302
+/grid/timezone         https://docs-v1.uilicious.com/grid/timezone    302
+/grid/timezone/        https://docs-v1.uilicious.com/grid/timezone    302
+/grid/timezone.html    https://docs-v1.uilicious.com/grid/timezone    302
+/grid/ip_list         https://docs-v1.uilicious.com/grid/ip_list    302
+/grid/ip_list/        https://docs-v1.uilicious.com/grid/ip_list    302
+/grid/ip_list.html    https://docs-v1.uilicious.com/grid/ip_list    302
+/integration/applitools         https://docs-v1.uilicious.com/integration/applitools    302
+/integration/applitools/        https://docs-v1.uilicious.com/integration/applitools    302
+/integration/applitools.html    https://docs-v1.uilicious.com/integration/applitools    302
+/concepts/targeting         https://docs-v1.uilicious.com/concepts/targeting    302
+/concepts/targeting/        https://docs-v1.uilicious.com/concepts/targeting    302
+/concepts/targeting.html    https://docs-v1.uilicious.com/concepts/targeting    302
+/guides/salesforce/getting_started         https://docs-v1.uilicious.com/guides/salesforce/getting_started    302
+/guides/salesforce/getting_started/        https://docs-v1.uilicious.com/guides/salesforce/getting_started    302
+/guides/salesforce/getting_started.html    https://docs-v1.uilicious.com/guides/salesforce/getting_started    302
+/scripting/form_input         https://docs-v1.uilicious.com/scripting/form_input    302
+/scripting/form_input/        https://docs-v1.uilicious.com/scripting/form_input    302
+/scripting/form_input.html    https://docs-v1.uilicious.com/scripting/form_input    302
+/scripting/mouse         https://docs-v1.uilicious.com/scripting/mouse    302
+/scripting/mouse/        https://docs-v1.uilicious.com/scripting/mouse    302
+/scripting/mouse.html    https://docs-v1.uilicious.com/scripting/mouse    302
+/scripting/sequence         https://docs-v1.uilicious.com/scripting/sequence    302
+/scripting/sequence/        https://docs-v1.uilicious.com/scripting/sequence    302
+/scripting/sequence.html    https://docs-v1.uilicious.com/scripting/sequence    302
+/scripting/extract         https://docs-v1.uilicious.com/scripting/extract    302
+/scripting/extract/        https://docs-v1.uilicious.com/scripting/extract    302
+/scripting/extract.html    https://docs-v1.uilicious.com/scripting/extract    302
+/scripting/load_data_from_file         https://docs-v1.uilicious.com/scripting/load_data_from_file    302
+/scripting/load_data_from_file/        https://docs-v1.uilicious.com/scripting/load_data_from_file    302
+/scripting/load_data_from_file.html    https://docs-v1.uilicious.com/scripting/load_data_from_file    302
+/scripting/basic_commands         https://docs-v1.uilicious.com/scripting/basic_commands    302
+/scripting/basic_commands/        https://docs-v1.uilicious.com/scripting/basic_commands    302
+/scripting/basic_commands.html    https://docs-v1.uilicious.com/scripting/basic_commands    302
+/scripting/local_storage_commands         https://docs-v1.uilicious.com/scripting/local_storage_commands    302
+/scripting/local_storage_commands/        https://docs-v1.uilicious.com/scripting/local_storage_commands    302
+/scripting/local_storage_commands.html    https://docs-v1.uilicious.com/scripting/local_storage_commands    302
+/scripting/screenshot         https://docs-v1.uilicious.com/scripting/screenshot    302
+/scripting/screenshot/        https://docs-v1.uilicious.com/scripting/screenshot    302
+/scripting/screenshot.html    https://docs-v1.uilicious.com/scripting/screenshot    302
+/scripting/element_commands         https://docs-v1.uilicious.com/scripting/element_commands    302
+/scripting/element_commands/        https://docs-v1.uilicious.com/scripting/element_commands    302
+/scripting/element_commands.html    https://docs-v1.uilicious.com/scripting/element_commands    302
+/scripting/window_resize         https://docs-v1.uilicious.com/scripting/window_resize    302
+/scripting/window_resize/        https://docs-v1.uilicious.com/scripting/window_resize    302
+/scripting/window_resize.html    https://docs-v1.uilicious.com/scripting/window_resize    302
+/scripting/javascript         https://docs-v1.uilicious.com/scripting/javascript    302
+/scripting/javascript/        https://docs-v1.uilicious.com/scripting/javascript    302
+/scripting/javascript.html    https://docs-v1.uilicious.com/scripting/javascript    302
+/scripting/sample         https://docs-v1.uilicious.com/scripting/sample    302
+/scripting/sample/        https://docs-v1.uilicious.com/scripting/sample    302
+/scripting/sample.html    https://docs-v1.uilicious.com/scripting/sample    302
+/scripting/cookies         https://docs-v1.uilicious.com/scripting/cookies    302
+/scripting/cookies/        https://docs-v1.uilicious.com/scripting/cookies    302
+/scripting/cookies.html    https://docs-v1.uilicious.com/scripting/cookies    302
+/scripting/http_status_code_assertion         https://docs-v1.uilicious.com/scripting/http_status_code_assertion    302
+/scripting/http_status_code_assertion/        https://docs-v1.uilicious.com/scripting/http_status_code_assertion    302
+/scripting/http_status_code_assertion.html    https://docs-v1.uilicious.com/scripting/http_status_code_assertion    302
+/scripting/assertion         https://docs-v1.uilicious.com/scripting/assertion    302
+/scripting/assertion/        https://docs-v1.uilicious.com/scripting/assertion    302
+/scripting/assertion.html    https://docs-v1.uilicious.com/scripting/assertion    302
+/scripting/datasets         https://docs-v1.uilicious.com/scripting/datasets    302
+/scripting/datasets/        https://docs-v1.uilicious.com/scripting/datasets    302
+/scripting/datasets.html    https://docs-v1.uilicious.com/scripting/datasets    302
+/scripting/list_of_commands         https://docs-v1.uilicious.com/scripting/list_of_commands    302
+/scripting/list_of_commands/        https://docs-v1.uilicious.com/scripting/list_of_commands    302
+/scripting/list_of_commands.html    https://docs-v1.uilicious.com/scripting/list_of_commands    302
+/scripting/keyboard         https://docs-v1.uilicious.com/scripting/keyboard    302
+/scripting/keyboard/        https://docs-v1.uilicious.com/scripting/keyboard    302
+/scripting/keyboard.html    https://docs-v1.uilicious.com/scripting/keyboard    302
+/scripting/config         https://docs-v1.uilicious.com/scripting/config    302
+/scripting/config/        https://docs-v1.uilicious.com/scripting/config    302
+/scripting/config.html    https://docs-v1.uilicious.com/scripting/config    302
+/scripting/utility         https://docs-v1.uilicious.com/scripting/utility    302
+/scripting/utility/        https://docs-v1.uilicious.com/scripting/utility    302
+/scripting/utility.html    https://docs-v1.uilicious.com/scripting/utility    302
+/scripting/ui_http_commands         https://docs-v1.uilicious.com/scripting/ui_http_commands    302
+/scripting/ui_http_commands/        https://docs-v1.uilicious.com/scripting/ui_http_commands    302
+/scripting/ui_http_commands.html    https://docs-v1.uilicious.com/scripting/ui_http_commands    302
+/scripting/alerts         https://docs-v1.uilicious.com/scripting/alerts    302
+/scripting/alerts/        https://docs-v1.uilicious.com/scripting/alerts    302
+/scripting/alerts.html    https://docs-v1.uilicious.com/scripting/alerts    302
+/scripting/executing-javascript         https://docs-v1.uilicious.com/scripting/executing-javascript    302
+/scripting/executing-javascript/        https://docs-v1.uilicious.com/scripting/executing-javascript    302
+/scripting/executing-javascript.html    https://docs-v1.uilicious.com/scripting/executing-javascript    302
+/scripting/ui_context         https://docs-v1.uilicious.com/scripting/ui_context    302
+/scripting/ui_context/        https://docs-v1.uilicious.com/scripting/ui_context    302
+/scripting/ui_context.html    https://docs-v1.uilicious.com/scripting/ui_context    302
+/scripting/logging         https://docs-v1.uilicious.com/scripting/logging    302
+/scripting/logging/        https://docs-v1.uilicious.com/scripting/logging    302
+/scripting/logging.html    https://docs-v1.uilicious.com/scripting/logging    302
+/scripting/navigation         https://docs-v1.uilicious.com/scripting/navigation    302
+/scripting/navigation/        https://docs-v1.uilicious.com/scripting/navigation    302
+/scripting/navigation.html    https://docs-v1.uilicious.com/scripting/navigation    302

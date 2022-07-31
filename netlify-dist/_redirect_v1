@@ -1,0 +1,40 @@
+#####################################################################
+# 
+# The following are all the v1 pages, and their redirect rules.
+# When possible, please change this to the updated v3 versions.
+#
+#####################################################################
+/todo                                   https://docs-v1.uilicious.com/todo
+/faqs                                   https://docs-v1.uilicious.com/faqs
+/release_notes                          https://docs-v1.uilicious.com/release_notes
+/grid/timezone                          https://docs-v1.uilicious.com/grid/timezone
+/grid/ip_list                           https://docs-v1.uilicious.com/grid/ip_list
+/integration/applitools                 https://docs-v1.uilicious.com/integration/applitools
+/concepts/targeting                     https://docs-v1.uilicious.com/concepts/targeting
+/guides/salesforce/getting_started      https://docs-v1.uilicious.com/guides/salesforce/getting_started
+/scripting/form_input                   https://docs-v1.uilicious.com/scripting/form_input
+/scripting/mouse                        https://docs-v1.uilicious.com/scripting/mouse
+/scripting/sequence                     https://docs-v1.uilicious.com/scripting/sequence
+/scripting/extract                      https://docs-v1.uilicious.com/scripting/extract
+/scripting/load_data_from_file          https://docs-v1.uilicious.com/scripting/load_data_from_file
+/scripting/basic_commands               https://docs-v1.uilicious.com/scripting/basic_commands
+/scripting/local_storage_commands       https://docs-v1.uilicious.com/scripting/local_storage_commands 
+/scripting/screenshot                   https://docs-v1.uilicious.com/scripting/screenshot
+/scripting/element_commands             https://docs-v1.uilicious.com/scripting/element_commands
+/scripting/window_resize                https://docs-v1.uilicious.com/scripting/window_resize
+/scripting/javascript                   https://docs-v1.uilicious.com/scripting/javascript
+/scripting/sample                       https://docs-v1.uilicious.com/scripting/sample    
+/scripting/cookies                      https://docs-v1.uilicious.com/scripting/cookies
+/scripting/http_status_code_assertion   https://docs-v1.uilicious.com/scripting/http_status_code_assertion        
+/scripting/assertion                    https://docs-v1.uilicious.com/scripting/assertion
+/scripting/datasets                     https://docs-v1.uilicious.com/scripting/datasets  
+/scripting/list_of_commands             https://docs-v1.uilicious.com/scripting/list_of_commands 
+/scripting/keyboard                     https://docs-v1.uilicious.com/scripting/keyboard
+/scripting/config                       https://docs-v1.uilicious.com/scripting/config
+/scripting/utility                      https://docs-v1.uilicious.com/scripting/utility
+/scripting/ui_http_commands             https://docs-v1.uilicious.com/scripting/ui_http_commands
+/scripting/alerts                       https://docs-v1.uilicious.com/scripting/alerts
+/scripting/executing-javascript         https://docs-v1.uilicious.com/scripting/executing-javascript   
+/scripting/ui_context                   https://docs-v1.uilicious.com/scripting/ui_context
+/scripting/logging                      https://docs-v1.uilicious.com/scripting/logging
+/scripting/navigation                   https://docs-v1.uilicious.com/scripting/navigation

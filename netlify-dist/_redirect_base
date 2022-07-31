@@ -1,0 +1,17 @@
+#####################################################################
+#
+# _redirect_base file, is merged with the _redirect_v1 file
+# to build the final _redirect file, used by netlify
+#
+#####################################################################
+
+# Redirecting the base path
+/                   /v3/   302
+/v3                 /v3/   302
+/index.html         /v3/   302
+
+# Redirecting /v1/ URL
+/v1                https://docs-v1.uilicious.com/         302
+/v1/               https://docs-v1.uilicious.com/         302
+/v1/*              https://docs-v1.uilicious.com/:splat   302
+
