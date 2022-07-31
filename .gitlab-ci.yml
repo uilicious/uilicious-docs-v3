@@ -66,26 +66,26 @@ vuepress-netlify-build:
     - git clone --branch "$MERGE_BRANCH" https://oauth2:$GITLAB_MERGE_TOKEN@$GITLAB_MERGE_URL_WITHOUT_HTTPSdist
     # Lets setup the cleanup script
     # See: https://stackoverflow.com/questions/65441034/removing-versions-of-files-older-than-90-days-in-git
-    - echo "#!/bin/bash"                                                   > dist/.git-cleanup.sh   
-    - echo "day=$(date --date "$1" +"%Y-%m-%d")"                           >>dist/.git-cleanup.sh
-    - echo "git ls-files | while read path"                                >>dist/.git-cleanup.sh
-    - echo "do"                                                            >>dist/.git-cleanup.sh                                                                               
-    - echo '   if [ "$(git log --since \"$day\" -- $path)" == "" ]; then'  >>dist/.git-cleanup.sh                 
-    - echo '      rm "$path"'                                              >>dist/.git-cleanup.sh                                                                
-    - echo "   fi"                                                         >>dist/.git-cleanup.sh                                                                                                                                                                                                    
-    - echo "done"                                                          >>dist/.git-cleanup.sh                                                           
-    - chmod +xdist/.git-cleanup.sh;
+    - echo "#!/bin/bash"                                                   >  dist/.git-cleanup.sh   
+    - echo "day=$(date --date "$1" +"%Y-%m-%d")"                           >> dist/.git-cleanup.sh
+    - echo "git ls-files | while read path"                                >> dist/.git-cleanup.sh
+    - echo "do"                                                            >> dist/.git-cleanup.sh                                                                               
+    - echo '   if [ "$(git log --since \"$day\" -- $path)" == "" ]; then'  >> dist/.git-cleanup.sh                 
+    - echo '      rm "$path"'                                              >> dist/.git-cleanup.sh                                                                
+    - echo "   fi"                                                         >> dist/.git-cleanup.sh                                                                                                                                                                                                    
+    - echo "done"                                                          >> dist/.git-cleanup.sh                                                           
+    - chmod +x dist/.git-cleanup.sh;
     # Trigger the cleanup script (with 90 days)
-    - cddist/; ./.git-cleanup.sh "90 days ago"; cd ..;
+    - cd dist/; ./.git-cleanup.sh "90 days ago"; cd ..;
     # Enforce robots.txt for anything but prd
-    - 'if [ "$ENV_KEY" == "prd" ]; then echo "User-agent: *" >dist/robots.txt; echo "Disallow: /" >>dist/robots.txt; fi'
+    - 'if [ "$ENV_KEY" == "prd" ]; then echo "User-agent: *" > dist/robots.txt; echo "Disallow: /" >> dist/robots.txt; fi'
     # Merge them together
     - cp -a ./new_build/*dist/
     # And push it up gitlab
-    - cddist; git add -A .; git commit -am "[automated] build merge for $CI_COMMIT_SHORT_SHA - $CI_JOB_URL"; git push; cd ..;
+    - cd dist; git add -A .; git commit -am "[automated] build merge for $CI_COMMIT_SHORT_SHA - $CI_JOB_URL"; git push; cd ..;
   artifacts:
     paths:
-      -dist/
+      - dist/
     # Package can get abit too big, 
     # so lets quickly discard it if possible
     expire_in: 24 hour
@@ -94,6 +94,23 @@ vuepress-netlify-build:
 # Asset merging 
 #======================================================
 
+# Just setup robots.txt, for preview sites
+preview-merge:
+  stage: merge
+  image: node:16-buster
+  script:
+    - 'echo "User-agent: *" > dist/robots.txt;'
+    - 'echo "Disallow: /" >> dist/robots.txt;'
+  artifacts:
+    paths:
+      - dist/
+    # Package can get abit too big, 
+    # so lets quickly discard it if possible
+    expire_in: 24 hour
+  except:
+    - main
+
+# Lets merge with previously deployed assets
 stg-merge:
   extends: .main-merge-template
   variables:
@@ -102,13 +119,13 @@ stg-merge:
     - main
 
 prd-merge:
-  # Trigger manually
-  when: manual
   extends: .main-merge-template
   variables:
       ENV_KEY: prd
   only:
     - main
+  # Trigger manually
+  when: manual
 
 #======================================================
 # Netlify deployments
