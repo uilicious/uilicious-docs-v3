@@ -114,14 +114,14 @@ preview-merge:
 
 # Lets merge with previously deployed assets
 stg-merge:
-  extends: .main-merge-template
+  extends: .merge-template
   variables:
       ENV_KEY: stg
   only:
     - main
 
 prd-merge:
-  extends: .main-merge-template
+  extends: .merge-template
   variables:
       ENV_KEY: prd
   only:
