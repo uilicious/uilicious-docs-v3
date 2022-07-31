@@ -82,7 +82,7 @@ vuepress-netlify-build:
     # Enforce robots.txt for anything but prd
     - 'if [ "$ENV_KEY" == "prd" ]; then echo "User-agent: *" > dist/robots.txt; echo "Disallow: /" >> dist/robots.txt; fi'
     # Merge them together
-    - cp -a ./new_build/*dist/
+    - cp -a ./new_build/* ./dist/
     # And push it up gitlab
     - cd dist; git add -A .; git commit -am "[automated] build merge for $CI_COMMIT_SHORT_SHA - $CI_JOB_URL"; git push; cd ..;
   artifacts:
