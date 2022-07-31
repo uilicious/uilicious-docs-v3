@@ -65,7 +65,7 @@ vuepress-netlify-build:
     # Lets move/rename the current build
     - mv dist new_build
     # Clone the historical build
-    - git clone --branch "$MERGE_BRANCH" https://oauth2:$GITLAB_MERGE_TOKEN@$GITLAB_MERGE_URL_WITHOUT_HTTPS_PREFIX dist
+    - git clone --branch "$MERGE_BRANCH" $GITLAB_MERGE_URL_WITH_AUTH dist
     # Lets setup the cleanup script
     # See: https://stackoverflow.com/questions/65441034/removing-versions-of-files-older-than-90-days-in-git
     - echo "#!/bin/bash"                                                   >  dist/.git-cleanup.sh   
@@ -116,14 +116,14 @@ preview-merge:
 stg-merge:
   extends: .merge-template
   variables:
-      ENV_KEY: stg
+      MERGE_BRANCH: stg
   only:
     - main
 
 prd-merge:
   extends: .merge-template
   variables:
-      ENV_KEY: prd
+      MERGE_BRANCH: prd
   only:
     - main
   # Trigger manually
