@@ -23,7 +23,7 @@
 ## Reference
 
 * Configurations
-  * [IP List](reference/configurations/ip-list.md)
+  * [Uilicious IP List](reference/configurations/cloud-ip-list.md)
 * [Commands List](reference/commands-list.md)
 * Page Navigation
   * [Go to a URL](reference/page-navigation/go-to-a-url.md)
