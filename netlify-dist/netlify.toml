@@ -54,18 +54,37 @@
 #-------------------------------------------------------------
 
 [[headers]]
-  for = "/test/:visibility/favicon.png"
-  [headers.values]
-    Cache-Control = "public, s-maxage=60, max-age=60, max-stale=60, stale-while-revalidate=60"
-	ui-cache-mode = "minute"
-
-[[headers]]
   for = "/favicon.png"
   [headers.values]
     Cache-Control = "public, s-maxage=60, max-age=60, max-stale=60, stale-while-revalidate=60"
 	ui-cache-mode = "minute"
 
 #-------------------------------------------------------------
+# Aggressive cache
+#-------------------------------------------------------------
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+	#-------------------------------------------------------------
+	#
+	# We will add the cache headers in seconds, for easy refrence
+	# Common time period to seconds conversion is as followed
+	#
+	# One minute: 60
+	# One hour:   3600
+	# One day:    86400
+	# One week:   604800
+	# One month:  2628000
+	# One year:   31536000
+	#
+	#-------------------------------------------------------------
+    Cache-Control = "public, s-maxage=3600, max-age=3600, max-stale=3600, stale-while-revalidate=3600"
+	ui-cache-mode = "hour"
+
+#-------------------------------------------------------------
+#
+#  NOTE: THIS DOES NOT WORK RELIABLY
 #
 #  Very extreamly heavy cache & rewrite for hashed assets
 #
