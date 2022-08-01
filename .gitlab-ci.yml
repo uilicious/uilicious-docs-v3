@@ -80,7 +80,7 @@ vuepress-netlify-build:
     # Trigger the cleanup script (with 90 days)
     - cd dist/; ./.git-cleanup.sh "90 days ago"; cd ..;
     # Enforce robots.txt for anything but prd
-    - 'if [ "$ENV_KEY" == "prd" ]; then echo "User-agent: *" > dist/robots.txt; echo "Disallow: /" >> dist/robots.txt; fi'
+    - 'if [ "$ENV_KEY" != "prd" ]; then echo "User-agent: *" > dist/robots.txt; echo "Disallow: /" >> dist/robots.txt; fi'
     # Merge them together
     - cp -a ./new_build/* ./dist/
     # And push it up gitlab
