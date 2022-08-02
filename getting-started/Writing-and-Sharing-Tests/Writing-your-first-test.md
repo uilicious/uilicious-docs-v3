@@ -121,7 +121,7 @@ Use the commands to confirm we have logged into our user's account:
 
 `I.see("Hello, Bruce")`
 
-Click the green **Run** button.
+Click the Blue **Run** button.
 
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649713944/ui-licious/amazon-getting-started-example/Signup-8\_v3yrht\_copy\_tzi51e.png)
 
