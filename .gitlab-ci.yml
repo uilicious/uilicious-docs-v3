@@ -68,14 +68,14 @@ vuepress-netlify-build:
     - git clone --branch "$MERGE_BRANCH" $GITLAB_MERGE_URL_WITH_AUTH dist
     # Lets setup the cleanup script
     # See: https://stackoverflow.com/questions/65441034/removing-versions-of-files-older-than-90-days-in-git
-    - echo "#!/bin/bash"                                                   >  dist/.git-cleanup.sh   
+    - echo "#!/bin/bash"                                                   >  dist/.git-cleanup.sh
     - echo "day=$(date --date "$1" +"%Y-%m-%d")"                           >> dist/.git-cleanup.sh
     - echo "git ls-files | while read path"                                >> dist/.git-cleanup.sh
-    - echo "do"                                                            >> dist/.git-cleanup.sh                                                                               
-    - echo '   if [ "$(git log --since \"$day\" -- $path)" == "" ]; then'  >> dist/.git-cleanup.sh                 
-    - echo '      rm "$path"'                                              >> dist/.git-cleanup.sh                                                                
-    - echo "   fi"                                                         >> dist/.git-cleanup.sh                                                                                                                                                                                                    
-    - echo "done"                                                          >> dist/.git-cleanup.sh                                                           
+    - echo "do"                                                            >> dist/.git-cleanup.sh
+    - echo '   if [ "$(git log --since \"$day\" -- $path)" == "" ]; then'  >> dist/.git-cleanup.sh
+    - echo '      rm "$path"'                                              >> dist/.git-cleanup.sh
+    - echo "   fi"                                                         >> dist/.git-cleanup.sh
+    - echo "done"                                                          >> dist/.git-cleanup.sh
     - chmod +x dist/.git-cleanup.sh;
     # Trigger the cleanup script (with 90 days)
     - cd dist/; ./.git-cleanup.sh "90 days ago"; cd ..;
