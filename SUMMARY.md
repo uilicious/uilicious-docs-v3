@@ -13,13 +13,14 @@
 
 ## How to Guides
 
-* [Schedule a Job](how-to-guides/job/schedule-a-job.md)
-* [Setup Notifications](how-to-guides/job/setup-notifications/README.md)
-  * [Set up Email Notifications](how-to-guides/job/setup-notifications/set-up-email-notifications.md)
-  * [Set up Discord Notifications](how-to-guides/job/setup-notifications/set-up-discord-notifications.md)
-  * [Set up Telegram Notifications](how-to-guides/job/setup-notifications/set-up-telegram-notifications.md)
-  * [Set up Slack Notifications](how-to-guides/job/setup-notifications/set-up-slack-notifications.md)
-  * [Set up Microsoft Teams Notifications](how-to-guides/job/setup-notifications/set-up-microsoft-teams-notifications.md)
+* Setting up jobs
+  * [Schedule a Job](how-to-guides/Setting-up-jobs/schedule-a-job.md)
+  * [Setup Notifications](how-to-guides/Setting-up-jobs/setup-notifications.md)
+    * [Set up Email Notifications](how-to-guides/Setting-up-jobs/setup-notifications/set-up-email-notifications.md)
+    * [Set up Discord Notifications](how-to-guides/Setting-up-jobs/setup-notifications/set-up-discord-notifications.md)
+    * [Set up Telegram Notifications](how-to-guides/Setting-up-jobs/setup-notifications/set-up-telegram-notifications.md)
+    * [Set up Slack Notifications](how-to-guides/Setting-up-jobs/setup-notifications/set-up-slack-notifications.md)
+    * [Set up Microsoft Teams Notifications](how-to-guides/Setting-up-jobs/setup-notifications/set-up-microsoft-teams-notifications.md)
 
 ## Quick Reference
 
@@ -41,7 +42,7 @@
   * [Get and Validate page title](reference/page-navigation/get-and-validate-page-title.md)
   * [Validate Page Status](reference/page-navigation/validate-page-status.md)
 * Mouse Interactions
-  * [Click on Objects](reference/mouse-interactions/click-on-objects/README.md)
+  * [Click on Objects](reference/mouse-interactions/click-on-objects.md)
   * [Right Clicking on Objects](reference/mouse-interactions/click-on-objects/right-clicking-on-objects.md)
   * [Hover over Objects](reference/mouse-interactions/hover-over-objects.md)
   * [Drag Objects](reference/mouse-interactions/drag-objects.md)
@@ -58,7 +59,7 @@
     * [I count Command](reference/validation-commands/validate-page-content/i-count-command.md)
   * [Validate URL](reference/validation-commands/validate-url.md)
   * [Validate Form Input](reference/validation-commands/validate-form-input.md)
-* [Interacting with Alerts](reference/interacting-with-alerts/README.md)
+* [Interacting with Alerts](reference/interacting-with-alerts.md)
   * [Validate Alert](reference/interacting-with-alerts/validate-alert.md)
   * [Accept / Dismiss Alert](reference/interacting-with-alerts/accept-dismiss-alert.md)
   * [Fill Alert](reference/interacting-with-alerts/fill-alert.md)
@@ -73,7 +74,7 @@
     * [Execute Javascript on the Browser](reference/using-javascript/use-javascript-in-your-test/execute-javascript-on-the-browser.md)
 * [Making HTTP Requests](reference/making-http-requests.md)
 * [Taking Screenshots](reference/taking-screenshots.md)
-* [Custom Reporting](reference/custom-reporting/README.md)
+* Custom Reporting
   * [Info Logs](reference/custom-reporting/info-logs.md)
   * [Success status Logs](reference/custom-reporting/success-status-logs.md)
   * [Failure status Logs](reference/custom-reporting/failure-status-logs.md)
