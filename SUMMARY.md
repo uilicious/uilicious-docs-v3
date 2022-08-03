@@ -3,8 +3,8 @@
 ## Getting Started
 
 * [What is UIlicious?](README.md)
-* [Write your first test](getting-started/write-your-first-test/README.md)
-* [Share Test Reports](getting-started/write-your-first-test/share-test-reports.md)
+* [Write your first test](getting-started/Writing-and-Sharing-Tests/Writing-your-first-test.md)
+* [Share Test Reports](getting-started/Writing-and-Sharing-Tests/share-test-reports.md)
 
 ## Core Concepts
 
