@@ -9,7 +9,7 @@ We currently support the following communication platforms:
 * [Slack](set-up-slack-notifications.md)
 * [Microsoft Teams](set-up-microsoft-teams-notifications.md)
 * [Discord](set-up-discord-notifications.md)
-* [Telegram](set-up-microsoft-teams-notifications.md)
+* [Telegram](set-up-telegram-notifications.md)
 
 ### Schedule New Job: Notifications
 

@@ -24,3 +24,23 @@ I.seePageTitle("Wikipedia")
 ```
 
 This example test navigates to the `https://www.wikipedia.org/` and checks if the page title is "Wikipedia". The test will pass if the page title is exactly "Wikipedia".
+
+---
+
+## `I.getPageTitle`
+
+Get the title of the current page.
+
+### Usage
+```javascript
+I.getPageTitle()
+```
+
+### Example(s)
+
+```javascript
+I.goTo("https://www.wikipedia.org/")
+var pageTitle = I.getPageTitle() // The returned value will be "Wikipedia"
+```
+
+This example test navigates to the `https://www.wikipedia.org/` and reads the current title of the page to the `pageTitle` variable.
