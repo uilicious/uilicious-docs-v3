@@ -1,6 +1,6 @@
 # Type/Press in input fields
 
-### `I.type / I.press` <a href="#itype" id="itype--ipress"></a>
+### `I.type / I.press`
 
 > I.press and I.type are exactly the same thing - we simply provided these two versions for whichever linguistic preference you have.
 
@@ -8,7 +8,7 @@ Press a key or a string of keys.
 
 This will send keyboard inputs to the element in focus, or the page <body> if no element is focus.
 
-#### Usage <a href="#usage" id="usage"></a>
+#### Usage
 
 ```javascript
 I.type(key)
@@ -20,7 +20,7 @@ I.type(key)
 | --------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Key     | string, array of strings | <p>Key(s) to Press</p> |                                                                                                                                                                                                                                            |
 
-#### Example(s) <a href="#examples" id="examples"></a>
+#### Example(s)
 
 **Text Input**
 
