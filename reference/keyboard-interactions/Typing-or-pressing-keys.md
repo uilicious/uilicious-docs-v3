@@ -6,7 +6,7 @@
 
 Press a key or a string of keys.
 
-This will send keyboard inputs to the element in focus, or the page <body> if no element is focus.
+This will send keyboard inputs to the element in focus, or the page `<body>` if no element is focus.
 
 #### Usage
 
