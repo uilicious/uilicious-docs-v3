@@ -44,7 +44,7 @@
 
 | Command                                                                                                                                | Description                                                               |
 | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| <p><a href="./mouse-interactions/click-on-objects/"><code>I.click</code><br><code>I.doubleClick</code></a><code></code></p> | Click or double click on an element                                       |
+| <p><a href="./mouse-interactions/click-on-objects/I.click-and-I.doubleClick.html"><code>I.click</code><br><code>I.doubleClick</code></a><code></code></p> | Click or double click on an element                                       |
 | [`I.rightClick`](./mouse-interactions/click-on-objects/right-clicking-on-objects.html#irightclick)                                                          | Right click on an element                                                 |
 | [`I.hoverOn`](./mouse-interactions/hover-over-objects.html#ihoverOn)                                                                | Hover on an element                                                       |
 | [`I.dragTo`](h./mouse-interactions/drag-objects.html#idragto)                                                                  | Drag an element to another target element                                 |
