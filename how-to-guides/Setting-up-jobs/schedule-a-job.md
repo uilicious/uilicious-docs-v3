@@ -23,12 +23,12 @@ Once you have created and scheduled a job, you can configure them to send instan
 
 In this section, we will learn how to:
 
-* [Create a scheduled job ](./#schedule-a-job)
-* [Delete a job](./#how-to-delete-a-job)
-* [Disable a job](./#how-to-disable-a-job)
-* [Check Job Status](./#view-status-of-a-job)
+* [Create a scheduled job ](/#schedule-a-job)
+* [Delete a job](/#how-to-delete-a-job)
+* [Disable a job](/#how-to-disable-a-job)
+* [Check Job Status](/#view-status-of-a-job)
 
-If you are interested in setting up notifications to receive status updates about your scheduled job, check out our [How to Set Up Notifications](setup-notifications/) section.
+If you are interested in setting up notifications to receive status updates about your scheduled job, check out our [How to Set Up Notifications](./Setup-notifications) section.
 
 ### Using the Editor
 
@@ -54,9 +54,7 @@ Select either a single test or multiple tests.
 
 ![Select a single test or choose multiple tests for your scheduled job](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649285820/UI-licious:%20Monitoring/scheduleaJob-4\_loimqh.gif)
 
-{% hint style="info" %}
 Region and User-Agent only work in Chrome and Firefox browsers.
-{% endhint %}
 
 Select the desired Dataset, Browser, Resolution, Region, and User-Agent for your scheduled job.
 
@@ -72,13 +70,11 @@ You can also choose to schedule your job to run once a day or at regular interva
 
 ### How to Delete a Job
 
-{% hint style="warning" %}
 **WARNING**:\
 \
 You will no longer be able to see historical reports if you delete a job.&#x20;
 
 Deleted jobs and reports cannot be recovered.
-{% endhint %}
 
 To view all scheduled jobs, go to the **Monitoring** pane.
 
@@ -96,11 +92,9 @@ Confirm you have deleted the selected job.
 
 ### How to Disable a Job
 
-{% hint style="info" %}
 **Good to know:**\
 \
 Once a job is disabled, the user can still access reports.
-{% endhint %}
 
 To view all scheduled jobs, go to the **Monitoring** pane.
 
