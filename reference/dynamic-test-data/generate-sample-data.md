@@ -28,12 +28,12 @@ I.see(SAMPLE.email({}, "user1")) // "user1" is the token chosen by the developer
 
 | Command                                                                        | Description                                            |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------ |
-| [`SAMPLE.id`](https://docs.uilicious.com/scripting/sample.html#sampleid)       | Generates a random string useful for IDs and passwords |
-| [`SAMPLE.phone`](https://docs.uilicious.com/scripting/sample.html#samplephone) | Generates a random phone number                        |
-| [`SAMPLE.last`](https://docs.uilicious.com/scripting/sample.html#samplelast)   | Generates a random last name                           |
-| [`SAMPLE.first`](https://docs.uilicious.com/scripting/sample.html#samplefirst) | Generates a random first name                          |
-| [`SAMPLE.name`](https://docs.uilicious.com/scripting/sample.html#samplename)   | Generates a random full name                           |
-| [`SAMPLE.email`](https://docs.uilicious.com/scripting/sample.html#sampleemail) | Generates a random email address                       |
+| [`SAMPLE.id`](./sample.html#sampleid)       | Generates a random string useful for IDs and passwords |
+| [`SAMPLE.phone`](./sample.html#samplephone) | Generates a random phone number                        |
+| [`SAMPLE.last`](./sample.html#samplelast)   | Generates a random last name                           |
+| [`SAMPLE.first`](./sample.html#samplefirst) | Generates a random first name                          |
+| [`SAMPLE.name`](./sample.html#samplename)   | Generates a random full name                           |
+| [`SAMPLE.email`](./sample.html#sampleemail) | Generates a random email address                       |
 
 ### `SAMPLE.id` <a href="#sampleid" id="sampleid"></a>
 

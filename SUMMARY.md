@@ -15,13 +15,12 @@
 
 * Setting up jobs
   * [Schedule a Job](how-to-guides/Setting-up-jobs/schedule-a-job.md)
-  * Notification
-    * [Setup Notifications](how-to-guides/Setting-up-jobs/Notifications/setup-notifications.md)
-      * [Set up Email Notifications](how-to-guides/Setting-up-jobs/Notifications/set-up-email-notifications.md)
-      * [Set up Discord Notifications](how-to-guides/Setting-up-jobs/Notifications/set-up-discord-notifications.md)
-      * [Set up Telegram Notifications](how-to-guides/Setting-up-jobs/Notifications/set-up-telegram-notifications.md)
-      * [Set up Slack Notifications](how-to-guides/Setting-up-jobs/Notifications/set-up-slack-notifications.md)
-      * [Set up Microsoft Teams Notifications](how-to-guides/Setting-up-jobs/Notifications/set-up-microsoft-teams-notifications.md)
+  * [Setup Notifications](how-to-guides/Setting-up-jobs/Notifications/setup-notifications.md)
+    * [Set up Email Notifications](how-to-guides/Setting-up-jobs/Notifications/set-up-email-notifications.md)
+    * [Set up Discord Notifications](how-to-guides/Setting-up-jobs/Notifications/set-up-discord-notifications.md)
+    * [Set up Telegram Notifications](how-to-guides/Setting-up-jobs/Notifications/set-up-telegram-notifications.md)
+    * [Set up Slack Notifications](how-to-guides/Setting-up-jobs/Notifications/set-up-slack-notifications.md)
+    * [Set up Microsoft Teams Notifications](how-to-guides/Setting-up-jobs/Notifications/set-up-microsoft-teams-notifications.md)
 
 ## Quick Reference
 

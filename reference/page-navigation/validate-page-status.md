@@ -6,14 +6,14 @@ These commands allow you to assert the status code of the current page.
 
 | Command                                                                                                           | Description                                                                               |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| [`UI.isStatusCode`](https://docs.uilicious.com/scripting/http\_status\_code\_assertion.html#uiisstatuscode)       | Asserts that the status code for the current page is a specific status code.              |
-| [`UI.isNotStatusCode`](https://docs.uilicious.com/scripting/http\_status\_code\_assertion.html#uiisnotstatuscode) | Asserts that the status code for the current page is **NOT** a specific status code.      |
-| [`UI.is200`](https://docs.uilicious.com/scripting/http\_status\_code\_assertion.html#uiis200)                     | Asserts that the status code for the current page is 200 (OK).                            |
-| [`UI.isNot200`](https://docs.uilicious.com/scripting/http\_status\_code\_assertion.html#uisinot200)               | Asserts that the status code for the current page is **NOT** 200 (OK).                    |
-| [`UI.is404`](https://docs.uilicious.com/scripting/http\_status\_code\_assertion.html#usis404)                     | Asserts that the status code for the current page is 404 (Not Found).                     |
-| [`UI.isNot404`](https://docs.uilicious.com/scripting/http\_status\_code\_assertion.html#uiisnot404)               | Asserts that the status code for the current page is **NOT** 404 (Not Found).             |
-| [`UI.is500`](https://docs.uilicious.com/scripting/http\_status\_code\_assertion.html#uiis500)                     | Asserts that the status code for the current page is 500 (Internal Server Error).         |
-| [`UI.isNot500`](https://docs.uilicious.com/scripting/http\_status\_code\_assertion.html#uiisnot500)               | Asserts that the status code for the current page is **NOT** 500 (Internal Server Error). |
+| [`UI.isStatusCode`](./_assertion.html#uiisstatuscode)       | Asserts that the status code for the current page is a specific status code.              |
+| [`UI.isNotStatusCode`](./_assertion.html#uiisnotstatuscode) | Asserts that the status code for the current page is **NOT** a specific status code.      |
+| [`UI.is200`](./_assertion.html#uiis200)                     | Asserts that the status code for the current page is 200 (OK).                            |
+| [`UI.isNot200`](./_assertion.html#uisinot200)               | Asserts that the status code for the current page is **NOT** 200 (OK).                    |
+| [`UI.is404`](./_assertion.html#usis404)                     | Asserts that the status code for the current page is 404 (Not Found).                     |
+| [`UI.isNot404`](./_assertion.html#uiisnot404)               | Asserts that the status code for the current page is **NOT** 404 (Not Found).             |
+| [`UI.is500`](./_assertion.html#uiis500)                     | Asserts that the status code for the current page is 500 (Internal Server Error).         |
+| [`UI.isNot500`](./_assertion.html#uiisnot500)               | Asserts that the status code for the current page is **NOT** 500 (Internal Server Error). |
 
 ***
 
