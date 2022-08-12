@@ -8,6 +8,53 @@
 * Minor: Contains new features
 * Patch: Contains enhancements and bug fixes only
 
+### 3.26.1 <a href="#3261" id="3261"></a>
+
+_Released 05 August 2022_
+
+**🐞 Fixes**
+
+* Web Studio
+  * Fixed the issue with incorrect link redirection when inviting a user to create an account on uilicious
+
+### 3.26.0 <a href="#3260" id="3260"></a>
+
+_Released 04 August 2022_
+
+**🚀 New Features**
+
+* Web Studio
+  * Project Webdriver configuration
+    * You can now connect directly to your UIlicious test runner via a Webdriver connection. The Webdriver settings for can be found in Project Settings (the gear icon) > Webdriver.
+
+**💪 Enhancement**
+
+* Web Studio
+  * Word wrap is disabled by default
+  * Added “Auto-Format” button to help you automatically fix code indentation
+
+### 3.25.2 <a href="#3252" id="3252"></a>
+
+_Released 26 July 2022_
+
+**💪 Enhancement**
+
+* Web Studio
+  * Test Runner Status
+    * The UI for the test runner status dropdown has been improved. It now shows the total available test runners and also the ‘Dataset’ for each test run.
+
+### 3.25.1 <a href="#3251" id="3251"></a>
+
+_Released 22 July 2022_
+
+**🐞 Fixes**
+
+* Web Studio
+  * Fixed an issue where “Edit Dataset” button is hidden when value entered is too long
+  * Increased margin size around the URL display in test report
+  * Fixed dataset retrieving. Dataset is now retrieved from the server every time the “edit dataset form” button is opened
+  * Fixed runs tab pagination and counter not updating properly
+
 ### 3.25.0 <a href="#3250" id="3250"></a>
 
 _Released 21 June 2022_
