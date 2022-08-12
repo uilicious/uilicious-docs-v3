@@ -15,7 +15,7 @@
 
 * Setting up jobs
   * [Schedule a Job](how-to-guides/Setting-up-jobs/schedule-a-job.md)
-  * [Setup Notifications](how-to-guides/Setting-up-jobs/setup-notifications.md)
+  * [Setup Notifications](how-to-guides/Setting-up-jobs/set-up-notifications.md)
   * [Set up Email Notifications](how-to-guides/Setting-up-jobs/set-up-email-notifications.md)
   * [Set up Discord Notifications](how-to-guides/Setting-up-jobs/set-up-discord-notifications.md)
   * [Set up Telegram Notifications](how-to-guides/Setting-up-jobs/set-up-telegram-notifications.md)

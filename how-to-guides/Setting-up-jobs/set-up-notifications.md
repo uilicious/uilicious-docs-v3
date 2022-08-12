@@ -2,7 +2,7 @@
 
 ## Introduction
 
-When scheduling an automated job, you also can be notified about the results of your test runs through [email alerts](./#set-up-email-notifications) or by setting up alerts on your communication platforms using webhooks.
+When scheduling an automated job, you also can be notified about the results of your test runs through [email alerts](./set-up-email-notifications) or by setting up alerts on your communication platforms using webhooks.
 
 We currently support the following communication platforms:
 
