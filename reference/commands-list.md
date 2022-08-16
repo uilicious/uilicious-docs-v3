@@ -47,7 +47,7 @@
 | <p><a href="./mouse-interactions/click-on-objects/I.click-and-I.doubleClick.html"><code>I.click</code><br><code>I.doubleClick</code></a><code></code></p> | Click or double click on an element                                       |
 | [`I.rightClick`](./mouse-interactions/click-on-objects/right-clicking-on-objects.html#irightclick)                                                          | Right click on an element                                                 |
 | [`I.hoverOn`](./mouse-interactions/hover-over-objects.html#ihoverOn)                                                                | Hover on an element                                                       |
-| [`I.dragTo`](h./mouse-interactions/drag-objects.html#idragto)                                                                  | Drag an element to another target element                                 |
+| [`I.dragTo`](./mouse-interactions/drag-objects.html#idragto)                                                                  | Drag an element to another target element                                 |
 | [`I.dragBy`](./mouse-interactions/drag-objects.html#idragby)                                                                  | Drag an element directionally by (x,y) pixel offset                       |
 | [`I.dragUp`](./mouse-interactions/drag-objects.html#idragup)                                                                  | Drag an element to the up by a given number of pixel                      |
 | [`I.dragDown`](./mouse-interactions/drag-objects.html#idragdown)                                                              | Drag an element to the down by a given number of pixel                    |
@@ -90,7 +90,7 @@
 | [`I.getCount`](./read-and-validate-page-elements/count-number-of-page-elements.html#igetcount)         | Get the number of occurances of a text or element |
 | [`I.getText`](./read-and-validate-page-elements/get-text-from-a-page-element.html#igettext)           | Get text content from an element                  |
 | [`I.getValue`](./read-and-validate-page-elements/get-value-from-an-input-element.html#igetvalue)         | Get value from an input element                   |
-| [`I.getPageTitle`](./validation-commands/get-and-validate-page-title.html#igetpagetitle) | Get the title of the current page                 |
+| [`I.getPageTitle`](./read-and-validate-page-elements/get-and-validate-page-title.html#igetpagetitle) | Get the title of the current page                 |
 
 ### Read and Validate Page Elements <a href="#read-and-validate-page-elements" id="read-and-validate-page-elements"></a>
 

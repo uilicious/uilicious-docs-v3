@@ -60,7 +60,7 @@
   * [Validate URL](reference/validation-commands/validate-url.md)
   * [Validate Form Input](reference/validation-commands/validate-form-input.md)
 * Handling Alerts
-  * [Interacting with Alerts](reference//Handling-Alerts/interacting-with-alerts.md)
+  * [Interacting with Alerts](reference/Handling-Alerts/interacting-with-alerts.md)
   * [Validate Alert](reference/interacting-with-alerts/validate-alert.md)
   * [Accept / Dismiss Alert](reference/interacting-with-alerts/accept-dismiss-alert.md)
   * [Fill Alert](reference/interacting-with-alerts/fill-alert.md)

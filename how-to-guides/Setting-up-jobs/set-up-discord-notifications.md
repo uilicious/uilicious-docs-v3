@@ -9,14 +9,13 @@ This section will guide you through the steps of setting up and integrating Disc
   * Step 1: [View the Notifications Section in UIlicious](set-up-discord-notifications.md#step-1-view-the-notifications-section-in-uilicious)
   * Step 2: [Making a Webhook URL in Discord](set-up-discord-notifications.md#step-2-making-a-webhook-in-discord)
   * Step 3: [Add the Webhook URL to Your UIlicious Notification Settings](set-up-discord-notifications.md#step-3-add-the-webhook-url-into-your-uilicious-notification-settings)
-  * [UIlicious Notification in Discord](set-up-discord-notifications.md#discord-webhook-example) Example&#x20;
 
 Once you have properly configured your webhook URL and added it to your Notification Settings, UIlicious can send test run alerts to your Discord channel.
 
 ### Prerequisites
 
 * Active Discord Account
-* Know how to [Schedule an Automated Job](../)
+* Know how to [Schedule an Automated Job](./how-to-guides/set-up-notification.md)
 * Basic Knowledge of Webhooks
 
 ### Step 1: View the Notifications Section in UIlicious
@@ -68,6 +67,4 @@ Now, that we have our Webhook URL, let's paste it in your UIlicious Notification
 Then, click the **Schedule** button.
 
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1652655093/ui-licious/setting-up-notifications/paste-your-webhook-URL-into\_UIlicious\_r0d0hf.png)
-
-### UIlicious Notification in Discord Example
 

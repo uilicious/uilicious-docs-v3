@@ -16,13 +16,11 @@ Let's build a better user experience, together.
 
 In this quick-start tutorial, you will learn how to create a basic user test.
 
-1. [Sign up for UI-licious](./#step-1-sign-up-for-ui-licious)
-2. [Create a Project](./#step-2-create-a-project)
-3. [Set up our First Test](./#step-3-set-up-our-first-test)
-4. [Learn Basic Commands](./#step-4-basic-commands)
-5. [Write our First Test](./#step-5-write-our-first-test)
-
-You can find [**External Resources**](./#external-learning-resources) at the end of this quick-start tutorial.
+1. [Sign up for UI-licious](./step-1-sign-up-for-ui-licious)
+2. [Create a Project](./step-2-create-a-project)
+3. [Set up our First Test](./step-3-set-up-our-first-test)
+4. [Learn Basic Commands](./step-4-basic-commands)
+5. [Write our First Test](./step-5-write-our-first-test)
 
 ### Step 1: Sign up for UI-licious
 
