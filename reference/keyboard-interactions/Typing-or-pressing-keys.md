@@ -1,6 +1,6 @@
 # Type/Press in input fields
 
-### `I.type / I.press` <a href="#itype--ipress" id="itype--ipress">
+### `I.type / I.press` <a href="#itype--ipress" id="itype--ipress"></a>
 
 > I.press and I.type are exactly the same thing - we simply provided these two versions for whichever linguistic preference you have.
 
