@@ -22,11 +22,11 @@ In this quick-start tutorial, you will learn how to create a basic user test.
 4. [Learn Basic Commands](./step-4-basic-commands)
 5. [Write our First Test](./step-5-write-our-first-test)
 
-### Step 1: Sign up for UI-licious
+### Step 1: Sign up for UI-licious <a href="#step-1-sign-up-for-ui-licious" id="step-1-sign-up-for-ui-licious"></a>
 
 Sign up for an account with UI-licious [here](https://user.uilicious.com/signup).
 
-### Step 2: Create a Project
+### Step 2: Create a Project <a href="#step-2-create-a-project" id="step-2-create-a-project"></a>
 
 Let's get started with creating our first user test on the UIlicious platform or also known as **UIlicious Studio**.
 
@@ -44,7 +44,7 @@ Then, click the blue **Create** button.
 
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649279350/ui-licious/amazon-getting-started-example/Signup-2a\_qeei98.png)
 
-### Step 3: Set up our First Test
+### Step 3: Set up our First Test <a href="#step-3-set-up-our-first-test" id="step-3-set-up-our-first-test"></a>
 
 Now, that we have named our first project, we will need to name our first test, and add the URL of the website we want to test.
 
@@ -58,7 +58,7 @@ Then, click the blue **Add** button.
 
 ![Click the blue Add button to add your first test to your Workspace in UI-licious. Your Workspace will display your user tests.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649113557/ui-licious/amazon-getting-started-example/Signup-3a\_gj9obg.png)
 
-### Step 4: Basic Commands
+### Step 4: Basic Commands <a href="#step-4-basic-commands" id="step-4-basic-commands"></a>
 
 Let's get started with our user journey with some basic commands.
 
@@ -75,7 +75,7 @@ We will use the most common commands for testing most of your web applications.
 | `I.fill`  | Fill in input boxes                                  |
 | `I.see`   | Assert that something is seen, typically, a message. |
 
-### Step 5: Write our First Test
+### Step 5: Write our First Test <a href="#step-5-write-our-first-test" id="step-5-write-our-first-test"></a>
 
 First, let's have our user visit [https://www.amazon.com](https://www.amazon.com) using the `I.goTo` command.
 

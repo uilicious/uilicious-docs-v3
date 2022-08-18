@@ -23,12 +23,12 @@ Once you have created and scheduled a job, you can configure them to send instan
 
 In this section, we will learn how to:
 
-* [Create a scheduled job ](./Schedule-a-Job)
-* [Delete a job](./How-to-Delete-a-Job)
-* [Disable a job](./How-to-Disable-a-Job)
-* [Check Job Status](./View-Status-of-a-Job)
+* [Create a scheduled job ](./#schedule-a-job)
+* [Delete a job](./#how-to-delete-a-job)
+* [Disable a job](./#how-to-disable-a-job)
+* [Check Job Status](./#view-status-of-a-job)
 
-If you are interested in setting up notifications to receive status updates about your scheduled job, check out our [How to Set Up Notifications](./set-up-notification.md) section.
+If you are interested in setting up notifications to receive status updates about your scheduled job, check out our [How to Set Up Notifications](./set-up-notifications.md) section.
 
 ### Using the Editor
 
@@ -44,7 +44,7 @@ In **Monitoring**, you can view your complete list of jobs.
 
 ![The blue Schedule a New Job button allows you to schedule a new job for your test scripts](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649282897/UI-licious:%20Monitoring/scheduleaJob-2\_klnawl.png)
 
-### Schedule a Job
+### Schedule a Job <a href="#schedule-a-job" id="schedule-a-job"></a>
 
 Under **General**, name your scheduled job.
 
@@ -68,7 +68,7 @@ You can also choose to schedule your job to run once a day or at regular interva
 
 ![UI-licious allows you to schedule your jobs daily or weekly.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649286864/UI-licious:%20Monitoring/ScheduleaJob-6\_df88hs.gif)
 
-### How to Delete a Job
+### How to Delete a Job <a href="#how-to-delete-a-job" id="how-to-delete-a-job"></a>
 
 **WARNING**:\
 \
@@ -90,7 +90,7 @@ Then, click the red **Delete** button.
 
 Confirm you have deleted the selected job.
 
-### How to Disable a Job
+### How to Disable a Job <a href="#how-to-disable-a-job" id="how-to-disable-a-job"></a>
 
 **Good to know:**\
 \
@@ -112,7 +112,7 @@ Confirm there is a **Scheduled test run is a disabled** label.
 
 ![A black Scheduled test run is disabled label should appear after disabling a job.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649288248/UI-licious:%20Monitoring/ScheduleaJob-10\_sxejyh.png)
 
-### View Status of a Job
+### View Status of a Job <a href="#view-status-of-a-job" id="view-status-of-a-job"></a>
 
 A **status** tells the current state of your scheduled job in UIlicious.
 
@@ -122,4 +122,4 @@ Under **Status**, click the dropdown menu to reveal more options.
 
 ### Set Up Notifications
 
-If you are interested in learning more about setting up your notifications (whether it be email or an application of your choice), view our [How to Set Up Notifications](./set-up-notification.md) section.
+If you are interested in learning more about setting up your notifications (whether it be email or an application of your choice), view our [How to Set Up Notifications](./set-up-notifications.md) section.
