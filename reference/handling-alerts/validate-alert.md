@@ -1,11 +1,9 @@
 # Validate Alert
 
 {% hint style="info" %}
-**Please take note:**
-
-* Browser support:
-  * Fully supported on Chrome and Microsoft Edge
-  * Unstable on Firefox, Safari, and IE11 - work in progress to fully support alerts
+# NOTE:
+- Fully supported on Chrome and Microsoft Edge
+- Unstable on Firefox, Safari, and IE11 - work in progress to fully support alerts
 {% endhint %}
 
 ### `I.seeAlert` <a href="#iseealert" id="iseealert"></a>
