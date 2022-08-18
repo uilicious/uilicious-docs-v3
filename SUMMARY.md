@@ -39,7 +39,6 @@
   * [Refresh Page](reference/page-navigation/refresh-page.md)
   * [Switch Tabs](reference/page-navigation/switch-tabs.md)
   * [Close Tab](reference/page-navigation/close-tab.md)
-  * [Get and Validate page title](reference/page-navigation/get-and-validate-page-title.md)
   * [Validate Page Status](reference/page-navigation/validate-page-status.md)
 * Mouse Interactions
   * [Click on Objects](reference/mouse-interactions/click-on-objects/I.click-and-I.doubleClick.md)
@@ -87,6 +86,7 @@
   * [Get text from a page element](reference/read-and-validate-page-elements/get-text-from-a-page-element.md)
   * [Get value from an input element](reference/read-and-validate-page-elements/get-value-from-an-input-element.md)
   * [Get value from page element attribute](reference/read-and-validate-page-elements/get-value-from-page-element-attribute.md)
+  * [Get and Validate page title](reference/read-and-validate-page-elements/get-and-validate-page-title.md)
   * [Validate page element attribute](reference/read-and-validate-page-elements/validate-page-element-attribute.md)
   * [Validate page element class](reference/read-and-validate-page-elements/validate-page-element-class.md)
   * [Get HTML code for a page element](reference/read-and-validate-page-elements/get-html-code-for-a-page-element.md)
