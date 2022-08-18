@@ -10,7 +10,7 @@ Assert the message displayed on the alert.
 
 #### Usage <a href="#usage" id="usage"></a>
 
-```
+```javascript
 I.seeAlert(text)
 ```
 
@@ -20,7 +20,7 @@ I.seeAlert(text)
 
 #### Example(s) <a href="#examples" id="examples"></a>
 
-```
+```javascript
 UI.execute("alert('hello    world')") // opens an alert with the message "Hello world"
 I.seeAlert() // pass
 I.seeAlert("hello world") // pass

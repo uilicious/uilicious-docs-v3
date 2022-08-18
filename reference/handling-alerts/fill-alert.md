@@ -12,7 +12,7 @@ Fill the text box on the alert.
 
 #### Usage <a href="#usage" id="usage"></a>
 
-```
+```javascript
 I.fillAlert(value)
 ```
 
@@ -22,7 +22,7 @@ I.fillAlert(value)
 
 #### Example(s) <a href="#examples" id="examples"></a>
 
-```
+```javascript
 UI.execute("prompt('What's your name?')") // open a prompt dialog
 I.fillAlert("Jane") // fill in the prompt dialog with "Jane"
 I.acceptAlert() // press "Ok"

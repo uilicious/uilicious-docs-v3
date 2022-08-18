@@ -17,7 +17,7 @@ Once you have properly configured your webhook URL and added it to your Notifica
 
 * Active Telegram Account
 * Telegram Installed (through App Store or Google Play)
-* Know how to [Schedule an Automated Job](../)
+* Know how to [Schedule an Automated Job](./schedule-a-job.html)
 
 ### Step 1: View the Notifications Section in UIlicious
 

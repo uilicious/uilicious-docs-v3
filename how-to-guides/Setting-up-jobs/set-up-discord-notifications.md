@@ -15,7 +15,7 @@ Once you have properly configured your webhook URL and added it to your Notifica
 ### Prerequisites
 
 * Active Discord Account
-* Know how to [Schedule an Automated Job](./how-to-guides/set-up-notification.md)
+* Know how to [Schedule an Automated Job](./schedule-a-job.html)
 * Basic Knowledge of Webhooks
 
 ### Step 1: View the Notifications Section in UIlicious

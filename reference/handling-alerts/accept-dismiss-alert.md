@@ -10,7 +10,7 @@ Press the "Ok" button (or the equivalent in other languages) on the alert.
 
 #### Usage <a href="#usage" id="usage"></a>
 
-```
+```javascript
 I.acceptAlert()
 ```
 
@@ -22,6 +22,6 @@ Press the "Cancel" (or the equivalent in other languages) button on the alert.
 
 #### Usage <a href="#usage" id="usage"></a>
 
-```
+```javascript
 I.cancelAlert()
 ```
