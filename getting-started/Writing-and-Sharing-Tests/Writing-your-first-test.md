@@ -16,11 +16,11 @@ Let's build a better user experience, together.
 
 In this quick-start tutorial, you will learn how to create a basic user test.
 
-1. [Sign up for UI-licious](./Writing-and-Sharing-Tests/Writing-your-first-test.html#step-1-sign-up-for-ui-licious)
-2. [Create a Project](./Writing-and-Sharing-Tests/Writing-your-first-test.html#step-2-create-a-project)
-3. [Set up our First Test](./Writing-and-Sharing-Tests/Writing-your-first-test.html#step-3-set-up-our-first-test)
-4. [Learn Basic Commands](./Writing-and-Sharing-Tests/Writing-your-first-test.html#step-4-basic-commands)
-5. [Write our First Test](./Writing-and-Sharing-Tests/Writing-your-first-test.html#step-5-write-our-first-test)
+1. [Sign up for UI-licious](./Writing-your-first-test.html#step-1-sign-up-for-ui-licious)
+2. [Create a Project](./Writing-your-first-test.html#step-2-create-a-project)
+3. [Set up our First Test](./Writing-your-first-test.html#step-3-set-up-our-first-test)
+4. [Learn Basic Commands](./Writing-your-first-test.html#step-4-basic-commands)
+5. [Write our First Test](./Writing-your-first-test.html#step-5-write-our-first-test)
 
 ### Step 1: Sign up for UI-licious <a href="#step-1-sign-up-for-ui-licious" id="step-1-sign-up-for-ui-licious"></a>
 
