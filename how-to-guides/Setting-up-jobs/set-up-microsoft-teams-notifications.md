@@ -9,7 +9,7 @@ This section will guide you through the steps of setting up and integrating Team
   * Step 1: [View the Notifications Section in UIlicious](set-up-microsoft-teams-notifications.md#step-1-view-the-notifications-section-in-uilicious)
   * Step 2: [Making a Webhook with Teams](set-up-microsoft-teams-notifications.md#step-2-making-a-webhook-with-teams)
   * Step 3: [Add the Webhook URL to Your UIlicious Notification Settings](set-up-microsoft-teams-notifications.md#step-3-add-the-webhook-url-to-your-uilicious-notification-settings)
-  * [UIlicious Notification in Teams Example](set-up-microsoft-teams-notifications.md#uilicious-notification-in-teams)
+  * [UIlicious Notification in Teams Example](set-up-microsoft-teams-notifications.md#uilicious-notification-in-teams-example)
 
 Once you have properly configured your webhook URL and added it to your Notification Settings, UIlicious can send test run alerts to your Teams.
 

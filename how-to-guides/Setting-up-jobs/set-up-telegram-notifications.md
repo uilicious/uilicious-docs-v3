@@ -7,7 +7,7 @@ This section will guide you through the steps of setting up and integrating Tele
 * [Prerequisites](set-up-telegram-notifications.md#prerequisites)
 * Setting up Telegram Notifications in UIlicious
   * Step 1: [View the Notifications Section in UIlicious](set-up-telegram-notifications.md#step-1-view-the-notifications-section-in-uilicious)
-  * Step 2: [Making a Webhook with Integram](set-up-telegram-notifications.md#step-2-making-a-webhook-in-discord)&#x20;
+  * Step 2: [Making a Webhook with Integram](set-up-telegram-notifications.md#step-2-making-a-webhook-url-with-integram)&#x20;
   * Step 3: [Add the Webhook URL to Your UIlicious Notification Settings](set-up-telegram-notifications.md#step-3-add-the-webhook-url-to-your-uilicious-notification-settings)
   * [UIlicious Notification in Telegram Example](set-up-telegram-notifications.md#uilicious-notification-in-telegram-example)
 
