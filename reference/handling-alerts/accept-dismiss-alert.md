@@ -1,9 +1,7 @@
 # Accept / Dismiss Alert
 
 {% hint style="info" %}
-# NOTE:
-- Fully supported on Chrome and Microsoft Edge
-- Unstable on Firefox, Safari, and IE11 - work in progress to fully support alerts
+NOTE: Fully supported on **Chrome** and **Microsoft Edge**. Unstable on **Firefox**, **Safari**, and **IE11** - work in progress to fully support alerts
 {% endhint %}
 
 ### `I.acceptAlert` <a href="#iacceptalert" id="iacceptalert"></a>
