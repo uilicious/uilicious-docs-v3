@@ -66,7 +66,7 @@
 
 | Command                                                                                                                                                                                                          | Description                     |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| <p><a href="./keyboard-interactions/Typing-or-pressing-keys.html#itype--ipress"><code>I.type</code></a><br><a href="h./keyboard-interactions/Typing-or-pressing-keys.html#itype--ipress"><code>I.press</code></a></p> | Press a key or a string of keys |
+| <p><a href="./keyboard-interactions/Typing-or-pressing-keys.html#itype--ipress"><code>I.type</code></a><br><a href="./keyboard-interactions/Typing-or-pressing-keys.html#itype--ipress"><code>I.press</code></a></p> | Press a key or a string of keys |
 | [`I.pressEnter`](./keyboard-interactions/Typing-or-pressing-keys.html#ipressenter)                                                                                                                                 | Press the `Enter` key           |
 | [`I.pressUp`](./keyboard-interactions/Typing-or-pressing-keys.html#ipressup)                                                                                                                                       | Press the ↑ key                 |
 | [`I.pressDown`](./keyboard-interactions/Typing-or-pressing-keys.html#ipressdown)                                                                                                                                   | Press the ↓ key                 |
