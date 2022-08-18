@@ -9,8 +9,8 @@ These commands allow you to assert the status code of the current page.
 | [`UI.isStatusCode`](./validate-page-status.html#uiisstatuscode)       | Asserts that the status code for the current page is a specific status code.              |
 | [`UI.isNotStatusCode`](./validate-page-status.html#uiisnotstatuscode) | Asserts that the status code for the current page is **NOT** a specific status code.      |
 | [`UI.is200`](./validate-page-status.html#uiis200)                     | Asserts that the status code for the current page is 200 (OK).                            |
-| [`UI.isNot200`](./validate-page-status.html#uisinot200)               | Asserts that the status code for the current page is **NOT** 200 (OK).                    |
-| [`UI.is404`](./validate-page-status.html#usis404)                     | Asserts that the status code for the current page is 404 (Not Found).                     |
+| [`UI.isNot200`](./validate-page-status.html#uiisnot200)               | Asserts that the status code for the current page is **NOT** 200 (OK).                    |
+| [`UI.is404`](./validate-page-status.html#uiis404)                     | Asserts that the status code for the current page is 404 (Not Found).                     |
 | [`UI.isNot404`](./validate-page-status.html#uiisnot404)               | Asserts that the status code for the current page is **NOT** 404 (Not Found).             |
 | [`UI.is500`](./validate-page-status.html#uiis500)                     | Asserts that the status code for the current page is 500 (Internal Server Error).         |
 | [`UI.isNot500`](./validate-page-status.html#uiisnot500)               | Asserts that the status code for the current page is **NOT** 500 (Internal Server Error). |
