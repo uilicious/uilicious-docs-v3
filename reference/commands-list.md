@@ -81,7 +81,7 @@
 | [`I.see`](./validation-commands/validate-page-content/i-see-command.html#isee)                   | Assert that an text or element is visible             |
 | [`I.dontSee`](./validation-commands/validate-page-content/i-see-command.html#idontSee)           | Assert that an text or element is NOT visible         |
 | [`I.count`](./validation-commands/validate-page-content/i-count-command.html#icount)               | Assert the number of occurances for a text or element |
-| [`I.seePageTitle`](./page-navigation/get-and-validate-page-title.html#iseepagetitle) | Assert the title of the current page                  |
+| [`I.seePageTitle`](./read-and-validate-page-elements/get-and-validate-page-title.html#iseepagetitle) | Assert the title of the current page                  |
 
 ### Page Content Extraction Commands <a href="#page-content-extraction-commands" id="page-content-extraction-commands"></a>
 
@@ -122,10 +122,10 @@
 
 | Command                                                                          | Description                                                                                   |
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| [`I.seeAlert`](./interacting-with-alerts/validate-alert.html#iseealert)       | Assert that an alert is displayed, and/or that an expected message is displayed on the alert. |
-| [`I.acceptAlert`](./interacting-with-alerts/accept-dismiss-alert.html#iacceptalert) | Press the "Ok" button on the alert                                                            |
-| [`I.cancelAlert`](./interacting-with-alerts/accept-dismiss-alert.html#icancelalert) | Press the "Cancel" button on the alert                                                        |
-| [`I.fillAlert`](./interacting-with-alerts/fill-alert.html#ifillalert)     | Fill the text box on the alert                                                                |
+| [`I.seeAlert`](./handling-alerts/validate-alert.html#iseealert)       | Assert that an alert is displayed, and/or that an expected message is displayed on the alert. |
+| [`I.acceptAlert`](./handling-alerts/accept-dismiss-alert.html#iacceptalert) | Press the "Ok" button on the alert                                                            |
+| [`I.cancelAlert`](./handling-alerts/accept-dismiss-alert.html#icancelalert) | Press the "Cancel" button on the alert                                                        |
+| [`I.fillAlert`](./handling-alerts/fill-alert.html#ifillalert)     | Fill the text box on the alert                                                                |
 
 ### Utility Commands <a href="#utility-commands" id="utility-commands"></a>
 
