@@ -217,4 +217,4 @@
 
 | Command                                                                          | Description                                           |
 | -------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [`UI.resize`](https://docs.uilicious.com/scripting/window\_resize.html#uiresize) | Resize the resolution to a specific width and height. |
+| [`UI.resize`](./browser-and-resolution-settings/resizing-window.html#uiresize) | Resize the resolution to a specific width and height. |
