@@ -26,11 +26,11 @@
 
 * [Commands List](reference/commands-list.md)
 
-## Best Practices
+## Use Cases
 
 * [Salesforce](best-practices/salesforce.md)
 
-## Full Reference
+## Test Commands
 
 * Configurations
   * [Uilicious IP List](reference/configurations/cloud-ip-list.md)
