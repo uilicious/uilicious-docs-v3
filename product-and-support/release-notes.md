@@ -8,6 +8,15 @@
 * Minor: Contains new features
 * Patch: Contains enhancements and bug fixes only
 
+### 3.26.2 <a href="#3262" id="3262"></a>
+
+_Released 17 August 2022_
+
+**🐞 Fixes**
+
+* Inboxkitten
+  * Fixed the issue where email content is empty
+
 ### 3.26.1 <a href="#3261" id="3261"></a>
 
 _Released 05 August 2022_
