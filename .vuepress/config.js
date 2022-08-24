@@ -37,6 +37,9 @@ module.exports = {
 		sidebarDepth:10
 	}),
 
+	// title of the site
+	title: "Learn UIlicious",
+
 	// Lets tweak the search plugin
 	plugins: [
 		searchPlugin({
