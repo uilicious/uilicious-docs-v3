@@ -40,6 +40,9 @@ module.exports = {
 	// title of the site
 	title: "Learn UIlicious",
 
+	// description of the site
+	description: "Learn how to automate tests for your websites with UIlicious.",
+
 	// extra tags to inject into the page HTML <head>
 	head: [
 		['link', {rel: 'icon', href: '/static/favicon/favicon-128.png'}]
