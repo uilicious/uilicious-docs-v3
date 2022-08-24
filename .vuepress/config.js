@@ -40,6 +40,11 @@ module.exports = {
 	// title of the site
 	title: "Learn UIlicious",
 
+	// extra tags to inject into the page HTML <head>
+	head: [
+		['link', {rel: 'icon', href: '/static/favicon/favicon-128.png'}]
+	],
+
 	// Lets tweak the search plugin
 	plugins: [
 		searchPlugin({
