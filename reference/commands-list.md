@@ -1,4 +1,12 @@
-# Commands List
+---
+# By default, the H1 title will be used at the page title. Set title to override the default.
+# title: <enter page title and uncomment this line>
+
+# Write a short description about the page. This will be displayed on google search results.
+description: A list of all commands available in UIlicious
+---
+
+# List of commands
 
 ### Page Navigation Commands <a href="#page-navigation-commands" id="page-navigation-commands"></a>
 
