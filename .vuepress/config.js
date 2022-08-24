@@ -9,13 +9,16 @@
 const { defaultTheme } = require('@vuepress/theme-default')
 const { searchPlugin } = require('@vuepress/plugin-search')
 
+// Lets tweak base path to /v3/
+let basePath = "/v3/"
+
 module.exports = {
 
 	// Lets tweak base path to /v3/
-	base: "/v3/",
+	base: basePath,
 
 	// Change the destribution build dir
-	dest: "dist/v3/",
+	dest: "dist" + basePath,
 
 	// Lets load the default theme, with customization
 	// thankfully we already share the similarlish green theme
@@ -45,7 +48,7 @@ module.exports = {
 
 	// extra tags to inject into the page HTML <head>
 	head: [
-		['link', {rel: 'icon', href: '/static/favicon/favicon-128.png'}]
+		['link', {rel: 'icon', href: basePath + 'static/favicon/favicon-128.png'}]
 	],
 
 	// Lets tweak the search plugin
