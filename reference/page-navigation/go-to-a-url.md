@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.goTo command to navigate to a URL in your UIlicious test.
+---
+
 # Go to a URL
 
 ### `I.goTo` <a href="#igoto" id="igoto"></a>
