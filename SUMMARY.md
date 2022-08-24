@@ -36,7 +36,7 @@
   * [Uilicious IP List](reference/configurations/cloud-ip-list.md)
 * Page Navigation
   * [Go to a URL](reference/page-navigation/go-to-a-url.md)
-  * [Ref`res`h Page](reference/page-navigation/refresh-page.md)
+  * [Refresh Page](reference/page-navigation/refresh-page.md)
   * [Switch Tabs](reference/page-navigation/switch-tabs.md)
   * [Close Tab](reference/page-navigation/close-tab.md)
   * [Validate Page Status](reference/page-navigation/validate-page-status.md)
