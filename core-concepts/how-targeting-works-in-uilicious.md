@@ -1,3 +1,11 @@
+---
+# By default, the H1 title will be used at the page title. Set title to override the default.
+title: How targeting works in UIlicious
+
+# Write a short description about the page. This will be displayed on google search results.
+description: Understand how UIlicious find elements on your website.
+---
+
 # How Targeting Works in UIlicious
 
 ## What is UIlicious?

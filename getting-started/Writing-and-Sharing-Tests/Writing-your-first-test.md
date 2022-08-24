@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn to automate your first test for your website using UIlicious with this quick guide.
+---
+
 # Write your first test
 
 ## Getting Started with UIlicious
