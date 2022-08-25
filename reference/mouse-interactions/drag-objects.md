@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.dragTo command to drag various elements in your UIlicious test.
+---
+
 # Drag Objects
 
 ### `I.dragTo` <a href="#idragto" id="idragto"></a>

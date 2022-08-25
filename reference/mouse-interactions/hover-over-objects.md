@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.hoverOn command to hover on various elements in your UIlicious test.
+---
+
 # Hover over Objects
 
 

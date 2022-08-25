@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: List of IP that UIlicious uses when running tests.
+---
+
 # Uilicious Cloud IP List
 
 {% hint style="info" %}
