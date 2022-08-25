@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.type or I.press command to enter keyboard input in your UIlicious test.
+---
+
 # Type/Press in input fields
 
 ### `I.type / I.press` <a href="#itype--ipress" id="itype--ipress"></a>
