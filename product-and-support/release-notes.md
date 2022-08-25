@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: List of updates and changes of UIlicious throughout the years.
+---
+
 # Release Notes
 
 **What the version numbers mean:**

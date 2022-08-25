@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: List of best practices when testing Salesforce with UIlicious.
+---
+
 # Salesforce
 
 ## Getting Started with Testing Salesforce <a href="#getting-started-with-testing-salesforce" id="getting-started-with-testing-salesforce"></a>
