@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn what are the basics of UIlicious.
+---
+
 # What is UIlicious?
 
 [UI-licious](https://uilicious.com/) is a **simple** and **robust** tool for automating interactions with modern web applications.
