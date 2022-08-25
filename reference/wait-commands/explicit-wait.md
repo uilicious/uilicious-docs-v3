@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.wait command to pause your UIlicious test during a test run.
+---
+
 # Explicit Wait
 
 ### `I.wait` <a href="#iwait" id="iwait"></a>

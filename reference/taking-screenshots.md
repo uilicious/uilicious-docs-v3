@@ -1,6 +1,6 @@
 ---
-description: >-
-  If you haven't already noticed, screenshots are automatically taken for every
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to take screenshots in your UIlicious test. If you haven't already noticed, screenshots are automatically taken for every
   command. The screenshots taken are usually of what's visible in the viewport -
   meaning what you as a user would see on you
 ---

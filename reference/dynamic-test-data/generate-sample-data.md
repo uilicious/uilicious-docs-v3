@@ -1,7 +1,6 @@
 ---
-description: >-
-  The SAMPLE commands allow you to create sample details for your test scripts.
-  Most of the SAMPLE commands that will be introduced will rely on the ChanceJS
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the SAMPLE commands to create sample details in your UIlicious test. Most of the SAMPLE commands that will be introduced will rely on the ChanceJS
   library.
 ---
 

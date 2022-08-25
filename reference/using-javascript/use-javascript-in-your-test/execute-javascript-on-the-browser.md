@@ -1,6 +1,8 @@
 ---
-description: Executes Javascript on the browser.
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to execute Javascript on the browser in your UIlicious test. 
 ---
+
 
 # Execute Javascript on the Browser
 

@@ -1,6 +1,6 @@
 ---
-description: >-
-  UI-licious is built on Javascript, so you can go crazy with variables,
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use loops and conditionals in your UIlicious test. UI-licious is built on Javascript, so you can go crazy with variables,
   functions, loops and conditionals!
 ---
 
