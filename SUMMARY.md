@@ -32,29 +32,28 @@
   * [Switch Tabs](reference/page-navigation/switch-tabs.md)
   * [Close Tab](reference/page-navigation/close-tab.md)
   * [Validate Page Status](reference/page-navigation/validate-page-status.md)
-* Mouse Interactions
-  * [Click on Objects](reference/mouse-interactions/click-on-objects/I.click-and-I.doubleClick.md)
-  * [Right Clicking on Objects](reference/mouse-interactions/click-on-objects/right-clicking-on-objects.md)
-  * [Hover over Objects](reference/mouse-interactions/hover-over-objects.md)
-  * [Drag Objects](reference/mouse-interactions/drag-objects.md)
-  * [Scroll Page](reference/mouse-interactions/scroll-page.md)
-* Keyboard Interactions
-  * Filling Forms
-    * [Fill input fields](reference/keyboard-interactions/filling-forms/fill-input-fields.md)
-    * [Select Checkboxes and Radio Buttons](reference/keyboard-interactions/filling-forms/select-checkboxes-and-radio-buttons.md)
-    * [Select Dropdowns](reference/keyboard-interactions/filling-forms/select-dropdowns.md)
-    * [Upload Files](reference/keyboard-interactions/filling-forms/upload-files.md)
-* Validation Commands
-  * Validate Page Content
-    * [I see Command](reference/validation-commands/validate-page-content/i-see-command.md)
-    * [I count Command](reference/validation-commands/validate-page-content/i-count-command.md)
   * [Validate URL](reference/validation-commands/validate-url.md)
+* Mouse Actions
+  * [Click](reference/mouse-interactions/click-on-objects/I.click-and-I.doubleClick.md)
+  * [Right Click](reference/mouse-interactions/click-on-objects/right-clicking-on-objects.md)
+  * [Hover](reference/mouse-interactions/hover-over-objects.md)
+  * [Drag](reference/mouse-interactions/drag-objects.md)
+  * [Scroll](reference/mouse-interactions/scroll-page.md)
+* Keyboard Actions
+  * [Typing](reference/keyboard-interactions/Typing-or-pressing-keys.md)
+* Forms
+  * [Fill text fields](reference/keyboard-interactions/filling-forms/fill-input-fields.md)
+  * [Select Checkboxes and Radio Buttons](reference/keyboard-interactions/filling-forms/select-checkboxes-and-radio-buttons.md)
+  * [Select Dropdowns](reference/keyboard-interactions/filling-forms/select-dropdowns.md)
+  * [Upload Files](reference/keyboard-interactions/filling-forms/upload-files.md)
   * [Validate Form Input](reference/validation-commands/validate-form-input.md)
+* Validate Page Content
+  * [I see Command](reference/validation-commands/validate-page-content/i-see-command.md)
+  * [I count Command](reference/validation-commands/validate-page-content/i-count-command.md)
 * Handling Alerts
-  * [Interacting with Alerts](reference/handling-alerts/interacting-with-alerts.md)
-  * [Validate Alert](reference/handling-alerts/validate-alert.md)
   * [Accept / Dismiss Alert](reference/handling-alerts/accept-dismiss-alert.md)
   * [Fill Alert](reference/handling-alerts/fill-alert.md)
+  * [Validate Alert](reference/handling-alerts/validate-alert.md)
 * [Handling iFrames](reference/handling-iframes.md)
 * [Handling cookies](reference/handling-cookies.md)
 * [Handling local storage](reference/handling-local-storage.md)

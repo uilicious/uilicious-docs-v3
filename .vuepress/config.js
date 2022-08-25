@@ -36,8 +36,10 @@ module.exports = {
 
 		// Load the sidebar menu, from summary.md
 		sidebar: require("./summary-to-sidebar").default,
+		
 		// Support deep nesting of subpage "table-of-content"
-		sidebarDepth:10
+		sidebarDepth: 0 // don't show headers
+		// sidebarDepth: 1 // show h2 headers
 	}),
 
 	// title of the site
