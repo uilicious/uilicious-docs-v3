@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to setup scheduled job notification on UIlicious via Discord webhook.
+---
+
 # Set up Discord Notifications
 
 In this section, you will learn how to set up notifications on Discord using their provided webhook.

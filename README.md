@@ -1,6 +1,6 @@
 ---
 # Write a short description about the page. This will be displayed on google search results.
-description: Learn what are the basics of UIlicious.
+description: Learn how to use UIlicious with this quickstart guide.
 ---
 
 # What is UIlicious?

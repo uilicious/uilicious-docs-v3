@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: This section will let you know how to setup UIlicious automated job notifications on different channels.
+---
+
 # Setup a notification
 
 ## Introduction

@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to setup scheduled job notification on UIlicious via Microsoft Teams webhooks.
+---
+
 # Set up Microsoft Teams Notifications
 
 In this section, you will learn how to set up notifications on Teams.

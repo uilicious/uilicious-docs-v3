@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to setup scheduled job notification on UIlicious via email.
+---
+
 # Set up Email Notifications
 
 When scheduling a new job, you have the option to **Notify by Email** by turning the toggle on.&#x20;
