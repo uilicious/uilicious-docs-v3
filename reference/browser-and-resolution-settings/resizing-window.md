@@ -1,3 +1,9 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the different commands to resize the resolution of the browser in your UIlicious test. 
+---
+
+
 # Window resize commands
 
 ### `UI.resize` <a href="#uiresize" id="uiresize"></a>

@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.getValue command to get the value of an input element in your UIlicious test.
+---
+
 # Get value from an input element
 
 ### `I.getValue` <a href="#igetvalue" id="igetvalue"></a>

@@ -1,6 +1,6 @@
 ---
-description: >-
-  There are three commands for getting the HTML for an element. These commands
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the different commands to get the HTML code for a page element in your UIlicious test. There are three commands for getting the HTML for an element. These commands
   return a markup of an element as a string.
 ---
 

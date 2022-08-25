@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the TEST.stop command to stop a UIlicious test during a test run. 
+---
+
 # Stop Command
 
 ### `TEST.stop` <a href="#teststop" id="teststop"></a>

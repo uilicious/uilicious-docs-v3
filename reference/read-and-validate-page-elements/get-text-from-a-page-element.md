@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.getText command to get the text content of an element in your UIlicious test.
+---
+
 # Get text from a page element
 
 ### `I.getText` <a href="#igettext" id="igettext"></a>

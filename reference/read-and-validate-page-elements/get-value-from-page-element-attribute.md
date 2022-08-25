@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the different commands to get the page element attribute in your UIlicious test.
+---
+
 # Get value from page element attribute
 
 ### `UI.getAttributes` <a href="#uigetattributes" id="uigetattributes"></a>

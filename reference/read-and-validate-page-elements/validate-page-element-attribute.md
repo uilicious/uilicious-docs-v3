@@ -1,5 +1,6 @@
 ---
-description: Assert the presence or the expected value of an attribute on an element.
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the different commands to assert the presence or the expected value of an attribute on an element in your UIlicious test.
 ---
 
 # Validate page element attribute

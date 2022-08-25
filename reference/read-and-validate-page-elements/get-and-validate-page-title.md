@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.seePageTitle command to assert the title of the current page in your UIlicious test.
+---
+
 # Get and Validate page title
 
 ### `I.seePageTitle` <a href="#iseepagetitle" id="iseepagetitle"></a>

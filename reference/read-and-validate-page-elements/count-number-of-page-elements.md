@@ -1,5 +1,6 @@
 ---
-description: Get the number of occurrences for a text or element
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.getCount command to get the number of occurrences of a text or element in your UIlicious test. 
 ---
 
 ## `I.getCount`

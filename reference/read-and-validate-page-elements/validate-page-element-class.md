@@ -1,6 +1,8 @@
 ---
-description: Assert the presence of a CSS class on an element.
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the different commands to assert the presence of a CSS class on an element in your UIlicious test.
 ---
+
 
 # Validate page element class
 
