@@ -1,9 +1,11 @@
 ---
-description: >-
-  These commands allow you to access properties in local storage for the origin
-  of the current page.  This document assumes you already have some knowledge
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the different local storage commands to allow you to access properties in local storage for the origin
+  of the current page in your UIlicious test. This document assumes you already have some knowledge
   about local storage.
 ---
+
+
 
 # Handling local storage
 

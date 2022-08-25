@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.seeAlert command to validate that an alert is seen in your UIlicious test.
+---
+
 # Validate Alert
 
 {% hint style="info" %}

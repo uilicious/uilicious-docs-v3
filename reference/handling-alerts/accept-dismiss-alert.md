@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.acceptAlert or I.cancelAlert command to accept or dimiss alerts in your UIlicious test.
+---
+
 # Accept / Dismiss Alert
 
 {% hint style="info" %}

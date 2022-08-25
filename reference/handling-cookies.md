@@ -1,5 +1,6 @@
 ---
-description: You may use these commands for setting and asserting cookies.
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the different cookie commands for setting and asserting cookies in your UIlicious test.
 ---
 
 # Handling cookies

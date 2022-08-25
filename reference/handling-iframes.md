@@ -1,8 +1,9 @@
 ---
-description: >-
-  These commands can be used to limit the test to specific parts of a page and
-  handle iframes.
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the UI.context command to limit the test to specific parts of a page and
+  handle iframes in your UIlicious test.
 ---
+
 
 # Handling iFrames
 

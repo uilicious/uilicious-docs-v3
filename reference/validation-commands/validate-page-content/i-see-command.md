@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.see command to assert texts is seen in your UIlicious test.
+---
+
 # I see Command
 
 ### `I.see` <a href="#isee" id="isee"></a>

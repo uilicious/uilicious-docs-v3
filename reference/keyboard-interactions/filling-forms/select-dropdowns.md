@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.select command to select a dropdown in your UIlicious test.
+---
+
 # Select Dropdowns
 
 ### **Select a dropdown**

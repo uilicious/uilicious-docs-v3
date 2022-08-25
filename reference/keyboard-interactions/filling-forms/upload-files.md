@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.upload command to upload a file in your UIlicious test.
+---
+
 # Upload Files
 
 ### `I.upload` <a href="#iupload" id="iupload"></a>

@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.count command to count the number of occurances of texts in your UIlicious test.
+---
+
 # I count Command
 
 ### `I.count` <a href="#icount" id="icount"></a>

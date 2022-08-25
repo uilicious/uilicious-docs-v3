@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to use the I.select command to select a checkbox or radio buttons in your UIlicious test.
+---
+
 # Select Checkboxes and Radio Buttons
 
 ### `I.select` <a href="#iselect" id="iselect"></a>
