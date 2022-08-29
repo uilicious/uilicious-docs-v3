@@ -14,6 +14,10 @@ Use the `I.switchTab` command to switch to another tab.
 
 The `I.switchTab` command switches the active tab to the next tab. If the current active tab is the last tab in the browser window, this will switch to the first tab instead.
 
+{% tabs %}
+
+{% tab title="Example" %}
+
 ```javascript
 // First, go to google.com
 I.goTo("https://google.com")
@@ -27,11 +31,23 @@ I.goTo("https://wikipedia.com", {newTab: true})
 I.switchTab()
 ```
 
+{% endtab %}
+
+{% tab title="Result" %}
+
 <iframe title='switch-tab-example-1' src="https://snippet.uilicious.com/embed/test/public/DYUjuxtQUdpcKkFtR6WwtC?stepNum=2&autoplay=0" style="display: block; min-width: 600px; min-height: 400px; margin: 0 auto; border: none;"></iframe>
+
+{% endtab %}
+
+{% endtabs %}
 
 ## Switch using page title or tab number
 
 You can switch to the specific tab by using the `I.switchTab` command with the title of the page or number of the tab to switch to.
+
+{% tabs %}
+
+{% tab title="Example" %}
 
 ```javascript
 // First, go to google.com.
@@ -48,7 +64,15 @@ I.switchTab(1)
 I.switchTab("Wikipedia")
 ```
 
+{% endtab %}
+
+{% tab title="Result" %}
+
 <iframe title='switch-tab-example-1' src="https://snippet.uilicious.com/embed/test/public/8Nvyj5j96tigStdGC5EHm6?stepNum=2&autoplay=0" style="display: block; min-width: 600px; min-height: 400px; margin: 0 auto; border: none;"></iframe>
+
+{% endtab %}
+
+{% endtabs %}
 
 
 ## Reference

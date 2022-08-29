@@ -14,6 +14,9 @@ After the tab is closed, the window will automatically switch to the previous ta
 
 Note that this command will be ignored if the current tab is the only tab open. 
 
+{% tabs %}
+{% tab title="Example" %}
+
 ```javascript
 // First, go to google.com
 I.goTo("https://google.com")
@@ -27,4 +30,10 @@ I.goTo("https://wikipedia.com", {newTab: true})
 I.closeTab()
 ```
 
+{% endtab %}
+{% tab title="Result" %}
+
 <iframe title='close-tab-example-1' src="https://snippet.uilicious.com/embed/test/public/SnPdeAEHjMHgog77tp4egu?stepNum=2&autoplay=0" style="display: block; min-width: 600px; min-height: 400px; margin: 0 auto; border: none;"></iframe>
+
+{% endtab %}
+{% endtabs %}

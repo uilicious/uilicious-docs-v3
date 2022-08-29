@@ -184,8 +184,14 @@ html .page .custom-container.hint {
 // ---
 
 // Show the sections, for the relevent checked input
-.tabset input.tab-radio[type=radio]:checked + label.tab-label + section.tab-panel {
-    display: inline-flex;
+.tabset input.tab-radio[type=radio]:checked + label.tab-label {
+    display: block;
+}
+
+.tabset input.tab-radio[type=radio]:checked + section.tab-panel {
+    display: block;
+    // flex-direction: row;
+    // width: 100%;
 }
 
 // Hide the section for the respective unchecked input
@@ -205,6 +211,9 @@ body .tabset {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+    // border: 1px solid var(--c-border);
 }
 
 .tabset label.tab-label {
@@ -216,8 +225,11 @@ body .tabset {
 }
 
 .tabset section.tab-panel {
-    // Limit the length to 90% screen width
-    max-width: 90vw;
+
+    border-top: 1px solid var(--c-border);
+
+    width: 100%;
+    max-width: 100%;
 
     // Set it to be full width when possible
     flex: 1 0 100%;
@@ -226,9 +238,10 @@ body .tabset {
     order: 10;
 }
 
-// Patch code block sizing issues
 .tabset section.tab-panel div[class*=language] {
-    max-width:90vw;
+    display: block;
+    width: 100%;
+    max-width: 100%;
 }
 
 // ---
@@ -247,34 +260,28 @@ body .tabset {
     margin-right: -2px;
 
     // Give it a general button border
-    border: 2px solid var(--c-border);
-    border-bottom: 5px solid var(--c-border);
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--c-border);
 
-    // Border radius near the top
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
 }
 
 // Give the relevent border outline for selected
 .tabset input.tab-radio[type=radio]:checked + label.tab-label {
-    border-bottom: 5px solid var(--c-text-accent);
+    font-weight: bold;
+    border-bottom-color: var(--c-text-accent);
 }
 
 // Add the clickable cursor where relvent, and grey the background out
 .tabset input.tab-radio[type=radio]:not(:checked) + label.tab-label {
+    $color: #a6a6a6; 
     cursor: pointer;
-    background: var(--c-border);
+    color: $color;
+    border-bottom-color: $color;
 }
 
 .tabset section.tab-panel {
-    border: 2px solid var(--c-border);
 
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top:10px;
-    padding-bottom:10px;
+    padding: 1rem 0;
 
-    display: flex;
-    break-inside: avoid;
-    justify-content: space-around;
 }
