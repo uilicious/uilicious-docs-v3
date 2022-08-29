@@ -1,16 +1,97 @@
 ---
 # Write a short description about the page. This will be displayed on google search results.
 description: Learn how to use the I.goTo command to navigate to a URL in your UIlicious test.
+
+# add tags to improve search results
+tags: page navigation, go to, open new tab, basic authentication, url
 ---
 
-# Go to a URL
+# Go to URL
 
-### `I.goTo` <a href="#igoto" id="igoto"></a>
+Use the `I.goTo` command to navigate to a URL.
 
-Navigate to a URL.
+Set the URL that you want to go in the first parameter. The URL should be enclosed in quotes.
 
-#### Usage <a href="#usage" id="usage"></a>
+```javascript
+I.goTo("https://google.com")
+```
 
+The example above instructs the test browser to navigate to https://google.com.
+
+## Open a new tab
+
+The `I.goTo` command will always open URLs in the current active tab. To open an URL in a new tab instead, pass in an options object and set the `newTab` property to `true`.
+
+```javascript
+I.goTo("https://google.com", {newTab: true})
+```
+
+The example above will open https://google.com in a new tab.
+
+## Basic HTTP Authentication
+
+
+<img :src="$withBase('/static/img/basic_http_authentication_prompt.png')" alt="A webpage that shows a basic HTTP authentication prompt" style="display: block; min-width: 100%;">
+<figcaption style="text-align: center; margin-bottom: 2rem;"><small>Firefox displaying the sign in alert for website that requires Basic HTTP Authentication.</small></figcaption>
+
+If the website you want to access shows a browser alert to prompt for login credentials, you can pass in the username and password as part of the URL in the `I.goTo` command, like this:
+
+```javascript
+I.goTo("http://<USERNAME>:<PASSWORD>@topsecretbase.com")
+```
+Copy the line above, and replace `<USERNAME>`, `<PASSWORD>` and the url.
+
+## Relative Paths
+
+You can use relative paths instead of specifying the full URL. This is useful when you want to reuse a test for different test environments hosted at different base urls.
+
+### Example: Set the path
+
+```javascript
+I.goTo("https://mystore.com")
+I.goTo("/books/mystery")
+// This goes to "https://mystore.com/books/mystery"
+```
+
+### Example: Reference current directory using "."
+
+```javascript
+I.goTo("https://mystore.com/books/mystery")
+I.goTo("./romance")
+// This goes to "https://mystore.com/books/romance"
+```
+
+Note that the current directory is "/books", and the current document is "/books/mystery", so `I.goTo("./romance")` will navigate to "/books/romance".
+
+### Example: Go to parent path using '..'
+
+```javascript
+I.goTo("https://mystore.com/books/mystery")
+I.goTo("..")
+// This goes to "https://mystore.com/"
+```
+
+Note that the current directory is "/books", and the current document is "/books/mystery", so `I.goTo("..")` will navigate to the parent directory which is "/".
+
+### Example: Set query parameter
+
+```javascript
+I.goTo("https://mystore.com")
+I.goTo("?search='alice in wonderland'")
+// This goes to "https://mystore.com/?search='alice in wonderland'"
+```
+
+### Example: Set hash
+
+```javascript
+I.goTo("https://mystore.com/books/mystery")
+I.goTo("#popular")
+// This goes to "https://mystore.com/books/mystery#popular"
+```
+
+## Reference
+
+**Usage**
 ```javascript
 I.goTo(url);
 I.goTo(url, options);
@@ -28,103 +109,3 @@ I.goTo(url, options);
 | Option | Type      | Remarks                                                 |
 | ------ | --------- | ------------------------------------------------------- |
 | newTab | `boolean` | Flag to open the url in an new tab. Defaults to `false` |
-
-#### Example(s) <a href="#examples" id="examples"></a>
-
-**Absolute URL**
-
-```javascript
-I.goTo("https://mystore.com/shoes");
-```
-
-Go to [https://mystore.com/shoes](https://mystore.com/shoes).
-
-**Absolute URL with Basic HTTP Authentication**
-
-```javascript
-I.goTo("https://username:password@mystore.com/shoes");
-```
-
-Go to [https://mystore.com/shoes](https://mystore.com/shoes).
-
-**Relative URL**
-
-```javascript
-I.goTo("/shoes");
-```
-
-Go to the "/shoes" path of the current domain.
-
-The following table shows where the browser will be navigated to depending on the current URL:
-
-| Before                                                   | After                                                  |
-| -------------------------------------------------------- | ------------------------------------------------------ |
-| [https://storeA.com](https://storea.com/)                | [https://storeA.com/shoes](https://storea.com/shoes)   |
-| [https://storeB.com](https://storeb.com/)                | [https://storeB.com/shoes](https://storeb.com/shoes)   |
-| [https://mystore.com/wallet](https://mystore.com/wallet) | [https://mystore.com/shoes](https://mystore.com/shoes) |
-
-**Reference current folder using "."**
-
-You can also reference the current folder using a single "." character.
-
-For example, if the current URL is at "[https://mystore.com/popular/bags](https://mystore.com/popular/bags)".
-
-Then the current folder is "/popular".
-
-`I.goTo("./shoes")` will navigate to "[https://mystore.com/popular/shoes](https://mystore.com/popular/shoes)".
-
-
-
-**Reference parent folder using ".."**
-
-You can also reference parent folders using two "." characters.
-
-For example, if the current URL is at "[https://mystore.com/popular/bags](https://mystore.com/popular/bags)".
-
-Then the current folder is "/popular".
-
-The parent folder is "/".
-
-`I.goTo("../shoes")` will navigate to "[https://mystore.com/shoes](https://mystore.com/shoes)".
-
-
-
-**Query string**
-
-```javascript
-I.goTo("?color=blue")
-```
-
-Set the query string of the URL to 'color=blue'.
-
-The following table shows where the browser will be navigated to depending on the current URL:
-
-| Before                                                                     | After                                                                        |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| [https://mystore.com/shoes](https://mystore.com/shoes)                     | [https://mystore.com/shoes?color=blue](https://mystore.com/shoes?color=blue) |
-| [https://mystore.com/shoes?color=red](https://mystore.com/shoes?color=red) | [https://mystore.com/shoes?color=blue](https://mystore.com/shoes?color=blue) |
-
-**Hash**
-
-```javascript
-I.goTo("#sale")
-```
-
-Set the hash of the url to 'sale'.
-
-The following table shows where the browser will be navigated to depending on the current URL:
-
-| Before                                                         | After                                                            |
-| -------------------------------------------------------------- | ---------------------------------------------------------------- |
-| [https://mystore.com/shoes](https://mystore.com/shoes)         | [https://mystore.com/shoes#sale](https://mystore.com/shoes#sale) |
-| [https://mystore.com/shoes#new](https://mystore.com/shoes#new) | [https://mystore.com/shoes#sale](https://mystore.com/shoes#sale) |
-
-**Open in a new tab**
-
-```javascript
-I.goTo("https://mystore.com", {newTab: true})
-```
-
-Set `newTab` option to `true` to open "[https://mystore.com](https://mystore.com/)" in a new tab.
-
-***
