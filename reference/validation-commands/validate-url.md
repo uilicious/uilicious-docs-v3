@@ -1,17 +1,89 @@
 ---
 # Write a short description about the page. This will be displayed on google search results.
 description: Learn how to use the I.amAt command to validate a URL in your UIlicious test.
+
+# add tags to improve search results
+tags: i.amat, page navigation, url
 ---
 
 # Validate URL
 
-### `I.amAt` <a href="#iamat" id="iamat"></a>
+Use the `I.amAt` command to validate the url of the current tab.
 
-Asserts that the browser is at a specific URL.
+Set the url that you want to check as the first argument. The URL should be enclosed in quotes.
 
-You can use an absolute URL or a relative URL.
+This command will fail the test if the URL of the current tab does not match the expected URL.
 
-#### Usage <a href="#usage" id="usage"></a>
+{% tabs %}
+
+{% tab title="Example" %}
+```javascript
+I.goTo("https://google.com")
+I.amAt("https://google.com") // this should pass
+```
+{% endtab %}
+
+{% tab title="Result" %}
+<iframe title='i-am-at-example-1' src="https://snippet.uilicious.com/embed/test/public/34qeVUNWueXA1PjQWGJ3iH?stepNum=2&autoplay=0" style="display: block; min-width: 600px; min-height: 400px; margin: 0 auto; border: none;"></iframe>
+{% endtab %}
+
+{% endtabs %}
+
+## Validate URL parts
+
+You can specify parts of the URL to validate instead of the full path. The `I.amAt` command will split and validate the URL into the followin parts:
+- **Protocol**, e.g,: `http`, `https`
+- **Domain**, e.g.: `myapp.com` or `uat.myapp.com`
+- **Path**, e.g.: `/books/mystery`
+- **Query String**, e.g. `?search=history`
+- **Hash**, e.g. `#popular`
+
+
+### Ignoring the protocol
+
+If you want validate the domain but ignore the protocol, start with `://`. 
+
+```javascript
+// this should pass for:
+// "http://google.com"
+// "https://google.com"
+I.amAt("://google.com") 
+```
+
+### Validate path
+
+If you want validate the path, but ignore the protocol and domain, start with `/` followed by the path.
+
+```javascript
+// this should pass for:
+// "https://mystore.com/books/mystery"
+// "https://uat.mystore.com/books/mystery"
+I.amAt("/books/mystery") 
+```
+
+### Validate query string
+
+Include `?param=value` to validate the query string in the current URL.
+
+```javascript
+// this should pass for:
+// "https://mystore.com?search=alice in wonderland"
+I.amAt("?search=alice in wonderland")
+```
+
+### Validate hash
+
+Include `#hash` to validate the hash in the current URL.
+
+```javascript
+// this should pass for:
+// "https://mystore.com#popular"
+I.amAt("#popular")
+```
+
+## Reference
+
+**Usage**
 
 ```javascript
 I.amAt(url)
@@ -22,73 +94,3 @@ I.amAt(url)
 | Parameter | Type   | Remarks              |
 | --------- | ------ | -------------------- |
 | url       | string | URL to check against |
-
-#### Example(s) <a href="#examples" id="examples"></a>
-
-**Absolute URL**
-
-```javascript
-I.amAt("http://mystore.com")
-```
-
-Matches the following:
-
-* [http://mystore.com](http://mystore.com/)
-
-Does not match:
-
-* [https://mystore.com](https://mystore.com/)
-
-**Without protocol**
-
-```javascript
-I.amAt("://mystore.com")
-```
-
-Matches the following:
-
-* [http://mystore.com](http://mystore.com/)
-* [https://mystore.com](https://mystore.com/)
-
-**Relative URL**
-
-```javascript
-I.amAt("/shoes")
-```
-
-Matches the following:
-
-* [http://storeA.com/shoes](http://storea.com/shoes)
-* [http://storeB.com/shoes](http://storeb.com/shoes)
-
-**Query string**
-
-```javascript
-I.amAt("?color=blue")
-```
-
-Matches the following:
-
-* [http://mystore.com/shoes?color=blue](http://mystore.com/shoes?color=blue)
-* [http://mystore.com/bag?color=blue](http://mystore.com/bag?color=blue)
-
-Does not matches:
-
-* [http://mystore.com/shoes](http://mystore.com/shoes)
-* [http://mystore.com/bag?color=red](http://mystore.com/bag?color=red)
-
-**Hash**
-
-```javascript
-I.amAt("#sale")
-```
-
-Matches the following:
-
-* [http://mystore.com/shoes#sale](http://mystore.com/shoes#sale)
-* [http://mystore.com/bag#sale](http://mystore.com/bag#sale)
-
-Does not matches:
-
-* [http://mystore.com/shoes](http://mystore.com/shoes)
-* [http://mystore.com/bag#new](http://mystore.com/bag#new)

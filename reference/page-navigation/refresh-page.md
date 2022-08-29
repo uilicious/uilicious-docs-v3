@@ -6,9 +6,9 @@ description: Learn how to use the I.refreshPage command to refresh a page in you
 tags: i.refreshpage, page navigation, refresh, reload
 ---
 
-# Refresh Page
+# Refresh / Reload Page
 
-Use the `I.refreshPage` to refresh / reload the current page.
+Use the `I.refreshPage` command to refresh / reload the current page.
 
 ```javascript
 I.goTo("https://google.com")

@@ -5,141 +5,58 @@ description: Learn how to use the different page validation commands to validate
 
 # Validate Page Status
 
-These commands allow you to assert the status code of the current page.
+There are a number of commands available for validating the HTTP status of the current page.
 
-### List of commands <a href="#list-of-commands" id="list-of-commands"></a>
+## Checking for 200 OK
 
-| Command                                                                                                           | Description                                                                               |
-| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| [`UI.isStatusCode`](./validate-page-status.html#uiisstatuscode)       | Asserts that the status code for the current page is a specific status code.              |
-| [`UI.isNotStatusCode`](./validate-page-status.html#uiisnotstatuscode) | Asserts that the status code for the current page is **NOT** a specific status code.      |
-| [`UI.is200`](./validate-page-status.html#uiis200)                     | Asserts that the status code for the current page is 200 (OK).                            |
-| [`UI.isNot200`](./validate-page-status.html#uiisnot200)               | Asserts that the status code for the current page is **NOT** 200 (OK).                    |
-| [`UI.is404`](./validate-page-status.html#uiis404)                     | Asserts that the status code for the current page is 404 (Not Found).                     |
-| [`UI.isNot404`](./validate-page-status.html#uiisnot404)               | Asserts that the status code for the current page is **NOT** 404 (Not Found).             |
-| [`UI.is500`](./validate-page-status.html#uiis500)                     | Asserts that the status code for the current page is 500 (Internal Server Error).         |
-| [`UI.isNot500`](./validate-page-status.html#uiisnot500)               | Asserts that the status code for the current page is **NOT** 500 (Internal Server Error). |
+You can use the `UI.is200` command to validate that the current page is loaded with the HTTP status code of 200 "OK". If the current page has any status other than 200, the test will fail.
 
-***
-
-### `UI.isStatusCode` <a href="#uiisstatuscode" id="uiisstatuscode"></a>
-
-Asserts that the status code for the current page is a specific status code.
-
-#### Usage <a href="#usage" id="usage"></a>
+Inversely, you can use the `UI.isNot200` command to validate that the current page is NOT loaded with HTTP status code of 200 "OK".
 
 ```javascript
-UI.isStatusCode(statusCode)
+I.goTo("https://google.com")
+UI.is200() // this should pass when google.com returns 200 "OK"
+
+I.goTo("https://google.com")
+UI.isNot200() // this should fail when google.com returns 200 "OK"
 ```
 
-**Parameters**
+## Checking for 404 Page Not Found
 
-| Parameter  | Type   | Remarks                                        |
-| ---------- | ------ | ---------------------------------------------- |
-| statusCode | number | The status code to expect for the current page |
+You can use the `UI.is404` command to validate that the current page is loaded with the HTTP status code of 404 "Page Not Found". If the current page has any status other than 404, the test will fail.
 
-#### Example(s) <a href="#examples" id="examples"></a>
+Inversely, you can use the `UI.isNot404` command to validate that the current page is NOT loaded with HTTP status code of 404 "Page Not Found".
 
 ```javascript
-UI.isStatusCode(403)
+I.goTo("https://google.com")
+UI.is404() // this should pass when google.com returns 404 "Page Not Found"
+
+I.goTo("https://google.com")
+UI.isNot404() // this should fail when google.com returns 404 "Page Not Found"
 ```
 
-Validates that the current page returns 403 (Forbidden).
+## Checking for 500 Internal Server Error
 
-***
+You can use the `UI.is500` command to validate that the current page is loaded with the HTTP status code of 500 "Internal Server Error". If the current page has any status other than 500, the test will fail.
 
-### `UI.isNotStatusCode` <a href="#uiisnotstatuscode" id="uiisnotstatuscode"></a>
-
-Asserts that the status code for the current page is **NOT** a specific status code.
-
-#### Usage <a href="#usage" id="usage"></a>
+Inversely, you can use the `UI.isNot500` command to validate that the current page is NOT loaded with HTTP status code of 500 "Internal Server Error"
 
 ```javascript
-UI.isNotStatusCode(statusCode)
+I.goTo("https://google.com")
+UI.is500() // this should pass when google.com returns 500 "Internal Server Error"
+
+I.goTo("https://google.com")
+UI.isNot500() // this should fail when google.com returns 500 "Internal Server Error"
 ```
 
-**Parameters**
+## Checking for other HTTP Statuses
 
-| Parameter  | Type   | Remarks                                                       |
-| ---------- | ------ | ------------------------------------------------------------- |
-| statusCode | number | The status code that is **NOT** expected for the current page |
-
-#### Example(s) <a href="#examples" id="examples"></a>
+If you want to check for other HTTP statuses, you can use the `UI.isStatusCode` command or `UI.isNotStatusCode` command to test whether the current page did or did not load with a specific HTTP status code.
 
 ```javascript
-UI.isNotStatusCode(500)
-```
+I.goTo("https://mystore.com/admin")
+UI.isStatusCode(403) // this should pass when the page returns with the status code 403 "Forbidden"
 
-Validates that the current page does not return 500 (Internal Server Error).
-
-***
-
-### `UI.is200` <a href="#uiis200" id="uiis200"></a>
-
-Asserts that the status code for the current page is 200 (OK).
-
-#### Usage <a href="#usage" id="usage"></a>
-
-```javascript
-UI.is200()
-```
-
-***
-
-### `UI.isNot200` <a href="#uiisnot200" id="uiisnot200"></a>
-
-Asserts that the status code for the current page is **NOT** 200 (OK).
-
-#### Usage <a href="#usage" id="usage"></a>
-
-```javascript
-UI.isNot200()
-```
-
-***
-
-### `UI.is404` <a href="#uiis404" id="uiis404"></a>
-
-Asserts that the status code for the current page is 404 (Not Found).
-
-#### Usage <a href="#usage" id="usage"></a>
-
-```javascript
-UI.is404()
-```
-
-***
-
-### `UI.isNot404` <a href="#uiisnot404" id="uiisnot404"></a>
-
-Asserts that the status code for the current page is **NOT** 404 (Not Found).
-
-#### Usage <a href="#usage" id="usage"></a>
-
-```javascript
-UI.isNot404()
-```
-
-***
-
-### `UI.is500` <a href="#uiis500" id="uiis500"></a>
-
-Asserts that the status code for the current page is 500 (Internal Server Error).
-
-#### Usage <a href="#usage" id="usage"></a>
-
-```javascript
-UI.is500()
-```
-
-***
-
-### `UI.isNot500` <a href="#uiisnot500" id="uiisnot500"></a>
-
-Asserts that the status code for the current page is **NOT** 500 (Internal Server Error).
-
-#### Usage <a href="#usage" id="usage"></a>
-
-```javascript
-UI.isNot500()
+I.goTo("https://mystore.com")
+UI.isNotStatusCode(418) // this should pass when the page returns with the status code 403 "I'm a teapot"
 ```

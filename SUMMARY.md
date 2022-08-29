@@ -28,8 +28,8 @@
   * [Uilicious IP List](reference/configurations/cloud-ip-list.md)
 * Page Navigation
   * [Go to a URL](reference/page-navigation/go-to-a-url.md)
-  * [Refresh Page](reference/page-navigation/refresh-page.md)
-  * [Switch Tabs](reference/page-navigation/switch-tabs.md)
+  * [Refresh / Reload Page](reference/page-navigation/refresh-page.md)
+  * [Switch Tab](reference/page-navigation/switch-tabs.md)
   * [Close Tab](reference/page-navigation/close-tab.md)
   * [Validate Page Status](reference/page-navigation/validate-page-status.md)
   * [Validate URL](reference/validation-commands/validate-url.md)

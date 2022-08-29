@@ -89,6 +89,37 @@ I.goTo("#popular")
 // This goes to "https://mystore.com/books/mystery#popular"
 ```
 
+## Go back / Go Forward
+
+{% hint style="info" %}
+We currently do not have native commands to navigate back or forward, but there is a workaround using the `UI.execute` command.
+{% endhint %}
+
+{% tabs %}
+
+{% tab title="Example" %}
+
+```javascript
+I.goTo("https://google.com")
+I.goTo("https://wikipedia.org")
+
+// Go back to the previous page, https://google.com
+UI.execute('window.history.back()')
+I.amAt("https://google.com")
+
+// Go forward to the next page, https://wikipedia.org
+UI.execute('window.history.forward()')
+I.amAt("https://wikipedia.org")
+```
+
+{% endtab %}
+{% tab title="Result" %}
+
+<iframe title='switch-tab-example-1' src="https://snippet.uilicious.com/embed/test/public/X9c6AwxTpEn8qBVL6U9M5G?stepNum=2&autoplay=0" style="display: block; min-width: 600px; min-height: 400px; margin: 0 auto; border: none;"></iframe>
+
+{% endtab %}
+{% endtabs %}
+
 ## Reference
 
 **Usage**

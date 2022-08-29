@@ -21,15 +21,15 @@ description: A list of all commands available in UIlicious
 
 | Command                                                                                                           | Description                                                                               |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| [`I.amAt`](./validation-commands/validate-url.html#iamAt)               | Assert that the browser is at a specific URL                                              |
-| [`UI.isStatusCode`](./page-navigation/validate-page-status.html#uiisstatuscode)       | Asserts that the status code for the current page is a specific status code.              |
-| [`UI.isNotStatusCode`](./page-navigation/validate-page-status.html#uiisnotstatuscode) | Asserts that the status code for the current page is **NOT** a specific status code.      |
-| [`UI.is200`](./page-navigation/validate-page-status.html#uiis200)                     | Asserts that the status code for the current page is 200 (OK).                            |
-| [`UI.isNot200`](./page-navigation/validate-page-status.html#uisinot200)               | Asserts that the status code for the current page is **NOT** 200 (OK).                    |
-| [`UI.is404`](./page-navigation/validate-page-status.html#usis404)                     | Asserts that the status code for the current page is 404 (Not Found).                     |
-| [`UI.isNot404`](./page-navigation/validate-page-status.html#uiisnot404)               | Asserts that the status code for the current page is **NOT** 404 (Not Found).             |
-| [`UI.is500`](./page-navigation/validate-page-status.html#uiis500)                     | Asserts that the status code for the current page is 500 (Internal Server Error).         |
-| [`UI.isNot500`](./page-navigation/validate-page-status.html#uiisnot500)               | Asserts that the status code for the current page is **NOT** 500 (Internal Server Error). |
+| [`I.amAt`](./validation-commands/validate-url.html)               | Assert that the browser is at a specific URL                                              |
+| [`UI.isStatusCode`](./page-navigation/validate-page-status.html)       | Asserts that the status code for the current page is a specific status code.              |
+| [`UI.isNotStatusCode`](./page-navigation/validate-page-status.html) | Asserts that the status code for the current page is **NOT** a specific status code.      |
+| [`UI.is200`](./page-navigation/validate-page-status.html)                     | Asserts that the status code for the current page is 200 (OK).                            |
+| [`UI.isNot200`](./page-navigation/validate-page-status.html)               | Asserts that the status code for the current page is **NOT** 200 (OK).                    |
+| [`UI.is404`](./page-navigation/validate-page-status.html)                     | Asserts that the status code for the current page is 404 (Not Found).                     |
+| [`UI.isNot404`](./page-navigation/validate-page-status.html)               | Asserts that the status code for the current page is **NOT** 404 (Not Found).             |
+| [`UI.is500`](./page-navigation/validate-page-status.html)                     | Asserts that the status code for the current page is 500 (Internal Server Error).         |
+| [`UI.isNot500`](./page-navigation/validate-page-status.html)               | Asserts that the status code for the current page is **NOT** 500 (Internal Server Error). |
 
 ### Form Input Commands <a href="#form-input-commands" id="form-input-commands"></a>
 
