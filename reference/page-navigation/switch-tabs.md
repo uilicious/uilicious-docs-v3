@@ -8,7 +8,11 @@ tags: i.switchTab, page navigation, switch tab
 
 # Switch Tabs
 
-Use the `I.switchTab` command to switch to another tab.
+You can use the `I.switchTab` command to switch to another tab.
+
+## Automatic switch to new tabs
+
+Note that whenever any command (e.g. I.click) opens a new tab, UIlicious will automatically switch to the newly opened tab. You generally don't need to explicitly use `I.switchTab` to switch to a new tab, unless you want to go to a previously opened tab. 
 
 ## Switch to the next tab
 
@@ -73,6 +77,10 @@ I.switchTab("Wikipedia")
 {% endtab %}
 
 {% endtabs %}
+
+## Close tabs when they are not needed
+
+When you no longer need to use a tab, we recommend using the `I.closeTab()` command instead of the `I.switchTab()` command, because having more tabs open will slow down the overall test execution.
 
 
 ## Reference
