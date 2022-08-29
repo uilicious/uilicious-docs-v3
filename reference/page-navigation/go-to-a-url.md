@@ -3,7 +3,7 @@
 description: Learn how to use the I.goTo command to navigate to a URL in your UIlicious test.
 
 # add tags to improve search results
-tags: page navigation, go to, open new tab, basic authentication, url
+tags: i.goto, page navigation, go to, open new tab, basic authentication, url
 ---
 
 # Go to URL
