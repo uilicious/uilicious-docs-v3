@@ -108,7 +108,7 @@ I.amAt("/track-order") // redirected to "/track-order" page
 {% endtab %}
 {% tab title="Result" %}
 
-<iframe title='click-css-example-1' src="https://snippet.uilicious.com/embed/test/public/CpT5qfymZtPqLfaAadopVQ?stepNum=2&autoplay=0" style="display: block; min-width: 600px; min-height: 400px; margin: 0 auto; border: none;"></iframe>
+<iframe title='click-css-example-1' src="https://snippet.uilicious.com/embed/test/public/CpT5qfymZtPqLfaAadopVQ?stepNum=3&autoplay=0" style="display: block; min-width: 600px; min-height: 400px; margin: 0 auto; border: none;"></iframe>
 
 {% endtab %}
 {% endtabs %}
@@ -140,7 +140,7 @@ Specifying negative X offset will target X pixels right from the top-left corder
 
 Specifying a negative Y offset will target Y pixels up from the top-left corner of the reference element.
 
-<iframe title='click-with-offset-example' src="https://snippet.uilicious.com/embed/test/public/3StHKMJsteiBuScgz6a9if?stepNum=2&autoplay=0" style="display: block; min-width: 600px; min-height: 400px; margin: 0 auto; border: none;"></iframe>
+<iframe title='click-with-offset-example' src="https://snippet.uilicious.com/embed/test/public/3StHKMJsteiBuScgz6a9if?stepNum=3&autoplay=0" style="display: block; min-width: 600px; min-height: 400px; margin: 0 auto; border: none;"></iframe>
 
 {% endtab %}
 {% endtabs %}
