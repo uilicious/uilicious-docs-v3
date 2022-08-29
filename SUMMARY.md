@@ -34,8 +34,7 @@
   * [Validate Page Status](reference/page-navigation/validate-page-status.md)
   * [Validate URL](reference/validation-commands/validate-url.md)
 * Mouse Actions
-  * [Click](reference/mouse-interactions/click-on-objects/I.click-and-I.doubleClick.md)
-  * [Right Click](reference/mouse-interactions/click-on-objects/right-clicking-on-objects.md)
+  * [Click](reference/mouse-interactions/click.md)
   * [Hover](reference/mouse-interactions/hover-over-objects.md)
   * [Drag](reference/mouse-interactions/drag-objects.md)
   * [Scroll](reference/mouse-interactions/scroll-page.md)

@@ -52,8 +52,9 @@ description: A list of all commands available in UIlicious
 
 | Command                                                                                                                                | Description                                                               |
 | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| <p><a href="./mouse-interactions/click-on-objects/I.click-and-I.doubleClick.html"><code>I.click</code><br><code>I.doubleClick</code></a><code></code></p> | Click or double click on an element                                       |
-| [`I.rightClick`](./mouse-interactions/click-on-objects/right-clicking-on-objects.html#irightclick)                                                          | Right click on an element                                                 |
+| [`I.click`](./mouse-interactions/click.md) | Click on an element                                       |
+| [`I.doubleClick`](./mouse-interactions/click.md) | Double click on an element                                       |
+| [`I.rightClick`](./mouse-interactions/click.md)                                                          | Right click on an element                                                 |
 | [`I.hoverOn`](./mouse-interactions/hover-over-objects.html#ihoverOn)                                                                | Hover on an element                                                       |
 | [`I.dragTo`](./mouse-interactions/drag-objects.html#idragto)                                                                  | Drag an element to another target element                                 |
 | [`I.dragBy`](./mouse-interactions/drag-objects.html#idragby)                                                                  | Drag an element directionally by (x,y) pixel offset                       |
