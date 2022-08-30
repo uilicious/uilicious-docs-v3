@@ -5,11 +5,34 @@ description: Learn how to use the TEST.log.info command to log a custom report i
 
 # Info Logs
 
-### `TEST.log.info` <a href="#testloginfo" id="testloginfo"></a>
-
 Log a message to report
 
-#### Usage <a href="#usage" id="usage"></a>
+##Example
+
+{% tabs %}
+
+{% tab title="Example" %}
+
+```javascript
+I.goTo("https://en.wikipedia.org/wiki/Main_Page")
+
+// extract text from the ID
+var sampleInfo = I.getText("#Welcome_to_Wikipedia")
+// Report the extracted text using TEST.log.info
+TEST.log.info("The extracted text is: "+ sampleInfo)
+```
+
+Gets the text from the element with the id "Welcome_to_Wikipedia" and prints it to the report.
+
+{% endtab %}
+{% tab title="Result" %}
+
+<iframe title='log-a-message-1' src="https://snippet.uilicious.com/embed/test/public/6JPz1uQdvXoWYT5ocLYg4D?stepNum=1&autoplay=0" style="display: block; min-width: 600px; min-height: 400px; margin: 0 auto; border: none;"></iframe>
+
+{% endtab %}
+{% endtabs %}
+
+**Usage**
 
 ```javascript
 TEST.log.info(message)
@@ -20,12 +43,3 @@ TEST.log.info(message)
 | Parameter | Type   | Remarks                  |
 | --------- | ------ | ------------------------ |
 | message   | string | Message to log to report |
-
-#### Example(s) <a href="#examples" id="examples"></a>
-
-```javascript
-var applicationId = I.getText("#applicationId")
-TEST.log.info("Application ID is " + applicationId)
-```
-
-Gets the text from the element with the id "applicationId" and prints it to the report.
