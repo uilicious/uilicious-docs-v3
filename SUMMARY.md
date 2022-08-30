@@ -13,7 +13,7 @@
 
 ## How to Guides
 
-* Running tests
+* Running a test
   * [Run a test using the Editor](how-to-guides/run-test/run-test-using-editor.md) 
   * [Schedule a test using Jobs](how-to-guides/run-test/schedule-a-job.md)
 * Setting up jobs
