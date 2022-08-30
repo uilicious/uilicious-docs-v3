@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to run a UIlicious test using the Editor on UIlicious Studio.
+---
+
 # Run a test using the Editor
 
 In UIlicious Studio, you can write and run tests in the Editor tab.

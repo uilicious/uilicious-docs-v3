@@ -1,3 +1,8 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Get started on how to run a test for your website across different browsers and resolutions using UIlicious.
+---
+
 # Running a test
 
 There's several ways to run a test in UIlicious:
