@@ -38,8 +38,10 @@ module.exports = {
 		sidebar: require("./summary-to-sidebar").default,
 		
 		// Support deep nesting of subpage "table-of-content"
-		sidebarDepth: 0 // don't show headers
-		// sidebarDepth: 1 // show h2 headers
+		sidebarDepth: 0, // don't show headers
+
+		// Don't show contributors
+		contributors: false
 	}),
 
 	// title of the site
