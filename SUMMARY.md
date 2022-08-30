@@ -4,6 +4,7 @@
 
 * [What is UIlicious?](README.md)
 * [Write your first test](getting-started/Writing-your-first-test.md)  
+* [Run a test](getting-started/running-tests.md)  
 * [Share test reports](getting-started/share-test-reports.md)
 
 ## Core Concepts
