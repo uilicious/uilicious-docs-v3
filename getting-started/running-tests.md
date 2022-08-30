@@ -6,7 +6,7 @@ There's several ways to run a test in UIlicious:
 3. Run a test using the UIlicious **Command Line Interface**
 4. Run a test by directly connecting to the UIlicious **Webdriver Grid**
 
-**In this getting started guide, we'll only cover how to run a test using the Studio Editor.**
+**In this getting started guide, we'll only cover how to run a test using the Studio Editor.** 
 
 The Editor view is split into three panes:
 1. **Workspace** - Manage files in your project here
@@ -22,7 +22,7 @@ Once you have written a test, you can configure how you want to run a test. Ther
 4. **Region** - the geolocation you want to run the test in
 5. **User Agent** - override the default user agent of the test browser
 
-In this getting started guide, we'll only cover how to configure Browser and Resolution.
+In this getting started guide, we'll only cover how to configure Browser and Resolution. To learn more about configuring and running tests in the Editor tab, [read the full guide here](/how-to-guides/run-test/run-test-using-editor.md).
 
 ## Set test browser
 
@@ -38,13 +38,17 @@ UIlicious currently supports the latest versions of all major browsers, includin
 - Edge (EdgeHTML edition, Version 42, 2019)
 - Internet Explorer 11
 
+Once the browser is selected, it cannot be changed for the rest of the test.
+
 ## Set test resolution
 
 Open the "Resolution" dropdown in the toolbar and select an initial resolution to run the test with.
 
 ![Resolution options in UIlicious Editor](/static/img/uilicious-studio-editor-resolution-dropdown-opened.png)
 
-UIlicious supports common resolutions for desktop, tablet, and mobile screens.
+UIlicious supports common resolutions for desktop, tablet, and mobile screens. 
+
+You can change the resolution in the middle of the test using the `UI.resize` command.
 
 ## Run test 
 
@@ -57,6 +61,8 @@ Click on the "Run" button in the toolbar to start the test.
 You start seeing results in the "Result" pane while the test is running.
 
 ![Test report in the UIlicious Editor](/static/img/uilicious-studio-editor-test-report-shown.png)
+
+You can click on the individual steps to view the screenshot for the step, or use the Up / Down Arrow Keys to move between steps.
 
 You can also view this test and past test runs from the "Runs" tab.
 
