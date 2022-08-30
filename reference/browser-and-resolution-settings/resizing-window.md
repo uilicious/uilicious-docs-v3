@@ -3,39 +3,65 @@
 description: Learn how to use the different commands to resize the resolution of the browser in your UIlicious test. 
 ---
 
+# Resize Window
 
-# Window resize commands
+Use the `UI.resize` command that allows you to set the resolution of the browser in the middle of the test.
 
-### `UI.resize` <a href="#uiresize" id="uiresize"></a>
+## Resize browser to a specific resolution
 
-These commands allow you to set the resolution of the browser.
+```javascript
+I.goTo("https://github.com/login")
+I.fill("Email", "john@example.com")
 
-| Command | Description|
-|---------|------------|
-| `UI.resize` | Resize the resolution to a specific width and height. |
+// Set the browser resolution to 1920 x 1080
+UI.resize("1920x1080")
+```
+This will resize the resolution of the entire browser window to width of 1920 pixels, and height of 1080 pixels.
 
-## Read-only properties
+## Resize viewport
 
-The properies allow you to query the current resolution of the browser.
+```javascript
+I.goTo("https://github.com/login")
+I.fill("Email", "john@example.com")
 
-| Property | Description | 
-|----------|-------------|
-| `UI.outerWidth`  | The width of the browser window, including the broswer's UI, such as the menubar and addressbar, etc. |
-| `UI.outerHeight` | The height of the browser window, including the broswer's UI, such as the menubar and addressbar, etc. |
-| `UI.innerWidth`  | The width of the browser **viewport**. |
-| `UI.innerHeight` | The height of the browser **viewport**. |
-
----
-
-## `UI.resize`
-
-Resize the resolution to a specific width and height.
-
-By default the command will resize the **entire browser window**, including the browser's UI, such as the menu bar, address bar, etc.
-
+// Set the viewport to 1920 x 1080
+UI.resize("1920x1080", {target: "viewport"})
+```
 To resize the **viewport** (the browser window excluding the browser's UI such as the menu bar and the address bar, etc), you can specify `target` as `"viewport"` in options.
 
-### Usage
+## Example: Resizing browser in the middle of the test
+
+{% tabs %}
+
+{% tab title="Example" %}
+
+```javascript
+I.goTo("https://github.com/login")
+
+// Set the Resolution to 2560 x 1440
+UI.resize("2560x1440")
+// Set the viewport to 1920 x 1080
+UI.resize("1920x1080", {target: "viewport"})
+// Set the Resolution to a Mobile Resolution
+UI.resize("1080x1920")
+
+I.fill("Email", "john@example.com")
+I.fill("Password", "supersecretpassword")
+I.click("Sign in")
+I.see("Incorrect username or password.")
+```
+
+{% endtab %}
+{% tab title="Result" %}
+
+<iframe title='resize-window' src="https://snippet.uilicious.com/embed/test/public/D9bZwoDcXMyd25mbCrovT8?stepNum=1&autoplay=0" style="display: block; min-width: 600px; min-height: 400px; margin: 0 auto; border: none;"></iframe>
+
+{% endtab %}
+{% endtabs %}
+
+## Reference
+
+**Usage**
 ```javascript
 // You can pass in width and height together in a string formatted as "<width>x<height>"
 UI.resize(resolution) 
@@ -46,7 +72,7 @@ UI.resize(width, height)
 UI.resize(width, height, options)
 ```
 
-#### Parameters
+**Parameters**
 
 | Parameter | Type | Remarks |
 |-----------|------|---------|
@@ -61,21 +87,14 @@ UI.resize(width, height, options)
 |-----------|------|---------|
 | target | string | Set to "viewport" to resize the viewport. <br> Set to "window" to resize the entire window. |
 
-### Example(s)
+### Read-only properties
 
-#### Resize browser window
+The properies allow you to query the current resolution of the browser.
 
-```javascript
-UI.resize("1920x1080")
-UI.resize(1920, 1080)
-```
-This will resize the resolution of the entire browser window to width of 1920 pixels, and height of 1080 pixels.
-
-#### Resize browser window viewport
-
-```javascript
-UI.resize("1920x1080", {target: "viewport"})
-UI.resize(1920, 1080, {target: "viewport"})
-```
-This will resize the resolution of the viewport to width of 1920 pixels, and height of 1080 pixels.
+| Property | Description | 
+|----------|-------------|
+| `UI.outerWidth`  | The width of the browser window, including the broswer's UI, such as the menubar and addressbar, etc. |
+| `UI.outerHeight` | The height of the browser window, including the broswer's UI, such as the menubar and addressbar, etc. |
+| `UI.innerWidth`  | The width of the browser **viewport**. |
+| `UI.innerHeight` | The height of the browser **viewport**. |
 
