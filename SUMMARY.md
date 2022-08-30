@@ -16,6 +16,7 @@
 * Running a test
   * [Run a test using the Editor](how-to-guides/run-test/run-test-using-editor.md) 
   * [Schedule a test using Jobs](how-to-guides/run-test/schedule-a-job.md)
+  * [Run a test using the CLI](how-to-guides/run-test/run-test-using-cli.md)
 * Setting up jobs
   * [Schedule a Job](how-to-guides/Setting-up-jobs/schedule-a-job.md)
   * [Setup Notifications](how-to-guides/Setting-up-jobs/set-up-notifications.md)

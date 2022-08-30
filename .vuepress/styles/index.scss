@@ -175,6 +175,10 @@ html .page .custom-container.hint {
     color: var(--c-tip);
 }
 
+.hint .hint-content{
+    line-height: 1.7;
+}
+
 //---------------------------------------------------------------------
 // Tabs block styling overwrites
 //---------------------------------------------------------------------
@@ -285,3 +289,4 @@ body .tabset {
     padding: 1rem 0;
 
 }
+
