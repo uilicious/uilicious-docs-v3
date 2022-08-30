@@ -7,7 +7,7 @@ description: Learn how to use the TEST.log.info command to log a custom report i
 
 Log a message to report
 
-##Example
+## Example
 
 {% tabs %}
 
