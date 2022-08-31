@@ -13,6 +13,26 @@ description: List of updates and changes of UIlicious throughout the years.
 * Minor: Contains new features
 * Patch: Contains enhancements and bug fixes only
 
+### 3.27.0 <a href="#3270" id="3270"></a>
+
+_Released 19 August 2022_
+
+**🚀 New Features**
+
+* Web Studio
+  * custom Branding on Projects
+    * You can now add a logo for your project and change the project’s background color to match your company’s or client’s branding.
+    * To update your project branding:
+      1. Go to an existing project
+      2. Click on the “gear” icon and click on the “Branding” tab
+      3. Add your logo and change the background colors
+      4. Click update to save your settings
+
+**🐞 Fixes**
+
+* Web Studio
+  * Fixed issue where the UI is broken after renaming the project.
+
 ### 3.26.2 <a href="#3262" id="3262"></a>
 
 _Released 17 August 2022_
