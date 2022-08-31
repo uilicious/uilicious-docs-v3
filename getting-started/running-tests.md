@@ -1,6 +1,12 @@
 ---
 # Write a short description about the page. This will be displayed on google search results.
 description: Get started on how to run a test for your website across different browsers and resolutions using UIlicious.
+
+# Override sidebarDepth for this page : 0 - none; 1 - show h2 headers; 2 - show h3 headers
+sidebarDepth: 2 
+
+# Disable search for the getting started guides
+search: false
 ---
 
 # Running a test

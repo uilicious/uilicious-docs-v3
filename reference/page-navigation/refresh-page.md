@@ -3,7 +3,11 @@
 description: Learn how to use the I.refreshPage command to refresh a page in your UIlicious test.
 
 # add tags to improve search results
-tags: i.refreshpage, page navigation, refresh, reload
+tags: 
+    - i.refreshpage
+    - refreshpage
+    - refresh page
+    - reload page
 ---
 
 # Refresh / Reload Page

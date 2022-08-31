@@ -3,7 +3,12 @@
 description: Learn how to use the I.closeTab command to close a tab in your UIlicious test.
 
 # add tags to improve search results
-tags: i.closeTab, page navigation, close tab
+tags: 
+    - i.closetab
+    - iclosetab
+    - close tab
+    - tab
+    - close window
 ---
 
 # Close Tab

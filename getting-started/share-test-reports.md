@@ -1,6 +1,9 @@
 ---
 # Write a short description about the page. This will be displayed on google search results.
 description: Learn how to share test reports for your UIlicious test runs.
+
+# Disable search for the getting started guides
+search: false
 ---
 
 # Share Test Reports

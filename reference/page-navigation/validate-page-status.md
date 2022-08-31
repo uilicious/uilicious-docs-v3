@@ -1,6 +1,14 @@
 ---
 # Write a short description about the page. This will be displayed on google search results.
 description: Learn how to use the different page validation commands to validate page statuses in your UIlicious test.
+
+tags:
+    - validate page status
+    - 404 page not found
+    - 404
+    - page not found
+    - http status code
+    - http status
 ---
 
 # Validate Page Status

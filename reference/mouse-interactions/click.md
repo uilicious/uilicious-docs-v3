@@ -1,3 +1,22 @@
+---
+# Write a short description about the page. This will be displayed on google search results.
+description: Learn how to automate clicks on page elements with UIlicious
+
+tags:
+    - i.click
+    - iclick
+    - click
+    - i.doubleclick
+    - idoubleclick
+    - double click
+    - i.rightclick
+    - irightclick
+    - right click
+    - click icon
+    - implicit wait
+    - wait
+---
+
 # Click
 
 Use the `I.click` command to click on an object with the **left** mouse button.

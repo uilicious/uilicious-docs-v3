@@ -3,7 +3,10 @@
 description: Learn how to use the I.switchTab command to navigate between different tabs in your UIlicious test.
 
 # add tags to improve search results
-tags: i.switchTab, page navigation, switch tab
+tags: 
+    - i.switchtab
+    - iswitchtab
+    - switch tabs
 ---
 
 # Switch Tabs
