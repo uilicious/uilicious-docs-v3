@@ -131,10 +131,10 @@ description: A list of all commands available in UIlicious
 
 | Command                                                                          | Description                                                                                   |
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| [`I.seeAlert`](./handling-alerts/validate-alert.html#iseealert)       | Assert that an alert is displayed, and/or that an expected message is displayed on the alert. |
-| [`I.acceptAlert`](./handling-alerts/accept-dismiss-alert.html#iacceptalert) | Press the "Ok" button on the alert                                                            |
-| [`I.cancelAlert`](./handling-alerts/accept-dismiss-alert.html#icancelalert) | Press the "Cancel" button on the alert                                                        |
-| [`I.fillAlert`](./handling-alerts/fill-alert.html#ifillalert)     | Fill the text box on the alert                                                                |
+| [`I.seeAlert`](./handling-alerts/alerts.md)       | Assert that an alert is displayed, and/or that an expected message is displayed on the alert. |
+| [`I.acceptAlert`](./handling-alerts/alerts.md) | Press the "Ok" button on the alert                                                            |
+| [`I.cancelAlert`](./handling-alerts/alerts.md) | Press the "Cancel" button on the alert                                                        |
+| [`I.fillAlert`](./handling-alerts/alerts.md)     | Fill the text box on the alert                                                                |
 
 ### Utility Commands <a href="#utility-commands" id="utility-commands"></a>
 
