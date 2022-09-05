@@ -30,6 +30,7 @@
 * [List of commands](reference/commands-list.md)
 * Configurations
   * [Uilicious IP List](reference/configurations/cloud-ip-list.md)
+  * [Configuring Applitools](reference/configurations/applitools.md)
 * Page Navigation
   * [Go to a URL](reference/page-navigation/go-to-a-url.md)
   * [Refresh / Reload Page](reference/page-navigation/refresh-page.md)
