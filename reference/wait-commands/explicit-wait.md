@@ -17,10 +17,12 @@ By default, the automatic wait timeout is set to 15 seconds. You can change the 
 
 ```javascript
 I.goTo("https://google.com")
+
 TEST.commandTimeout = 90 // increase automatic wait to 90 seconds
-I.see("this command fails after 90 seconds")
+I.see("flying pigs") // UIlicious will search for the text for up to 90 seconds
+
 TEST.commandTimeout = 5 // reduce automatic wait to 5 seconds
-I.see("this command fails after 5 seconds")
+I.see("flying pigs") // UIlicious will search for the text for up to 5 seconds
 ```
 
 ## Using the `I.wait` command
