@@ -9,6 +9,7 @@
 
 ## Core Concepts
 
+* [Cross Browser Testing](/core-concepts/cross-browser-testing.md)
 * [How Targeting Works in UIlicious](core-concepts/how-targeting-works-in-uilicious.md)
 * [Automatic waits](core-concepts/automatic-waits.md)
 
