@@ -52,7 +52,10 @@ module.exports = {
 
 	// extra tags to inject into the page HTML <head>
 	head: [
-		['link', {rel: 'icon', href: basePath + 'static/favicon/favicon-128.png'}]
+		['link', {rel: 'icon', href: basePath + 'static/favicon/favicon-128.png'}],
+		// we cannot use relative path for "og:image", we must specify the full path
+		['meta', {property: "og:image", content: "https://docs.uilicious.com" + basePath + "static/logo-og-image.png"}],
+		['meta', {property: "og:type", content: "article"}]
 	],
 
 	// Lets tweak the search plugin
