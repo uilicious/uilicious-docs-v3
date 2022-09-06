@@ -10,6 +10,7 @@
 ## Core Concepts
 
 * [How Targeting Works in UIlicious](core-concepts/how-targeting-works-in-uilicious.md)
+* [Automatic waits](core-concepts/automatic-waits.md)
 
 ## How to Guides
 
@@ -31,6 +32,7 @@
 * [List of commands](reference/commands-list.md)
 * Configurations
   * [Uilicious IP List](reference/configurations/cloud-ip-list.md)
+  * [Configuring Applitools](reference/configurations/applitools.md)
 * Page Navigation
   * [Go to a URL](reference/page-navigation/go-to-a-url.md)
   * [Refresh / Reload Page](reference/page-navigation/refresh-page.md)
@@ -61,8 +63,7 @@
 * [Handling iFrames](reference/handling-iframes.md)
 * [Handling cookies](reference/handling-cookies.md)
 * [Handling local storage](reference/handling-local-storage.md)
-* Wait Commands
-  * [Explicit Wait](reference/wait-commands/explicit-wait.md)
+* [Wait Command](reference/wait-commands/explicit-wait.md)
 * Using Javascript
   * Use Javascript in your test
     * [Loops and Conditionals](reference/using-javascript/use-javascript-in-your-test/loops-and-conditionals.md)

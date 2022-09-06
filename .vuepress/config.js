@@ -58,7 +58,34 @@ module.exports = {
 	// Lets tweak the search plugin
 	plugins: [
 		searchPlugin({
-			maxSuggestions: 10
+			maxSuggestions: 10,
+			isSearchable: (page) => {
+				if(page.path.startsWith("/dist")){
+					return false
+				}
+				if(page.path.startsWith("/netlify-dist")){
+					return false
+				}
+				if(page.path.startsWith("/SUMMARY")){
+					return false
+				}
+				if(page.path.startsWith("/404")){
+					return false
+				}
+				// for some reason, some pages have missing title even though the h1 is set
+				// it seems like vuepress is not able to index headers in pages where {% tabs %} is used
+				if(page.title === ""){
+					if(page.frontmatter.title){ // we can fix the bug by adding title to the front matter
+						page.title = page.frontmatter.title
+					} else {
+						console.log("[WARNING] Page with missing title: ", page.path)
+						return false
+					}
+				}
+				return true;
+			},
+			// allow searching the `tags` frontmatter
+			getExtraFields: (page) => page.frontmatter.tags ?? [],
 		}),
 	],
 

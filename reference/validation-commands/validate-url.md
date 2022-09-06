@@ -1,4 +1,6 @@
 ---
+title: Validate URL
+
 # Write a short description about the page. This will be displayed on google search results.
 description: Learn how to use the I.amAt command to validate a URL in your UIlicious test.
 
