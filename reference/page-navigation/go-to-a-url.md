@@ -136,7 +136,15 @@ I.amAt("https://wikipedia.org")
 {% endtab %}
 {% endtabs %}
 
-## Reference
+## Automatic wait until page is ready
+
+Whenever a page navigation is triggered by any means (including page navigations triggered by clicks or form submissions), UIlicious will automatically wait for the page to finish loading before proceeding with the next command. 
+
+This ensures that the styles, images, fonts, and javascript code needed for the page to be interactive are properly loaded to avoid flaky unstable tests caused by slow responses from the server or the network. 
+
+UIlicious will wait for up to 5 minutes for all blocking assets to be loaded on the page. The time taken to complete `I.goTo` commands (and any command that triggers a page navigation) also includes the time taken to load the page.
+
+## Reference: `I.goTo` command
 
 **Usage**
 ```javascript
