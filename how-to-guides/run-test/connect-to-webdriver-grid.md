@@ -98,7 +98,7 @@ If you are using another library that requires the remote webdriver connection p
 | Connection Parameter | Value | 
 |----------------------|-------|
 | protocol | https |
-| hostname | webdriver.uilicious.com/wd/hub |
+| hostname | webdriver.uilicious.com |
 | port | 80 |
 | path | /wd/hub |
 | user | **Your Project ID** |
