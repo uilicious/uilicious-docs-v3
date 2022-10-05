@@ -13,6 +13,25 @@ description: List of updates and changes of UIlicious throughout the years.
 * Minor: Contains new features
 * Patch: Contains enhancements and bug fixes only
 
+### 3.28.0 <a href="#3280" id="3280"></a>
+
+_Released 29 August 2022_
+
+**🚀 New Features**
+
+* Web Studio
+  * Test Report Annotaions
+    - You can now mark up test run screenshots with comments by pointing or drawing regions. 
+    - Added ability to manually fail a test by toggling the ‘Fail test run’ switch when adding a new issue. Turning the switch on will change the test run’s status to ‘failed’ even if the run was successful.
+    - Added Maximize / minimize preview button. This button expands or minimizes the preview window, allowing the user to draw annotations more easily
+
+**🐞 Fixes**
+
+* Web Studio
+  - Fixed position issue with dropdown popover menus
+  - Fixed error with running test count
+  - Fixed steps not showing on runs tab
+
 ### 3.27.0 <a href="#3270" id="3270"></a>
 
 _Released 19 August 2022_
@@ -20,7 +39,7 @@ _Released 19 August 2022_
 **🚀 New Features**
 
 * Web Studio
-  * custom Branding on Projects
+  * Custom Branding on Projects
     * You can now add a logo for your project and change the project’s background color to match your company’s or client’s branding.
     * To update your project branding:
       1. Go to an existing project
