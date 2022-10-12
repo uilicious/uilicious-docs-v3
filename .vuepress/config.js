@@ -7,7 +7,7 @@
 //
 
 const { defaultTheme } = require('@vuepress/theme-default')
-const { searchPlugin } = require('@vuepress/plugin-search')
+const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
 
 // Lets tweak base path to /v3/
 let basePath = "/v3/"
@@ -36,7 +36,7 @@ module.exports = {
 
 		// Load the sidebar menu, from summary.md
 		sidebar: require("./summary-to-sidebar").default,
-		
+
 		// Support deep nesting of subpage "table-of-content"
 		sidebarDepth: 0, // don't show headers
 
@@ -60,35 +60,10 @@ module.exports = {
 
 	// Lets tweak the search plugin
 	plugins: [
-		searchPlugin({
-			maxSuggestions: 10,
-			isSearchable: (page) => {
-				if(page.path.startsWith("/dist")){
-					return false
-				}
-				if(page.path.startsWith("/netlify-dist")){
-					return false
-				}
-				if(page.path.startsWith("/SUMMARY")){
-					return false
-				}
-				if(page.path.startsWith("/404")){
-					return false
-				}
-				// for some reason, some pages have missing title even though the h1 is set
-				// it seems like vuepress is not able to index headers in pages where {% tabs %} is used
-				if(page.title === ""){
-					if(page.frontmatter.title){ // we can fix the bug by adding title to the front matter
-						page.title = page.frontmatter.title
-					} else {
-						console.log("[WARNING] Page with missing title: ", page.path)
-						return false
-					}
-				}
-				return true;
-			},
-			// allow searching the `tags` frontmatter
-			getExtraFields: (page) => page.frontmatter.tags ?? [],
+		docsearchPlugin({
+			appId: '2EBULZM0A0',
+			apiKey: '660ab480b3cb895c4b651aaad89f0ca1',
+			indexName: 'uilicious',
 		}),
 	],
 
