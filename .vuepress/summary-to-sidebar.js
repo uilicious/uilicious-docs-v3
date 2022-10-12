@@ -13,6 +13,10 @@
 //
 //----------------------------------------------------------------------------
 
+
+// Native deps include
+import fs from "fs";
+
 const DEFAULT_CONFIG = {
 
 	// Tab size to use for indentation
@@ -38,11 +42,7 @@ const DEFAULT_CONFIG = {
 //  Converter implementation
 //
 //----------------------------------------------------------------------------
-
-// Native deps include
-const fs = require("fs");
-
-/** Utility function to Extract link from markdown text if present **/ 
+/** Utility function to Extract link from markdown text if present **/
 function extractMdLinkPair( line ) {
 
 	// Lets do a regex match with the capgure groups
@@ -61,7 +61,7 @@ function extractMdLinkPair( line ) {
 	if( //
 		link.toLowerCase().startsWith("http://") ||
 		link.toLowerCase().startsWith("https://") ||
-		link.toLowerCase().startsWith("//") 
+		link.toLowerCase().startsWith("//")
 	) {
 		return [ title, link ];
 	}
@@ -73,7 +73,7 @@ function extractMdLinkPair( line ) {
 	if(link.toLowerCase().endsWith(".md")) {
 		link = link.slice(0, link.length - (".md").length);
 	}
-	
+
 	// Normalize link with starting "/"
 	if( !link.startsWith("/") ) {
 		link = "/"+link;
@@ -83,8 +83,8 @@ function extractMdLinkPair( line ) {
 	return [ title, link ];
 }
 
-/** 
- * Recursively scan through the config arr, and normalize the results 
+/**
+ * Recursively scan through the config arr, and normalize the results
  * (mostly mapping links withoout "children" in the link format)
  **/
 function finalCleanupSidebarConfig( configArr, VUEPRESS_MAJOR_VER = 2, COLLAPSIBLE = true ) {
@@ -132,19 +132,19 @@ class SummaryToSidebarConfig {
 
 	/**
 	 * Initialize, with custom config overwrites
-	 **/ 
+	 **/
 	constructor( inConfig ) {
 		this.config = inConfig || {};
 	}
-	
+
 	/**
 	 * Read the "SUMMARY.md" file provided at the file path, and return the respective sidebar, config array
-	 * 
-	 * Note that the file is read _syncronously_ intentionally, as this function is suppose to resolve for 
+	 *
+	 * Note that the file is read _syncronously_ intentionally, as this function is suppose to resolve for
 	 * a module.export returun in vuepress "config.js", which is probably not designed to handle async calls.
-	 * 
+	 *
 	 * @param  filepath of the summary.md file
-	 * 
+	 *
 	 * @return  converted sidebar array
 	 **/
 	convertSummaryFile( filepath = "./SUMMARY.md" ) {
@@ -169,7 +169,7 @@ class SummaryToSidebarConfig {
 		// Lets cleanup and convert the raw markdown to an arr
 		let md_arr = this._cleanupAndConvertMarkdownStrToArray( md_raw );
 
-		// Config context, this is used as we "dive in and out" 
+		// Config context, this is used as we "dive in and out"
 		// of the table structure
 		//
 		// 0  : Is the root of "table of contents"
@@ -212,7 +212,7 @@ class SummaryToSidebarConfig {
 
 				// Get the offset level
 				let offsetLevel = Math.floor( line.indexOf("*") / TAB_SIZE );
-				
+
 				// Get title and link pair
 				let linkPair = extractMdLinkPair( lineTrim );
 
@@ -221,13 +221,13 @@ class SummaryToSidebarConfig {
 				if( linkPair == null ) {
 					// No link pair, the whole line is the title
 					linkObj = {
-						title: lineTrim.slice(1).trim(), 
+						title: lineTrim.slice(1).trim(),
 						children: []
 					}
 				} else {
 					// Register with title + link pairing
 					linkObj = {
-						title: linkPair[0], 
+						title: linkPair[0],
 						path: linkPair[1],
 						children: []
 					}
@@ -261,7 +261,7 @@ class SummaryToSidebarConfig {
 
 		// The variable for the cleaned up markdown str
 		let md_clean = md_raw;
-		
+
 		// Remove prefront content
 		// ---
 		// This matches against the "---" at the start of a line
@@ -330,12 +330,12 @@ if( DEFAULT_CONFIG.AUTO_LOAD_DEFAULT ) {
 	if( fs.existsSync(DEFAULT_CONFIG.LOAD_DEFAULT_PATH) ) {
 		// Map the SUMMARY.md by default, and return it
 		SummaryToSidebarConfig.default = (new SummaryToSidebarConfig()).convertSummaryFile(DEFAULT_CONFIG.LOAD_DEFAULT_PATH);
-	
+
 		// Watch it for changes
 		if( DEFAULT_CONFIG.AUTO_RELOAD_DEFAULT ) {
 			fs.watchFile(DEFAULT_CONFIG.LOAD_DEFAULT_PATH, (curr, prev) => {
 				console.info(`${DEFAULT_CONFIG.LOAD_DEFAULT_PATH} file Changed`);
-	
+
 				// "touch" the config file, and trigger a config reload
 				const time = new Date();
 				fs.utimes("./.vuepress/config.js", time, time, err => {
@@ -351,4 +351,4 @@ if( DEFAULT_CONFIG.AUTO_LOAD_DEFAULT ) {
 //  Converter execution and return
 //
 //----------------------------------------------------------------------------
-module.exports = SummaryToSidebarConfig
+export default SummaryToSidebarConfig

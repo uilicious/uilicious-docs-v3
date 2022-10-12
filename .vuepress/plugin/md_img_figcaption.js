@@ -1,10 +1,10 @@
 
 /*************************************************************************************************
- * 
+ *
  * markdown-it plugin function, which extends the default image renderer, to add figcaption
- * 
+ *
  *************************************************************************************************/
-module.exports = (md, pluginOptions) => {
+export default (md, pluginOptions) => {
 	// Skip if already configured
 	if( md.renderer.rules.image.isFigCaption ) {
 		return;
