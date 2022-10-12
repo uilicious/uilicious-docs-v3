@@ -81,6 +81,7 @@ vuepress-netlify-build:
     - cd dist/; ./.git-cleanup.sh "90 days ago"; cd ..;
     # Enforce robots.txt for anything but prd
     - 'if [ "$MERGE_BRANCH" != "prd" ]; then echo "User-agent: *" > dist/robots.txt; echo "Disallow: /" >> dist/robots.txt; fi'
+    - 'if [ "$MERGE_BRANCH" == "prd" ]; then echo "User-agent: *" > dist/robots.txt; echo "Allow: /" >> dist/robots.txt; fi'
     # Merge them together
     - cp -a ./new_build/* ./dist/
     # And push it up gitlab
