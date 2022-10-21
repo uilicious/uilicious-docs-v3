@@ -7,7 +7,7 @@ description: Guide on how to test Salesforce with UIlicious.
 
 ## Getting Started with Testing Salesforce <a href="#getting-started-with-testing-salesforce" id="getting-started-with-testing-salesforce"></a>
 
-![Salesforce Logo](https://docs.uilicious.com/images/salesforce/salesforce\_logo.jpg)
+![Salesforce Logo](/static/img/salesforce_logo.jpg)
 
 Here's a quick start guide to testing Salesforce with UI-licious.
 
@@ -38,7 +38,7 @@ You need to be a Salesforce administrator to do the following.
 3. Under "Settings", click on "Security", then "Network Access"
 4. Add these IP addresses to the allow list the UI-licious cloud testing grid: [IP List · UI-licious Documentation](https://docs.uilicious.com/grid/ip\_list.html)
 
-![Salesforce Setup - Security - Network Access](https://docs.uilicious.com/images/salesforce/salesforce-network-allowlist.png)
+![Salesforce Setup - Security - Network Access](/static/img/salesforce-network-allowlist.png)
 
 #### Using the Salesforce CLI <a href="#using-the-salesforce-cli" id="using-the-salesforce-cli"></a>
 
@@ -70,7 +70,7 @@ I.goTo("https://waynecorp.salesforce.com/secur/frontdoor.jsp?sid=00D6F000002VRoF
 
 The first thing you'll probably want to do is to click on the "9 dots" icon.
 
-![Salesforce App Launcher Button](https://docs.uilicious.com/images/salesforce/salesforce-app-launcher-button.png)
+![Salesforce App Launcher Button](/static/img/salesforce-app-launcher-button.png)
 
 UI-licious automatically picks up the tooltips and accessibility labels for icon buttons in Salesforce, so you can use these in the `I.click` commands in your test to target these elements. You can hover your mouse over the icon to find out what is the tooltip for it, and use that in your test.
 
