@@ -57,7 +57,8 @@
 * Validate Page Content
   * [I see Command](reference/validation-commands/validate-page-content/i-see-command.md)
   * [I count Command](reference/validation-commands/validate-page-content/i-count-command.md)
-* [Handling Alerts](reference/handling-alerts/alerts.md)
+* Handling Alerts
+  * [Alerts](reference/handling-alerts/alerts.md)
   * [Accept / Dismiss Alert](reference/handling-alerts/alerts.md#accept-or-dismiss-alerts)
   * [Fill Alert](reference/handling-alerts/alerts.md#fill-alert-text-input)
   * [Validate Alert](reference/handling-alerts/alerts.md#validate-alert-is-open)
