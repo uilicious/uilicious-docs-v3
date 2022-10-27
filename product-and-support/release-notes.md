@@ -13,6 +13,24 @@ description: List of updates and changes of UIlicious throughout the years.
 * Minor: Contains new features
 * Patch: Contains enhancements and bug fixes only
 
+### 3.28.2 <a href="#3282" id="3282"></a>
+
+_Released 07 October 2022_
+
+**🐞 Fixes**
+
+* User Panel
+  - Fixed Profile name not updating accordingly
+
+### 3.28.1 <a href="#3281" id="3281"></a>
+
+_Released 26 September 2022_
+
+**🐞 Fixes**
+
+* Web Studio
+  - Fixed button to start the tutorial
+
 ### 3.28.0 <a href="#3280" id="3280"></a>
 
 _Released 29 August 2022_
