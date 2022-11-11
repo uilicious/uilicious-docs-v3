@@ -13,6 +13,40 @@ description: List of updates and changes of UIlicious throughout the years.
 * Minor: Contains new features
 * Patch: Contains enhancements and bug fixes only
 
+### 3.29.0 <a href="#3290" id="3290"></a>
+
+_Released 07 November 2022_
+
+**🚀 New Features**
+
+* Web Studio
+  - Browser Add-ons
+    - You may now purchase additional Safari browser test runners as an add-on
+      - The additional Safari browser test runners may only be used for running tests on Safari
+      - Additional test runners that are purchased will show up separately
+      - You may upgrade / downgrade / remove the browser add-on at any time
+
+**💪 Enhancement**
+
+* Web Studio
+  - Change tooltip from “Maximise Preview” to “Full Screen”
+  - You can now set custom resolution when running a test 
+  - Skip file naming dialog when creating test files
+
+* User Panel
+  - Revamped “Manage billing” page
+  - UI improvements to ensure consistency in styling UI components
+
+**🐞 Fixes**
+
+* Web Studio
+  - Fixed Project directory context menus should be the same
+  - Fixed Editor no longer opens the README file by default
+  - Fixed uploading a file, editor should open the uploaded file instead of the scratchpad
+  - Fixed “Unsaved changes” warning keeps appearing when editing a file while a test is running
+  - Fixed Change “Add issues” hotkey binding
+  - Fixed Cannot upload project logo
+
 ### 3.28.2 <a href="#3282" id="3282"></a>
 
 _Released 07 October 2022_
