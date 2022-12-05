@@ -58,4 +58,4 @@ When adding a property, change the visibility of the property from "Visible" to 
 
 Secret properties are masked in the test run reports.
 
-![image.png](/static/img/Dataset_run_secret.png)
+![Test run result for secret property](/static/img/Dataset_run_secret.png)
