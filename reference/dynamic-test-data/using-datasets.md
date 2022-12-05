@@ -54,8 +54,8 @@ You can manage sensitive test data such as passwords with secret properties in D
 
 When adding a property, change the visibility of the property from "Visible" to "Secret". Let's set password to "Secret".
 
-![Set dataset property to Secret](.vuepress/public/static/img/Dataset_Secret_Property.png)
+![Set dataset property to Secret](/static/img/Dataset_Secret_Property.png)
 
 Secret properties are masked in the test run reports.
 
-![image.png](.vuepress/public/static/img/Dataset_run_secret.png)
+![image.png](/static/img/Dataset_run_secret.png)
