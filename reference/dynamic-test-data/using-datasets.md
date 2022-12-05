@@ -10,19 +10,19 @@ description: Learn how to use datasets in your UIlicious test. Datasets can be u
 
 In Editor Tab, click on the "Dataset" dropdown on the "Result" Pane Toolbar, and "Add Dataset" option to create a dataset.
 
-![Add Dataset](images/Add_Dataset.png)
+![Add Dataset](/static/img/Add_Dataset.png)
 
 Enter a name for the dataset, e.g. "Production".
 
-![Add Name for Dataset](images/Add_Dataset_Name.png)
+![Add Name for Dataset](/static/img/Add_Dataset_Name.png)
 
 To add a property to the dataset, enter the property name and value, and press "Add".
 
-![Add property to Dataset](images/Add_Dataset_Property.png)
+![Add property to Dataset](/static/img/Add_Dataset_Property.png)
 
 Save the dataset. You should see the new dataset in your "Dataset" dropdown.
 
-![Select Dataset from Dropdown](images/Select_Dataset.png)
+![Select Dataset from Dropdown](/static/img/Select_Dataset.png)
 
 When a dataset is selected, the properties and values will be loaded to the `DATA` object. You can reference the properties in the dataset like this:
 
@@ -54,8 +54,8 @@ You can manage sensitive test data such as passwords with secret properties in D
 
 When adding a property, change the visibility of the property from "Visible" to "Secret". Let's set password to "Secret".
 
-![](https://docs.uilicious.com/images/dataset-secret-properties.png)
+![Set dataset property to Secret](.vuepress/public/static/img/Dataset_Secret_Property.png)
 
 Secret properties are masked in the test run reports.
 
-![](https://docs.uilicious.com/images/dataset-run-secret.png)
+![image.png](.vuepress/public/static/img/Dataset_run_secret.png)
