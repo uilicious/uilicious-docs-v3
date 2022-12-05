@@ -10,19 +10,19 @@ description: Learn how to use datasets in your UIlicious test. Datasets can be u
 
 In Editor Tab, click on the "Dataset" dropdown on the "Result" Pane Toolbar, and "Add Dataset" option to create a dataset.
 
-![](https://docs.uilicious.com/images/dataset-add-dataset.png)
+![Add Dataset](images/Add_Dataset.png)
 
 Enter a name for the dataset, e.g. "Production".
 
-![](https://docs.uilicious.com/images/dataset-name-dataset.png)
+![Add Name for Dataset](images/Add_Dataset_Name.png)
 
 To add a property to the dataset, enter the property name and value, and press "Add".
 
-![](https://docs.uilicious.com/images/dataset-add-properties.png)
+![Add property to Dataset](images/Add_Dataset_Property.png)
 
 Save the dataset. You should see the new dataset in your "Dataset" dropdown.
 
-![](https://docs.uilicious.com/images/dataset-added.png)
+![Select Dataset from Dropdown](images/Select_Dataset.png)
 
 When a dataset is selected, the properties and values will be loaded to the `DATA` object. You can reference the properties in the dataset like this:
 
