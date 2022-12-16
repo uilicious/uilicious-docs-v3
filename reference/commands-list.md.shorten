@@ -1,0 +1,229 @@
+---
+# By default, the H1 title will be used at the page title. Set title to override the default.
+# title: <enter page title and uncomment this line>
+
+# Write a short description about the page. This will be displayed on google search results.
+description: A list of all commands available in UIlicious
+---
+
+# List of commands
+
+### Page Navigation Commands <a href="#page-navigation-commands" id="page-navigation-commands"></a>
+
+| Command  | Description |
+| ---| --- |
+| `I.goTo` | Navigate to a URL |
+| `I.refreshPage`](./page-navigation/refresh-page.html#irefreshpage)| Refresh a page  |
+| `I.switchTab` | Switch to a tab |
+| `I.closeTab` | Close the current tab |
+
+### Page Assertion Commands <a href="#page-assertion-commands" id="page-assertion-commands"></a>
+
+| Command | Description |
+| --- | --- |
+| `I.amAt` | Assert that the browser is at a specific URL  |
+| `UI.isStatusCode` | Asserts that the status code for the current page is a specific status code.  |
+| `UI.isNotStatusCode` | Asserts that the status code for the current page is **NOT** a specific status code.  |
+| `UI.is200` | Asserts that the status code for the current page is 200 (OK).  |
+| `UI.isNot200` | Asserts that the status code for the current page is **NOT** 200 (OK).  |
+| `UI.is404` | Asserts that the status code for the current page is 404 (Not Found). |
+| `UI.isNot404` | Asserts that the status code for the current page is **NOT** 404 (Not Found). |
+| `UI.is500` | Asserts that the status code for the current page is 500 (Internal Server Error). |
+| `UI.isNot500` | Asserts that the status code for the current page is **NOT** 500 (Internal Server Error). |
+
+### Form Input Commands <a href="#form-input-commands" id="form-input-commands"></a>
+
+| Command | Description |
+| --- | --- |
+| `I.fill` | Fill a text field with a value  |
+| `I.select` | Select a dropdown / checkbox / radio button |
+| `I.deselect` | Deselect a checkbox |
+| `I.upload` | Upload a file to a file field |
+
+### Form Assertion Commands <a href="#form-assertion-commands" id="form-assertion-commands"></a>
+
+| Command | Description  |
+| --- | --- |
+| `I.filled` | Assert that the form is filled with a specific value |
+| `I.selected` | Assert that a dropdown option, checkbox, or radio button is selected |
+| `I.deselected` | Assert that a dropdown option, checkbox, or radio button is NOT selected |
+
+### Mouse Commands <a href="#mouse-commands" id="mouse-commands"></a>
+
+| Command  | Description |
+| --- | --- |
+| `I.click` | Click on an element |
+| `I.doubleClick` | Double click on an element |
+| `I.rightClick` | Right click on an element |
+| `I.hoverOn` | Hover on an element |
+| `I.dragTo` | Drag an element to another target element |
+| `I.dragBy` | Drag an element directionally by (x,y) pixel offset |
+| `I.dragUp` | Drag an element to the up by a given number of pixel  |
+| `I.dragDown` | Drag an element to the down by a given number of pixel  |
+| `I.dragLeft` | Drag an element to the left by a given number of pixel  |
+| `I.dragRight` | Drag an element to the right by a given number of pixel |
+| `I.scrollBy` | Scrolls the page horizontally and vertically by a given number of pixels. |
+| `I.scrollUp` | Scrolls the page up by a given number of pixels |
+| `I.scrollDown` | Scrolls the page down by a given number of pixels |
+| `I.scrollLeft` | Scrolls the page left by a given number of pixels |
+| `I.scrollRight` | Scrolls the page right by a given number of pixels  |
+| `I.scrollTo` | Scrolls to a coordinate on the page |
+| `I.scrollToTop` | Scroll to the top of the page |
+| `I.scrollToBottom` | Scroll to the bottom of the page  |
+
+### Keyboard Commands <a href="#keyboard-commands" id="keyboard-commands"></a>
+
+| Command  | Description |
+| --- | --- |
+| <p><a href="./keyboard-interactions/Typing-or-pressing-keys.html#itype--ipress"><code>I.type</code></a><br><a href="./keyboard-interactions/Typing-or-pressing-keys.html#itype--ipress"><code>I.press</code></a></p> | Press a key or a string of keys |
+| `I.pressEnter` | Press the `Enter` key |
+| `I.pressUp` | Press the ↑ key |
+| `I.pressDown` | Press the ↓ key |
+| `I.pressLeft` | Press the ← key |
+| `I.pressRight` | Press the → key |
+| `I.pressTab` | Press the `Tab` key |
+
+### Validate Page Content <a href="#validate-page-content" id="validate-page-content"></a>
+
+| Command | Description |
+| --- | --- |
+| `I.see` | Assert that an text or element is visible |
+| `I.dontSee` | Assert that an text or element is NOT visible |
+| `I.count` | Assert the number of occurances for a text or element |
+| `I.seePageTitle` | Assert the title of the current page  |
+
+### Page Content Extraction Commands <a href="#page-content-extraction-commands" id="page-content-extraction-commands"></a>
+
+| Command | Description |
+| --- | --- |
+| `I.getCount` | Get the number of occurances of a text or element |
+| `I.getText` | Get text content from an element  |
+| `I.getValue` | Get value from an input element |
+| `I.getPageTitle` | Get the title of the current page |
+
+### Read and Validate Page Elements <a href="#read-and-validate-page-elements" id="read-and-validate-page-elements"></a>
+
+**Element attribute**
+
+| Command | Description |
+| --- | --- |
+| `UI.getAttribute` | Get an attribute on an element. |
+| `UI.getAttributes` | Get all attributes on an element. |
+| `UI.hasAttribute` | Assert the presence or the expected value of an attribute on an element.  |
+| `UI.doesNotHaveAttribute` | Assert the absence of an attribute on an element, or that the value of an attribute is not equals a given string. |
+
+**Element class**
+
+| Command | Description |
+| --- | --- |
+| `UI.hasClass` | Assert the presence of a CSS class on an element. |
+| `UI.doesNotHaveClass` | Assert the absence of a CSS class on an element.  |
+
+**Element HTML**
+
+| Command  | Description  |
+| --- | --- |
+| `UI.getHTML` | Get the outer HTML of an element. Alias for `UI.getOuterHTML`. |
+| `UI.getOuterHTML` | Get the outer HTML of an element.  |
+| `UI.getInnerHTML` | Get the inner HTML of an element.  |
+
+### Alert Commands <a href="#alert-commands" id="alert-commands"></a>
+
+| Command  | Description |
+| --- | --- |
+| `I.seeAlert` | Assert that an alert is displayed, and/or that an expected message is displayed on the alert. |
+| `I.acceptAlert` | Press the "Ok" button on the alert  |
+| `I.cancelAlert` | Press the "Cancel" button on the alert  |
+| `I.fillAlert` | Fill the text box on the alert  |
+
+### Utility Commands <a href="#utility-commands" id="utility-commands"></a>
+
+| Command | Description |
+| --- | --- |
+| `I.wait` | Wait for a given amount of time |
+
+### Generate Sample Data <a href="#generate-sample-data" id="generate-sample-data"></a>
+
+| Command  | Description  |
+| --- | --- |
+| `SAMPLE.id` | Generates a random string useful for IDs and passwords |
+| `SAMPLE.phone` | Generates a random phone number  |
+| `SAMPLE.last` | Generates a random last name |
+| `SAMPLE.first` | Generates a random first name  |
+| `SAMPLE.name` | Generates a random full name |
+| `SAMPLE.email` | Generates a random email address |
+
+### Loading Test Data From File <a href="#loading-test-data-from-file" id="loading-test-data-from-file"></a>
+
+| Command  | Description  |
+| --- | --- |
+| `TEST.loadDataFromCsv` | Loads test data from a .csv file.  |
+| `TEST.loadDataFromJson` | Loads test data from a .json file. |
+
+### Test Flow Commands <a href="#test-flow-commands" id="test-flow-commands"></a>
+
+| Command  | Description |
+| --- | --- |
+| `TEST.run` | Runs another test |
+| `TEST.stop` | Stops the test  |
+
+### Screenshot Commands <a href="#screenshot-commands" id="screenshot-commands"></a>
+
+| Command  | Description  |
+| --- | --- |
+| `TEST.takeFullScreenshot` |
+
+### Reporting Commands <a href="#reporting-commands" id="reporting-commands"></a>
+
+| Command  | Description  |
+| --- | --- |
+| `TEST.log.info` | Log a message to report  |
+| `TEST.log.pass` | Log a message to report with `pass` status |
+| `TEST.log.fail` | Log a message to report with `fail` status |
+
+### Limiting Test Scope <a href="#limiting-test-scope" id="limiting-test-scope"></a>
+
+| Command | Description |
+| --- | --- |
+| `UI.context` | <p>Limit the test to target within specific parts of a page.<br>Can be used to explicitly switch to the context of an iframe.</p> |
+
+### Execute Javascript <a href="#execute-javascript" id="execute-javascript"></a>
+
+| Command  | Description  |
+| --- | --- |
+| `UI.execute` | Executes Javascript on the browser |
+
+### HTTP Requests <a href="#http-requests" id="http-requests"></a>
+
+| Command | Description |
+| --- | --- |
+| `UI.httpGet` | Do a http request with the GET method.  |
+| `UI.httpPost` | Do a http request with the POST method. |
+| `UI.httpRequest` | Do a http request.  |
+
+### Cookie Management <a href="#cookie-management" id="cookie-management"></a>
+
+| Command  | Description  |
+| --- | --- |
+| `UI.COOKIE.set` | Set a cookie on the current page |
+| `UI.COOKIE.isSet` | Assert the presence of a cookie  |
+| `UI.COOKIE.isEqual` | Assert the value of a cookie |
+| `UI.COOKIE.delete` | Delete a cookie  |
+| `UI.COOKIE.deleteAll` | Delete all cookies |
+
+### Local Storage Management <a href="#local-storage-management" id="local-storage-management"></a>
+
+| Command | Description  |
+| --- | --- |
+| `UI.LocalStorage.get` | Get the value of property from local storage |
+| `UI.LocalStorage.set` | Set a property in local storage  |
+| `UI.LocalStorage.isSet` | - coming soon -  |
+| `UI.LocalStorage.isEqual` | - coming soon -  |
+| `UI.LocalStorage.delete` | Delete a property in local storage |
+| `UI.LocalStorage.deleteAll` | Delete all properties in local storage |
+
+### Window Resize <a href="#window-resize" id="window-resize"></a>
+
+| Command  | Description |
+| --- | --- |
+| `UI.resize` | Resize the resolution to a specific width and height. |
