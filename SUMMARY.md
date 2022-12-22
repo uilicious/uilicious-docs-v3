@@ -29,6 +29,10 @@
   * [Set up Slack Notifications](how-to-guides/Setting-up-jobs/set-up-slack-notifications.md)
   * [Set up Microsoft Teams Notifications](how-to-guides/Setting-up-jobs/set-up-microsoft-teams-notifications.md)
 
+## Test Scripting Tutorials
+
+* [How to test Slider Components](test-scripting-tutorials/testing-slider-components.md)
+
 ## Test Commands
 * [List of commands](reference/commands-list.md)
 * Configurations
