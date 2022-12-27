@@ -13,6 +13,73 @@ description: List of updates and changes of UIlicious throughout the years.
 * Minor: Contains new features
 * Patch: Contains enhancements and bug fixes only
 
+### 3.29.6 <a href="#3296" id="3296"></a>
+
+_Released 22 December 2022_
+
+**💪 Enhancement**
+
+* Web Studio
+  - You can now schedule jobs by day of month and/or day of year
+    - Every X months on the 3rd day of the month (e.g. 3rd Apr, 3rd Jun, 3rd Aug…)
+    - Every year on a specific date (25th of December every year)
+
+### 3.29.5 <a href="#3295" id="3295"></a>
+
+_Released 8 December 2022_
+
+**💪 Enhancement**
+
+* Web Studio
+  - The credentials for Webdriver connection are now masked out by default to better protect privacy.
+
+**🐞 Fixes**
+
+  - Fixed an issue where the runs tabs and pagination is not working correctly when there are active running tests.
+
+### 3.29.4 <a href="#3294" id="3294"></a>
+
+_Released 29 November 2022_
+
+**💪 Enhancement**
+
+* Web Studio
+  - You can now view past notifications received by clicking on the "bell" icon in the top right corner of the main menu.
+
+**🐞 Fixes**
+  - Fixed an issue where the results of jobs are not showing immediately upon loading.
+
+### 3.29.3 <a href="#3293" id="3293"></a>
+
+_Released 23 November 2022_
+
+**🐞 Fixes**
+  - Fixed issue where I.click command will randomly fail with “Cannot perform click on element as it has been detached from DOM” error when the click triggers a page navigation and the subsequent page is slow to load.
+
+### 3.29.2 <a href="#3292" id="3292"></a>
+
+_Released 14 November 2022_
+
+**💪 Enhancement**
+
+* Test Engine
+  - Added I.getURL command
+  - Added TEST.runOnce command
+
+### 3.29.1 <a href="#3291" id="3291"></a>
+
+_Released 09 November 2022_
+
+**💪 Enhancement**
+
+* Web Studio
+  - Add new browser add-on plan to purchase test runner for chrome, firefox, edge and Safari
+
+**🐞 Fixes**
+
+* User Panel
+  - Fixed User cannot cancel subscription
+
 ### 3.29.0 <a href="#3290" id="3290"></a>
 
 _Released 07 November 2022_
