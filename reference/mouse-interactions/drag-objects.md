@@ -183,5 +183,8 @@ I.dragRight("drag me", 10)
 
 Drags the element "drag me" 10 pixels right.
 
-### Test Scripting Guide for I.drag Command(s)
+### Test Scripting Tutorial for I.drag Command(s)
+
 [How to test Slider Components](test-scripting-tutorials/testing-slider-components.md)
+
+This tutorial shows you how to test the slider components in website(s) using the I.drag command.
