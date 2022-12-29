@@ -88,6 +88,7 @@
   * [Get value from an input element](reference/read-and-validate-page-elements/get-value-from-an-input-element.md)
   * [Get value from page element attribute](reference/read-and-validate-page-elements/get-value-from-page-element-attribute.md)
   * [Get and Validate page title](reference/read-and-validate-page-elements/get-and-validate-page-title.md)
+  * [Get page URL](reference/read-and-validate-page-elements/get-page-url.md)
   * [Validate page element attribute](reference/read-and-validate-page-elements/validate-page-element-attribute.md)
   * [Validate page element class](reference/read-and-validate-page-elements/validate-page-element-class.md)
   * [Get HTML code for a page element](reference/read-and-validate-page-elements/get-html-code-for-a-page-element.md)

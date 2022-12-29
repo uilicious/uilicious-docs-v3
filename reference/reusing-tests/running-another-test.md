@@ -95,3 +95,29 @@ TEST.run("./view_order")
 ```
 
 ***
+---
+
+### `TEST.runOnce` <a href="#testrunonce" id="testrunonce"></a>
+
+It is a varient of `TEST.run` that runs another file, but only **ONCE**. If `TEST.run` is called on the same file again, it will not be ran.
+
+#### Usage <a href="#usage" id="usage"></a>
+
+```javascript
+TEST.runOnce(path)
+```
+
+**Parameters**
+
+| Parameter | Type   | Remarks                 |
+| --------- | ------ | ----------------------- |
+| path      | string | Path to the test to run |
+
+**Example**
+
+```javascript
+TEST.runOnce("file/to/include/once") 
+TEST.runOnce("file/to/include/once") 
+TEST.runOnce("file/to/include/once") 
+```
+The script "file/to/include/once" is only executed **ONCE** in this scenario. This is useful for loading certain common setup scripts, in a more efficent manner.
