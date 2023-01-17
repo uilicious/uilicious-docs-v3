@@ -4,6 +4,9 @@ title: Switch Tabs
 # Write a short description about the page. This will be displayed on google search results.
 description: Learn how to use the I.switchTab command to navigate between different tabs in your UIlicious test.
 
+# Clarification notes, mainly for the AI
+clarification_notes: You can only switch between browser window tabs. You cannot switch into an iframe. Use the `UI.context` command instead.
+
 # add tags to improve search results
 tags: 
     - i.switchtab

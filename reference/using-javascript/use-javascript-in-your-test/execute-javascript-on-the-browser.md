@@ -1,6 +1,10 @@
 ---
 # Write a short description about the page. This will be displayed on google search results.
 description: Learn how to execute Javascript on the browser in your UIlicious test. 
+
+# Clarification notes, mainly for the AI
+clarification_notes: You can only return JSON serializable values with UI.execute. Any non-json values, will be lost.
+
 ---
 
 
