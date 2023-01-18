@@ -32,6 +32,8 @@
 ## Test Scripting Tutorials
 
 * [How to test Slider Components](test-scripting-tutorials/testing-slider-components.md)
+* [How to test iFrames](test-scripting-tutorials/testing-iframes.md)
+* [How to test Browser Alerts](test-scripting-tutorials/testing-browser-alerts.md)
 
 ## Test Commands
 * [List of commands](reference/commands-list.md)

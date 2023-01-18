@@ -34,3 +34,9 @@ I.acceptAlert() // press "Ok"
 ```
 
 This fills in the text box in the alert with "Jane", and presses the "Ok" button.
+
+### Test Scripting Tutorial for Alerts Command(s)
+
+[How to test Browser Alerts](test-scripting-tutorials/testing-browser-alerts.md)
+
+This tutorial shows you how to test the browser alerts in website(s) using the Alert command(s).

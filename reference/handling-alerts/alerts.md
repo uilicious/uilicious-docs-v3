@@ -85,3 +85,9 @@ I.seeAlert("Welcome!")
 
 UIlicious is currently not able to take screenshots when a browser alert is opened, so automatic screenshots are disabled until the alert is closed.
 
+### Test Scripting Tutorial for Alerts Command(s)
+
+[How to test Browser Alerts](test-scripting-tutorials/testing-browser-alerts.md)
+
+This tutorial shows you how to test the browser alerts in website(s) using the Alert command(s).
+
