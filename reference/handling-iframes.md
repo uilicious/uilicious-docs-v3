@@ -54,3 +54,9 @@ UI.context("#secure-payment-iframe", ()=>{
 ```
 
 This will run the commands to fill the credit card information in the iframe with the id `secure-payment-iframe`. The selector must match the iframe element and only one iframe exactly.
+
+### Test Scripting Tutorial for handling iFrames
+
+[How to test Slider Components](/test-scripting-tutorials/testing-iframes.md)
+
+This tutorial shows you how to handle iFrames in website(s) using the UI.context command.

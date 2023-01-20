@@ -13,6 +13,26 @@ description: List of updates and changes of UIlicious throughout the years.
 * Minor: Contains new features
 * Patch: Contains enhancements and bug fixes only
 
+### 3.30.0 <a href="#3300" id="3300"></a>
+
+_Released 16 January 2023_
+
+**🚀 New Features**
+
+* Web Studio
+  - You can now create additional workspace(s) in your personal space to better organize your projects.
+    - To create a new workspace, click on the ‘Add workspace’ button in the left Workspaces sidebar.
+
+**🐞 Fixes**
+
+* Web Studio
+  - Fixed newly added workspace is disappearing after refreshing the workspace page.
+  - Fixed newly registered accounts don't have any free test runs
+  - Fixed message is not showing for users create their own free workspace
+
+* User Panel
+  - Broken redirection after accepting invitation
+
 ### 3.29.6 <a href="#3296" id="3296"></a>
 
 _Released 22 December 2022_
