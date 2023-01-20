@@ -57,6 +57,6 @@ This will run the commands to fill the credit card information in the iframe wit
 
 ### Test Scripting Tutorial for handling iFrames
 
-[How to test Slider Components](/test-scripting-tutorials/testing-iframes.md)
+[How to test iFrames](/test-scripting-tutorials/testing-iframes.md)
 
 This tutorial shows you how to handle iFrames in website(s) using the UI.context command.
