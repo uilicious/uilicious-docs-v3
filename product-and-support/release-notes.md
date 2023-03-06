@@ -13,6 +13,26 @@ description: List of updates and changes of UIlicious throughout the years.
 * Minor: Contains new features
 * Patch: Contains enhancements and bug fixes only
 
+### 3.30.2 <a href="#3302" id="3302"></a>
+
+_Released 22 February 2023_
+
+**💪 Enhancement**
+
+* Web Studio
+  - Snippets for private test runs now also show the test run’s selected dataset and region.
+  - You can now set an `end` step and turn on looping. Setting an `end` step will stop the player automatically when it reaches the end step during autoplay.
+  - Failed steps are now more clearly displayed.
+
+### 3.30.1 <a href="#3301" id="3301"></a>
+
+_Released 22 February 2023_
+
+**💪 Enhancement**
+
+* Web Studio
+  - Test run’s annotations are now shown in shared snippets for private test runs.
+
 ### 3.30.0 <a href="#3300" id="3300"></a>
 
 _Released 16 January 2023_
