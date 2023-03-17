@@ -58,7 +58,12 @@ export default {
     ['link', {rel: 'icon', href: basePath + 'static/favicon/favicon-128.png'}],
     // we cannot use relative path for "og:image", we must specify the full path
     ['meta', {property: "og:image", content: "https://docs.uilicious.com" + basePath + "static/logo-og-image.png"}],
-    ['meta', {property: "og:type", content: "article"}]
+    ['meta', {property: "og:type", content: "article"}],
+    // Style sheet import is not needed, as its done in styles/index.scss
+    ["link", {rel: "stylesheet", type: "text/css", href: basePath + 'static/chat/UiChatBot.css'}],
+    // Lets include the chatbot plugin
+    ["script", {src: basePath + 'static/chat/UiChatBot.js'}],
+    ["script", {src: basePath + 'static/chat/UiChatBotSetup.js'}]
   ],
 
   // Lets tweak the search plugin
@@ -67,7 +72,7 @@ export default {
       appId    : '2EBULZM0A0',
       apiKey   : '660ab480b3cb895c4b651aaad89f0ca1',
       indexName: 'uilicious',
-    }),
+    })
   ],
 
   // And extend our markdown
