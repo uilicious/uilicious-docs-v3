@@ -66,13 +66,19 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 	// Lets generate the "right" aside
 	const rightAside = document.createElement("aside");
 	rightAside.className = "right-aside-chat"
-	rightAside.innerHTML = `<a class="righ-chat-toggle">TAMI chatbot</a><div class="right-chat-frame"></div>`
+	rightAside.innerHTML = `<a class="righ-chat-toggle">TAMI chatbot</a><div class="right-chat-frame"></div><div class="chat-shadowbox"></div>`
 
 	// Setup the right aside, we attach to the "body", to avoid interferring with vue reactivity
 	body.appendChild(rightAside);
 
 	// Get the chat frame
 	const chatFrame = rightAside.querySelector(".right-chat-frame");
+
+	// Get the chat toggle
+	const chatToggle = rightAside.querySelector(".righ-chat-toggle");
+
+	// And the background shadowbox
+	const shadowBox = rightAside.querySelector(".chat-shadowbox");
 
 	// The special event listener for doc links
 	// ---
@@ -134,6 +140,9 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 					e.preventDefault();
 					e.stopPropagation();
 
+					// Exit the focus mode (if its set)
+					removeFocusMode();
+
 					// Lets trigger the click
 					link.click();
 					return;
@@ -145,6 +154,32 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 		// does nothing, and let native behaviour take over
 	}
 
+	// Handling of "Focus Mode" toggle
+	// ---
+
+	function enableFocusMode() {
+		if(!body.classList.contains("uichatbot-vuepress-focus")) {
+			body.classList.add("uichatbot-vuepress-focus");
+		}
+	}
+
+	function removeFocusMode() {
+		if(body.classList.contains("uichatbot-vuepress-focus")) {
+			body.classList.remove("uichatbot-vuepress-focus");
+		}
+	}
+
+	function toggleFocusMode() {
+		if(body.classList.contains("uichatbot-vuepress-focus")) {
+			removeFocusMode();
+		} else {
+			enableFocusMode();
+		}
+	}
+	chatToggle.addEventListener("click", toggleFocusMode);
+	shadowBox.addEventListener("click", removeFocusMode);
+	document.getElementsByClassName("navbar")[0].addEventListener("click", removeFocusMode);
+
 	// Loading up the bot
 	// ---
 
@@ -153,7 +188,8 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 		botName: "TAMI",
 		headerMsg: false,
 		subHeaderMsg: "Disclaimer: TAMI AI assistant is still in early beta, and maybe inaccurate.<br/>When in doubt check with the official documentation cited",
-
+		openingMsg: "Hi, I'm TAMI, an AI asstant for uilicious.com\n\nHere to help you with any questions about\nUI testing via uilicious",
+		
 		// Attach to
 		attachTo: chatFrame,
 

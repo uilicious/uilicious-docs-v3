@@ -226,7 +226,7 @@
 
 /** @TODO handle tablet / mobile mode **/
 .uichatbot-vuepress .page {
-	padding-right: calc( var(--sidebar-width) * 1.2 );
+	padding-right: calc( var(--sidebar-width) * 1.2 + 0.5rem );
 }
 
 .uichatbot-vuepress .right-aside-chat {
@@ -249,42 +249,115 @@
 
 .uichatbot-vuepress .righ-chat-toggle {
 	position: fixed;
-    z-index: 9;
-    text-orientation: sideways;
-    top: calc( var(--navbar-height) + 2.6rem - 1px );
-    right: 0;
-    width: 0.75rem;
-    margin-right: calc( var(--sidebar-width) * 1.2 - 1px );
-    display: block;
-    writing-mode: vertical-lr;
-    color: var(--c-text);
-    padding: 0.3rem;
-    font-size: 0.75rem;
-    border-right: 0;
-    background: #ABEBC6;
-    height: 5.5rem;
-    border-radius: 4px 0 0 4px;
-    text-align: center;
+	z-index: 9;
+	text-orientation: sideways;
+	top: calc( var(--navbar-height) + 2.6rem - 1px );
+	left: auto;
+	right: calc( var(--sidebar-width) * 1.2 - 1px );
+	width: 0.75rem;
+	/* margin-right: calc( var(--sidebar-width) * 1.2 - 1px ); */
+	display: block;
+	writing-mode: vertical-lr;
+	color: var(--c-text);
+	padding: 0.3rem;
+	font-size: 0.75rem;
+	border-right: 0;
+	background: #ABEBC6;
+	height: 5.5rem;
+	border-radius: 4px 0 0 4px;
+	text-align: center;
 
 	box-shadow: -2px 0 2px rgba(0,0,0,0.2);
 	cursor: pointer;
-    /* border: 1px solid var(--c-border); */
+	user-select: none;
+	/* border: 1px solid var(--c-border); */
 }
 
 .uichatbot-vuepress .right-chat-frame {
 	width:100%;
 	height:100%;
+	z-index: 10;
+}
+.uichatbot-vuepress .uiChatBot-frame {
+	z-index: 10;
+}
+.uichatbot-vuepress .right-chat-frame * {
+	z-index: 10;
+}
+
+.uichatbot-vuepress .chat-shadowbox {
+	display:none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+	opacity: 0;
+	background: rgba(0,0,0,0.3);
+}
+
+/*****************************************************
+ * FOCUS MODE STYLING
+ ****************************************************/
+
+.uichatbot-vuepress.uichatbot-vuepress-focus .chat-shadowbox {
+	display:block;
+	opacity: 1;
+	z-index: 5;
+}
+
+.uichatbot-vuepress.uichatbot-vuepress-focus .right-aside-chat {
+	left: 40px;
+	right: 40px;
+	width: calc( 100% - 80px );
+	bottom: 20px;
+	top: calc( var(--navbar-height) + 20px );
+	border-radius: 6px;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+}
+
+/** THIS IS BUGGY, SO WE AVOID IT **/
+/* .uichatbot-vuepress-focus .right-aside-chat,
+.uichatbot-vuepress-focus .right-chat-toggle {
+	transition-property: width,height,top,left,right,bottom;
+	transition-duration: 2s;
+} */
+/* .uichatbot-vuepress.uichatbot-vuepress-focus .chat-shadowbox {
+	transition-property: opacity;
+	transition-duration: 5s;
+	transition-timing-function: cubic-bezier();
+} */
+
+.uichatbot-vuepress.uichatbot-vuepress-focus .righ-chat-toggle {
+	top: calc( var(--navbar-height) + 2.6rem - 1px + 20px );
+	left: calc(  40px - 0.75rem - 0.6rem + 1px);
+	right: auto;
+}
+
+
+.uichatbot-vuepress.uichatbot-vuepress-focus .uiChatBot-container {
+	z-index: 10;
 }
 
 /*****************************************************
  * CHATBOT COLOR STYLE OVERWRITE
  ****************************************************/
 
+/** Due to a quick with flexbox, we do not apply background styling to the flexbox container, but to the child **/
+.uichatbot-vuepress .uiChatBot-msg-container {
+ 	background: linear-gradient(to bottom, #ABEBC6, #F8F8F8);
+}
+.uichatbot-vuepress .uiChatBot-footerMsg {
+	box-shadow: 0 0 10px 5px rgb(255 255 255 / 40%);
+	background: #F8F8F8;
+}
+
 .uichatbot-vuepress .uiChatBot-subheader {
 	background-color: #ffffe0df; 
 	color: black;
 	border-bottom: 1px solid var(--c-border);
-	box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
 }
 
 /*****************************************************
@@ -352,6 +425,6 @@
 .uichatbot-vuepress .uiChatBot-submit {
 	font-size: 0.75rem;
 	width: 5rem;
-    padding: 1.2rem;
+	padding: 1.2rem;
 	height: 100%;
 }

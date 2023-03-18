@@ -61,7 +61,7 @@
 		supportFallbackMsg: "Please contact our support team for further assistance",
 	
 		// Overwriting the opening message
-		openingMsg: "Hi, I'm TAMI, an AI asstant for uilicious.com\n\nFeel free to ask me anything about UI testing",
+		openingMsg: "Hi, I'm an AI asstant, who is here to help you\n\nFeel free to ask me anything",
 	
 		// Failure message for unable to find a valid answer
 		noAnswerFallbackMsg: "I'm sorry, I'm unable to find the answers for all your questions, feel free to ask our support staff instead.\n\nThe following are links to resources that maybe relevent to your question",
@@ -87,8 +87,8 @@
 	// The HTML chat frame template to use
 	let htmlTemplate = [
 		// Main container frame
-		`<div class="uiChatBot-frame">
-			<div class="uiChatBot-container">`,
+		// `<div class="uiChatBot-frame">`,
+		`	<div class="uiChatBot-container">`,
 		// Chat header and subheader
 		`		<div class="uiChatBot-header">
 				</div>
@@ -114,8 +114,8 @@
 					<button type="submit" class="uiChatBot-submit">Send</button>
 				</form>`,
 		// Main container frame closure
-		`	</div>
-		</div>`
+		`	</div>`
+		// `</div>`
 	].map((block)=>block.trim().split("\n")).flat().map((line)=>line.trim()).join("\n");
 	
 	// ============================
