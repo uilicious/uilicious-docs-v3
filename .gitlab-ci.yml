@@ -9,7 +9,7 @@ stages:
 
 vuepress-netlify-build:
   stage: build
-  image: node:16-buster
+  image: node:18-buster
   variables:
     # Use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
     # this ensure all submodules are initiazlied correctly
@@ -53,7 +53,7 @@ vuepress-netlify-build:
 # We also injects robots.txt for the relevent envrionment
 .merge-template:
   stage: merge
-  image: node:16-buster
+  image: node:18-buster
   variables:
     # Use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
     # Disable the git submodule, as its not needed
@@ -100,7 +100,7 @@ vuepress-netlify-build:
 # Just setup robots.txt, for preview sites
 preview-merge:
   stage: merge
-  image: node:16-buster
+  image: node:18-buster
   script:
     - 'echo "User-agent: *" > dist/robots.txt;'
     - 'echo "Disallow: /" >> dist/robots.txt;'
