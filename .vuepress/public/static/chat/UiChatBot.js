@@ -933,7 +933,7 @@
 	 * Encode the following raw string, to HTML safe characters
 	 */
 	 function htmlEncode(rawStr) {
-		return rawStr.replace(/[\<\>\\\/]/g, function(i) {
+		return rawStr.replace(/[\<\>\\]/g, function(i) {
 			return '&#'+i.charCodeAt(0)+';';
 		});
 	}
@@ -943,24 +943,28 @@
 	 * @param {String} markdown 
 	 * @param {Object} opt 
 	 */
-	function markdownToHTML(markdown, opt) {
+	function markdownToHTML(markdown, opt, isRecursive = false) {
 		// Trim the markdown
-		markdown = markdown.trim();
+		if( isRecursive ) {
+			// does nothing
+		} else {
+			// Trim the markdown
+			markdown = markdown.trim();
+			// Encode any control characters first
+			markdown = htmlEncode(markdown);
+		}
 	
 		// If its empty, return empty
 		if (markdown == "") {
 			return "";
 		}
 	
-		// Encode any control characters first
-		markdown = htmlEncode(markdown);
-	
 		// Find the opening code block match
 		const codeBlockOpeningIndex = markdown.indexOf("```");
 	
 		// Handle the case where there is no code block
 		if (codeBlockOpeningIndex <= -1) {
-			return markdownToMTML_noCodeBlock(markdown, opt);
+			return markdownToMTML_noCodeBlock(markdown, opt, true);
 		}
 	
 		// Ok a codeblock opening was found, 
@@ -982,7 +986,7 @@
 	
 		// Convert the content before the code block (unless codeblock was at the start)
 		if (codeBlockOpeningIndex > 0) {
-			outputArr.push(markdownToMTML_noCodeBlock(markdown.substring(0, codeBlockOpeningIndex), opt));
+			outputArr.push(markdownToMTML_noCodeBlock(markdown.substring(0, codeBlockOpeningIndex), opt, true));
 		}
 	
 		// Add the code block
@@ -990,7 +994,7 @@
 	
 		// Conver the content after the code block (unless codeblock was at the end)
 		if (markdownAfterCodeblockIndex < markdown.length) {
-			outputArr.push(markdownToHTML(markdown.substring(markdownAfterCodeblockIndex), opt));
+			outputArr.push(markdownToHTML(markdown.substring(markdownAfterCodeblockIndex), opt, true));
 		}
 	
 		// Return the full html
@@ -1020,11 +1024,11 @@
 		markdown = markdown.replace(/\*(.*?)\*/gm, "<em>$1</em>");
 		markdown = markdown.replace(/_(.*?)_/gm, "<em>$1</em>");
 	
-		// Links
-		markdown = markdown.replace(/\[(.*?)\]\((.*?)\)/gm, "<a href=\"$2\" target=\"_blank\">$1</a>");
+		// Links in markdown format
+		markdown = markdown.replace(/\[(.*?)\]\((\s*)(.*?)(\s*)\)/gm, "<a href=\"$3\" target=\"_blank\">$1</a>");
 	
 		// Links that are not in an existing anchor link
-		markdown = markdown.replace(/(\s)(http[s]?:\/\/[^\s\/\-\_]+)/gm, "$1<a href=\"$2\" target=\"_blank\">$2</a>");
+		markdown = markdown.replace(/(\s+)(http[s]*?:\/\/[A-Za-z0-9\/\-\_\.\#\=\+]+)/gm, "$1<a href=\"$2\" target=\"_blank\">$2</a>");
 	
 		// Images
 		markdown = markdown.replace(/!\[(.*?)\]\((.*?)\)/gm, "<img src=\"$2\" alt=\"$1\">");

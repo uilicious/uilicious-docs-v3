@@ -152,7 +152,7 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 	UiChatBot({
 		botName: "TAMI",
 		headerMsg: false,
-		subHeaderMsg: "Disclaimer: TAMI AI assistant is still in early beta, and may provide inaccurate responses.<br/>When in doubt check with the official documentation cited",
+		subHeaderMsg: "Disclaimer: TAMI AI assistant is still in early beta, and maybe inaccurate.<br/>When in doubt check with the official documentation cited",
 
 		// Attach to
 		attachTo: chatFrame,
@@ -170,6 +170,10 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 				}
 			});
 		},
+
+		// HighlightJS styling overwrite
+		highlightJsStyle: "stackoverflow-dark",
+
 		//
 		// Custom action hooks
 		//
