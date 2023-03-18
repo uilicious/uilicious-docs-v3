@@ -1,0 +1,448 @@
+/*****************************************************
+ * DEFAULT UiChatBot CSS
+ ****************************************************/
+
+/** Main Chat frame and container **/
+.uiChatBot-frame {
+	width:100vw;
+	height:100vh;
+	display:block;
+	max-width:100%;
+	max-height:100%;
+}
+
+.uiChatBot-container {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+
+	display:flex;
+	flex-direction:column;
+	justify-content: space-between;
+
+	width:100%;
+	height:100%;
+	max-width: 100vw;
+	max-height: 100vh;
+	
+	background: linear-gradient(to bottom, #ABEBC6, #F8F8F8);
+}
+
+/** Chatbox header and subheader text (if enabled) **/
+.uiChatBot-header {
+	font-size: 2em;
+	background-color: #333; 
+	color: white;
+	text-align: center;
+	padding: 15px 20px 15px 20px;
+}
+
+.uiChatBot-subheader {
+	background-color: #ffffe0df; 
+	color: black;
+	text-align: center;
+	padding: 15px 20px 15px 20px;
+	border-bottom: 1px solid #333;
+	font-size: 0.5rem;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+
+/** Main chatbox container, handles message ordering via flexbox **/
+.uiChatBot-msg-container {
+	overflow-y: auto; 
+	display: flex;
+	flex-grow:1;
+	flex-direction: column; 
+	justify-content: flex-start;
+	padding: 20px 15px 20px 15px;
+	box-sizing: border-box;
+}
+
+/** 
+ *  Individual message styling
+ *  The assistant messages is aligned left with 'flex-start'
+ *  The user messages is aligned right with 'flex-end'
+ **/
+.uiChatBot-msg {
+	background-color: #f9f9f9;
+	padding: 20px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	max-width: 85%;
+	align-self: flex-start; 
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+
+	animation-name: uiChatBot-popIn;
+	animation-duration: 0.4s;
+	animation-timing-function: ease-out;
+}
+		
+.uiChatBot-user {
+	background-color: #22c728; 
+	color: white;
+	align-self: flex-end; 
+}
+
+.uiChatBot-text {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+/** Custom styling for response text **/
+.uiChatBot-text .code-line {
+	background: lightgrey;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+.uiChatBox-text br {
+	display: block;
+	height: 16px;
+	width: 100%;
+	content: "&nbsp;";
+}
+
+/** Msg timestamp styling **/
+.uiChatBot-timestamp {
+	font-size: 12px;
+	font-style: italic;
+	text-align: right;
+	margin: 5px 0 0 0;
+}
+
+/** 
+ *  Note line, used to display a note to the user
+ **/
+.uiChatBot-note {
+	color: black;
+	text-align: left;
+	font-size:12px;
+	margin: 20px;
+}
+
+/** Custom "pop in" animation for new messages **/
+@keyframes uiChatBot-popIn {
+	0% {
+		opacity: 0;
+		transform: scale(0.5);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/** Chat input form notification bar **/
+.uiChatBot-footerMsg {
+	color: darkslategrey;
+	font-size: 12px;
+	text-align: center;
+	padding: 15px 20px 15px 20px;
+	/* border-top: 1px solid #eee; */
+}
+
+.uiChatBot-footerMsg-error {
+	color: darkred;
+	font-size: 12px;
+}
+
+/* Pure CSS animation for "..." thinking message */
+.uiChatBot-footerMsg-thinking:after {
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: bottom;
+	-webkit-animation: uiChatBot-footerMsg-ellipsis steps(4,end) 1500ms infinite;      
+	animation: uiChatBot-footerMsg-ellipsis steps(4,end) 1500ms infinite;
+	content: "\2026"; /* ascii code for the ellipsis character */
+	width: 0px;
+}
+  
+@keyframes uiChatBot-footerMsg-ellipsis {
+	to {
+		width: 1.25em;
+	}
+}
+
+@-webkit-keyframes uiChatBot-footerMsg-ellipsis {
+	to {
+		width: 1.25em;
+	}
+}
+
+/** Chat input form **/
+.uiChatBot-form {
+	display: flex;
+	flex-shrink:1;
+	align-items: center;
+	background-color: #eee;
+	padding: 10px 20px 10px 20px;
+	box-sizing: border-box;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+		
+.uiChatBot-input {
+	font-family: Arial, sans-serif;
+
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #969696;
+	border-radius: 5px;
+	margin-right: 10px;
+	box-sizing: border-box;
+
+	width: 100%;
+	height: 60px;
+
+	overflow-y: auto;
+	white-space: pre-wrap; /* allow whitespace */
+	resize: none; /* disable resize */
+}
+		
+.uiChatBot-submit {
+	background-color: #6dd281;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 20px 20px;
+	width: 80px;
+	
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.uiChatBot-submit[disabled] {
+	background-color: #969696;
+	cursor: not-allowed;
+}
+
+.uiChatBot-submit:not([disabled]):hover {
+	background-color: #5d886e; 
+}
+
+/*****************************************************
+ * VUEPRESS INTEGRATION CSS
+ ****************************************************/
+
+.uichatbot-vuepress .page {
+	padding-right: calc( var(--sidebar-width) * 1.2 + 0.5rem );
+}
+
+.uichatbot-vuepress .right-aside-chat {
+	width: calc( var(--sidebar-width) * 1.2 );
+	right: 0;
+	max-height: 100%;
+	position: fixed;
+	z-index: 10;
+	margin: 0;
+	top: var(--navbar-height);
+	bottom: 0;
+	box-sizing: border-box;
+	border-left: 1px solid var(--c-border);
+	scrollbar-width: thin;
+	scrollbar-color: var(--c-brand) var(--c-border);
+	background-color: var(--c-bg-sidebar);
+	/* transition: transform var(--t-transform), background-color var(--t-color), border-color var(--t-color); */
+	overflow-y: hidden;
+}
+
+.uichatbot-vuepress .right-chat-toggle {
+	position: fixed;
+	z-index: 9;
+	text-orientation: sideways;
+	top: calc( var(--navbar-height) + 2.6rem - 1px );
+	left: auto;
+	right: calc( var(--sidebar-width) * 1.2 - 1px );
+	width: 0.75rem;
+	/* margin-right: calc( var(--sidebar-width) * 1.2 - 1px ); */
+	display: block;
+	writing-mode: vertical-lr;
+	color: var(--c-text);
+	padding: 0.3rem;
+	font-size: 0.75rem;
+	border-right: 0;
+	background: #ABEBC6;
+	height: 5.5rem;
+	border-radius: 4px 0 0 4px;
+	text-align: center;
+
+	box-shadow: -2px 0 2px rgba(0,0,0,0.2);
+	cursor: pointer;
+	user-select: none;
+	/* border: 1px solid var(--c-border); */
+}
+
+.uichatbot-vuepress .right-chat-frame {
+	width:100%;
+	height:100%;
+	z-index: 10;
+}
+.uichatbot-vuepress .uiChatBot-frame {
+	z-index: 10;
+}
+.uichatbot-vuepress .right-chat-frame * {
+	z-index: 10;
+}
+
+.uichatbot-vuepress .chat-shadowbox {
+	display:none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+	opacity: 0;
+	background: rgba(0,0,0,0.3);
+}
+
+/*****************************************************
+ * MOBILE / TABLET MODE STYLING
+ ****************************************************/
+
+@media (max-width: 1310px) {
+
+	.uichatbot-vuepress .right-aside-chat {
+		width: 0;
+		left: auto;
+		right: 0;
+	}
+	.uichatbot-vuepress .right-chat-toggle {
+		right: 0;
+	}
+	.uichatbot-vuepress .page {
+		padding-right: 0;
+	}
+}
+
+/*****************************************************
+ * FOCUS MODE STYLING
+ ****************************************************/
+
+.uichatbot-vuepress.uichatbot-vuepress-focus .chat-shadowbox {
+	display:block;
+	opacity: 1;
+	z-index: 5;
+}
+
+.uichatbot-vuepress.uichatbot-vuepress-focus .right-aside-chat {
+	display:block;
+	left: 40px;
+	right: 40px;
+	width: calc( 100% - 80px );
+	bottom: 20px;
+	top: calc( var(--navbar-height) + 20px );
+	border-radius: 6px;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+}
+
+/** THIS IS BUGGY, SO WE AVOID IT **/
+/* .uichatbot-vuepress-focus .right-aside-chat,
+.uichatbot-vuepress-focus .right-chat-toggle {
+	transition-property: width,height,top,left,right,bottom;
+	transition-duration: 2s;
+} */
+/* .uichatbot-vuepress.uichatbot-vuepress-focus .chat-shadowbox {
+	transition-property: opacity;
+	transition-duration: 5s;
+	transition-timing-function: cubic-bezier();
+} */
+
+.uichatbot-vuepress.uichatbot-vuepress-focus .right-chat-toggle {
+	top: calc( var(--navbar-height) + 2.6rem - 1px + 20px );
+	left: calc(  40px - 0.75rem - 0.6rem + 1px);
+	right: auto;
+}
+
+
+.uichatbot-vuepress.uichatbot-vuepress-focus .uiChatBot-container {
+	z-index: 10;
+}
+
+/*****************************************************
+ * CHATBOT COLOR STYLE OVERWRITE
+ ****************************************************/
+
+/** Due to a quick with flexbox, we do not apply background styling to the flexbox container, but to the child **/
+.uichatbot-vuepress .uiChatBot-msg-container {
+ 	background: linear-gradient(to bottom, #ABEBC6, #F8F8F8);
+}
+.uichatbot-vuepress .uiChatBot-footerMsg {
+	box-shadow: 0 0 10px 5px rgb(255 255 255 / 40%);
+	background: #F8F8F8;
+}
+
+.uichatbot-vuepress .uiChatBot-subheader {
+	background-color: #ffffe0df; 
+	color: black;
+	border-bottom: 1px solid var(--c-border);
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+}
+
+/*****************************************************
+ * CHATBOT SIZING OVERWRITE
+ ****************************************************/
+
+.uichatbot-vuepress .uiChatBot-subheader {
+	text-align: center;
+	padding: 0.5rem;
+	font-size: 0.65rem;
+}
+
+.uichatbot-vuepress .uiChatBot-footerMsg {
+	font-size: 0.5rem;
+	padding: 0.5rem;
+}
+
+.uichatbot-vuepress .uiChatBot-msg-container {
+	padding: 0.65rem
+}
+
+.uichatbot-vuepress .uiChatBot-note {
+	margin: 0 0 0.45rem 0.25rem;
+	max-width: 85%;
+}
+
+.uichatbot-vuepress .uiChatBot-note .uiChatBot-text {
+	font-size: 0.65rem;
+	height: 1rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.uichatbot-vuepress .uiChatBot-msg {
+	max-width: 85%;
+	padding: 0.5rem 0.6rem 0.5rem 0.6rem;
+	border-radius: 0.2rem;
+	margin-bottom: 0.45rem;
+}
+
+.uichatbot-vuepress .uiChatBot-text {
+	/* font-family: var(--font-family); */
+	font-size: 0.75rem;
+}
+
+.uichatbot-vuepress .uiChatBot-text p {
+	margin: 0 0 0.75rem 0;
+	font-size: 0.75rem;
+}
+
+.uichatbot-vuepress .uiChatBot-text pre {
+	margin:0;
+	background: #2d2d2d;
+	border-radius:0.2rem;
+}
+.uichatbot-vuepress .uiChatBot-text pre code {
+	font-size: 0.65rem;
+}
+
+.uichatbot-vuepress .uiChatBot-input {
+	font-size: 0.75rem;
+}
+.uichatbot-vuepress .uiChatBot-submit {
+	font-size: 0.75rem;
+	width: 5rem;
+	padding: 1.2rem;
+	height: 100%;
+}

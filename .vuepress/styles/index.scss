@@ -122,6 +122,14 @@ body div.image-figwrap figcaption.image-figcaption {
 }
 
 //---------------------------------------------------------------------
+// Fix iframe layout on mobile
+//---------------------------------------------------------------------
+
+body iframe {
+    max-width: 100%;
+}
+
+//---------------------------------------------------------------------
 // Hint block styling overwrites
 //---------------------------------------------------------------------
 
@@ -285,8 +293,8 @@ body .tabset {
 }
 
 .tabset section.tab-panel {
-
     padding: 1rem 0;
-
 }
 
+// We import the stylesheet here, to allow it to work with hot reloads
+@import "../static/chat/UiChatBot.css";
