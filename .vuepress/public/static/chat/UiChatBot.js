@@ -372,6 +372,9 @@
 				}
 				existingMsgs = existingMsgs.slice( 0, chatHistory.length );
 			}
+
+			// Flag to indicate if insertion occured
+			let insertionOccured = false;
 	
 			// Ensure the dom className matches what is needed for the chatHistory
 			function matchChatHistory(dom, idx) {
@@ -413,7 +416,9 @@
 					if( config.onMessageRendered ) {
 						config.onMessageRendered( dom, chatHistory[idx] );
 					}
-					chatMsgContainer.scrollTop = chatMsgContainer.scrollHeight;
+
+					// Insertion flag
+					insertionOccured = true;
 				}
 			}
 	
@@ -431,6 +436,18 @@
 					msg.innerHTML = `<div class="uiChatBot-text"></div>`;
 					chatMsgContainer.appendChild( msg );
 					matchChatHistory(msg, i);
+				}
+			}
+
+			// If insertion occured, scroll to the bottom
+			if( insertionOccured ) {
+				// Get the last message
+				let lastMsg = chatMsgContainer.lastElementChild;
+				if( lastMsg != null ) {
+					// Scroll to the top of the last message
+					chatMsgContainer.scrollTop = chatMsgContainer.scrollHeight - lastMsg.offsetHeight - chatMsgContainer.offsetHeight/2;
+				} else {
+					chatMsgContainer.scrollTop = chatMsgContainer.scrollHeight;
 				}
 			}
 		}

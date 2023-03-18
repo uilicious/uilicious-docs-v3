@@ -1,6 +1,6 @@
 // TAMI setup sequence
 async function TAMI_vuepressSetup(withinTimeout = false) {
-
+	
 	// Skip if loaded flag
 	if( withinTimeout == false ) {
 		if( window.TAMI_SETUP_STARTED ) {
@@ -66,7 +66,7 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 	// Lets generate the "right" aside
 	const rightAside = document.createElement("aside");
 	rightAside.className = "right-aside-chat"
-	rightAside.innerHTML = `<a class="righ-chat-toggle">TAMI chatbot</a><div class="right-chat-frame"></div><div class="chat-shadowbox"></div>`
+	rightAside.innerHTML = `<a class="right-chat-toggle">TAMI chatbot</a><div class="right-chat-frame"></div><div class="chat-shadowbox"></div>`
 
 	// Setup the right aside, we attach to the "body", to avoid interferring with vue reactivity
 	body.appendChild(rightAside);
@@ -75,7 +75,7 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 	const chatFrame = rightAside.querySelector(".right-chat-frame");
 
 	// Get the chat toggle
-	const chatToggle = rightAside.querySelector(".righ-chat-toggle");
+	const chatToggle = rightAside.querySelector(".right-chat-toggle");
 
 	// And the background shadowbox
 	const shadowBox = rightAside.querySelector(".chat-shadowbox");

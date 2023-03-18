@@ -224,19 +224,18 @@
  * VUEPRESS INTEGRATION CSS
  ****************************************************/
 
-/** @TODO handle tablet / mobile mode **/
 .uichatbot-vuepress .page {
 	padding-right: calc( var(--sidebar-width) * 1.2 + 0.5rem );
 }
 
 .uichatbot-vuepress .right-aside-chat {
 	width: calc( var(--sidebar-width) * 1.2 );
+	right: 0;
 	max-height: 100%;
 	position: fixed;
 	z-index: 10;
 	margin: 0;
 	top: var(--navbar-height);
-	right: 0;
 	bottom: 0;
 	box-sizing: border-box;
 	border-left: 1px solid var(--c-border);
@@ -247,7 +246,7 @@
 	overflow-y: hidden;
 }
 
-.uichatbot-vuepress .righ-chat-toggle {
+.uichatbot-vuepress .right-chat-toggle {
 	position: fixed;
 	z-index: 9;
 	text-orientation: sideways;
@@ -298,6 +297,25 @@
 }
 
 /*****************************************************
+ * MOBILE / TABLET MODE STYLING
+ ****************************************************/
+
+@media (max-width: 1310px) {
+
+	.uichatbot-vuepress .right-aside-chat {
+		width: 0;
+		left: auto;
+		right: 0;
+	}
+	.uichatbot-vuepress .right-chat-toggle {
+		right: 0;
+	}
+	.uichatbot-vuepress .page {
+		padding-right: 0;
+	}
+}
+
+/*****************************************************
  * FOCUS MODE STYLING
  ****************************************************/
 
@@ -308,6 +326,7 @@
 }
 
 .uichatbot-vuepress.uichatbot-vuepress-focus .right-aside-chat {
+	display:block;
 	left: 40px;
 	right: 40px;
 	width: calc( 100% - 80px );
@@ -329,7 +348,7 @@
 	transition-timing-function: cubic-bezier();
 } */
 
-.uichatbot-vuepress.uichatbot-vuepress-focus .righ-chat-toggle {
+.uichatbot-vuepress.uichatbot-vuepress-focus .right-chat-toggle {
 	top: calc( var(--navbar-height) + 2.6rem - 1px + 20px );
 	left: calc(  40px - 0.75rem - 0.6rem + 1px);
 	right: auto;
@@ -373,7 +392,6 @@
 .uichatbot-vuepress .uiChatBot-footerMsg {
 	font-size: 0.5rem;
 	padding: 0.5rem;
-	box-shadow: 10px 0 0 0 rgba(0,0,0,0.2);
 }
 
 .uichatbot-vuepress .uiChatBot-msg-container {
