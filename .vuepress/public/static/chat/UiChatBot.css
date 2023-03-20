@@ -303,12 +303,20 @@
 @media (max-width: 1310px) {
 
 	.uichatbot-vuepress .right-aside-chat {
-		width: 0;
 		left: auto;
-		right: 0;
+		width: 200px;
+		right: -200px;
 	}
-	.uichatbot-vuepress .right-chat-toggle {
+	.uichatbot-vuepress:not(.uichatbot-vuepress-focus) .right-chat-toggle {
 		right: 0;
+
+		/** Fix z-index rendering issue with safari **/
+		z-index: 20;
+
+		/** Make it more clickable **/
+		width: 1.25rem;
+		padding-left:0.75rem;
+		text-align: center;
 	}
 	.uichatbot-vuepress .page {
 		padding-right: 0;
