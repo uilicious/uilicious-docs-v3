@@ -376,6 +376,11 @@
 	z-index: 10;
 }
 
+/** Disable scroll of the content in focus mode **/
+body.uichatbot-vuepress.uichatbot-vuepress-focus {
+	overflow: hidden;
+}
+
 /*****************************************************
  * CHATBOT COLOR STYLE OVERWRITE
  ****************************************************/
