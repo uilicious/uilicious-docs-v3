@@ -45,6 +45,13 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 		return;
 	}
 
+	// Somehow there is a possible race condition where the config is already done?
+	// that occurs prior to here (despite no await calls) in firefox / safari
+	if( window.TAMI_SETUP_STARTED_R2 ) {
+		return;
+	}
+	window.TAMI_SETUP_STARTED_R2 = true;
+
 	// Log the setup
 	console.log("UiChatBot loaded, configuring and setting up TAMI ...")
 
@@ -184,99 +191,108 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 	// ---
 
 	// Setup the instance
-	UiChatBot({
-		botName: "TAMI",
-		headerMsg: false,
-		subHeaderMsg: "Disclaimer: TAMI AI assistant is still in early beta, and maybe inaccurate.<br/>When in doubt check with the official documentation cited",
-		openingMsg: "Hi, I'm TAMI, an AI asstant for uilicious.com\n\nHere to help you with any questions about\nUI testing via uilicious",
-		
-		// Attach to
-		attachTo: chatFrame,
+	try {
+		UiChatBot({
+			botName: "TAMI",
+			headerMsg: false,
+			subHeaderMsg: "Disclaimer: TAMI AI assistant is still in early beta, and maybe inaccurate.<br/>When in doubt check with the official documentation cited",
+			openingMsg: "Hi, I'm TAMI, an AI assistant for uilicious.com\n\nHere to help you with any questions about\nUI testing via uilicious",
+			
+			// Attach to
+			attachTo: chatFrame,
 
-		// API route to use for the chat interface
-		apiRoute: apiRoute,
+			// API route to use for the chat interface
+			apiRoute: apiRoute,
 
-		// Custom hooks, to rendered messages, for intercepting links
-		onMessageRendered: (dom, msgObj) => {
-			// Intercept the documentaiton links
-			dom.querySelectorAll("a[href]").forEach((a) => {
-				if(a.href && a.href.indexOf("docs.uilicious.com/v3/")) {
-					// Add the event listener
-					a.addEventListener("click", chatMsgLinkClick);
-				}
-			});
-		},
+			// Custom hooks, to rendered messages, for intercepting links
+			onMessageRendered: (dom, msgObj) => {
+				// Intercept the documentaiton links
+				dom.querySelectorAll("a[href]").forEach((a) => {
+					if(a.href && a.href.indexOf("docs.uilicious.com/v3/")) {
+						// Add the event listener
+						a.addEventListener("click", chatMsgLinkClick);
+					}
+				});
+			},
 
-		// HighlightJS styling overwrite
-		highlightJsStyle: "stackoverflow-dark",
+			// HighlightJS styling overwrite
+			highlightJsStyle: "stackoverflow-dark",
 
-		//
-		// Custom action hooks
-		//
-		// @TODO : Figure out how to standardise moving this to server side
-		//         for security, and anti-abuse reasons
-		//
-		actionHooks: [
-			{
-				label: "GEN",
-				enable: true,
-				shortDesc: "Write / Generate uilicious test script",
-				preferSAGE: true,
-				instruction: [
-					"Use this action, to write / generate uilicious test script for the user, using the given description or instructions",
-					"There is no need to ask for what browser or version, as this script can be used for any browser",
-					"",
-					"When a user ask you to generate / write a test script, you can use this action to generate a uilicious test script",
-					"This action should be used to generate uilicious test script",
-				],
-				exampleArgs: [
-					["<description or instructions, used to describe the uilicious test script to be generated>"]
-				],
-				note: async (desc) => {
-					return "📝 Generating uilicious test script ... "
-				},
-				reply: async (desc) => {
-					// Lets fetch against the test gen API
-					let apiUrl = "https://api-tami.uilicious-dev.com/v2/tami/advance/testCodeGen";
+			//
+			// Custom action hooks
+			//
+			// @TODO : Figure out how to standardise moving this to server side
+			//         for security, and anti-abuse reasons
+			//
+			actionHooks: [
+				{
+					label: "GEN",
+					enable: true,
+					shortDesc: "Write / Generate uilicious test script",
+					preferSAGE: true,
+					instruction: [
+						"Use this action, to write / generate uilicious test script for the user, using the given description or instructions",
+						"There is no need to ask for what browser or version, as this script can be used for any browser",
+						"",
+						"When a user ask you to generate / write a test script, you can use this action to generate a uilicious test script",
+						"This action should be used to generate uilicious test script",
+					],
+					exampleArgs: [
+						["<description or instructions, used to describe the uilicious test script to be generated>"]
+					],
+					note: async (desc) => {
+						return "📝 Generating uilicious test script ... "
+					},
+					reply: async (desc) => {
+						// Lets fetch against the test gen API
+						let apiUrl = "https://api-tami.uilicious-dev.com/v2/tami/advance/testCodeGen";
 
-					// Fetch it
-					let fetchRes = await fetch(apiUrl, {
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json"
-						},
-						body: JSON.stringify({
-							prompt: desc,
+						// Fetch it
+						let fetchRes = await fetch(apiUrl, {
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json"
+							},
+							body: JSON.stringify({
+								prompt: desc,
 
-							// Disable suffix str
-							excludeSummary: true,
-							suffixStr: false
-						})
-					});
+								// Disable suffix str
+								excludeSummary: true,
+								suffixStr: false
+							})
+						});
 
-					// Get the response
-					let fetchResJson = await fetchRes.json();
+						// Get the response
+						let fetchResJson = await fetchRes.json();
 
-					// Check if we have a valid response
-					if (fetchResJson && fetchResJson.result) {
-						// We have a valid response
-						return [
-							"Sure, here is the requested uilicious test script:",
-							"```",
-							fetchResJson.result,
-							"```",
-							"",
-							"Let me know if I can help with anything else"
-						].join("\n");
-					} else {
-						// We have an invalid response
-						console.error( fetchResJson );
-						throw "Failed to generate uilicious test script";
+						// Check if we have a valid response
+						if (fetchResJson && fetchResJson.result) {
+							// We have a valid response
+							return [
+								"Sure, here is the requested uilicious test script:",
+								"```",
+								fetchResJson.result,
+								"```",
+								"",
+								"Let me know if I can help with anything else"
+							].join("\n");
+						} else {
+							// We have an invalid response
+							console.error( fetchResJson );
+							throw "Failed to generate uilicious test script";
+						}
 					}
 				}
-			}
-		]
-	})
+			]
+		})
+
+		// Log the setup completion
+		console.log("TAMI Vuepress setup completed");
+	} catch(e) {
+		// If setup failed, log and remove the chatbot
+		console.error(e);
+		chatFrame.remove();
+	}
 }
 
 if (document.readyState === 'complete') {
