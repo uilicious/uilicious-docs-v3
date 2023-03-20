@@ -195,7 +195,7 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 		UiChatBot({
 			botName: "TAMI",
 			headerMsg: false,
-			subHeaderMsg: "Disclaimer: TAMI AI assistant is still in early beta, and maybe inaccurate.<br/>When in doubt check with the official documentation cited",
+			subHeaderMsg: "Disclaimer: TAMI is still in early beta, and maybe inaccurate.<br/>When in doubt check with the official documentation cited",
 			openingMsg: "Hi, I'm TAMI, an AI assistant for uilicious.com\n\nHere to help you with any questions about\nUI testing via uilicious",
 			
 			// Attach to
