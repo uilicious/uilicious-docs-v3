@@ -45,6 +45,13 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 		return;
 	}
 
+	// Somehow there is a possible race condition where the config is already done?
+	// that occurs prior to here (despite no await calls) in firefox / safari
+	if( window.TAMI_SETUP_STARTED_R2 ) {
+		return;
+	}
+	window.TAMI_SETUP_STARTED_R2 = true;
+
 	// Log the setup
 	console.log("UiChatBot loaded, configuring and setting up TAMI ...")
 
