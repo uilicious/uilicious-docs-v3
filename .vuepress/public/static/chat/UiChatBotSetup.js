@@ -203,8 +203,7 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 				"",
 				"You can ask me a variety of questions, such as:",
 				`- Can you tell me more about uilicious?`,
-				`- How do I run a test with uilicious?`,
-				`- Help me write a login test script for example.com`,
+				`- Help me write an example login test script`,
 				"",
 				"Don't hesitate to reach out to me whenever you need help or guidance. I'm always here to assist you"
 			].join("\n"),
