@@ -316,7 +316,7 @@
 			footerNoticeBar.classList.remove("uiChatBot-footerMsg-thinking");
 		}
 	
-		function footerNoticeThinking(msg = "thinking (This can take up to a few minutes, depending on server load)") {
+		function footerNoticeThinking(msg = "thinking (This can take up to a few minutes, depending on OpenAI server load)") {
 			footerNoticeBar.innerHTML = `${config.botName} is ${msg} `;
 			footerNoticeBar.classList.remove("uiChatBot-footerMsg-error");
 			footerNoticeBar.classList.add("uiChatBot-footerMsg-thinking");
