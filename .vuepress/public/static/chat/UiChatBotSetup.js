@@ -196,7 +196,18 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 			botName: "TAMI",
 			headerMsg: false,
 			subHeaderMsg: "Disclaimer: TAMI is still in early beta, and maybe inaccurate.<br/>When in doubt check with the official documentation cited",
-			openingMsg: "Hi, I'm TAMI, an AI assistant for uilicious.com\n\nHere to help you with any questions about\nUI testing via uilicious",
+			openingMsg: [
+				"Hello there! I am TAMI, your AI assistant here at uilicious",
+				"",
+				"If you have any questions or need help with anything related to UI testing, just let me know and I will be happy to assist you",
+				"",
+				"You can ask me a variety of questions, such as:",
+				`- Can you tell me more about uilicious?`,
+				`- How do I run a test with uilicious?`,
+				`- Help me write a login test script for example.com`,
+				"",
+				"Don't hesitate to reach out to me whenever you need help or guidance. I'm always here to assist you"
+			].join("\n"),
 			
 			// Attach to
 			attachTo: chatFrame,
