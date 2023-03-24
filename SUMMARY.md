@@ -58,7 +58,7 @@
   * [Fill text fields](reference/keyboard-interactions/filling-forms/fill-input-fields.md)
   * [Select Checkboxes and Radio Buttons](reference/keyboard-interactions/filling-forms/select-checkboxes-and-radio-buttons.md)
   * [Select Dropdowns](reference/keyboard-interactions/filling-forms/select-dropdowns.md)
-  * [Upload Files](reference/keyboard-interactions/filling-forms/upload-files.md)
+  * [Upload Files](reference/form/upload-files.md)
   * [Validate Form Input](reference/validation-commands/validate-form-input.md)
 * Validate Page Content
   * [I see Command](reference/validation-commands/validate-page-content/i-see-command.md)
@@ -76,6 +76,7 @@
     * [Loops and Conditionals](reference/using-javascript/use-javascript-in-your-test/loops-and-conditionals.md)
     * [Execute Javascript on the Browser](reference/using-javascript/use-javascript-in-your-test/execute-javascript-on-the-browser.md)
 * [Making HTTP Requests](reference/making-http-requests.md)
+* [Handling downloaded files](reference/handling-downloaded-files.md)
 * [Taking Screenshots](reference/taking-screenshots.md)
 * Custom Reporting
   * [Info Logs](reference/custom-reporting/info-logs.md)

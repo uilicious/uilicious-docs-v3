@@ -8,7 +8,7 @@ description: A list of all commands available in UIlicious
 
 # List of commands
 
-### Page Navigation Commands <a href="#page-navigation-commands" id="page-navigation-commands"></a>
+## Page Navigation Commands <a href="#page-navigation-commands" id="page-navigation-commands"></a>
 
 | Command                                                                                                      | Description           |
 | -------------------------------------------------------------------------------------------------------------| --------------------- |
@@ -17,7 +17,7 @@ description: A list of all commands available in UIlicious
 | [`I.switchTab`](./page-navigation/switch-tabs.html#iswitchtab)     | Switch to a tab       |
 | [`I.closeTab`](./page-navigation/close-tab.html#iclosetab)         | Close the current tab |
 
-### Page Assertion Commands <a href="#page-assertion-commands" id="page-assertion-commands"></a>
+## Page Assertion Commands <a href="#page-assertion-commands" id="page-assertion-commands"></a>
 
 | Command                                                                                                           | Description                                                                               |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
@@ -31,16 +31,16 @@ description: A list of all commands available in UIlicious
 | [`UI.is500`](./page-navigation/validate-page-status.html)                     | Asserts that the status code for the current page is 500 (Internal Server Error).         |
 | [`UI.isNot500`](./page-navigation/validate-page-status.html)               | Asserts that the status code for the current page is **NOT** 500 (Internal Server Error). |
 
-### Form Input Commands <a href="#form-input-commands" id="form-input-commands"></a>
+## Form Input Commands <a href="#form-input-commands" id="form-input-commands"></a>
 
 | Command                                                                         | Description                                 |
 | ------------------------------------------------------------------------------- | ------------------------------------------- |
 | [`I.fill`](./keyboard-interactions/filling-forms/fill-input-fields.html#ifill)         | Fill a text field with a value              |
 | [`I.select`](./keyboard-interactions/filling-forms/select-checkboxes-and-radio-buttons.html#iselect)     | Select a dropdown / checkbox / radio button |
 | [`I.deselect`](./keyboard-interactions/filling-forms/select-checkboxes-and-radio-buttons.html#ideselect) | Deselect a checkbox                         |
-| [`I.upload`](./keyboard-interactions/filling-forms/upload-files.html#iupload)     | Upload a file to a file field               |
+| [`I.upload`](./form/upload-files.html#iupload)     | Upload a file to a file field               |
 
-### Form Assertion Commands <a href="#form-assertion-commands" id="form-assertion-commands"></a>
+## Form Assertion Commands <a href="#form-assertion-commands" id="form-assertion-commands"></a>
 
 | Command                                                                             | Description                                                              |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
@@ -48,7 +48,7 @@ description: A list of all commands available in UIlicious
 | [`I.selected`](./keyboard-interactions/filling-forms/select-checkboxes-and-radio-buttons.html#iselected)     | Assert that a dropdown option, checkbox, or radio button is selected     |
 | [`I.deselected`](./keyboard-interactions/filling-forms/select-checkboxes-and-radio-buttons.html#ideselected) | Assert that a dropdown option, checkbox, or radio button is NOT selected |
 
-### Mouse Commands <a href="#mouse-commands" id="mouse-commands"></a>
+## Mouse Commands <a href="#mouse-commands" id="mouse-commands"></a>
 
 | Command                                                                                                                                | Description                                                               |
 | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -71,7 +71,7 @@ description: A list of all commands available in UIlicious
 | [`I.scrollToTop`](./mouse-interactions/scroll-page.html#iscrolltotop)                                                        | Scroll to the top of the page                                             |
 | [`I.scrollToBottom`](./mouse-interactions/scroll-page.html#iscrolltobottom)                                                  | Scroll to the bottom of the page                                          |
 
-### Keyboard Commands <a href="#keyboard-commands" id="keyboard-commands"></a>
+## Keyboard Commands <a href="#keyboard-commands" id="keyboard-commands"></a>
 
 | Command                                                                                                                                                                                                          | Description                     |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
@@ -83,7 +83,7 @@ description: A list of all commands available in UIlicious
 | [`I.pressRight`](./keyboard-interactions/Typing-or-pressing-keys.html#ipressright)                                                                                                                                 | Press the → key                 |
 | [`I.pressTab`](./keyboard-interactions/Typing-or-pressing-keys.html#ipresstab)                                                                                                                                     | Press the `Tab` key             |
 
-### Validate Page Content <a href="#validate-page-content" id="validate-page-content"></a>
+## Validate Page Content <a href="#validate-page-content" id="validate-page-content"></a>
 
 | Command                                                                               | Description                                           |
 | ------------------------------------------------------------------------------------- | ----------------------------------------------------- |
@@ -92,7 +92,7 @@ description: A list of all commands available in UIlicious
 | [`I.count`](./validation-commands/validate-page-content/i-count-command.html#icount)               | Assert the number of occurances for a text or element |
 | [`I.seePageTitle`](./read-and-validate-page-elements/get-and-validate-page-title.html#iseepagetitle) | Assert the title of the current page                  |
 
-### Page Content Extraction Commands <a href="#page-content-extraction-commands" id="page-content-extraction-commands"></a>
+## Page Content Extraction Commands <a href="#page-content-extraction-commands" id="page-content-extraction-commands"></a>
 
 | Command                                                                             | Description                                       |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------- |
@@ -102,7 +102,7 @@ description: A list of all commands available in UIlicious
 | [`I.getURL`](./read-and-validate-page-elements/get-page-url#igeturl)
 | [`I.getPageTitle`](./read-and-validate-page-elements/get-and-validate-page-title.html#igetpagetitle) | Get the title of the current page                 |
 
-### Read and Validate Page Elements <a href="#read-and-validate-page-elements" id="read-and-validate-page-elements"></a>
+## Read and Validate Page Elements <a href="#read-and-validate-page-elements" id="read-and-validate-page-elements"></a>
 
 **Element attribute**
 
@@ -128,7 +128,7 @@ description: A list of all commands available in UIlicious
 | [`UI.getOuterHTML`](./read-and-validate-page-elements/get-html-code-for-a-page-element.html) | Get the outer HTML of an element.                              |
 | [`UI.getInnerHTML`](./read-and-validate-page-elements/get-html-code-for-a-page-element.html) | Get the inner HTML of an element.                              |
 
-### Alert Commands <a href="#alert-commands" id="alert-commands"></a>
+## Alert Commands <a href="#alert-commands" id="alert-commands"></a>
 
 | Command                                                                          | Description                                                                                   |
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -137,13 +137,13 @@ description: A list of all commands available in UIlicious
 | [`I.cancelAlert`](./handling-alerts/alerts.md) | Press the "Cancel" button on the alert                                                        |
 | [`I.fillAlert`](./handling-alerts/alerts.md)     | Fill the text box on the alert                                                                |
 
-### Utility Commands <a href="#utility-commands" id="utility-commands"></a>
+## Utility Commands <a href="#utility-commands" id="utility-commands"></a>
 
 | Command                                                             | Description                     |
 | ------------------------------------------------------------------- | ------------------------------- |
 | [`I.wait`](./wait-commands/explicit-wait.html#iwait) | Wait for a given amount of time |
 
-### Generate Sample Data <a href="#generate-sample-data" id="generate-sample-data"></a>
+## Generate Sample Data <a href="#generate-sample-data" id="generate-sample-data"></a>
 
 | Command                                                                        | Description                                            |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------ |
@@ -154,27 +154,27 @@ description: A list of all commands available in UIlicious
 | [`SAMPLE.name`](./dynamic-test-data/generate-sample-data.html#samplename)   | Generates a random full name                           |
 | [`SAMPLE.email`](./dynamic-test-data/generate-sample-data.html#sampleemail) | Generates a random email address                       |
 
-### Loading Test Data From File <a href="#loading-test-data-from-file" id="loading-test-data-from-file"></a>
+## Loading Test Data From File <a href="#loading-test-data-from-file" id="loading-test-data-from-file"></a>
 
 | Command                                                                                                          | Description                        |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
 | [`TEST.loadDataFromCsv`](./dynamic-test-data/load-test-data-from-file.html#testloaddatafromcsv)   | Loads test data from a .csv file.  |
 | [`TEST.loadDataFromJson`](./dynamic-test-data/load-test-data-from-file.html#testloaddatafromjson) | Loads test data from a .json file. |
 
-### Test Flow Commands <a href="#test-flow-commands" id="test-flow-commands"></a>
+## Test Flow Commands <a href="#test-flow-commands" id="test-flow-commands"></a>
 
 | Command                                                                    | Description       |
 | -------------------------------------------------------------------------- | ----------------- |
 | [`TEST.run`](./reusing-tests/running-another-test.html#testrun)   | Runs another test |
 | [`TEST.stop`](./stopping-tests/stop-command.html#teststop) | Stops the test    |
 
-### Screenshot Commands <a href="#screenshot-commands" id="screenshot-commands"></a>
+## Screenshot Commands <a href="#screenshot-commands" id="screenshot-commands"></a>
 
 | Command                                                                                                  | Description                                    |
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | [`TEST.takeFullScreenshot`](./taking-screenshots.html#testtakefullscreenshot) | Take a full page screenshot (Safari & IE only) |
 
-### Reporting Commands <a href="#reporting-commands" id="reporting-commands"></a>
+## Reporting Commands <a href="#reporting-commands" id="reporting-commands"></a>
 
 | Command                                                                          | Description                                |
 | -------------------------------------------------------------------------------- | ------------------------------------------ |
@@ -182,19 +182,19 @@ description: A list of all commands available in UIlicious
 | [`TEST.log.pass`](./custom-reporting/success-status-logs.html#testlogpass) | Log a message to report with `pass` status |
 | [`TEST.log.fail`](./custom-reporting/failure-status-logs.html#testlogfail) | Log a message to report with `fail` status |
 
-### Limiting Test Scope <a href="#limiting-test-scope" id="limiting-test-scope"></a>
+## Limiting Test Scope <a href="#limiting-test-scope" id="limiting-test-scope"></a>
 
 | Command                                                                         | Description                                                                                                                       |
 | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | [`UI.context`](./handling-iframes.html#uicontext) | <p>Limit the test to target within specific parts of a page.<br>Can be used to explicitly switch to the context of an iframe.</p> |
 
-### Execute Javascript <a href="#execute-javascript" id="execute-javascript"></a>
+## Execute Javascript <a href="#execute-javascript" id="execute-javascript"></a>
 
 | Command                                                                                  | Description                        |
 | ---------------------------------------------------------------------------------------- | ---------------------------------- |
 | [`UI.execute`](./using-javascript/use-javascript-in-your-test/execute-javascript-on-the-browser.html#uiexecute) | Executes Javascript on the browser |
 
-### HTTP Requests <a href="#http-requests" id="http-requests"></a>
+## HTTP Requests <a href="#http-requests" id="http-requests"></a>
 
 | Command                                                                                       | Description                             |
 | --------------------------------------------------------------------------------------------- | --------------------------------------- |
@@ -202,7 +202,7 @@ description: A list of all commands available in UIlicious
 | [`UI.httpPost`](./making-http-requests.html#how-it-works)    | Do a http request with the POST method. |
 | [`UI.httpRequest`](./making-http-requests.html#how-it-works) | Do a http request.                      |
 
-### Cookie Management <a href="#cookie-management" id="cookie-management"></a>
+## Cookie Management <a href="#cookie-management" id="cookie-management"></a>
 
 | Command                                                                                      | Description                      |
 | -------------------------------------------------------------------------------------------- | -------------------------------- |
@@ -212,18 +212,26 @@ description: A list of all commands available in UIlicious
 | [`UI.COOKIE.delete`](./handling-cookies.html#uicookiedelete)       | Delete a cookie                  |
 | [`UI.COOKIE.deleteAll`](./handling-cookies.html#uicookiedeleteAll) | Delete all cookies               |
 
-### Local Storage Management <a href="#local-storage-management" id="local-storage-management"></a>
+## Local Storage Management <a href="#local-storage-management" id="local-storage-management"></a>
 
 | Command                                                                                                                   | Description                                  |
 | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
 | [`UI.LocalStorage.get`](./handling-local-storage.html#uilocalstorageget)             | Get the value of property from local storage |
 | [`UI.LocalStorage.set`](./handling-local-storage.html#uilocalstorageset)             | Set a property in local storage              |
-| [`UI.LocalStorage.isSet`](./handling-local-storage.html)                             | - coming soon -                              |
-| [`UI.LocalStorage.isEqual`](./handling-local-storage.html)                           | - coming soon -                              |
+| [`UI.LocalStorage.isSet`](./handling-local-storage.html)                             | Assert the existance or the value of a item in local storage |
+| [`UI.LocalStorage.isEqual`](./handling-local-storage.html)                           | Assert the value of a item in local storage  |
 | [`UI.LocalStorage.delete`](./handling-local-storage.html#uilocalstoragedelete)       | Delete a property in local storage           |
 | [`UI.LocalStorage.deleteAll`](./handling-local-storage.html#uilocalstoragedeleteall) | Delete all properties in local storage       |
 
-### Window Resize <a href="#window-resize" id="window-resize"></a>
+## Handling downloaded files
+
+| Property / Command | Description  |
+| ------------------ | ------------ |
+| [`UI.Downloads.files`](./handling-downloaded-files.md) | (Property) Get the list of files |
+| [`UI.Downloads.listFiles()`](./handling-downloaded-files.md) | (Method) Get the list of files |
+| [`UI.Downloads.hasFile(fileName)`](./handling-downloaded-files.md) | (Method) Check for the existance of a downloaded file |
+
+## Window Resize <a href="#window-resize" id="window-resize"></a>
 
 | Command                                                                          | Description                                           |
 | -------------------------------------------------------------------------------- | ----------------------------------------------------- |
