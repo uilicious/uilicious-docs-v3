@@ -1,0 +1,11 @@
+:root {
+    // color used for menu links and link text
+    --c-text-accent: #0693a2;
+
+    // inline code color
+    --c-inline-code-bg: #eee;
+    --c-inline-code-text: #4013e4;
+
+    // light background color (used for even table rows)
+    --c-bg-light: #f9f9f9; // this needs to be lighter than inline-code-bg
+}

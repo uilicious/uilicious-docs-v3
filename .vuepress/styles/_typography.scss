@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Readex+Pro:wght@200;600&display=swap');
+
+:root {
+    
+    // header
+    --header-font-family: 'Readex Pro', 'Arial', serif;
+
+    // normal text
+    --font-family: 'Noto Sans', serif;
+
+    // code
+    --font-family-code: 'Fira Code', Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+
+    // ui bot
+    --uiChatBot-font-family: 'Noto Sans', serif;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--header-font-family);
+    font-weight: bold;
+}
+
+code {
+    display: inline-block;
+    color: var(--c-inline-code-text);
+    background-color: var(--c-inline-code-bg);
+    padding: 2px 5px;
+    border-radius: 3px;
+}

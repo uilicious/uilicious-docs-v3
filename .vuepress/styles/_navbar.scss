@@ -1,0 +1,32 @@
+.navbar {
+    
+    --navbar-text-color: #372d5b;
+    --navbar-text-color-dark-mode: #FFF;
+
+    background-color: #0FE791;
+    
+    .site-name {
+        color: var(--navbar-text-color);
+    }
+
+    .navbar-items a {
+        color: var(--navbar-text-color);
+        font-weight: bold;
+    }
+
+    // dark mode
+    html.dark &{
+        background-color: rgb(1,77,41);
+
+        .site-name {
+            color: var(--navbar-text-color-dark-mode);
+        }
+    
+        .navbar-items a {
+            color: var(--navbar-text-color-dark-mode);
+        }
+
+    }
+    
+}
+

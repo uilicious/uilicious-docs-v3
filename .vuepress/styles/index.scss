@@ -4,18 +4,26 @@
  * See: https://v2.vuepress.vuejs.org/reference/default-theme/styles.html#palette-file
  **/
 
+
+
 // :root {
 //     // scroll-behavior: smooth;
 // }
 
-// Navbar color overwrites
 //---------------------------------------------
-.navbar {
-    background-color: rgb(17,207,117);
+// Imports
+//---------------------------------------------
+
+
+// main theme
+@import "./colors";
+@import "./typography";
+@import "./navbar";
+
+html {
+    background-color: white;
 }
-html.dark .navbar {
-    background-color: rgb(1,77,41);
-}
+
 
 // Logo animation on color scheme change
 //---------------------------------------------
@@ -295,6 +303,3 @@ body .tabset {
 .tabset section.tab-panel {
     padding: 1rem 0;
 }
-
-// We import the stylesheet here, to allow it to work with hot reloads
-@import "../static/chat/UiChatBot.css";
