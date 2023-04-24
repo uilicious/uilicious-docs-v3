@@ -13,14 +13,59 @@ description: List of updates and changes of UIlicious throughout the years.
 * Minor: Contains new features
 * Patch: Contains enhancements and bug fixes only
 
+## 3.31.1
+_Released 20 April 2023_
+
+**💪 Enhancement**
+
+- Web Studio:
+  - "Downloaded Files" tab added to test reports, showing list of files downloaded during the test run, and allowing download of files as a zip.
+  - You can now download all your project files as a zip in the "Project Settings" page.
+
+## 3.31.0
+_Released 24 March 2023_
+
+**🚀 New Features**
+
+- Test Engine:
+  - New commands under `UI.Downloads` for listing and referencing downloaded files during test execution:
+    - Use `UI.Downloads.files` or `UI.Downloads.listFiles()` to get the list of files, which is an array of file metadata, including the file name and sizes
+    - Use `UI.Downloads.hasFile` to validate that a file has been downloaded
+    - You may also use the `I.upload` command to upload a file that has been downloaded.
+
+## 3.30.4
+
+_Released 07 March 2023_
+
+**💪 Enhancement**
+
+- Web Studio
+  - PDF Test Reports:
+    - Show annotations and issues in PDF test reports
+
+**🐞 Fixes**
+
+- Embeddable test report player
+  - Fixed an issue where the screenshots are not displayed in the correct size when viewing the embeddable test report player on Firefox.
+
+## 3.30.3
+
+_Released 01 March 2023_
+
+**🐞 Fixes**
+
+- Web Studio
+  - AI Test Assist: 
+    - An error message is now shown if the AI isn't able to generate a response for the given prompt, instead of being stuck loading as it automatically retries.
+
 ## 3.30.2 <a href="#3302" id="3302"></a>
 
 _Released 22 February 2023_
 
 **💪 Enhancement**
 
-* Web Studio
-  - Snippets for private test runs now also show the test run’s selected dataset and region.
+* Embeddable test report player
+  - The selected dataset and region for the test run is now shown in embeddable test report player
   - You can now set an `end` step and turn on looping. Setting an `end` step will stop the player automatically when it reaches the end step during autoplay.
   - Failed steps are now more clearly displayed.
 
@@ -30,8 +75,8 @@ _Released 22 February 2023_
 
 **💪 Enhancement**
 
-* Web Studio
-  - Test run’s annotations are now shown in shared snippets for private test runs.
+* Embeddable test report player
+  - Show annotations and issues in embeddable test report player
 
 ## 3.30.0 <a href="#3300" id="3300"></a>
 
