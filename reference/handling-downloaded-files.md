@@ -162,8 +162,11 @@ I.upload("Photo", UI.Downloads.files[1].path)
 I.upload("Certificate", UI.Downloads.files.last.path)
 ```
 
-## How to downloaded the files downloaded by the test
+## Downloading the files downloaded by the test
 
-{% hint style="warning" %}
-If the test involves downloading a very large file, we recommend adding a generous wait using the `I.wait` command beforehand.
-{% endhint %}
+![List of downloaded test files in the test run report](/static/img/uilicious-studio-editor-downloaded-files-tab.png)
+
+Click the **'Downloaded Files'** tab in the test report to view the list of files downloaded during the test run.
+
+Click the **'Download All'** button to download the files as a zip to your computer.
+
