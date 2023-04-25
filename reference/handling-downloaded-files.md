@@ -32,7 +32,7 @@ let downloadedFiles = UI.Downloads.files
 
 or
 
-```javascriptup
+```javascript
 // returns a list of files, and logs to the test report
 let downloadedFiles = UI.Download.listFiles() 
 ```
