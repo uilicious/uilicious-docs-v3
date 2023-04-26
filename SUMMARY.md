@@ -29,7 +29,11 @@
   * [Set up Slack Notifications](how-to-guides/Setting-up-jobs/set-up-slack-notifications.md)
   * [Set up Microsoft Teams Notifications](how-to-guides/Setting-up-jobs/set-up-microsoft-teams-notifications.md)
 * Integrations
-  * [Github](how-to-guides/github/integration.md)
+  * Github
+    * [Saving project to Github](how-to-guides/github/saving-projects-to-github.md)
+      * [Manual commits](/how-to-guides/github/saving-projects-to-github.html#manual-commits)
+      * [Auto-commits using Github Actions](/how-to-guides/github/saving-projects-to-github.html#auto-commits-using-github-actions)
+    * [Running tests using Github Actions](how-to-guides/github/running-tests-using-github-actions.md)
 
 ## Test Scripting Tutorials
 
