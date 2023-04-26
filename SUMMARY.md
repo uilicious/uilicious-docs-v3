@@ -28,6 +28,8 @@
   * [Set up Telegram Notifications](how-to-guides/Setting-up-jobs/set-up-telegram-notifications.md)
   * [Set up Slack Notifications](how-to-guides/Setting-up-jobs/set-up-slack-notifications.md)
   * [Set up Microsoft Teams Notifications](how-to-guides/Setting-up-jobs/set-up-microsoft-teams-notifications.md)
+* Integrations
+  * [Github](how-to-guides/github/integration.md)
 
 ## Test Scripting Tutorials
 
