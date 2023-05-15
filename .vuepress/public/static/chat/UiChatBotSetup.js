@@ -73,19 +73,13 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 	// Lets generate the "right" aside
 	const rightAside = document.createElement("aside");
 	rightAside.className = "right-aside-chat"
-	rightAside.innerHTML = `<a class="right-chat-toggle">TAMI chatbot</a><div class="right-chat-frame"></div><div class="chat-shadowbox"></div>`
+	// rightAside.innerHTML = `<div class="right-chat-frame"></div>`
 
 	// Setup the right aside, we attach to the "body", to avoid interferring with vue reactivity
 	body.appendChild(rightAside);
 
 	// Get the chat frame
-	const chatFrame = rightAside.querySelector(".right-chat-frame");
-
-	// Get the chat toggle
-	const chatToggle = rightAside.querySelector(".right-chat-toggle");
-
-	// And the background shadowbox
-	const shadowBox = rightAside.querySelector(".chat-shadowbox");
+	const chatFrame = rightAside; //.querySelector(".right-chat-frame");
 
 	// The special event listener for doc links
 	// ---
@@ -148,10 +142,11 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 					e.stopPropagation();
 
 					// Exit the focus mode (if its set)
-					removeFocusMode();
+					// removeFocusMode();
 
 					// Lets trigger the click
 					link.click();
+					UiChatBot.dock();
 					return;
 				}
 			}
@@ -161,76 +156,33 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 		// does nothing, and let native behaviour take over
 	}
 
-	// Special handling of opening messages
-	function openingMsgLinkClick(e) {
-		// Lets block the current event defautl behaviour
-		e.preventDefault();
-		e.stopPropagation();
-
-		// Get the link content
-		const linkContent = e.target.innerText;
-
-		// Check if the .uiChatBot-input is disabled
-		const inputForm = chatFrame.querySelector(".uiChatBot-input");
-		if( inputForm.disabled ) {
-			// We shall skip
-			return;
-		}
-
-		// Lets fill it, and submit the form
-		inputForm.value = linkContent;
-
-		// Lets submit the form
-		chatFrame.querySelector(".uiChatBot-submit").click();
-	}
-
-	// Handling of "Focus Mode" toggle
-	// ---
-
-	function enableFocusMode() {
-		if(!body.classList.contains("uichatbot-vuepress-focus")) {
-			body.classList.add("uichatbot-vuepress-focus");
-		}
-	}
-
-	function removeFocusMode() {
-		if(body.classList.contains("uichatbot-vuepress-focus")) {
-			body.classList.remove("uichatbot-vuepress-focus");
-		}
-	}
-
-	function toggleFocusMode() {
-		if(body.classList.contains("uichatbot-vuepress-focus")) {
-			removeFocusMode();
-		} else {
-			enableFocusMode();
-		}
-	}
-	chatToggle.addEventListener("click", toggleFocusMode);
-	shadowBox.addEventListener("click", removeFocusMode);
-	document.getElementsByClassName("navbar")[0].addEventListener("click", removeFocusMode);
-
 	// Loading up the bot
 	// ---
 
 	// Setup the instance
 	try {
 		UiChatBot({
-			botName: "TAMI",
-			headerMsg: false,
-			subHeaderMsg: "Disclaimer: TAMI is still in early beta, and maybe inaccurate.<br/>When in doubt check with the official documentation cited",
-			openingMsg: [
-				"Hello there! I am TAMI, your AI assistant here at uilicious",
-				"",
-				"If you have any questions or need help with anything related to UI testing, just let me know and I will be happy to assist you",
-				"",
-				"You can ask me a variety of questions, such as:",
-				`- [Can you tell me more about uilicious?]()`,
-				`- [Help me write an example login test script]()`,
-				"",
-				"Don't hesitate to reach out to me whenever you need help or guidance. I'm always here to assist you"
+			style: {
+				docked: {
+					anchor: "right"
+				},
+				// docked: false
+			},
+			botName: "UIlicious AI",
+			title: false, // defaults to "Ask %botName%"
+			welcomeMessage: [
+				"Hello, I'm here to help!"
 			].join("\n"),
 			
+			// example question to populate
+			examples: [
+				"How do I test a login form?",
+				"How do I navigate to a page?",
+				"How do I click on an element?",
+				"How do I fill in a text field?",
+				"How do I check if a text is displayed?"
+			],
+
 			// Attach to
 			attachTo: chatFrame,
 
@@ -247,12 +199,6 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 					}
 				});
 
-				// Special handling of the init object
-				if( msgObj.type == "INIT" ) {
-					dom.querySelectorAll("a").forEach((a) => {
-						a.addEventListener("click", openingMsgLinkClick);
-					});
-				}
 			},
 
 			// HighlightJS styling overwrite
@@ -281,7 +227,7 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 						["<description or instructions, used to describe the uilicious test script to be generated>"]
 					],
 					note: async (desc) => {
-						return "📝 Generating uilicious test script ... "
+						return "📝 Generating test script ... "
 					},
 					reply: async (desc) => {
 						// Lets fetch against the test gen API
@@ -309,12 +255,12 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 						if (fetchResJson && fetchResJson.result) {
 							// We have a valid response
 							return [
-								"Sure, here is the requested uilicious test script:",
+								"Here's a test script you can use as reference:",
 								"```",
 								fetchResJson.result,
 								"```",
 								"",
-								"Let me know if I can help with anything else"
+								"I hope this helps!"
 							].join("\n");
 						} else {
 							// We have an invalid response

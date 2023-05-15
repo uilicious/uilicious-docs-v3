@@ -20,6 +20,8 @@
 @import "./typography";
 @import "./navbar";
 
+
+
 html {
     background-color: white;
 }
@@ -303,3 +305,6 @@ body .tabset {
 .tabset section.tab-panel {
     padding: 1rem 0;
 }
+
+// plugins
+@import "./UiChatBot";
