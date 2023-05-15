@@ -211,64 +211,64 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 			//         for security, and anti-abuse reasons
 			//
 			actionHooks: [
-				{
-					label: "GEN",
-					enable: true,
-					shortDesc: "Write / Generate uilicious test script",
-					preferSAGE: true,
-					instruction: [
-						"Use this action, to write / generate uilicious test script for the user, using the given description or instructions",
-						"There is no need to ask for what browser or version, as this script can be used for any browser",
-						"",
-						"When a user ask you to generate / write a test script, you can use this action to generate a uilicious test script",
-						"This action should be used to generate uilicious test script",
-					],
-					exampleArgs: [
-						["<description or instructions, used to describe the uilicious test script to be generated>"]
-					],
-					note: async (desc) => {
-						return "📝 Generating test script ... "
-					},
-					reply: async (desc) => {
-						// Lets fetch against the test gen API
-						let apiUrl = "https://api-tami.uilicious-dev.com/v2/tami/advance/testCodeGen";
+				// {
+				// 	label: "GEN",
+				// 	enable: true,
+				// 	shortDesc: "Write / Generate uilicious test script",
+				// 	preferSAGE: true,
+				// 	instruction: [
+				// 		"Use this action, to write / generate uilicious test script for the user, using the given description or instructions",
+				// 		"There is no need to ask for what browser or version, as this script can be used for any browser",
+				// 		"",
+				// 		"When a user ask you to generate / write a test script, you can use this action to generate a uilicious test script",
+				// 		"This action should be used to generate uilicious test script",
+				// 	],
+				// 	exampleArgs: [
+				// 		["<description or instructions, used to describe the uilicious test script to be generated>"]
+				// 	],
+				// 	note: async (desc) => {
+				// 		return "📝 Generating test script ... "
+				// 	},
+				// 	reply: async (desc) => {
+				// 		// Lets fetch against the test gen API
+				// 		let apiUrl = "https://api-tami.uilicious-dev.com/v2/tami/advance/testCodeGen";
 
-						// Fetch it
-						let fetchRes = await fetch(apiUrl, {
-							method: "POST",
-							headers: {
-								"Content-Type": "application/json"
-							},
-							body: JSON.stringify({
-								prompt: desc,
+				// 		// Fetch it
+				// 		let fetchRes = await fetch(apiUrl, {
+				// 			method: "POST",
+				// 			headers: {
+				// 				"Content-Type": "application/json"
+				// 			},
+				// 			body: JSON.stringify({
+				// 				prompt: desc,
 
-								// Disable suffix str
-								excludeSummary: true,
-								suffixStr: false
-							})
-						});
+				// 				// Disable suffix str
+				// 				excludeSummary: true,
+				// 				suffixStr: false
+				// 			})
+				// 		});
 
-						// Get the response
-						let fetchResJson = await fetchRes.json();
+				// 		// Get the response
+				// 		let fetchResJson = await fetchRes.json();
 
-						// Check if we have a valid response
-						if (fetchResJson && fetchResJson.result) {
-							// We have a valid response
-							return [
-								"Here's a test script you can use as reference:",
-								"```",
-								fetchResJson.result,
-								"```",
-								"",
-								"I hope this helps!"
-							].join("\n");
-						} else {
-							// We have an invalid response
-							console.error( fetchResJson );
-							throw "Failed to generate uilicious test script";
-						}
-					}
-				}
+				// 		// Check if we have a valid response
+				// 		if (fetchResJson && fetchResJson.result) {
+				// 			// We have a valid response
+				// 			return [
+				// 				"Here's a test script you can use as reference:",
+				// 				"```",
+				// 				fetchResJson.result,
+				// 				"```",
+				// 				"",
+				// 				"I hope this helps!"
+				// 			].join("\n");
+				// 		} else {
+				// 			// We have an invalid response
+				// 			console.error( fetchResJson );
+				// 			throw "Failed to generate uilicious test script";
+				// 		}
+				// 	}
+				// }
 			]
 		})
 
