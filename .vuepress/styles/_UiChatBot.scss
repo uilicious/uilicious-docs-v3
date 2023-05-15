@@ -1,0 +1,690 @@
+// namespace for this widget
+$namespace: "uiChatBot";
+
+// --------------------------------------------------------------
+// Theme-able variables
+// --------------------------------------------------------------
+
+:root {
+
+	// customisable CSS variables
+	--#{$namespace}-theme: 100;
+
+	--#{$namespace}-frame-zindex: 100;
+	--#{$namespace}-frame-width: 400px;
+	--#{$namespace}-frame-border-color: #e6e6e6;
+	
+	--#{$namespace}-frame-backdrop-background-color: rgba(0,0,0,.2);
+
+	--#{$namespace}-window-background-color: white;
+
+	--#{$namespace}-banner-background-color: #eeeeee;
+	--#{$namespace}-banner-border-color: #e6e6e6;;
+	
+	--#{$namespace}-form-background-color: #f9f9f9;
+	--#{$namespace}-form-border-color: #e6e6e6;
+	
+	--#{$namespace}-muted-text-color: #8d8d8d;
+	
+	--#{$namespace}-error-text-color: #ff2b2b;
+	--#{$namespace}-error-background-color: #ffe6eb;
+
+	--#{$namespace}-code-block-background-color: #393939;
+
+	--#{$namespace}-bot-icon: "💎";
+	--#{$namespace}-bot-background-color: #b5ffff;
+
+	--#{$namespace}-user-icon: "🙂";
+	--#{$namespace}-user-background-color: #fff6da;
+
+}
+
+.#{$namespace} {
+
+	// SCSS variables
+	$px: 1em;
+	$py: .8em;
+	$msg-font-size: .8em;
+	$msg-line-height: 1.5em;
+
+	// FRAME
+	// - the root of the widget
+	// - contains the toggle button to open and close the window
+	// - contains the window
+	&-frame {
+
+		// set font-size as baseline for  "em"
+		font-size: 1rem;
+
+		// this needs to be positioned higher than the document
+		z-index: var(--#{$namespace}-frame-zindex);
+	
+		box-shadow: 0 10px 10px rgba(0,0,0,.1);
+
+		// hide background by default
+		.uiChatBot-backdrop {
+			display: none;
+		}
+
+		// UNDOCKED: window is floating in the center of the page
+		&#{&}--opened#{&}--undocked {
+	
+			position: fixed;
+			top: 10%;
+			left: 10%;
+			bottom: 10%;
+			right: 10%;
+
+			// border: 1px solid var(--#{$namespace}-frame-border-color);
+			border-radius: 10px;
+			overflow: hidden;
+
+			// BACKDROP
+			// - this prevents interactions with the document behind
+			.uiChatBot-backdrop {
+
+				display: block;
+
+				z-index: var(--#{$namespace}-frame-zindex);
+				position: fixed;
+				top : 0;
+				left : 0;
+				bottom : 0;
+				right : 0;
+
+				background-color: var(--#{$namespace}-frame-backdrop-background-color);
+				content: " ";
+
+			}
+	
+		}
+	
+		// DOCKED: window is docked to the left or the right side of the page
+		&#{&}--opened#{&}--docked {
+	
+			position: fixed;
+			top: 0;
+			right : 0; // anchor right by default
+			height: 100vh;
+			width: var(--#{$namespace}-frame-width);
+
+			// dock the window to the left side
+			&.#{$namespace}-frame--docked-left{
+				left: 0;
+			}
+
+			// dock the windoe to the right side
+			&.#{$namespace}-frame--docked-right{
+				right: 0;
+			}
+	
+		}
+
+		// CLOSED: when the window is closed
+		// - position it in a way so that we can display the toggle button
+		&#{&}--closed {
+
+			// anchor to bottom left
+			position: fixed !important;
+			top: initial !important;
+			bottom: 0 !important;
+
+			// dock the window to the left side
+			&.#{$namespace}-frame--docked-left{
+				left: 0 !important;
+				right: initial !important;
+			}
+
+			// dock the windoe to the right side
+			&.#{$namespace}-frame--docked-right{
+				left: initial !important;
+				right: 0 !important;
+			}
+
+			height: 1px !important;
+
+		}
+	
+	}
+
+	// TOGGLE BUTTON
+	&-toggle-btn {
+
+		$height: 2em;
+		
+		position: absolute;
+		z-index: calc(var(--#{$namespace}-frame-zindex) + 1);
+		top: -$height;
+
+		display: block;
+		box-sizing: border-box;
+		height: $height;
+
+		background-color: var(--#{$namespace}-window-background-color);
+		border: 1px solid var(--#{$namespace}-frame-border-color);
+		border-bottom-width: 0;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+
+		padding: .25em .5em;
+
+		font-weight: bold;
+
+		box-shadow: 0 10px 10px rgba(0,0,0,.1);
+
+		cursor: pointer;
+
+		// attach to left corner when docked left
+		.#{$namespace}-frame--docked-left &{
+			left: 2em;
+		}
+
+		// attach to right corder when docked right
+		.#{$namespace}-frame--docked-right &{
+			right: 2em;
+		}
+
+		// todo: tab style
+
+		// todo: coin style
+		
+	}
+
+	// WINDOW
+	&-window {
+
+		// position the window 1 layer above the backdrop
+		position: relative;
+		z-index: calc(var(--#{$namespace}-frame-zindex) + 1);
+
+		box-sizing: border-box;
+		height: 100%;		
+
+		display: flex;
+		flex-direction: column;
+		gap: 0.5 * $py;
+
+		padding: $py $px;
+
+		background-color: var(--#{$namespace}-window-background-color);
+
+		// show border on all sides when undocked
+		.#{$namespace}-frame--undocked &{
+			border: 1px solid var(--#{$namespace}-frame-border-color);
+		}
+
+		// show border on right when docked left
+		.#{$namespace}-frame--docked.#{$namespace}-frame--docked-left &{
+			border-right: 1px solid var(--#{$namespace}-frame-border-color);
+		}
+
+		// show border on left when docked right
+		.#{$namespace}-frame--docked.#{$namespace}-frame--docked-right &{
+			border-left: 1px solid var(--#{$namespace}-frame-border-color);
+		}
+
+		// hide when frame is hidden
+		.#{$namespace}-frame--hidden &{
+			display: none;
+		}
+	
+	}
+
+	// WINDOW HEADER
+	&-header {
+
+		$height: 2em;
+		$title-font-size: 1em;
+		$btn-size: calc($height * 0.65);
+		
+
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+
+		padding: 0;
+		
+		// TITLE
+		&__title {
+
+			display: inline-block;
+
+			flex-grow: 1;
+			flex-shrink: 0;
+			
+			font-weight: bold;
+			font-size: $title-font-size;
+			line-height: $height;
+			height: $height;
+			vertical-align: middle;
+
+		}
+
+		// HEADER BUTTON GROUP
+		&__buttons {
+			display: flex;
+			flex-direction: row;
+			gap: .3em;
+			flex-wrap: nowrap;
+		}
+		
+		// HEADER BUTTON
+		&__button {
+
+			display: inline-block;
+			
+			color: #a1a1a1;
+			background-color: transparent;
+			border: none;
+		
+			box-sizing: border-box;
+
+			width: $btn-size;
+			height: $btn-size;
+			padding: 0;
+			margin: 0;
+
+			vertical-align: middle;
+			text-align: center;
+
+			cursor: pointer;
+
+			opacity: .4;
+			&:hover{
+				opacity: .8;
+			}
+		
+		}
+
+		&__button--dock-btn{
+			background-image: url("data:image/svg+xml;charset=utf-8,<svg id='Layer_1' height='512' viewBox='0 0 24 24' width='512' xmlns='http://www.w3.org/2000/svg' data-name='Layer 1'><path d='m20 1.4h-16a2.6 2.6 0 0 0 -2.6 2.6v16a2.6 2.6 0 0 0 2.6 2.6h16a2.6 2.6 0 0 0 2.6-2.6v-16a2.6 2.6 0 0 0 -2.6-2.6zm-8.6 18.6a1.4 1.4 0 0 1 -1.4 1.4h-6a1.4 1.4 0 0 1 -1.4-1.4v-6a1.4 1.4 0 0 1 1.4-1.4h6a1.4 1.4 0 0 1 1.4 1.4zm10 0a1.4 1.4 0 0 1 -1.4 1.4h-7.82a2.58 2.58 0 0 0 .42-1.4v-6a2.6 2.6 0 0 0 -2.6-2.6h-6a2.58 2.58 0 0 0 -1.4.42v-7.82a1.4 1.4 0 0 1 1.4-1.4h16a1.4 1.4 0 0 1 1.4 1.4zm-2.58-14.82a.6.6 0 0 1 0 .85l-3.37 3.37h1.35a.6.6 0 0 1 0 1.2h-2.8a.6.6 0 0 1 -.6-.6v-2.8a.6.6 0 1 1 1.2 0v1.35l3.4-3.37a.6.6 0 0 1 .82 0z'/></svg>");
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-origin: content-box;
+
+			.#{$namespace}-frame--docked & {
+				display: none;
+			}
+
+		}
+
+		&__button--undock-btn{
+			background-image: url("data:image/svg+xml;charset=utf-8,<svg enable-background='new 0 0 512 512' height='512' viewBox='0 0 512 512' width='512' xmlns='http://www.w3.org/2000/svg'><g><path d='m268.551 184.085h33.795l-41.929 41.929c-6.933 6.87-6.983 18.06-.112 24.993 6.87 6.933 18.06 6.983 24.993.112.037-.037.075-.074.112-.112l41.93-41.929v33.794c0 9.76 7.912 17.673 17.673 17.673 9.76 0 17.673-7.912 17.673-17.673v-76.46c0-9.76-7.912-17.673-17.673-17.673h-76.461c-9.76 0-17.673 7.912-17.673 17.673-.001 9.76 7.911 17.673 17.672 17.673z'/><path d='m63.116 465.981h76.461c9.76 0 17.673-7.912 17.673-17.673s-7.912-17.673-17.673-17.673h-33.796l41.929-41.929c6.932-6.871 6.981-18.061.111-24.993-6.871-6.932-18.061-6.982-24.993-.111-.037.037-.074.074-.111.111l-41.928 41.929v-33.796c0-9.76-7.912-17.673-17.673-17.673s-17.673 7.912-17.673 17.673v76.461c.001 9.761 7.913 17.674 17.673 17.674z'/><path d='m482.209.576h-348.544c-16.445.018-29.773 13.345-29.791 29.791v72.932h-74.083c-16.446.018-29.773 13.345-29.791 29.791v348.544c.019 16.445 13.346 29.772 29.791 29.791h348.545c16.445-.019 29.772-13.346 29.791-29.791v-72.932h74.082c16.445-.018 29.773-13.345 29.791-29.791v-348.544c-.018-16.446-13.345-29.773-29.791-29.791zm-109.428 475.503h-337.436v-337.435h337.436zm103.874-102.723h-68.528v-240.266c-.018-16.445-13.345-29.773-29.791-29.791h-239.116v-67.378h337.435z'/></g></svg>");
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-origin: content-box;
+
+			.#{$namespace}-frame--undocked & {
+				display: none;
+			}
+
+		}
+
+		&__button--close-btn{
+			background-image: url("data:image/svg+xml;charset=utf-8,<svg nable-background='new 0 0 320.591 320.591' height='512' viewBox='0 0 320.591 320.591' width='512' xmlns='http://www.w3.org/2000/svg'><g><g><path d='m30.391 318.583c-7.86.457-15.59-2.156-21.56-7.288-11.774-11.844-11.774-30.973 0-42.817l257.812-257.813c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875l-259.331 259.331c-5.893 5.058-13.499 7.666-21.256 7.288z'/><path d='m287.9 318.583c-7.966-.034-15.601-3.196-21.257-8.806l-257.813-257.814c-10.908-12.738-9.425-31.908 3.313-42.817 11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414-6.35 5.522-14.707 8.161-23.078 7.288z'/></g></g></svg>");
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-origin: content-box;
+			padding: .3em;
+
+		}
+
+	}
+
+	// CONTENT BODY, contains : messages, suggestions
+	&-body {
+		
+		background-color: white;
+		box-shadow: inset 0px 0px 15px 5px rgba(0,0,0,0.05);
+
+		// as a flex child
+		flex-grow: 1;
+		flex-shrink: 1;
+
+		// as a flex container
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		overflow-y: auto;
+		margin: 0 (-$px);
+		padding: $px (2 * $px) 4em $px;
+
+		// font size and line height
+		font-size: $msg-font-size;
+		line-height: $msg-line-height;
+		
+	}
+
+	// LIST OF MESSAGES
+	&-messages {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+	}
+
+	// A SINGLE MESSAGE
+	&-msg {
+
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 1em;
+
+		&__author {
+
+			&::before {
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				
+				box-sizing: border-box;
+				height: 1.7em;
+				width: 1.7em;
+				font-size: 1.2em;
+				border-radius: 3px;
+				
+				content: "ℹ︎";
+				background-color: #eee;
+				
+			}
+			
+		}
+
+		&__text {
+
+			display: block;
+			padding-top: .15em;
+
+			// hide overflow, to force long blocks of text to wrap
+			overflow: hidden; 
+
+			// stub
+			&-stub {
+
+				display: inline-block;
+				height: $msg-line-height;
+				width: 3em;
+				background-color: #ececec;
+			
+			}
+
+			// format normal text
+			p {
+				margin-top: 0;
+				margin-bottom: 1em;
+			}
+
+			// format code blocks
+			pre code {
+				background-color: var(--#{$namespace}-code-block-background-color);
+			}
+
+		}
+
+		// style for bot's messages
+		&[data-message-role="bot"]{
+			.#{$namespace}-msg__author {
+				&::before {
+					// user icon
+					content: var(--#{$namespace}-bot-icon);
+					background-color: var(--#{$namespace}-bot-background-color);
+				}
+			}
+		}
+
+		// style for user's messages
+		&[data-message-role="user"]{
+			.#{$namespace}-msg__author {
+				&::before {
+					// user icon
+					content: var(--#{$namespace}-user-icon);
+					background-color: var(--#{$namespace}-user-background-color);
+				}
+			}
+			.#{$namespace}-msg__text {
+				// show user's messages in a muted color
+				color: #999;
+			}
+		}
+
+		// style for notes
+		&[data-message-role="note"]{
+			.#{$namespace}-msg__author {
+				&::before {
+					// icon
+					content: "ℹ︎";
+					background-color: #eee;
+				}
+			}
+
+			.#{$namespace}-msg__text {
+				// font-style: italic;
+				color: #838383;
+			}
+
+		}
+
+	}
+
+	// SUGGESTIONS
+	&-suggestions {
+
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		justify-content: flex-start;
+		gap: .5em;
+
+		&__heading {
+			color: var(--#{$namespace}-muted-text-color);
+			font-weight: bold;
+		}
+
+		.#{$namespace}-suggestion-item {
+
+			display: flex;
+			flex-direction: row;
+			padding: .5em;
+			gap: 1em;
+
+			border: none;
+			background-color: transparent;
+
+			text-align: left;
+
+			&:hover {
+				background-color: #f4f4f4;
+			}
+			
+			&__icon {
+				&::before {
+					content: '🔍'
+				}
+			}
+
+			&__text {
+				flex-grow: 1;
+			}
+
+		}
+
+	} 
+
+	// STATUS
+	&-status {
+
+		font-size: .65em;
+		color: var(--#{$namespace}-muted-text-color);
+
+		@keyframes pulse-text {
+			0%   {opacity: 1}
+			50%  {opacity: .3}
+			100% {opacity: 1}
+		}
+
+		animation-name: pulse-text;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+
+	}
+
+	// BANNER
+	&-banner {
+
+		border: 1px solid var(--#{$namespace}-banner-border-color);
+		border-radius: 3px;
+		background-color: var(--#{$namespace}-banner-background-color); 
+			
+		display: flex;
+		flex-direction: row;
+		gap: .5em;
+
+		padding: .5em;
+
+		&__text {
+			
+			flex-grow: 1;
+
+			font-size: .8em;
+			line-height: 1em;
+			
+			p {
+				margin-top: 0;
+				margin-bottom: .5em;
+
+				&:last-of-type{
+					margin-bottom: 0;
+				}
+			}
+
+		}
+
+	}
+
+	// USER INPUT FORM
+	&-form {
+
+		box-sizing: border-box;
+		padding: 0;
+
+		.#{$namespace}-input {
+
+			box-sizing: border-box;
+			width: 100%;
+			
+			border: 1px solid var(--#{$namespace}-form-border-color);
+			border-radius: 3px;
+			background-color: var(--#{$namespace}-form-background-color); 
+
+			padding: .5em;
+
+			// disable resize
+			resize: none;
+
+			&:focus {
+				outline: 1px solid black;
+			}
+
+		}
+
+		.#{$namespace}-submit{
+			display: none;
+		}
+
+	}
+
+	// ERROR DISPLAY
+	// Shown when AI cannot process user's query
+	&-errors {
+
+		background-color: var(--#{$namespace}-error-background-color);
+		border-radius: 3px;
+
+		font-size: .8em;
+		color: var(--#{$namespace}-error-text-color);
+
+		padding: .5em;
+
+	}
+
+	// BRANDING AT THE BOTTOM
+	&-branding {
+		
+		font-size: .7em;
+		text-align: center;
+		
+		color: var(--#{$namespace}-muted-text-color);
+		
+		padding: 0;
+		
+
+	}
+
+}
+
+// --------------------------------------------------------------
+// UILICIOUS OVERRIDES
+// --------------------------------------------------------------
+
+.uichatbot-vuepress {
+
+	// instead of scrolling the whole <body> element, we'll scroll
+	// only the article, so that the scroll bar for the article doesn't overlap
+	// with the scrollbar for the chat window
+	overflow-y: hidden;
+	.page {
+		box-sizing: border-box;
+		height: 100vh;
+		overflow-y: auto;
+	}
+
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+
+	// the vuepress app
+	// - this wraps the top navbar, the sidebar, and the page
+	#app {
+
+		display: block;
+
+		// as a flex item
+		flex-grow: 1;
+		flex-shrink: 1;
+		overflow-y: hidden;
+
+	}
+	
+	// container for the chat widget
+	.right-aside-chat {
+
+		display: block;
+
+		box-sizing: border-box;
+		height: 100vh;
+
+		// add padding to the top so that the chat widget
+		// does not obstruct the navbar
+		padding-top: var(--navbar-height);
+
+	}
+
+}
+
+.#{$namespace}-frame {
+	
+	.uichatbot-vuepress &#{&}--opened#{&}--docked {
+		// overrides default "fixed" position, using normal layout flow, ignoring 
+		// left, right, top, and bottom values.
+		position: static !important; 
+		height: 100% !important;
+	}
+
+}
+
+

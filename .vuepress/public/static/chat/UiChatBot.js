@@ -2,6 +2,7 @@
  * UI Chat Path, JS client, for setting up chat interaction
  **/
 (function() { 
+
 	// ---
 	
 	// Entire UI Chat Bot is wrapped in a closure, to avoid polluting the global namespace
@@ -61,7 +62,7 @@
 		supportFallbackMsg: "Please contact our support team for further assistance",
 	
 		// Overwriting the opening message
-		openingMsg: "Hi, I'm an AI asstant, who is here to help you\n\nFeel free to ask me anything",
+		welcomeMessage: "Hi, I'm an AI asstant, who is here to help you\n\nFeel free to ask me anything",
 	
 		// Failure message for unable to find a valid answer
 		noAnswerFallbackMsg: "I'm sorry, I'm unable to find the answers for all your questions, feel free to ask our support staff instead.\n\nThe following are links to resources that maybe relevent to your question",
@@ -86,36 +87,51 @@
 	
 	// The HTML chat frame template to use
 	let htmlTemplate = [
-		// Main container frame
-		// `<div class="uiChatBot-frame">`,
-		`	<div class="uiChatBot-container">`,
-		// Chat header and subheader
-		`		<div class="uiChatBot-header">
-				</div>
-				<div class="uiChatBot-subheader">
-				</div>`,
-		// The main message container
-		`		<div class="uiChatBot-msg-container">`,
-		// ---
-		// `			<!-- Example messages -->
-		// 			<div class="uiChatBot-msg">
-		// 				<p class="uiChatBot-text">Hey, how are you?</p>
-		// 			</div>
-		// 			<div class="uiChatBot-msg uiChatBot-user">
-		// 				<p class="uiChatBot-text">I'm doing well, thanks! How about you?</p>
-		// 			</div>`,
-		// ---
-		`		</div>`,
-		// Chat respond notification bar
-		`		<div class="uiChatBot-footerMsg">AI Assistant is powered by UiChatBot</div>`,
-		// The chat input form
+		// Toggle button
+		`<button class="uiChatBot-toggle-btn">✨ Ask %botName%</button>`,
+		// Start: window
+		`<div class="uiChatBot-window">`,
+		// Window header
+		`<header class="uiChatBot-header">
+					<div class="uiChatBot-header__title">✨ Ask %botName%</div>
+					<div class="uiChatBot-header__buttons">
+						<button class="uiChatBot-header__button uiChatBot-header__button--dock-btn" title="Minimise" aria-label="Minimise"></button>
+						<button class="uiChatBot-header__button uiChatBot-header__button--undock-btn" title="Maximise" aria-label="Maximise"></button>
+						<button class="uiChatBot-header__button uiChatBot-header__button--close-btn" title="Close" aria-label="Close"></button>
+					</div>
+				</header>`,
+		// Contents, which includes
+		// - messages : the chat history
+		// - suggestions : suggested questions to get started with
+		`<div class="uiChatBot-body">
+			<div class="uiChatBot-messages"></div>
+			<div class="uiChatBot-suggestions">
+				<div class="uiChatBot-suggestions__heading"><b>Examples</b></div>
+			</div>
+		</div>`,
+		// Status indicator
+		`<div class="uiChatBot-status"></div>`,
+		// Experimental notice
+		`<div class="uiChatBot-banner uiChatBot-banner--experimental-notice">
+			<div class="uiChatBot-banner__icon">🔬</div>
+			<div class="uiChatBot-banner__text">
+				<p>%botName% is experimental and may produce incorrect answers.</p>
+				<p><small>Always verify the output before executing</small></p>
+			</div>
+		</div>`,
+		// User input box
 		`		<form class="uiChatBot-form">
-					<textarea class="uiChatBot-input" placeholder="Type your message here"></textarea>
+					<textarea class="uiChatBot-input" placeholder="Ask %botName% a question..." autofocus></textarea>
 					<button type="submit" class="uiChatBot-submit">Send</button>
 				</form>`,
-		// Main container frame closure
-		`	</div>`
-		// `</div>`
+		// Error display
+		`<div class="uiChatBot-errors" style="display:none;"></div>`,
+		// "Powered by" branding
+				`<div class="uiChatBot-branding">Powered by	<a href="https://uilicious.com" target="_blank">uilicious.com</a></div>`,
+		// END: window
+		`</div>`,
+		// BACKDROP
+		`<div class="uiChatBot-backdrop"></div>`
 	].map((block)=>block.trim().split("\n")).flat().map((line)=>line.trim()).join("\n");
 	
 	// ============================
@@ -134,6 +150,7 @@
 	
 		// The main chat message container
 		let chatMsgContainer = null;
+		let chatSuggestionList = null;
 	
 		// The main chat message history
 		let chatHistory = [];
@@ -142,7 +159,7 @@
 		let chatForm = null;
 		let chatFormBtn = null;
 		let chatFormInput = null;
-		let footerNoticeBar = null;
+		let errorDisplay = null;
 	
 		// Is there a pending message?
 		let isProcessingMsg = false;
@@ -157,36 +174,77 @@
 		// Setup and initialize CSS styling, and various external dependencies
 		// within a "hidden" preload div element (1px, 1px, bottom left corner)
 		function htmlSetup() {
+
+			config = config || {}
+			console.log("Config: ", config)
+			
 			// Prepare the main frame
 			mainChatFrame = document.createElement("div")
-			mainChatFrame.setAttribute("class", "uiChatBot-frame");
-			mainChatFrame.innerHTML = htmlTemplate;
-	
-			// Setup the header
-			let header = mainChatFrame.querySelector(".uiChatBot-header");
-			if( config.headerMsg ) {
-				header.innerHTML = config.headerMsg;
+			mainChatFrame.classList.add("uiChatBot-frame")
+			mainChatFrame.classList.add("uiChatBot-frame--opened")
+
+			// Style the main frame
+			config.style = config.style || { docked: { anchor: "right" } }
+			if(config.style.docked){
+				
+				mainChatFrame.classList.add("uiChatBot-frame--docked")
+				
+				config.style.docked.anchor = config.style.docked.anchor || "right"
+				mainChatFrame.classList.add("uiChatBot-frame--docked-" + config.style.docked.anchor )
+
 			} else {
-				header.style.display = "none";
+
+				mainChatFrame.classList.add("uiChatBot-frame--undocked")
+
+			}
+
+			// Replace template strings
+			config.botName = config.botName || "AI"
+			mainChatFrame.innerHTML = htmlTemplate.replace(/(%botName%)/gi, config.botName);
+
+			// Bind toggle button to open window when clicked
+			let toggleBtn = mainChatFrame.querySelector(".uiChatBot-toggle-btn")
+			toggleBtn.addEventListener("click", open)
+
+			// Bind the backdrop to minimise when clicked
+			let backdrop = mainChatFrame.querySelector(".uiChatBot-backdrop")
+			backdrop.addEventListener("click", dock)
+	
+			// Header title
+			let header = mainChatFrame.querySelector(".uiChatBot-header");
+			let title = header.querySelector(".uiChatBot-header__title")
+			if( config.title ) {
+				title.innerHTML = config.title
+			} 
+
+			// Header buttons
+			// - close btn
+			let closeBtn = header.querySelector(".uiChatBot-header__button--close-btn");
+			if(closeBtn){
+				closeBtn.addEventListener("click", close)
+			}
+
+			// - dock btn
+			let dockBtn = header.querySelector(".uiChatBot-header__button--dock-btn");
+			if(dockBtn){
+				dockBtn.addEventListener("click", dock)
 			}
 	
-			// Setup the subheader
-			let subheader = mainChatFrame.querySelector(".uiChatBot-subheader");
-			if( config.subHeaderMsg ) {
-				subheader.innerHTML = config.subHeaderMsg;
-			} else {
-				subheader.style.display = "none";
+			// - undock button
+			let undockBtn = header.querySelector(".uiChatBot-header__button--undock-btn");
+			if(undockBtn){
+				undockBtn.addEventListener("click", undock)
 			}
 	
 			// Get the chat notice bar, chat form, and chat form button
-			footerNoticeBar = mainChatFrame.querySelector(".uiChatBot-footerMsg");
+			errorDisplay = mainChatFrame.querySelector(".uiChatBot-errors");
 			chatForm = mainChatFrame.querySelector(".uiChatBot-form");
 			chatFormBtn = mainChatFrame.querySelector(".uiChatBot-submit");
 			chatFormInput = mainChatFrame.querySelector(".uiChatBot-input");
 	
 			// Get the msg container
-			chatMsgContainer = mainChatFrame.querySelector(".uiChatBot-msg-container");
-	
+			chatMsgContainer = mainChatFrame.querySelector(".uiChatBot-messages");
+			
 			// Check if we need to preload highlight.js
 			if( config.highlightJsPreload && config.enableCodeHighlighting ) {
 				// Check if hljs is already loaded
@@ -210,16 +268,45 @@
 			}
 	
 			// Handle opening message
-			if( config.openingMsg ) {
+			if( config.welcomeMessage ) {
 				chatHistory = [
 					{
 						role: "bot",
 						type: "INIT",
-						text: config.openingMsg,
+						text: config.welcomeMessage,
 					}
 				];
 				syncMessageDisplay();
 			}
+
+			// Populate examples
+			chatSuggestionList = mainChatFrame.querySelector(".uiChatBot-suggestions");
+			if(config.examples && Array.isArray(config.examples)){
+				config.examples.forEach((question)=>{
+					let el = document.createElement("button")
+					el.classList.add("uiChatBot-suggestion-item");
+					el.innerHTML = `<div class="uiChatBot-suggestion-item__icon"></div>
+					<div class="uiChatBot-suggestion-item__text">${question}</div>`
+					el.addEventListener("click", ()=>{
+						processQuestion(question)
+					})
+					chatSuggestionList.appendChild(el);
+					
+				})
+			}
+
+			// When any links within a chat message is clicked,
+			// dock the chat message window
+			chatMsgContainer.addEventListener("click", (event)=>{
+				// a link is clicked
+				if(event.target.tagName === "A"){
+					dock()
+				}
+			})
+
+			// debug
+			// showStatus("thinking")
+			// showError("this is an error")
 	
 			// Add the textarea new line handler
 			chatFormInput.addEventListener("keydown", (event)=>{
@@ -240,7 +327,7 @@
 						event.stopPropagation();
 					} else {
 						// Submit the form
-						chatForm.dispatchEvent(new Event("submit"));
+						chatForm.dispatchEvent(new Event("submit", {cancelable: true}));
 					}
 				}
 	
@@ -249,11 +336,11 @@
 					// Get the message text, and trim it
 					let msgText = chatFormInput.value.trim();
 					if( msgText.length == config.inputCharLimit ) {
-						footerNoticeError("Warning, input character limit of " + config.inputCharLimit + " is reached");
+						showError("Warning, input character limit of " + config.inputCharLimit + " is reached");
 					} else if( msgText.length * 1.0 / config.inputCharLimit > 0.9 ) {
-						footerNoticeError(`Warning, you are near the input character limit of ${config.inputCharLimit} (used ${msgText.length})`);
+						showError(`Warning, you are near the input character limit of ${config.inputCharLimit} (used ${msgText.length})`);
 					} else if( msgText.length > config.inputCharLimit ) {
-						footerNoticeError("Error, Please limit your message to " + config.inputCharLimit + " characters (used " + msgText.length + ")");
+						showError("Error, Please limit your message to " + config.inputCharLimit + " characters (used " + msgText.length + ")");
 					}
 				}
 	
@@ -279,29 +366,31 @@
 				}
 	
 				// Get the message text, and trim it
-				let msgText = chatFormInput.value.trim();
+				let userInput = chatFormInput.value.trim();
 	
-				// Show an error if empty
-				if( msgText.length === 0 ) {
-					footerNoticeError("Ignoring empty message submission (please type something)");
+				// Ignore if the user input is empty
+				if( userInput.length === 0 ) {
 					return;
 				}
 	
 				if( config.inputCharLimit > 0 ) {
-					if( msgText.length > config.inputCharLimit ) {
-						footerNoticeError("Error, Please limit your message to " + config.inputCharLimit + " characters (used " + msgText.length + ")");
+					if( userInput.length > config.inputCharLimit ) {
+						showError("Please limit your message to " + config.inputCharLimit + " characters (used " + userInput.length + ")");
 						return;
 					}
 				}
+
+				// clear errors
+				clearError();
 	
 				// Perform the user submission
-				handleUserSubmission();
+				processQuestion(userInput);
+	
+				// cancel the event so that the page does not reload
+				return false;
+
 			});
 	
-			// Handle footer notice
-			if( config.footerMsg ) {
-				footerNoticeBar.innerHTML = config.footerMsg;
-			}
 		}
 	
 		function recomputeInputFormSize() {
@@ -309,37 +398,47 @@
 			chatFormInput.style.height = 'auto';
 			chatFormInput.style.height = `${Math.max(chatFormInput.scrollHeight+4,60)}px`;
 		}
-	
-		function footerNoticeError(msg) {
-			footerNoticeBar.innerHTML = msg;
-			footerNoticeBar.classList.add("uiChatBot-footerMsg-error");
-			footerNoticeBar.classList.remove("uiChatBot-footerMsg-thinking");
+
+		function showStatus(status){
+			let statusEl = mainChatFrame.querySelector(".uiChatBot-status");
+			if(status === "thinking"){
+				statusEl.innerHTML = `🧠 ${config.botName} is thinking...`
+				statusEl.classList.add(".uiChatBot-status--thinking");
+			}
+		}
+
+		function clearStatus(){
+			let statusEl = mainChatFrame.querySelector(".uiChatBot-status");
+			statusEl.innerHTML = ""
+			statusEl.classList.forEach((cls)=>{
+				if(cls.startsWith("uiChatBot-status--")){
+					statusEl.classList.remove(cls)
+				}
+			})
 		}
 	
-		function footerNoticeThinking(msg = "thinking (This can take up to a few minutes, depending on OpenAI server load)") {
-			footerNoticeBar.innerHTML = `${config.botName} is ${msg} `;
-			footerNoticeBar.classList.remove("uiChatBot-footerMsg-error");
-			footerNoticeBar.classList.add("uiChatBot-footerMsg-thinking");
+		function showError(msg) {
+			errorDisplay.innerHTML = msg;
+			errorDisplay.style.display = "block";
 		}
-	
-		function footerNoticeReset() {
-			footerNoticeBar.innerHTML = `${config.footerMsg} `;
-			footerNoticeBar.classList.remove("uiChatBot-footerMsg-error");
-			footerNoticeBar.classList.remove("uiChatBot-footerMsg-thinking");
+
+		function clearError(){
+			errorDisplay.innerHTML = ""
+			errorDisplay.style.display = "none";
 		}
 	
 		function lockupChatForm() {
 			isProcessingMsg = true;
 			chatFormBtn.disabled = true;
 			chatFormInput.disabled = true;
-			footerNoticeThinking();
+			showStatus("thinking")
 		}
 	
 		function unlockChatForm(resetInput = false) {
 			isProcessingMsg = false;
 			chatFormBtn.disabled = false;
 			chatFormInput.disabled = false;
-			footerNoticeReset();
+			clearStatus();
 			if( resetInput ) {
 				chatFormInput.value = "";
 				recomputeInputFormSize();
@@ -351,6 +450,7 @@
 		 * If the existing messages are valid, no changes occur
 		 **/
 		function syncMessageDisplay() {
+
 			// Ensure all message objects have an id
 			for( let i = 0; i < chatHistory.length; i++ ) {
 				if( !chatHistory[i].id ) {
@@ -363,7 +463,7 @@
 	
 			// Get list of exiting messages in the container
 			// that are attached as child elements
-			let existingMsgs = Array.from( chatMsgContainer.children );
+			let existingMsgs = Array.from( chatMsgContainer.querySelectorAll(".uiChatBot-msg") );
 	
 			// If there is somehow more messages, remove them
 			if( existingMsgs.length > chatHistory.length ) {
@@ -378,20 +478,27 @@
 	
 			// Ensure the dom className matches what is needed for the chatHistory
 			function matchChatHistory(dom, idx) {
-				if( chatHistory[idx].role === "user" ) {
-					dom.className = "uiChatBot-msg uiChatBot-user";
-				} else if( chatHistory[idx].role == "bot" ) {
-					dom.className = "uiChatBot-msg";
-				} else if( chatHistory[idx].role == "note" ) {
-					dom.className = "uiChatBot-note";
+
+				let message = chatHistory[idx]
+
+				// update message types
+				dom.setAttribute("data-message-role", message.role)
+				dom.setAttribute("data-message-type", message.type)
+
+				if( message.role === "user" ) {
+					dom.className = "uiChatBot-msg uiChatBot-msg--user";
+				} else if( message.role == "bot" ) {
+					dom.className = "uiChatBot-msg uiChatBot-msg--bot";
+				} else if( message.role == "note" ) {
+					dom.className = "uiChatBot-msg uiChatBot-msg--note";
 				} else {
 					dom.className = "uiChatBot-msg";
 				}
 	
-				let msgText = dom.querySelector(".uiChatBot-text");
-				if( msgText.appliedHTML !== chatHistory[idx].html ) {
-					msgText.appliedHTML = chatHistory[idx].html;
-					msgText.innerHTML = chatHistory[idx].html;
+				let msgText = dom.querySelector(".uiChatBot-msg__text");
+				if( msgText.appliedHTML !== message.html ) {
+					msgText.appliedHTML = message.html;
+					msgText.innerHTML = message.html;
 	
 					// Check if need to apply syntax highlighting
 					if( config.enableCodeHighlighting ) {
@@ -414,7 +521,7 @@
 	
 					// Forward it to the event hook
 					if( config.onMessageRendered ) {
-						config.onMessageRendered( dom, chatHistory[idx] );
+						config.onMessageRendered( dom, message );
 					}
 
 					// Insertion flag
@@ -429,27 +536,48 @@
 				matchChatHistory(msg, i);
 			}
 	
-			// If there are more messages, add them
+			// Insert new messages
 			if( existingMsgs.length < chatHistory.length ) {
 				for( let i = existingMsgs.length; i < chatHistory.length; i++ ) {
 					let msg = document.createElement("div");
-					msg.innerHTML = `<div class="uiChatBot-text"></div>`;
+					msg.innerHTML = `<div class="uiChatBot-msg__author"></div><div class="uiChatBot-msg__text"></div>`;
+					msg.setAttribute("data-message-role", chatHistory[i].role)
+					msg.setAttribute("data-message-type", chatHistory[i].type)
 					chatMsgContainer.appendChild( msg );
 					matchChatHistory(msg, i);
 				}
 			}
 
-			// If insertion occured, scroll to the bottom
-			if( insertionOccured ) {
-				// Get the last message
-				let lastMsg = chatMsgContainer.lastElementChild;
-				if( lastMsg != null ) {
-					// Scroll to the top of the last message
-					chatMsgContainer.scrollTop = chatMsgContainer.scrollHeight - lastMsg.offsetHeight - chatMsgContainer.offsetHeight/2;
-				} else {
-					chatMsgContainer.scrollTop = chatMsgContainer.scrollHeight;
+			// If AI is thinking, hide welcome message
+			// if(isProcessingMsg){
+			// 	let el = mainChatFrame.querySelector(".uiChatBot-msg[data-message-type='INIT']")
+			// 	if(el){
+			// 		el.style.display = "none";
+			// 	}
+			// }
+
+			// If AI is thinking, add empty state
+			if(isProcessingMsg){
+				let msg = document.createElement("div");
+				msg.classList.add("uiChatBot-msg")
+				msg.classList.add("uiChatBot-msg--processing")
+				msg.innerHTML = `<div class="uiChatBot-msg__author"></div><div class="uiChatBot-msg__text"><span class="uiChatBot-msg__text-stub">&nbsp;</span></div>`;
+				chatMsgContainer.appendChild( msg );
+			} else {
+				let el = chatMsgContainer.querySelector(".uiChatBot-msg--processing")
+				if(el){
+					chatMsgContainer.removeChild(el)
 				}
 			}
+
+			// If insertion occured, scroll to the bottom
+			if( insertionOccured ) {
+				let lastMesage = chatMsgContainer.querySelector(".uiChatBot-msg:last-of-type")
+				if(lastMesage){
+					lastMesage.scrollIntoView();
+				}
+			}
+
 		}
 	
 		// AI integration
@@ -537,31 +665,44 @@
 		 * Trigger when a submission should be handled
 		 * Does not do validation, and checks prior
 		 */
-		async function handleUserSubmission() {
+		async function processQuestion(question) {
+
+			// Hide suggestions
+			chatSuggestionList.style.display = "none";
+
 			// The original chat history length (to pop if error)
 			let originalChatHistoryLength = chatHistory.length;
 	
 			// Try catch safety
 			try {
+
 				// First, lets lock up the UI
 				lockupChatForm();
 		
 				// Get the message text, and trim it
-				let msgText = chatFormInput.value.trim();
+				question = question.trim();
+
+				// if the chathistory includes welcome message (type="INIT"), remove it
+				if(chatHistory.length){
+					if(chatHistory[0].type === "INIT"){
+						chatHistory.splice(0,1);
+					}
+				}
 		
 				// Get the current state
-				let state = await getCurrentState(msgText);
+				let state = await getCurrentState(question);
 		
 				// Add the message to the chat history
 				chatHistory.push({
 					role: "user",
 					type: "CHAT",
-					text: msgText
+					text: question
 				});
+
 				syncMessageDisplay();
 		
 				// Make a decision
-				let decision = await makeDecision( msgText, state );
+				let decision = await makeDecision( question, state );
 		
 				// Get the decision type and args
 				let type = decision[0].toUpperCase();
@@ -596,12 +737,12 @@
 						chatHistory.push({
 							role: "note",
 							type: "SAGE",
-							text: `🔍 Searching up database: ${args[i]}`
+							text: `Searching for "${args[i]}"`
 						});
 						syncMessageDisplay();
 	
 						// Get the response
-						let res = await processAction( msgText, state, ["SAGE", args[i]] );
+						let res = await processAction( question, state, ["SAGE", args[i]] );
 	
 						// Return it
 						if( res && res[args[i]] && res[args[i]].result ) {
@@ -652,10 +793,13 @@
 							text: fallbackMsgArr.join("\n")
 						});
 					}
-					syncMessageDisplay();
-		
+
 					// Unlock the chat form and return
 					unlockChatForm(true);
+
+					// update messages
+					syncMessageDisplay();
+		
 					return;
 				}
 	
@@ -714,7 +858,7 @@
 				// Log the error
 				console.error(e);
 				unlockChatForm(false);
-				footerNoticeError("An error occurred while processing your request. Please try again later.");
+				showError("An error occurred while processing your request. Please try again later.");
 			}
 		}
 	
@@ -844,22 +988,14 @@
 			config = Object.assign( {}, defaultConfig, inConfig );
 	
 			// Normalize some messages
-			if( config.openingMsg === undefined || config.openingMsg === null ) {
-				config.openingMsg = `Hi, I'm ${config.botName}, an AI assistant, how can I help you today?`;
+			if( config.welcomeMessage === undefined || config.welcomeMessage === null ) {
+				config.welcomeMessage = `Hi, I'm ${config.botName}, an AI assistant, how can I help you today?`;
 			}
-			if( config.headerMsg === undefined || config.headerMsg === null ) {
-				config.headerMsg = `${config.botName} (AI assistant)`;
+
+			if( config.title === undefined || config.title === null ) {
+				config.title = `Ask ${config.botName}`;
 			}
-			if( config.footerMsg === undefined || config.footerMsg === null ) {
-				config.footerMsg = `${config.botName} AI assistant is powered by uilicious.com`;
-			}
-			if( config.subHeaderMsg === undefined || config.subHeaderMsg === null ) {
-				config.subHeaderMsg = [
-					`Disclaimer: ${config.botName} AI assistant is still in early beta, and may provide inaccurate responses. `,
-					`When in doubt, always double check our official website and documentation.`,
-					`<br/><br/>All messages are logged for review and monitoring purposes`
-				].join("");
-			}
+			
 			// if( config.botScope === undefined || config.botScope === null ) {
 			// 	config.botScope = `${config.botName}, ${config.parentName}`;
 			// }
@@ -927,11 +1063,42 @@
 		}
 	
 		//---------------------
+		// Display
+		//---------------------
+		function open(){
+			let frame = document.querySelector(".uiChatBot-frame")
+			frame.classList.add("uiChatBot-frame--opened")
+			frame.classList.remove("uiChatBot-frame--closed")
+		}
+
+		function close(){
+			let frame = document.querySelector(".uiChatBot-frame")
+			frame.classList.add("uiChatBot-frame--closed")
+			frame.classList.remove("uiChatBot-frame--opened")
+		}
+
+		function dock(){
+			let frame = document.querySelector(".uiChatBot-frame")
+			frame.classList.add("uiChatBot-frame--docked")
+			frame.classList.remove("uiChatBot-frame--undocked")
+		}
+
+		function undock(){
+			let frame = document.querySelector(".uiChatBot-frame")
+			frame.classList.add("uiChatBot-frame--undocked")
+			frame.classList.remove("uiChatBot-frame--docked")
+		}
+
+		//---------------------
 		// Exposed functions
 		//---------------------
 	
 		this._setup = setup;
 		this.attachTo = attachTo;
+		this.open = open;
+		this.close = close;
+		this.dock = dock;
+		this.undock = undock;
 		this.isCompatibleWithBrowser = isCompatibleWithBrowser;
 	
 		//---------------------
@@ -1081,7 +1248,14 @@
 	}
 	
 	// List of functions
-	let functionList = ["attachTo", "isCompatibleWithBrowser"];
+	let functionList = [
+		"open",
+		"close",
+		"dock",
+		"undock",
+		"attachTo", 
+		"isCompatibleWithBrowser"
+	];
 	
 	// Bind each function from the module to the singleton instance
 	for( let i = 0; i < functionList.length; i++ ) {
@@ -1099,3 +1273,17 @@
 	
 // ---
 })()
+
+// todo:
+// - [x] (done) embed to the left or right of the docsite
+// - [x] when click on backdrop, dock the chat window
+// - [x] when a link is clicked, hide the docked window
+// - [ ] hide --processing stub when generating test script
+// - [ ] controls to open / close the window
+//   - [x] (done) tab style toggle button
+//   - [ ] chat toggle button 
+//   - [ ] clippy style toggle button
+// - [ ] dark mode
+// - [ ] style background
+// - [ ] refactor namespace
+
