@@ -20,12 +20,8 @@ async function TAMI_vuepressSetup(withinTimeout = false) {
 	if( host.indexOf(":8080") >= 0 || host.indexOf("uilicious-dev.com") >= 0 ) {
 		apiRoute = "https://api-tami.uilicious-dev.com/v2/tami/chat/";
 	} else if( host.indexOf("stg") >= 0 ||  host.indexOf("stag") >= 0 ) {
-		// Skip staging for now
-		return;
 		apiRoute = "https://stg-api-tami.uilicious.com/v2/tami/chat/";
 	} else {
-		// Skip prod for now
-		return;
 		apiRoute = "https://api-tami.uilicious.com/v2/tami/chat/";
 	}
 
