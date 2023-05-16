@@ -23,6 +23,8 @@ $namespace: "uiChatBot";
 	
 	--#{$namespace}-form-background-color: #f9f9f9;
 	--#{$namespace}-form-border-color: #e6e6e6;
+
+	--#{$namespace}-normal-text-color: #1f1f1f;
 	
 	--#{$namespace}-muted-text-color: #8d8d8d;
 	
@@ -55,6 +57,7 @@ $namespace: "uiChatBot";
 
 		// set font-size as baseline for  "em"
 		font-size: 1rem;
+		color: var(--#{$namespace}-normal-text-color);
 
 		// this needs to be positioned higher than the document
 		z-index: var(--#{$namespace}-frame-zindex);
