@@ -141,15 +141,42 @@ I.click("Continue as a Guest")
 
 #### Hinting with `I.see.hint` command
 
-`I.see.hint` is a command that allows you to explicitly focus on a specific element within the page that cannot be seen by the command `I.see`.&#x20;
+All commands that interact with the webpage, such as `I.see`, `I.fill`, `I.click`, implicitly sets a hint for subsequent commands on the area of the page in focus when targeting elements. You can use `I.see.hint` command, which like the normal `I.see` command, checks if a text or element is displayed on the page, but it also explicty sets an hint with a stronger weight than the implicit hints.
 
-The difference between `I.see` and `I.see.hint` is that when certain texts or CSS elements are nested inside another element, they cannot be seen by just I.see. So to target the nested element, we must use another command such as `I.see.hint`.&#x20;
+Hints are useful when there are multiple elements on the page with the same label. 
 
-Take a look at the example below.&#x20;
+For example, on a catalogue page with an "Add to Cart" button for each product, you can use the `I.see` command on a product's name before using `I.click` on the "Add to Cart" button, in order to get the `I.click` command to click on the "Add to Cart" button for the product seen using the `I.see` command. You can see a demonstration of this effect in the example below which uses a real-world ecommerce site.
 
-On the [James Hardie](https://www.jameshardie.ca/forms/request-a-sample) site, there are multiple Siding Samples to select from. To pick which Siding Sample we want UIlicious to select, we can use `I.see.hint` to give a hint to UIlicious to focus on a specific Siding Sample. UIlicious is smart enough to infer that our next commands will relate to that specific Siding Sample.
+{% tabs %}
 
-![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1655513518/ui-licious/ui-licious:%20conceptual%20guide/i.see.hint-example.png)
+{% tab title="Example" %}
+
+```javascript
+// Let's go to a flower shop and search for a nice bouquet of Sunflower
+I.goTo("https://www.fareastflora.com")
+I.fill("Search" , "Sunflower")
+I.pressEnter()
+I.select("Sort by", "Price")
+
+// Use I.see.hint to set a focus on the product card
+I.see.hint("Citrine Birthstone")
+
+// I.click will use the hint from I.see to decide what to click
+I.click("View Details")
+
+// I'm at the correct page
+I.amAt("/citrine-birthstone-november-hand-bouquet-31236.html")
+```
+
+{% endtab %}
+{% tab title="Result" %}
+
+<iframe title="Hinting using I.see.hint" src="https://snippet.uilicious.com/embed/test/public/Phfd4yCR8UBT8Wm2fAetyv?stepNum=6&autoplay=0" frameborder="0" width="600px" height="400px;"></iframe>
+
+{% endtab %}
+{% endtabs %}
+
+
 
 #### Limiting the scan area using `UI.Context`
 
