@@ -2,7 +2,8 @@
 $namespace: "uiChatBot";
 
 // Disable chat bot due to issues with mobile
-@media (max-width: 768px) {
+// 768px is tablet width
+@media (max-width: 770px) { 
 	.uiChatBot-frame {
 		width: 0;
 		height: 0;
