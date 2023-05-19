@@ -1,6 +1,15 @@
 // namespace for this widget
 $namespace: "uiChatBot";
 
+// Disable chat bot due to issues with mobile
+@media (max-width: 768px) {
+	.uiChatBot-frame {
+		width: 0;
+		height: 0;
+		display: none;
+	}
+}
+
 // --------------------------------------------------------------
 // Theme-able variables
 // --------------------------------------------------------------
