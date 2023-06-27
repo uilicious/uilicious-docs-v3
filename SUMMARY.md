@@ -45,7 +45,6 @@
 * [List of commands](reference/commands-list.md)
 * Configurations
   * [Uilicious IP List](reference/configurations/cloud-ip-list.md)
-  * [Configuring Applitools](reference/configurations/applitools.md)
 * Page Navigation
   * [Go to a URL](reference/page-navigation/go-to-a-url.md)
   * [Refresh / Reload Page](reference/page-navigation/refresh-page.md)
@@ -108,6 +107,10 @@
   * [Stop Command](reference/stopping-tests/stop-command.md)
 * Browser Settings
   * [Resizing the window](reference/browser-and-resolution-settings/resizing-window.md)
+
+## Plugins
+* [Metamask](plugins/metamask-plugin.md)
+* [Applitools](reference/configurations/applitools.md)
 
 ## Use Cases
 
