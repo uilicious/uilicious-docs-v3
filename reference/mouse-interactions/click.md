@@ -1,32 +1,104 @@
 ---
-title: Click
+title: Click command
 
 # Write a short description about the page. This will be displayed on google search results.
 description: Learn how to automate clicks on page elements with UIlicious
 
 tags:
-    - i.click
-    - iclick
-    - click
-    - i.doubleclick
-    - idoubleclick
-    - double click
-    - i.rightclick
-    - irightclick
-    - right click
-    - click icon
-    - implicit wait
-    - wait
+  - i.click
+  - iclick
+  - click
+  - i.doubleclick
+  - idoubleclick
+  - double click
+  - i.rightclick
+  - irightclick
+  - right click
+  - click icon
+  - implicit wait
+  - wait
 ---
-# Click
 
-Use the `I.click` command to click on an object with the **left** mouse button.
+# Click command
 
-Use the `I.doubleClick` command to double click on an object with the **left** mouse button.
+There are three click commands to perform different types of clicks.
 
-Use the `I.rightClick` command to click on an object with the **right** mouse button.
+- Use `I.click` to clicks on a target with the **left** mouse button
+- Use `I.doubleClick` to double clicks on a target with the **left** mouse button
+- Use `I.rightClick` to clicks on a target with the **right** mouse button
 
-## Click on text buttons / links
+There are several ways to specify the target for the click command:
+
+- Using **text**
+- Using **CSS / XPATH**
+- Using **X and Y offset from an element**
+- Using **X and Y offset from screen**
+
+To click on an element using it's text, provide the text of the element to the click command.
+
+```javascript
+// I.click(target) using element's text
+I.click("Login"); // targets element containing the the text "Login"
+```
+
+To click on an element using CSS selector or XPATH, provide the CSS selector or XPATH that matches the element.
+
+```javascript
+// I.click(target) using CSS / XPATH
+I.click("#zoom-in-btn"); // targets element with CSS selector
+I.click("//[data-test-id='close-button']"); // targets element using XPATH selector
+```
+
+To click on a position offset from an element, provide the text/CSS/XPATH to match the element, and the X and Y offset from the top-left corner of the element, which could be an integer amount to offset by pixels, or a percentage to offset by the width or the height of the element.
+
+In this example below, the test engine will click 100 pixels to the right, and 10 pixels down, from the top-left corner of the element with contains the text "First Name".
+
+```javascript
+// I.click(target, x, y) using pixel offset
+I.click("First Name", 100, 10);
+```
+
+Here's another example, but using percentages instead. By setting the x and y offset to "50%", the test engine will click the center point of the element that matches the CSS selector ".map".
+
+```javascript
+// I.click(target, x, y) using pixel offset
+I.click(".map", "50%", "50%");
+```
+
+You can also click on an element using the x and y coordinate from the top-left corner of the screen. Here's an example:
+
+```javascript
+// I.click(x,y)
+I.click(500, 300); // clicks 500px right and 300px down from the top-left corner of the screen
+```
+
+## Resolving multiple matches
+
+If a click command matches multiple elements, UIlicious will pick the most relavent element to click on, based on:
+
+1. **Semantics**: Elements that are clickable by W3 specifications have a higher weight, such as buttons and links.
+2. **Match % and Accessibility**: Elements with a closer match to the phrase have a higher weight. E.g. I.click("Search") will prefer to target a button that says "Search" over a button that says "Research".
+3. **Context**: Elements that are closer to element have the most recent interaction have a height weight.
+
+## Automatic wait until element is visible
+
+If no visible elements are found for the click command, UIlicious will automatically wait and search for the element again up until 15 seconds. You can increase this threshold by setting the `TEST.commandTimeout` property to any number of seconds at any point of the test. If no visible elements are found after the command times out, the command will fail with and error indicating that no elements are found. You can also use the `I.wait` command if you want the test to always wait for a fixed amount of time.
+
+## Automatic wait when click triggers a page navigation
+
+If the click triggers a page navigation, the click command will automatically wait for the next page to load until the `document.readyState` is `complete`. The time taken to complete the click command in this case will also include the time taken to load the page.
+
+## Automatic switch tab when click opens a page in a new tab
+
+If the click opens page in a new tab, the click command will automatically switch to the new tab. You do not need to add an extra `I.switchTab` command if you wish to interact with the new tab afterwards.
+
+## Automatic screenshots for click commands
+
+Screenshots are automatically taken for all test commands, typically after the command is performed to show you the state of the UI afterwards. However, for the `I.click` and `I.doubleClick` command, screenshots are taken after the mouse is moved over the target, but before the click is performed. This is to show you where is the identified target element, and what effects gets applied to the element on hover. If you wish to capture the screenshot of the application after the click, you can add a non-interactive command like `TEST.log.info` after the click command.
+
+## Real world examples
+
+### Clicking on text buttons / links
 
 The easiest way to click an element is to target its text content. Note that if a text matches multiple elements, UIlicious will pick the [most relavent match](#resolving-multiple-matches).
 
@@ -37,7 +109,7 @@ Here's an example of a web page with a green button labeled "Enter".
 We can target the button with the text "Enter" with the following:
 
 ```javascript
-I.click("Enter") // This will press the button with the text "Enter"
+I.click("Enter"); // This will press the button with the text "Enter"
 ```
 
 Here's another example, with a web page that has a link with the text "Log in".
@@ -62,8 +134,7 @@ I.amAt("/customer/account/login/")
 {% endtab %}
 {% endtabs %}
 
-
-## Clicking on icon buttons / images
+### Clicking on icon buttons / images
 
 If a graphical element such as an icon or an image has an accessibility label set using the `aria-label` attribute, or tooltip set using the `title` attribute, or alternate text set using the `alt-text` attribute, you can target the element using any of these labels. If the element does not have any of these attributes set, refer to the next session on clicking using CSS selectors and XPATHs.
 
@@ -89,7 +160,7 @@ I.click("Zoom out") // clicks the "minus" icon
 {% endtab %}
 {% endtabs %}
 
-## Clicking using CSS and XPATH
+### Clicking using CSS and XPATH
 
 You can also click on an element using a CSS or XPATH selector. Note that if a selector matches multiple elements, UIlicious will pick the [most relavent match](#resolving-multiple-matches).
 
@@ -101,6 +172,7 @@ Here's an example to target the "Track Order" button using the CSS selector `#tr
 
 {% tabs %}
 {% tab title="Example" %}
+
 ```javascript{2}
 I.goTo("https://www.fareastflora.com/")
 I.click("#track-icon") // click the "Track order" button
@@ -119,6 +191,7 @@ Here's an example to target the "Track Order" button using the XPATH selector `/
 
 {% tabs %}
 {% tab title="Example" %}
+
 ```javascript{2}
 I.goTo("https://www.fareastflora.com/")
 I.click("//a[@id='track-icon']") // click the "Track order" button
@@ -133,8 +206,7 @@ I.amAt("/track-order") // redirected to "/track-order" page
 {% endtab %}
 {% endtabs %}
 
-
-## Clicking using an offset
+### Clicking using an offset
 
 In some scenarios, it is not possible to target an element directly using its text, a CSS selector or an XPATH selector. We can try to targeting it using an offset from a reference element instead.
 
@@ -146,6 +218,7 @@ We can use the `I.click(element, x, y)` command with a X pixel offset and a Y pi
 
 {% tabs %}
 {% tab title="Example" %}
+
 ```javascript{2}
 I.goTo("https://developers.arcgis.com/javascript/latest/sample-code/layers-featurelayer-collection/live/")
 I.click("//canvas", 550, 480)
@@ -164,14 +237,3 @@ Specifying a negative Y offset will target Y pixels up from the top-left corner 
 
 {% endtab %}
 {% endtabs %}
-
-## Resolving multiple matches
-
-If a click command matches multiple elements, UIlicious will pick the most relavent element to click on, based on:
-1. **Semantics**: HTML elements that are clickable by W3 specification are preferred, such as buttons and links.
-2. **Match %**: Elements with a closer match to the phrase are preferred. E.g. I.click("Search") will prefer to target a button that says "Search" over a button that says "Research".
-3. **Context**: Elements that are closer to element have the most recent interaction are preferred.
-
-## Automatic wait until element is visible
-
-If no visible elements are found for the click command, UIlicious will automatically wait and search for the element again up until 15 seconds. You can increase this threshold by setting the `TEST.commandTimeout` property to any number of seconds at any point of the test. If no visible elements are found after the command times out, the command will fail with and error indicating that no elements are found. You can also use the `I.wait` command if you want the test to always wait for a fixed amount of time.
