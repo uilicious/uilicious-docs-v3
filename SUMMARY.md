@@ -55,7 +55,7 @@
   * [Validate URL](reference/validation-commands/validate-url.md)
 * Mouse Actions
   * [Click](reference/mouse-interactions/click.md)
-  * [Hover](reference/mouse-interactions/hover-over-objects.md)
+  * [Hover](reference/mouse-interactions/hover.md)
   * [Drag](reference/mouse-interactions/drag-objects.md)
   * [Scroll](reference/mouse-interactions/scroll-page.md)
 * Keyboard Actions
