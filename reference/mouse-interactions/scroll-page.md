@@ -3,7 +3,7 @@
 description: Learn how to use the different scrolling commands to scroll pages in your UIlicious test.
 ---
 
-# Scroll Page
+# Scroll commands
 
 ### `I.scrollBy` <a href="#iscrollby" id="iscrollby"></a>
 

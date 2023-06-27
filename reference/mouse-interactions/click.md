@@ -1,5 +1,5 @@
 ---
-title: Click
+title: Click command
 
 # Write a short description about the page. This will be displayed on google search results.
 description: Learn how to automate clicks on page elements with UIlicious
@@ -19,7 +19,7 @@ tags:
   - wait
 ---
 
-# Click
+# Click command
 
 There are three click commands to perform different types of clicks.
 

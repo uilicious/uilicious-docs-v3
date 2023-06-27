@@ -26,6 +26,7 @@ _Released 27 Jun 2023_
     - Enhanced javscript click fallback to simulate full sequence of mouse click events (mouseenter -> mouseover -> mousemove -> mousedown -> click -> mouseup)
     - Added support for double click and right click operations for testing on Safari and IE11 by simulating mouse events on target element with javascript.
   - **I.hoverOn** command:
+    - I.hoverOn now supports hovering on positions using X and Y offsets from an element or from the screen, similar to I.click command.
     - Added support for hover for testing on Safari and IE11, to a limited extent. This will trigger javascript mouse events on the target element, but will not trigger :hover CSS style changes.
   - **TEST.log** commands now automatically concatenate multiple arguments, and stringify JSON objects.
   - **Added "metamask" plugin** which provides helper functions to simplify the setup of the wallet and network on the MetaMask extension.

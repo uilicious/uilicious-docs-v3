@@ -3,7 +3,7 @@
 description: Learn how to use the I.dragTo command to drag various elements in your UIlicious test.
 ---
 
-# Drag Objects
+# Drag commands
 
 ### `I.dragTo` <a href="#idragto" id="idragto"></a>
 
