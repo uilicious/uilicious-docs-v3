@@ -13,6 +13,16 @@ description: List of updates and changes of UIlicious throughout the years.
 - Minor: Contains new features
 - Patch: Contains enhancements and bug fixes only
 
+## 3.33.3
+
+_Released 28 Jun 2023_
+
+**🐞 Fixes**
+
+- Test Engine:
+  - Hotfix for bug where if a new tab is opened, the reported page title and url for the new tab is incorrect.
+
+
 ## 3.33.2
 
 _Released 27 Jun 2023_
