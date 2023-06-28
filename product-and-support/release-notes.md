@@ -40,6 +40,8 @@ _Released 27 Jun 2023_
     -
   - **I.drag** commands:
     - Fix issue where drag and drop doesn't work on some types of HTML5 drag and drop elements where other elements move when the drag element passes over them, e.g. sortable lists.
+- Web Studio:
+  - Monitoring page: Optimised rendering to fix slowness in opening and closing create/edit job form modal when the project has too many files.
 
 ## 3.33.1
 
