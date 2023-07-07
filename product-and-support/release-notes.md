@@ -13,6 +13,22 @@ description: List of updates and changes of UIlicious throughout the years.
 - Minor: Contains new features
 - Patch: Contains enhancements and bug fixes only
 
+
+## 3.33.4
+
+_Released 7 Jul 2023_
+
+**💪 Enhancement**
+
+* Web Studio
+  * Editor : You can now jump to the file and the line of code for a test step from a test report, making debugging tests easier!
+
+**🐞 Fixes**
+
+* Web Studio
+  * Editor 
+    * Fixed issue where sometimes clicking on the "Run" button doesn't start the test run.
+
 ## 3.33.3
 
 _Released 28 Jun 2023_
