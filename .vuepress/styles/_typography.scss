@@ -21,10 +21,25 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
 }
 
+// inline code
 code {
     display: inline-block;
     color: var(--c-inline-code-text);
     background-color: var(--c-inline-code-bg);
     padding: 2px 5px;
     border-radius: 3px;
+}
+
+// code block
+$code-block-font-size: .88rem;
+$code-block-line-height: 1.2rem;
+div[class*="language-"] pre code {
+    font-size: $code-block-font-size;
+    line-height: $code-block-line-height;
+}
+div[class*="language-"] .highlight-lines {
+    line-height: $code-block-line-height;
+}
+div[class*="language-"].line-numbers-mode .line-numbers .line-number {
+    height: $code-block-line-height;
 }
