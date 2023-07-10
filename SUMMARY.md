@@ -114,7 +114,8 @@
 
 ## Use Cases
 
-* [Salesforce](best-practices/salesforce.md)
+* [Testing Salesforce](best-practices/salesforce.md)
+* [Testing Web3 Applications](how-to-guides/web3/testing-web3-applications.md)
 
 ## Product Notes
 
