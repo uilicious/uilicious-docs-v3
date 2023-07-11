@@ -1,3 +1,9 @@
+---
+lang: en-US
+title: Step-by-step guide to testing Web3 applications
+description: Testing web3 application doesn't have to be slow or painful. In this guide, we'll show you how to automate tests for web3 apps, using a private testnet and browser automation tool.
+---
+
 # Step-by-step guide to testing Web3 applications
 
 **Table of contents**
