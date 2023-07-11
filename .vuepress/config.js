@@ -61,13 +61,16 @@ export default {
     ['meta', {property: "og:image", content: "https://docs.uilicious.com" + basePath + "static/logo-og-image.png"}],
     ['meta', {property: "og:type", content: "article"}],
     // Style sheet import is not needed, as its done in styles/index.scss 
+    //----------------------------------------
     // google tag manager
     googleTagManager('GTM-MQ4Q3P4'),
+    //----------------------------------------
     // chat bot
     // ["link", {rel: "stylesheet", type: "text/css", href: basePath + 'static/chat/UiChatBot.css'}],
     // - using /styles/_UiChatBot.scss instead
-    ["script", {src: basePath + 'static/chat/UiChatBot.js'}],
-    ["script", {src: basePath + 'static/chat/UiChatBotSetup.js'}],
+    // ["script", {src: basePath + 'static/chat/UiChatBot.js'}],
+    // ["script", {src: basePath + 'static/chat/UiChatBotSetup.js'}],
+    //----------------------------------------
     // table of contents scroll fix (it breaks when chatbot is installed on page)
     ["script", {src: basePath + 'static/toc-scroll-fix.js'}]
   ],
