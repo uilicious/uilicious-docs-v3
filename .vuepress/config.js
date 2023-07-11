@@ -8,6 +8,7 @@
 
 import { defaultTheme } from "@vuepress/theme-default";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
+import { tocPlugin } from '@vuepress/plugin-toc'
 import mdHintBlock from "./plugin/md_hint_block";
 import mdImgFigCaption from "./plugin/md_img_figcaption";
 import mdTabsBlock from "./plugin/md_tabs_block";
@@ -66,8 +67,9 @@ export default {
     // ["link", {rel: "stylesheet", type: "text/css", href: basePath + 'static/chat/UiChatBot.css'}],
     // - using /styles/_UiChatBot.scss instead
     ["script", {src: basePath + 'static/chat/UiChatBot.js'}],
-    ["script", {src: basePath + 'static/chat/UiChatBotSetup.js'}]
-
+    ["script", {src: basePath + 'static/chat/UiChatBotSetup.js'}],
+    // table of contents scroll fix (it breaks when chatbot is installed on page)
+    ["script", {src: basePath + 'static/toc-scroll-fix.js'}]
   ],
 
   // Lets tweak the search plugin
@@ -76,7 +78,9 @@ export default {
       appId    : '2EBULZM0A0',
       apiKey   : '660ab480b3cb895c4b651aaad89f0ca1',
       indexName: 'uilicious',
-    })
+    }),
+    // table of contents
+    tocPlugin()
   ],
 
   // And extend our markdown

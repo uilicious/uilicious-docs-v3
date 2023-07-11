@@ -1,7 +1,7 @@
 # Step-by-step guide to testing Web3 applications
 
 **Table of contents**
-[[toc]]
+<Toc/>
 
 ![](/static/img/testing-web3-applications-guide/cover-image.jpg)
 
