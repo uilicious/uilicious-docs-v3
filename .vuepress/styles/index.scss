@@ -85,7 +85,7 @@ html.dark .navbar .navbar-item a {
 // Drop shadow styling
 //---------------------------------------------
 .theme-default-content img.medium-zoom-image:not(.medium-zoom-image--opened) {
-    filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+    //filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
 }
 
 //---------------------------------------------------------------------
@@ -104,31 +104,33 @@ body.medium-zoom--opened .medium-zoom-image.medium-zoom-image--opened {
 // Image figcaption support
 //---------------------------------------------------------------------
 
-// Reset som padding and margin boundaries
-body div.image-figwrap, figure.image-figure,
-body div.image-figwrap {
-    padding:0;
-    margin:0;
-}
+figure {
 
-body div.image-figwrap {
+    //display: block;
+    // width: 100%;
+    padding: 0;
+    //text-align: center;
+
     display: flex;
     flex-direction: column;
-}
+    align-items: center;
 
-body div.image-figwrap figure.image-figure,
-body div.image-figwrap figure.image-figure image {
-    text-align:center;
-}
+    img {
 
-body div.image-figwrap figcaption.image-figcaption {
-    text-align:center;
-    
-    font-size:0.8em;
+        flex-grow: 0;
+        flex-shrink: 1;
 
-    padding-top:0.5em;
-    padding-left:2em;
-    padding-right:2em;
+        display: block;
+        max-width: 100%;
+
+    }
+
+    figcaption{
+        margin: 1rem 0;
+        font-size: .85rem;
+        color: #878787;
+    }
+
 }
 
 //---------------------------------------------------------------------

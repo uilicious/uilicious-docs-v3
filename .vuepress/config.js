@@ -9,9 +9,11 @@
 import { defaultTheme } from "@vuepress/theme-default";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import { tocPlugin } from '@vuepress/plugin-toc'
+
+// markdown-it plugins
 import mdHintBlock from "./plugin/md_hint_block";
-import mdImgFigCaption from "./plugin/md_img_figcaption";
 import mdTabsBlock from "./plugin/md_tabs_block";
+import mdImplicitFigures from 'markdown-it-implicit-figures'; // figcaption support for images
 import summaryToSidebar from "./summary-to-sidebar";
 
 // Lets tweak base path to /v3/
@@ -90,7 +92,10 @@ export default {
   extendsMarkdown: (md) => {
     mdHintBlock(md);
     mdTabsBlock(md);
-    mdImgFigCaption(md);
+    md.use(mdImplicitFigures, {
+      figcaption: true, // render alternative text in figcaption
+      lazyLoading: true
+    })
   }
 };
 
