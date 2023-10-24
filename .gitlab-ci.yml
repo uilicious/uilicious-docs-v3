@@ -213,6 +213,7 @@ sonarqube-check:
     - sonar-scanner
   allow_failure: true
   only:
+    - sonarqube_integration
     - merge_requests
     - master
     - main
