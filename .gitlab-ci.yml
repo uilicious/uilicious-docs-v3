@@ -206,7 +206,7 @@ sonarqube-build:
   variables:
     GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
   script: 
-    - cp .vuepress/ vuepress/
+    - cp -r .vuepress/ vuepress/
   artifacts:
     paths:
       - vuepress/
