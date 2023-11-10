@@ -192,13 +192,37 @@ preview-env-deploy:
     - preview-merge
   except:
     - main
+    - sonarqube_integration
 
     
 #======================================================
 # Sonarqube integration
 #======================================================
+sonarqube-build:
+  stage: build
+  image: 
+    name: uilicious/internal-alpine-base:latest
+    entrypoint: [""]
+  variables:
+    GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
+  script: 
+    - cp -r .vuepress/ vuepress/
+  artifacts:
+    paths:
+      - vuepress/
+    expire_in: 24 hour
+  allow_failure: true
+  only:
+    - sonarqube_integration
+    - merge_requests
+    - master
+    - main
+    - dev
+
+
 sonarqube-check:
   stage: sonarqube-check
+  needs: [sonarqube-build]
   image: 
     name: sonarsource/sonar-scanner-cli:5.0
     entrypoint: [""]
@@ -213,6 +237,7 @@ sonarqube-check:
     - sonar-scanner
   allow_failure: true
   only:
+    - sonarqube_integration
     - merge_requests
     - master
     - main
