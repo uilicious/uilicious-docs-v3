@@ -6,6 +6,11 @@
 // It is not compatible with vuepress 1++
 //
 
+import path from "node:path";
+
+import { viteBundler } from '@vuepress/bundler-vite'
+import { defineUserConfig } from '@vuepress/cli'
+
 import { defaultTheme } from "@vuepress/theme-default";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import { tocPlugin } from '@vuepress/plugin-toc'
@@ -19,7 +24,21 @@ import summaryToSidebar from "./summary-to-sidebar";
 // Lets tweak base path to /v3/
 let basePath = "/v3/"
 
-export default {
+export default defineUserConfig({
+
+  // vite config
+  bundler: viteBundler({
+    viteOptions: {
+      resolve: {
+        alias: {
+          // this allows us to properly import local font fonts using relative file path
+          '@styles': path.resolve(__dirname, 'styles')
+        }
+      }
+    },
+    vuePluginOptions: {},
+  }),
+
   // Lets tweak base path to /v3/
   base: basePath,
 
@@ -97,7 +116,7 @@ export default {
       lazyLoading: true
     })
   }
-};
+});
 
 function googleTagManager(container_id){
   return ["script", {}, `<!-- Google Tag Manager -->

@@ -1,4 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Readex+Pro:wght@200;600&display=swap');
+// As fonts.googleapis.com can be very slow!!! We'll host the font files instead.
+//@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Readex+Pro:wght@200;600&display=swap');
+
+// header
+@font-face {
+    font-family: 'Readex Pro';
+    //src: url("/v3/static/fonts/ReadexPro-VariableFont_HEXP,wght.ttf");
+    src: url(@styles/fonts/ReadexPro-VariableFont_HEXP\,wght.ttf);
+}
+
+// normal text
+@font-face {
+    font-family: 'Noto Sans';
+    src: url(@styles/fonts/NotoSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: url(@styles/fonts/NotoSans-Bold.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: url(@styles/fonts/NotoSans-Italic.ttf);
+    font-style: italic;
+}
+
+// code font face
+@font-face {
+    font-family: 'Fira Code';
+    src: url(@styles/fonts/FiraCode-VariableFont_wght.ttf);
+}
 
 :root {
     
