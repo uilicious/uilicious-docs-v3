@@ -5,7 +5,7 @@
 @font-face {
     font-family: 'Readex Pro';
     //src: url("/v3/static/fonts/ReadexPro-VariableFont_HEXP,wght.ttf");
-    src: url(@styles/fonts/ReadexPro-VariableFont_HEXP\,wght.ttf);
+    src: url(@styles/fonts/ReadexPro-VariableFont.ttf);
 }
 
 // normal text
@@ -29,7 +29,7 @@
 // code font face
 @font-face {
     font-family: 'Fira Code';
-    src: url(@styles/fonts/FiraCode-VariableFont_wght.ttf);
+    src: url(@styles/fonts/FiraCode-VariableFont.ttf);
 }
 
 :root {
