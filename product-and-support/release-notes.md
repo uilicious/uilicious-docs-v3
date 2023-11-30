@@ -13,7 +13,7 @@ description: List of updates and changes of UIlicious throughout the years.
 - Minor: Contains new features
 - Patch: Contains enhancements and bug fixes only
 
-## 3.36.1
+## 3.36.2
 
 _Released 30 November 2023_
 
@@ -33,7 +33,9 @@ _Released 23 November 2023_
 Test engine:
 
 - Updated implementation of UI.context to ensure that the context element is rendered and ready for interaction before performing each command in the UI.context block. If the context element is not found after 15 seconds (configurable using TEST.commandTimeout setting), test engine will return a friendly error message instead of “frame element not defined” or “no node with given id” errors.
-- The 'context' option for interactive commands such as I.click should behave exactly like UI.context now. E.g. **I.click(”Save”, { context: “.popup-modal” })** is the same as writing **UI.context(".popup-modal", ()=>{I.click("Save")})**
+- The 'context' option for interactive commands such as I.click should behave exactly like UI.context now. E.g. `I.click(”Save”, { context: “.popup-modal” })` is the same as writing `UI.context(".popup-modal", ()=>
+{I.click("Save")}
+)`
 
 ## 3.36.0
 
@@ -117,9 +119,9 @@ _Released 14 July 2023_
 - Test Engine
    
   * You may choose to run faster but less stable versions of the click command:
-     - **I.click(”button”, {use: “fast”})**
-     - **I.click(”button”, {use: “javascript”})**
-     - **I.click(”button”, {use: “fast-javascript”})**
+     - `I.click(”button”, {use: “fast”})`
+     - `I.click(”button”, {use: “javascript”})`
+     - `.click(”button”, {use: “fast-javascript”})`
    
   * You may also disable screenshot for individual commands:
      - **I.click(”button”, {use: “fast”, takeScreenshot: false})**
