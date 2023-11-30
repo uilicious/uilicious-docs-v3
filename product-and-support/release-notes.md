@@ -13,6 +13,118 @@ description: List of updates and changes of UIlicious throughout the years.
 - Minor: Contains new features
 - Patch: Contains enhancements and bug fixes only
 
+## 3.36.2
+
+_Released 30 November 2023_
+
+**🐞 Fixes**
+
+Test Engine:
+
+- Fixed issue in Firefox when using **I.press** / **I.type** command to send invisible characters such as the arrow keys to input fields
+- Updated **I.fill** command such at input field still has focus if the command is used to clear the field by setting the field to an empty value
+
+## 3.36.1
+
+_Released 23 November 2023_
+
+**🐞 Fixes**
+
+Test engine:
+
+- Updated implementation of UI.context to ensure that the context element is rendered and ready for interaction before performing each command in the UI.context block. If the context element is not found after 15 seconds (configurable using TEST.commandTimeout setting), test engine will return a friendly error message instead of “frame element not defined” or “no node with given id” errors.
+- The 'context' option for interactive commands such as I.click should behave exactly like UI.context now. E.g. `I.click(”Save”, { context: “.popup-modal” })` is the same as writing `UI.context(".popup-modal", ()=>
+{I.click("Save")}
+)`
+
+## 3.36.0
+
+_Released 22 November 2023_
+
+**💪 Enhancement**
+
+Web Studio:
+
+- Test runs that are triggered by jobs and were retried automatically due to system errors will now be hidden from the list of test runs under the “Runs” tab.
+
+## 3.35.3
+
+_Released 16 November 2023_
+
+**🐞 Fixes**
+
+Test Engine:
+
+- Fix bug with **IE 11** not being able to open new tabs
+- Improved detection of internal 502 errors so that the system will trigger automatic retries of test runs that encounter such issues
+
+## 3.35.2
+
+_Released 8 November 2023_
+
+**🐞 Fixes**
+
+Web Studio:
+
+- Fixed bug resulting in system errors due to insufficient test runners due to jobs being allocated more test runners than the capacity that the space actually has.
+
+## 3.35.1
+
+_Released 9 October 2023_
+
+**🐞 Fixes**
+
+Web Studio:
+
+- Fix issue of status filter not working on the Monitoring page and the Runs page, when filtering for jobs and test runs with **“Failure”** and **“System Error”** status
+
+## 3.35.0
+
+_Released 5 September 2023_
+
+**🚀 New Feature**
+
+Web Studio: 
+
+- Owners and admins may now **Protect** a file to prevent accidental modifications by themselves or their teammates.
+
+## 3.34.2
+
+_Released 25 August 2023_
+
+**🐞 Fixes**
+
+Web Studio:
+
+- Fix caching of screenshots - screenshots for test run should load faster now
+
+## 3.34.1
+
+_Released 23 August 2023_
+
+**🐞 Fixes**
+
+- Test Engine:
+    - Stack tracing (a.k.a jump to line of code feature)
+        - Fix issue where if there’s an syntax error in the test script, the test report did not indicate which file and line the error happened at. Now it does.
+        - Now, if a test calls another test using **TEST.run** command, the test report stack trace will now report the originating files that called the **TEST.run** command.
+    - Fix an issue where the **TEST.log** command does not format json object / arrays properly and just prints out nothing. e.g. TEST.log.info(”hello: ”, 1, {x: 100}, [”apple”]) should print out all the values passed to the command in the report properly.
+
+## 3.34.0
+
+_Released 14 July 2023_
+
+**🚀 New Features**
+
+- Test Engine
+   
+  * You may choose to run faster but less stable versions of the click command:
+     - `I.click(”button”, {use: “fast”})`
+     - `I.click(”button”, {use: “javascript”})`
+     - `.click(”button”, {use: “fast-javascript”})`
+   
+  * You may also disable screenshot for individual commands:
+     - `I.click(”button”, {use: “fast”, takeScreenshot: false})`
 
 ## 3.33.4
 
