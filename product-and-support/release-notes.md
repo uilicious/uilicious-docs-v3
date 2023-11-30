@@ -124,7 +124,7 @@ _Released 14 July 2023_
      - `.click(”button”, {use: “fast-javascript”})`
    
   * You may also disable screenshot for individual commands:
-     - **I.click(”button”, {use: “fast”, takeScreenshot: false})**
+     - `I.click(”button”, {use: “fast”, takeScreenshot: false})`
 
 ## 3.33.4
 
