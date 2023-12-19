@@ -1,6 +1,6 @@
 ---
 # Write a short description about the page. This will be displayed on google search results.
-description: List of updates and changes of UIlicious throughout the years.
+description: List of updates and changes of UIlicious
 ---
 
 # Release Notes
@@ -12,6 +12,39 @@ description: List of updates and changes of UIlicious throughout the years.
 - Major: Contains breaking changes
 - Minor: Contains new features
 - Patch: Contains enhancements and bug fixes only
+
+## 3.36.5
+
+_Released 13 December 2023_
+
+**💪 Enhancement**
+
+Studio:
+- Jobs:
+  - Fixed a bug with jobs sometimes cancelling automatic retries on system errors.
+  - Email verification is now required for creating jobs
+  - For trial accounts, all test run credits for a job will be deducted upfront, to prevent jobs from being stuck halfway due to insufficient credits for all of the tests in the job.
+
+CLI:
+- Email verification is now required for running tests using the CLI.
+
+## 3.36.4
+
+_Released 7 December 2023_
+
+**🐞 Fixes**
+
+Test Engine: 
+- Fixed issue with I.press / I.type not working in some edge cases on Chrome / Edge Chromium.
+
+## 3.36.3
+
+_Released 6 December 2023_
+
+**🐞 Fixes**
+
+Test Engine: 
+- Fixed an issue where files with the "plus" symbol in the file name could not be loaded.
 
 ## 3.36.2
 
