@@ -13,6 +13,15 @@ description: List of updates and changes of UIlicious
 - Minor: Contains new features
 - Patch: Contains enhancements and bug fixes only
 
+## 3.36.6
+
+_Released 22 December 2023_
+
+**💪 Enhancement**
+
+Studio:
+- Jobs:
+  - Added more search filters and improved the usability of the search filter component on the Runs tab.
 ## 3.36.5
 
 _Released 13 December 2023_
