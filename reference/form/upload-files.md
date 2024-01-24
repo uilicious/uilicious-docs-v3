@@ -23,6 +23,10 @@ Next, use the `I.upload` command in your test file to upload the file during the
 I.upload("input[name='profile-picture']", "images/cake.png")
 ```
 
+{% hint style="warning" %}
+Please avoid clicking on buttons that would open the system file dialog, as this will cause the test to get stuck. This is due to limitations in UI-licious which does not allow it to interact with elements outside of the browser, such as operating system dialogs. However, it is not necessary to open the system file dialog in order to use the I.upload command to set the files to use in a file upload field. 
+{% endhint %}
+
 ## Uploading a file to a drag-and-drop file upload component
 
 Unfortunately, there isn't a way to drag a file from the operating system into a droppable file upload component on the webpage using UIlicious.
