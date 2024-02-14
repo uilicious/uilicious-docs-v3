@@ -13,6 +13,27 @@ description: List of updates and changes of UIlicious
 - Minor: Contains new features
 - Patch: Contains enhancements and bug fixes only
 
+## 3.37.0
+
+_Released 14 Feb 2024_
+
+![Save and select frequently used configurations from the new Run Configuration Menu](/static/img/uilicious-studio-test-run-configuration-mega-menu.png)
+
+**💪 Enhancement**
+
+Studio
+- Editor:
+  - **Saved Run Configurations**: You can now save test run configurations that you frequently use, so that you can quickly pick a configuration and run a test with the selected configuration. 
+  - You can also set a saved run configuration as a default. Note that if you have previously set a default dataset and default region, these settings will be ignored when you set a configuration as a default, as the dataset and region will be set from the default configuration instead.
+  - "Custom Test Run" is now removed from the "Run" menu in the toolbar. Instead, we've added a Test Run Configuration Mega Menu, accessible via the "Gear" button on toolbar.
+  - Updated iconography.
+
+**🐞 Fixes**
+
+Studio
+- Editor:
+  - Fixed a minor bug with Resolutions dropdown that prevents resolution from being changed to another custom resolution when it is currently set to a custom resolution.
+
 ## 3.36.6
 
 _Released 22 December 2023_
