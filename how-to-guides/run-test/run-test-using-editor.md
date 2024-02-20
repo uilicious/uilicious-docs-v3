@@ -1,11 +1,11 @@
 ---
 # Write a short description about the page. This will be displayed on google search results.
-description: Learn how to run a UIlicious test using the Editor on UIlicious Studio.
+description: In this guide, learn how to run a test on UI-licious Studio
 ---
 
-# Run a test using the Editor
+# Running a test
 
-In UIlicious Studio, you can write and run tests in the Editor tab.
+In UIlicious Studio, you can write and run tests in the **Editor** view.
 
 The Editor tab has three panes:
 1. **Workspace** - Manage your files in your project here
@@ -44,38 +44,3 @@ Once the test starts, you will start seeing the test results while the test runs
 ![The Editor with a finished test report](/static/img/uilicious-studio-editor-test-report-shown.png)
 
 You can click on the individual steps to view the screenshot for the step, or use the Up / Down Arrow Keys to move between steps.
-
-## Advanced configuration
-
-You can access advanced test run configurations by clicking on the "**Custom Test Run**" button in the "Run" menu.
-
-![Access more configurations from "Custom Test Run"](/static/img/uilicious-studio-editor-custom-test-run.png)
-
-<br>
-
-You can configure the browser, resolution, dataset, region, and user agent to run the test with.
-
-![Run settings](/static/img/uilicious-studio-editor-run-settings.png)
-
-Once you are done configuring the test settings, you start the test by clicking the "**Run**" button.
-
-## Setting default dataset
-
-If you frequently run a test with the same dataset, you can set the default for the dataset to save time. This default will only be set for you, and the rest of your team members will not share your default settings.
-
-Click "**Manage Datasets**" from the "Datasets" dropdown.
-
-![Open the "Manage Datasets" dialog](/static/img/uilicious-studio-editor-manage-dataset.png)
-
-Click on "**Set as default**" on the dataset that you want to use as your default dataset when running tests from the Editor.
-
-![Set a default dataset to use when running tests from the editor](/static/img/uilicious-studio-editor-set-default-dataset.png)
-
-
-## Setting default region
-
-If you frequently run a test with the same region, you can set the default for the region to save time. This default will only be set for you, and the rest of your team members will not share your default settings.
-
-Open "**Custom Test Run**" from the "Run" menu. Select a region, and click "**Set as default**" to make the selected region the default region when running tests from the Editor.
-
-![Set a default region to use when running tests from the editor](/static/img/uilicious-studio-editor-set-default-region.png)
