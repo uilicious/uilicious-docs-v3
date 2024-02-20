@@ -20,14 +20,14 @@
   * [Schedule a test using Jobs](how-to-guides/run-test/schedule-a-job.md)
   * [Run a test using the CLI](how-to-guides/run-test/run-test-using-cli.md)
   * [Connect to Webdriver Grid](how-to-guides/run-test/connect-to-webdriver-grid.md)
-* Setting up jobs
-  * [Schedule a Job](how-to-guides/Setting-up-jobs/schedule-a-job.md)
-  * [Setup Notifications](how-to-guides/Setting-up-jobs/set-up-notifications.md)
-  * [Set up Email Notifications](how-to-guides/Setting-up-jobs/set-up-email-notifications.md)
-  * [Set up Discord Notifications](how-to-guides/Setting-up-jobs/set-up-discord-notifications.md)
-  * [Set up Telegram Notifications](how-to-guides/Setting-up-jobs/set-up-telegram-notifications.md)
-  * [Set up Slack Notifications](how-to-guides/Setting-up-jobs/set-up-slack-notifications.md)
-  * [Set up Microsoft Teams Notifications](how-to-guides/Setting-up-jobs/set-up-microsoft-teams-notifications.md)
+* Scheduling tests using Jobs
+  * [Setting up a job](how-to-guides/Setting-up-jobs/schedule-a-job.md)
+  * Notifications
+    * [Email](how-to-guides/Setting-up-jobs/set-up-email-notifications.md)
+    * [Discord](how-to-guides/Setting-up-jobs/set-up-discord-notifications.md)x
+    * [Telegram](how-to-guides/Setting-up-jobs/set-up-telegram-notifications.md)
+    * [Slack](how-to-guides/Setting-up-jobs/set-up-slack-notifications.md)
+    * [Microsoft Teams](how-to-guides/Setting-up-jobs/set-up-microsoft-teams-notifications.md)
 * Integrations
   * Github
     * [Saving project to Github](how-to-guides/github/saving-projects-to-github.md)
