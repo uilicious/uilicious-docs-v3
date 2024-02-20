@@ -58,11 +58,11 @@ To select a region for your test run, click on the Gear button in the Run toolba
 
 Click on "**Region**" to select a region.
 
-![](/static/img/test-configuration/configure-region__step-1.png)
+![](/static/img/test-configuration/select-region-1.png)
 
 **Select a region** that you want to run the test from.
 
-![](/static/img/test-configuration/configure-region__step-2.png)
+![](/static/img/test-configuration/select-region-2.png)
 
 Once selected, run the test. The region that a test is ran with is indicated on a test report in the bottom left corner.
 
@@ -82,7 +82,7 @@ Click the Gear button in the Run toolbar to view the expanded Test Run Configura
 
 Then, click "**Add configuration**" or "**Manage configurations**" to open the Configurations settings dialog.
 
-![](/static/img/test-configuration/set-default-region__step-1.png)
+![](/static/img/test-configuration/open-configuration-settings.png)
 
 **Select a region** you want to use as default, then click **"Set default"**.
 
@@ -96,7 +96,7 @@ Click the Gear button in the Run toolbar to view the expanded Test Run Configura
 
 Then, click "**Add configuration**" or "**Manage configurations**" to open the Configurations settings dialog.
 
-![](/static/img/test-configuration/set-default-region__step-1.png)
+![](/static/img/test-configuration/open-configuration-settings.png)
 
 **Select a region** you want to use as default, then **save the configuration**, and **set the saved configuration as your default**.
 
