@@ -5,10 +5,8 @@ description: Learn how to setup scheduled job notification on UIlicious via emai
 
 # Set up Email Notifications
 
-When scheduling a new job, you have the option to **Notify by Email** by turning the toggle on.&#x20;
+You can setup jobs to send notifications to email. 
 
-![Turning on the toggle next to Notify by Email allows you to input your choice of email(s) to be notified of test run results.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1652630231/ui-licious/setting-up-notifications/open-up-email-notifications.gif)
+Enable "**Notify by Email**" in the Job Settings, and add one or more email addresses for receiving the notification, separated by comma.
 
-Enter your e-mail address.&#x20;
-
-If you want to send notifications to multiple emails, use a common (ex. test@uilicious.com, test2@uilicious.com).
+![Setting up email notifications for a job](/static/img/job-notifications/Job_Email_Notification.png)

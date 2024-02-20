@@ -24,10 +24,10 @@
   * [Setting up a job](how-to-guides/Setting-up-jobs/schedule-a-job.md)
   * Notifications
     * [Email](how-to-guides/Setting-up-jobs/set-up-email-notifications.md)
-    * [Discord](how-to-guides/Setting-up-jobs/set-up-discord-notifications.md)x
-    * [Telegram](how-to-guides/Setting-up-jobs/set-up-telegram-notifications.md)
     * [Slack](how-to-guides/Setting-up-jobs/set-up-slack-notifications.md)
     * [Microsoft Teams](how-to-guides/Setting-up-jobs/set-up-microsoft-teams-notifications.md)
+    * [Discord](how-to-guides/Setting-up-jobs/set-up-discord-notifications.md)
+    * [Telegram](how-to-guides/Setting-up-jobs/set-up-telegram-notifications.md)
 * Integrations
   * Github
     * [Saving project to Github](how-to-guides/github/saving-projects-to-github.md)
