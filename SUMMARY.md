@@ -16,10 +16,8 @@
 ## How to Guides
 
 * Running a test
-  * [Run a test using the Editor](how-to-guides/run-test/run-test-using-editor.md) 
-  * [Schedule a test using Jobs](how-to-guides/run-test/schedule-a-job.md)
-  * [Run a test using the CLI](how-to-guides/run-test/run-test-using-cli.md)
-  * [Connect to Webdriver Grid](how-to-guides/run-test/connect-to-webdriver-grid.md)
+  * [Basic Configuration](how-to-guides/run-test/run-test-using-editor.md)
+  * [Geolocation Testing](how-to-guides/geolocation-testing.md)
 * Scheduling tests using Jobs
   * [Setting up a job](how-to-guides/Setting-up-jobs/schedule-a-job.md)
   * Notifications
@@ -28,6 +26,9 @@
     * [Microsoft Teams](how-to-guides/Setting-up-jobs/set-up-microsoft-teams-notifications.md)
     * [Discord](how-to-guides/Setting-up-jobs/set-up-discord-notifications.md)
     * [Telegram](how-to-guides/Setting-up-jobs/set-up-telegram-notifications.md)
+* Command Line Interface
+  * [Running a test](how-to-guides/run-test/run-test-using-cli.md)
+* [Connecting to Webdriver Grid](how-to-guides/run-test/connect-to-webdriver-grid.md)
 * Integrations
   * Github
     * [Saving project to Github](how-to-guides/github/saving-projects-to-github.md)
