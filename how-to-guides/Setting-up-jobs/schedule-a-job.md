@@ -20,11 +20,11 @@ To start, first, select the "**Monitoring**" Tab and click "**Schedule a job**" 
 
 Then, **enter a name** for the job.
 
-![Enter a name for the job](/static/img/job-notifications/Enter_Job_Name.png)
+![Enter a name for the job](/static/img/job-notifications/jobs-enter-name.png)
 
 Now, **select the tests** that you want to run as part of this job. 
 
-![Select tests to run](/static/img/job-notifications/Select_Test_For_Job.png)
+![Select tests to run](/static/img/job-notifications/jobs-select-test.png)
 
 Then, **choose the browsers, resolution, dataset, region, and user agent** for running the tests. You may select more than one browser, and the job will run each test with each selected browser.
 
@@ -32,29 +32,48 @@ Then, **choose the browsers, resolution, dataset, region, and user agent** for r
 
 Finally, **configure the schedule** for running the job. 
 
-![Schedule when to run the job](/static/img/job-notifications/Job_Schedule.png)
+![Select the days you want to run the job](/static/img/job-notifications/Job_Schedule.png)
 
-Optionally, you can **setup notifications** on the test outcomes. You can select whether you want notifications for all test outcomes `When: "Always"` or only when tests fails `When: "Error"`. You can setup **email notifications** and **webhook notifications** for chat applications such as Slack, Teams, Telegram, Discord, etc.
+![Select the times you want to run the job](/static/img/job-notifications/jobs-schedule-time.png)
+
+Optionally, you can **setup notifications** on the test outcomes. You can select whether you want notifications for all test outcomes `When: "Always"` or only when tests fails `When: "Error"`. You can setup **email notifications** and **notifications for chat applications** such as [Slack](./set-up-slack-notifications.md), [Teams](./set-up-microsoft-teams-notifications.md), [Telegram](./set-up-telegram-notifications.md), [Discord](./set-up-discord-notifications.md) using **webhooks**.
 
 ![](/static/img/job-notifications/Job_Email_Notification.png)
 
-Once you save the job, you can view its status from the **Monitoring** View.
+Once you save the job, you can view its status from the **Monitoring** View, and click on the name of the job to view its past runs and manage the job.
 
-... todo... add a screenshot
+![](/static/img/job-notifications/jobs-monitoring-page-highlight-job.png)
 
 ## The Monitoring View
 
-The Monitoring View shows you a summary of all jobs and their most recent status. You can also select multiple jobs to bulk edit their run settings, schedule, and notifications.
+The Monitoring View shows you a summary of all jobs and their most recent status. 
 
-... todo... add a screenshot.
+![](/static/img/job-notifications/jobs-monitoring-page-overview.png)
+
+You can also select multiple jobs to bulk edit their run settings, schedule, and notifications.
+
+![](/static/img/job-notifications/jobs-bulk-edit.png)
 
 ## Viewing Past Runs
 
 You may view past runs for a job by **clicking on the name of the job** from the Monitoring View. 
 
-... todo ... add screenshot.
+![Click on the name of the job to view its past runs and manage the job](/static/img/job-notifications/jobs-click-job-name.png)
 
-The past runs page will show a summary of results 
+The past runs page will show a summary of past test runs, indicating number of passing and failing tests by the browsers.
+
+![](/static/img/job-notifications/jobs-past-runs-page-for-suite-of-tests.png)
+
+Click on "**View Report**" to view the full report of a run, which will show the result of each individual test.
+
+![](/static/img/job-notifications/jobs-run-report-for-suite-of-test.png)
+
+You can view the Test Run Report for an single test run by clicking on its status.
+
+![Click on the status of a test run to view its report](/static/img/job-notifications/jobs__test-suite-run-report__click-to-view-report.png)
+
+![Full step-by-step report of a test run, with screenshots](/static/img/job-notifications/jobs__single-test-run-report.png)
+
 
 ## Disable / Enable a job
 

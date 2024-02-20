@@ -20,7 +20,7 @@
   * [Schedule a test using Jobs](how-to-guides/run-test/schedule-a-job.md)
   * [Run a test using the CLI](how-to-guides/run-test/run-test-using-cli.md)
   * [Connect to Webdriver Grid](how-to-guides/run-test/connect-to-webdriver-grid.md)
-* Scheduling tests
+* Scheduling tests using Jobs
   * [Setting up a job](how-to-guides/Setting-up-jobs/schedule-a-job.md)
   * Notifications
     * [Email](how-to-guides/Setting-up-jobs/set-up-email-notifications.md)
