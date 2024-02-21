@@ -36,9 +36,13 @@ Finally, **configure the schedule** for running the job.
 
 ![Select the times you want to run the job](/static/img/jobs/jobs-schedule-time.png)
 
-Optionally, you can **setup notifications** on the test outcomes. You can select whether you want notifications for all test outcomes `When: "Always"` or only when tests fails `When: "Error"`. You can setup **email notifications** and **notifications for chat applications** such as [Slack](./set-up-slack-notifications.md), [Teams](./set-up-microsoft-teams-notifications.md), [Telegram](./set-up-telegram-notifications.md), [Discord](./set-up-discord-notifications.md) using **webhooks**.
+Optionally, you can **setup notifications** for the test outcomes. You can select whether you want notifications for all test outcomes `When: "Always"` or only when tests fails `When: "Error"`. You can setup **email notifications** and **notifications for chat applications via webhooks**. Check out these guides for setting up notifications for specific applications:
+- [Email](./set-up-email-notifications.md)
+- [Slack](./set-up-slack-notifications.md)
+- [Microsoft Teams](./set-up-microsoft-teams-notifications.md)
+- [Discord](./set-up-discord-notifications.md)
 
-![](/static/img/jobs/Job_Email_Notification.png)
+![Setting up email notification for test failures](/static/img/jobs/Job_Email_Notification.png)
 
 Once you save the job, you can view its status from the **Monitoring** View, and click on the name of the job to view its past runs and manage the job.
 
