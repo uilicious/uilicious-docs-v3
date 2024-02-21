@@ -32,4 +32,6 @@ Open the Settings for the job. Under "Notifications", **enable "Notify by Webhoo
 
 ![](/static/img/jobs/discord-notifications/Uilicious_Discord_webhook.png)
 
+Once configured, you'll receive notifications about the test outcomes in your Discord channel, which will show a summary of the test and a link to view the report.
 
+![](/static/img/jobs/discord-notifications/jobs-discord-notification-example.png)

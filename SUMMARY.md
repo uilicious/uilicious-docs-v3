@@ -25,7 +25,6 @@
     * [Slack](how-to-guides/Setting-up-jobs/set-up-slack-notifications.md)
     * [Microsoft Teams](how-to-guides/Setting-up-jobs/set-up-microsoft-teams-notifications.md)
     * [Discord](how-to-guides/Setting-up-jobs/set-up-discord-notifications.md)
-    * [Telegram](how-to-guides/Setting-up-jobs/set-up-telegram-notifications.md)
 * Command Line Interface
   * [Running a test](how-to-guides/run-test/run-test-using-cli.md)
 * [Connecting to Webdriver Grid](how-to-guides/run-test/connect-to-webdriver-grid.md)
