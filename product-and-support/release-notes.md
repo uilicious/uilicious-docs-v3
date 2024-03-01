@@ -13,6 +13,12 @@ description: List of updates and changes of UIlicious
 - Minor: Contains new features
 - Patch: Contains enhancements and bug fixes only
 
+## 3.37.1
+
+**🐞 Fixes**
+
+- Fix Discord Notification for test runs triggered by jobs not being sent
+
 ## 3.37.0
 
 _Released 14 Feb 2024_
