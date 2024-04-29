@@ -29,7 +29,12 @@ _Released 17 Apr 2024_
 **💪 Enhancement**
 
 Test Engine
-- Add new "topt" plugin for generating time-based OTP. Usage: `let TOPT = TEST.loadPlugin('topt'); let otp = TOPT.generateOTP(<OATH_KEY>)`
+- Add new `topt` plugin for generating time-based OTP. Usage: 
+  ```
+  let TOPT = TEST.loadPlugin('topt'); 
+  let otp = TOPT.generateOTP(<OATH_KEY>
+  ```
+  Read more about generating time-based OTP in [this guide](../plugins/topt-plugin.md).
 
 ## 3.38.1
 
