@@ -109,6 +109,7 @@
   * [Resizing the window](reference/browser-and-resolution-settings/resizing-window.md)
 
 ## Plugins
+* [Time-based OTP](plugins/topt-plugin.md)
 * [Metamask](plugins/metamask-plugin.md)
 * [Applitools](reference/configurations/applitools.md)
 
