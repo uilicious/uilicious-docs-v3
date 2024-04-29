@@ -13,7 +13,47 @@ description: List of updates and changes of UIlicious
 - Minor: Contains new features
 - Patch: Contains enhancements and bug fixes only
 
+## 3.39.1
+
+_Released 18 Apr 2024_
+
+**🐞 Fixes**
+
+Studio
+- Fixed an issue with test runs using outdated versions of test files due to cache issues.
+
+## 3.39.0
+
+_Released 17 Apr 2024_
+
+**💪 Enhancement**
+
+Test Engine
+- Add new "topt" plugin for generating time-based OTP. Usage: `let TOPT = TEST.loadPlugin('topt'); let otp = TOPT.generateOTP(<OATH_KEY>)`
+
+## 3.38.1
+
+_Released 22 Mar 2024_
+
+**🐞 Fixes**
+
+Test Engine
+- Fixed issue with metamask plugin setup
+
+## 3.38.0
+
+_Released 5 Mar 2024_
+
+**💪 Enhancement**
+
+Studio
+- Jobs: 
+  - Improved look of job last run result widget
+  - Improved performance of job runs history page
+
 ## 3.37.1
+
+_Released 28 Feb 2024_
 
 **🐞 Fixes**
 
