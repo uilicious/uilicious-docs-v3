@@ -36,7 +36,7 @@ Here's the list of static IP addresses from which UI-licious will run your tests
 
 ## Troubleshooting: 502 Bad Gateway Errors
 
-If you encounter 502 Bad Gateway errors when the test browser attempts to navigate to your application, it could indicate that the application is inaccessible due to network restrictions. To resolve this:
+If you encounter **502 Bad Gateway** errors when the test browser attempts to navigate to your application, it could indicate that the application is inaccessible due to network restrictions. To resolve this:
 
 1. **Check Network Access Rules**: If your website is behind a firewall, ensure that the IP addresses provided are whitelisted in your network access rules.
 2. **Check Public Accessibility**: If your website is not behind a firewall, check that your website is publicly accessible on the internet.
