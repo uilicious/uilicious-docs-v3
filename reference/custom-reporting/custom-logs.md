@@ -48,6 +48,16 @@ if (count >= 10) {
 
 In this example above, the test script uses `TEST.log.info` to print a reference to a test case number. It then counts the number of `.product-card` elements on the page, validates if there is at least 10 elements, and prints either a success or failure message using `TEST.log.pass` and `TEST.log.fail` respectively.
 
+
+{% tabs %}
+{% tab title="Demo" %}
+<iframe src="https://snippet.uilicious.com/embed/test/public/LTXpHdGsnScXhi8EiKqN9a?stepNum=5&autoplay=0" frameborder="0" width="100%" height="400px;"></iframe>
+
+[View source](https://snippet.uilicious.com/test/public/LTXpHdGsnScXhi8EiKqN9a?step=5)
+{% endtab %}
+{% endtabs %}
+
+
 ## Using TEST.assert for custom validation and logging
 
 This previous test script can be simplified using the `TEST.assert` command to replace the if-else block:
@@ -59,3 +69,11 @@ let count = I.getCount(".product-card")
 
 TEST.assert(count >= 10, "Catalog has at least 10 products.", "Found only " + count + "products in the catalog")
 ```
+
+{% tabs %}
+{% tab title="Demo" %}
+<iframe src="https://snippet.uilicious.com/embed/test/public/AE3iRxPSQNQw7Jw5HAWZqa?stepNum=7&autoplay=0" frameborder="0" width="100%" height="400px;"></iframe>
+
+[View source](https://snippet.uilicious.com/test/public/AE3iRxPSQNQw7Jw5HAWZqa?step=7)
+{% endtab %}
+{% endtabs %}
