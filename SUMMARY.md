@@ -87,10 +87,7 @@
 * [Making HTTP Requests](reference/making-http-requests.md)
 * [Handling downloaded files](reference/handling-downloaded-files.md)
 * [Taking Screenshots](reference/taking-screenshots.md)
-* Custom Reporting
-  * [Info Logs](reference/custom-reporting/info-logs.md)
-  * [Success status Logs](reference/custom-reporting/success-status-logs.md)
-  * [Failure status Logs](reference/custom-reporting/failure-status-logs.md)
+* [Custom Reporting](reference/custom-reporting/custom-logs.md)
 * Dynamic Test Data
   * [Load test data from File](reference/dynamic-test-data/load-test-data-from-file.md)
   * [Generate Sample Data](reference/dynamic-test-data/generate-sample-data.md)

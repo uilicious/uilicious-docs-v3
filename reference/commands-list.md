@@ -179,9 +179,10 @@ description: A list of all commands available in UIlicious
 
 | Command                                                                    | Description                                |
 | -------------------------------------------------------------------------- | ------------------------------------------ |
-| [`TEST.log.info`](./custom-reporting/info-logs.html#testloginfo)           | Log a message to report                    |
-| [`TEST.log.pass`](./custom-reporting/success-status-logs.html#testlogpass) | Log a message to report with `pass` status |
-| [`TEST.log.fail`](./custom-reporting/failure-status-logs.html#testlogfail) | Log a message to report with `fail` status |
+| [`TEST.log.info`](./custom-reporting/custom-logs.md) | Print an informational message to the test report |
+| [`TEST.log.pass`](./custom-reporting/custom-logs.md) | Print a message to the test report, with a **success** status |
+| [`TEST.log.fail`](./custom-reporting/custom-logs.md) | Print a message to the test report, with a **failure** status |
+| [`TEST.assert`](./custom-reporting/custom-logs.md)   | Validates a `condition`, and prints a message to the test report, with a **success** or **failure** status depending whether `condition` returns true or false. |
 
 ## Limiting Test Scope <a href="#limiting-test-scope" id="limiting-test-scope"></a>
 
