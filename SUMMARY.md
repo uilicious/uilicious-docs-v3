@@ -7,12 +7,6 @@
 * [Run a test](getting-started/running-tests.md)  
 * [Share test reports](getting-started/share-test-reports.md)
 
-## Core Concepts
-
-* [Cross Browser Testing](/core-concepts/cross-browser-testing.md)
-* [How Targeting Works in UIlicious](core-concepts/how-targeting-works-in-uilicious.md)
-* [Automatic waits](core-concepts/automatic-waits.md)
-
 ## How to Guides
 
 * Running a test
@@ -35,16 +29,26 @@
       * [Auto-commits using Github Actions](/how-to-guides/github/saving-projects-to-github.html#auto-commits-using-github-actions)
     * [Running tests using Github Actions](how-to-guides/github/running-tests-using-github-actions.md)
 
+## Core Concepts
+
+* [Cross Browser Testing](/core-concepts/cross-browser-testing.md)
+* [How Targeting Works in UIlicious](core-concepts/how-targeting-works-in-uilicious.md)
+* [Automatic waits](core-concepts/automatic-waits.md)
+
+## Network Access
+
+* [Uilicious IP address ranges](reference/configurations/cloud-ip-list.md)
+
 ## Test Scripting Tutorials
 
 * [How to test Slider Components](test-scripting-tutorials/testing-slider-components.md)
 * [How to test iFrames](test-scripting-tutorials/testing-iframes.md)
 * [How to test Browser Alerts](test-scripting-tutorials/testing-browser-alerts.md)
+* How to test 2FA Logins
+  * [Generating time-based OTPs](plugins/topt-plugin.md)
 
 ## Test Commands
 * [List of commands](reference/commands-list.md)
-* Configurations
-  * [Uilicious IP List](reference/configurations/cloud-ip-list.md)
 * Page Navigation
   * [Go to a URL](reference/page-navigation/go-to-a-url.md)
   * [Refresh / Reload Page](reference/page-navigation/refresh-page.md)
@@ -83,10 +87,7 @@
 * [Making HTTP Requests](reference/making-http-requests.md)
 * [Handling downloaded files](reference/handling-downloaded-files.md)
 * [Taking Screenshots](reference/taking-screenshots.md)
-* Custom Reporting
-  * [Info Logs](reference/custom-reporting/info-logs.md)
-  * [Success status Logs](reference/custom-reporting/success-status-logs.md)
-  * [Failure status Logs](reference/custom-reporting/failure-status-logs.md)
+* [Custom Reporting](reference/custom-reporting/custom-logs.md)
 * Dynamic Test Data
   * [Load test data from File](reference/dynamic-test-data/load-test-data-from-file.md)
   * [Generate Sample Data](reference/dynamic-test-data/generate-sample-data.md)
