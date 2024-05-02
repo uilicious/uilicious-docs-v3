@@ -3,30 +3,8 @@
 description: Learn how to use the TEST.log.fail command to log a failing custom report in your UIlicious test.
 ---
 
-# Failure status Logs
+ # Failure status logs
 
-Log a message to report with `fail` status using `TEST.log.fail`. This adds to the error count and will result in the overall test failing.
-
-## Example
-
-```javascript
-if(I.amAt('/notFound')){
-    TEST.log.fail("Product page is unavailable")
-}
-```
-
-If the current url is at `/notFound`, prints "Product page is unavailable" to report as a failed validation.
-
-## Reference
-
-**Usage**
-
-```javascript
-TEST.log.fail(message)
-```
-
-**Parameters**
-
-| Parameter | Type   | Remarks                  |
-| --------- | ------ | ------------------------ |
-| message   | string | Message to log to report |
+{% hint style="info" %}
+This page has been [moved](./custom-logs.md).
+{% endhint %}
