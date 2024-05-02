@@ -99,9 +99,8 @@ description: A list of all commands available in UIlicious
 | [`I.getCount`](./read-and-validate-page-elements/count-number-of-page-elements.html#igetcount)   | Get the number of occurances of a text or element |
 | [`I.getText`](./read-and-validate-page-elements/get-text-from-a-page-element.html#igettext)      | Get text content from an element                  |
 | [`I.getValue`](./read-and-validate-page-elements/get-value-from-an-input-element.html#igetvalue) | Get value from an input element                   |
-
-| [`I.getURL`](./read-and-validate-page-elements/get-page-url#igeturl)
-| [`I.getPageTitle`](./read-and-validate-page-elements/get-and-validate-page-title.html#igetpagetitle) | Get the title of the current page |
+| [`I.getURL`](./read-and-validate-page-elements/get-page-url#igeturl)                             | Get the current page url                          |
+| [`I.getPageTitle`](./read-and-validate-page-elements/get-and-validate-page-title.html#igetpagetitle) | Get the title of the current page             |
 
 ## Read and Validate Page Elements <a href="#read-and-validate-page-elements" id="read-and-validate-page-elements"></a>
 
