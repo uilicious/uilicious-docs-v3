@@ -36,7 +36,7 @@ You need to be a Salesforce administrator to do the following.
 1. Login to Salesforce
 2. Click on "Setup"
 3. Under "Settings", click on "Security", then "Network Access"
-4. Add these IP addresses to the allow list the UI-licious cloud testing grid: [IP List · UI-licious Documentation](https://docs.uilicious.com/grid/ip\_list.html)
+4. Add the [UI-licious IP Address Range](../reference/configurations/cloud-ip-list.md) to the allow list
 
 ![Salesforce Setup - Security - Network Access](/static/img/salesforce-network-allowlist.png)
 
