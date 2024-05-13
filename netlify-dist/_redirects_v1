@@ -4,37 +4,38 @@
 # When possible, please change this to the updated v3 versions.
 #
 #####################################################################
+
 /todo                                   https://docs-v1.uilicious.com/todo
 /faqs                                   https://docs-v1.uilicious.com/faqs
-/release_notes                          https://docs-v1.uilicious.com/release_notes
+/release_notes                          /v3/product-and-support/release-notes                                                             301
 /grid/timezone                          https://docs-v1.uilicious.com/grid/timezone
-/grid/ip_list                           https://docs-v1.uilicious.com/grid/ip_list
-/integration/applitools                 https://docs-v1.uilicious.com/integration/applitools
-/concepts/targeting                     https://docs-v1.uilicious.com/concepts/targeting
-/guides/salesforce/getting_started      https://docs-v1.uilicious.com/guides/salesforce/getting_started
+/grid/ip_list                           /v3/reference/configurations/cloud-ip-list                                                        301
+/integration/applitools                 /v3/reference/configurations/applitools                                                           301
+/concepts/targeting                     /v3/core-concepts/how-targeting-works-in-uilicious                                                301
+/guides/salesforce/getting_started      /v3/best-practices/salesforce                                                                     301
 /scripting/form_input                   https://docs-v1.uilicious.com/scripting/form_input
 /scripting/mouse                        https://docs-v1.uilicious.com/scripting/mouse
 /scripting/sequence                     https://docs-v1.uilicious.com/scripting/sequence
 /scripting/extract                      https://docs-v1.uilicious.com/scripting/extract
-/scripting/load_data_from_file          https://docs-v1.uilicious.com/scripting/load_data_from_file
+/scripting/load_data_from_file          /v3/reference/dynamic-test-data/load-test-data-from-file                                          301
 /scripting/basic_commands               https://docs-v1.uilicious.com/scripting/basic_commands
 /scripting/local_storage_commands       https://docs-v1.uilicious.com/scripting/local_storage_commands 
 /scripting/screenshot                   https://docs-v1.uilicious.com/scripting/screenshot
 /scripting/element_commands             https://docs-v1.uilicious.com/scripting/element_commands
-/scripting/window_resize                https://docs-v1.uilicious.com/scripting/window_resize
-/scripting/javascript                   https://docs-v1.uilicious.com/scripting/javascript
+/scripting/window_resize                /v3/reference/browser-and-resolution-settings/resizing-window                                     301
+/scripting/javascript                   /v3/reference/using-javascript/use-javascript-in-your-test/execute-javascript-on-the-browser      301
 /scripting/sample                       https://docs-v1.uilicious.com/scripting/sample    
-/scripting/cookies                      https://docs-v1.uilicious.com/scripting/cookies
-/scripting/http_status_code_assertion   https://docs-v1.uilicious.com/scripting/http_status_code_assertion        
+/scripting/cookies                      /v3/reference/handling-cookies                                                                    301
+/scripting/http_status_code_assertion   /v3/reference/page-navigation/validate-page-status                                                301
 /scripting/assertion                    https://docs-v1.uilicious.com/scripting/assertion
 /scripting/datasets                     https://docs-v1.uilicious.com/scripting/datasets  
-/scripting/list_of_commands             https://docs-v1.uilicious.com/scripting/list_of_commands 
-/scripting/keyboard                     https://docs-v1.uilicious.com/scripting/keyboard
+/scripting/list_of_commands             /v3/reference/commands-list                                                                       301
+/scripting/keyboard                     /v3/reference/keyboard-interactions/Typing-or-pressing-keys                                       301
 /scripting/config                       https://docs-v1.uilicious.com/scripting/config
 /scripting/utility                      https://docs-v1.uilicious.com/scripting/utility
-/scripting/ui_http_commands             https://docs-v1.uilicious.com/scripting/ui_http_commands
-/scripting/alerts                       https://docs-v1.uilicious.com/scripting/alerts
-/scripting/executing-javascript         https://docs-v1.uilicious.com/scripting/executing-javascript   
-/scripting/ui_context                   https://docs-v1.uilicious.com/scripting/ui_context
-/scripting/logging                      https://docs-v1.uilicious.com/scripting/logging
-/scripting/navigation                   https://docs-v1.uilicious.com/scripting/navigation
+/scripting/ui_http_commands             /v3/reference/making-http-requests                                                                301
+/scripting/alerts                       /v3/reference/handling-alerts/alerts                                                              301
+/scripting/executing-javascript         /v3/reference/using-javascript/use-javascript-in-your-test/execute-javascript-on-the-browser      301
+/scripting/ui_context                   /v3/reference/handling-iframes                                                                    301
+/scripting/logging                      /v3/reference/custom-reporting/custom-logs                                                        301
+/scripting/navigation                   /v3/reference/page-navigation/go-to-a-url                                                         301

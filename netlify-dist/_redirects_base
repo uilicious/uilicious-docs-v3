@@ -11,9 +11,9 @@
 /index.html         /v3/   302
 
 # Redirect specific /v3 pages
-/v3/reference/custom-reporting/info-logs.html               /v3/reference/custom-reporting/custom-logs.html  302
-/v3/reference/custom-reporting/failure-status-logs.html     /v3/reference/custom-reporting/custom-logs.html  302
-/v3/reference/custom-reporting/success-status-logs.html     /v3/reference/custom-reporting/custom-logs.html  302
+/v3/reference/custom-reporting/info-logs*               /v3/reference/custom-reporting/custom-logs	301
+/v3/reference/custom-reporting/failure-status-logs*     /v3/reference/custom-reporting/custom-logs	301
+/v3/reference/custom-reporting/success-status-logs*     /v3/reference/custom-reporting/custom-logs	301
 
 # Redirecting /v1/ URL
 /v1                https://docs-v1.uilicious.com/         302
