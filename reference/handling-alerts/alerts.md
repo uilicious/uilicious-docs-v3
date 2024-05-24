@@ -45,7 +45,7 @@ Use the `I.cancelAlert()` command to dismiss a browser alert. This will press th
 UI.execute("alert('Welcome!')");
 
 // dismiss the alert
-I.dismissAlert()
+I.cancelAlert()
 ```
 
 ## Fill alert text input
