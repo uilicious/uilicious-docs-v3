@@ -40,7 +40,7 @@ Once logged into UIlicious, click the **+ Project** button to create a new Proje
 
 Enter a name for the project, and click the "Create" button.
 
-![Enter a name for the project](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649112961/ui-licious/amazon-getting-started-example/Signup-2\_eu0qia.png)
+![Enter a name for the project](/static/img/Enter Project Name.png)
 
 ### Step 3: Set up our First Test
 
@@ -52,11 +52,11 @@ For the rest of the tutorial, we will use [https://www.amazon.com](https://www.a
 
 Type in the URL: [https://www.amazon.com/](https://www.amazon.com/).
 
-![Setting up your first test in UI-licious requires a new test name and the URL of the website.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649112961/ui-licious/amazon-getting-started-example/Signup-3\_fyzee8.png)
+![Setting up your first test in UI-licious requires a new test name and the URL of the website.](/static/img/Enter Script Name.png)
 
 Then, click the blue **Add** button.
 
-![Click the blue Add button to add your first test to your Workspace in UI-licious. Your Workspace will display your user tests.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649113557/ui-licious/amazon-getting-started-example/Signup-3a\_gj9obg.png)
+![Click the blue Add button to add your first test to your Workspace in UI-licious. Your Workspace will display your user tests.](/static/img/Enter Add Button.png)
 
 ### Step 4: Basic Commands
 
@@ -76,6 +76,8 @@ We will use the most common commands for testing most of your web applications.
 | `I.see`   | Assert that something is seen, typically, a message. |
 
 ### Step 5: Write our First Test 
+
+![View of the script inside the editor](/static/img/Script Editor.png)
 
 First, let's have our user visit [https://www.amazon.com](https://www.amazon.com) using the `I.goTo` command.
 
@@ -125,7 +127,7 @@ Now, let's confirm we have logged into our account. Use the `I.see` command to c
 I.see("Hello, Bruce")
 ```
 
-Click the Blue **Run** button.
+Click the **Run** button.
 
 ![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649713944/ui-licious/amazon-getting-started-example/Signup-8\_v3yrht\_copy\_tzi51e.png)
 
