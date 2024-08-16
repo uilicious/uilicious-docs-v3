@@ -10,123 +10,109 @@ search: false
 
 ## Getting Started with UIlicious
 
-> The UIlicious platform is used in this quick start guide.
+Welcome to UI-licious! This guide will help you create your first automated test to ensure your web application delivers a flawless user experience.
 
-### What is UIlicious?
+## What is UIlicious?
 
-UIlicious is a simple tool for testing your website and validating user journeys.
+UI-licious is a powerful yet easy-to-use tool designed to automate testing for your website. It validates user journeys, ensuring that your users don’t encounter unexpected issues—whether they're signing up for an account or completing a purchase.
 
-Use it to test your web apps to ensure that your users do not encounter unexpected failures. For example, during crucial user flows, a user could be registering for an account or completing their order.
+Let’s dive in and start testing your website to ensure your users have a smooth experience.
 
-Let's start testing your website and ensure you deliver a perfect experience to your users.
-
-### Quick Start
+## Quick Start Tutorial
 
 In this quick-start tutorial, you will learn how to create a basic login test.
 
-1. [Sign up for UI-licious](./Writing-your-first-test.html#step-1-sign-up-for-ui-licious)
-2. [Create a Project](./Writing-your-first-test.html#step-2-create-a-project)
-3. [Set up our First Test](./Writing-your-first-test.html#step-3-set-up-our-first-test)
-4. [Learn Basic Commands](./Writing-your-first-test.html#step-4-basic-commands)
-5. [Write our First Test](./Writing-your-first-test.html#step-5-write-our-first-test)
+1. Create a Project
+2. Set up Your First Test
+3. Write and Run Your First Test
 
-### Step 1: Sign up for UI-licious
 
-You need a UIlicious account to start testing. Sign up for an account [here](https://user.uilicious.com/signup).
+### Step 1: Create a Project 
 
-### Step 2: Create a Project 
+Before we begin, you'll need a UI-licious account. If you haven’t signed up yet, you can do so [here](https://user.uilicious.com).
 
-Once logged into UIlicious, click the **+ Project** button to create a new Project.
+After logging into UI-licious:
 
-Enter a name for the project, and click the "Create" button.
+1. Click the **+ Project** button to create a new project.
 
-![Enter a name for the project](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649112961/ui-licious/amazon-getting-started-example/Signup-2\_eu0qia.png)
+![Create a new project](/static/img/getting-started/write-your-first-test/create-project-btn.png)
 
-### Step 3: Set up our First Test
+2. Enter a name for your project.
+3. Click the **Create** button.
 
-Now, that we have named our first project, we will need to name our first test, and add the URL of the website we want to test.
+![Name your first project](/static/img/getting-started/write-your-first-test/create-project-modal.png)
 
-Let's name our test, **myfirstScript**.
 
-For the rest of the tutorial, we will use [https://www.amazon.com](https://www.amazon.com) for our test.
+### Step 2: Set up Your First Test
 
-Type in the URL: [https://www.amazon.com/](https://www.amazon.com/).
+Now that you’ve created a project, it’s time to set up your first test.
 
-![Setting up your first test in UI-licious requires a new test name and the URL of the website.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649112961/ui-licious/amazon-getting-started-example/Signup-3\_fyzee8.png)
+1. Click the **+** button in the toolbar on the left pane to add a new test file.
 
-Then, click the blue **Add** button.
+![Create a new test](/static/img/getting-started/write-your-first-test/click-add-file-btn.png)
 
-![Click the blue Add button to add your first test to your Workspace in UI-licious. Your Workspace will display your user tests.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649113557/ui-licious/amazon-getting-started-example/Signup-3a\_gj9obg.png)
+2. Give your test a meaningful name like "Login with valid credentials"
+3. Enter the URL of the website you want to test. For this tutorial, we will use `https://www.github.com`
+4. Click the **Add** button.
 
-### Step 4: Basic Commands
+![Name your first test](/static/img/getting-started/write-your-first-test/create-test-file.png)
 
-Let's get started with our user journey with some basic commands.
+### Step 3: Write and Run Your First Test
 
-Basic commands are used to automate basic user interactions with web applications.
+Now it's time to write your first test script.
 
-For example, a user visits a page, fills in forms, clicks buttons, and checks to see if a particular text is visible.
+![Write your first test script](/static/img/getting-started/write-your-first-test/my-first-test-script.png)
 
-We will use the most common commands for testing most of your web applications.
+For our first test, we'll test the login functionality. Let's break it down into four key actions: 
+1. Navigate to a website
+2. Clicking an element
+3. Filling an input
+4. Validating text on the page
 
-| Command   | Description                                          |
-| --------- | ---------------------------------------------------- |
-| `I.goTo`  | Navigate to a URL                                    |
-| `I.click` | Click on things on the site                          |
-| `I.fill`  | Fill in input boxes                                  |
-| `I.see`   | Assert that something is seen, typically, a message. |
+#### Navigating to a Website
 
-### Step 5: Write our First Test 
-
-First, let's have our user visit [https://www.amazon.com](https://www.amazon.com) using the `I.goTo` command.
+Start by using the `I.goTo` command to navigate to `https://www.github.com`:
 
 ```javascript
-I.goTo("https://www.amazon.com")
+I.goTo("https://www.github.com")
 ```
 
-![Use the I.goTo command in the white box of the UIlicious platform to visit a website.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649112961/ui-licious/amazon-getting-started-example/Signup-4\_g0xpan.png)
+#### Clicking Elements
 
-Next, we want our user to click the yellow **Sign in** button on the current page.
+Next, use `I.click` to click on the **Sign in** button:
 
 ```javascript
 I.click("Sign in")
 ```
 
-![Use the I.click command in the white box of the UIlicious platform to click on something on the website.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649112962/ui-licious/amazon-getting-started-example/Signup-5\_gdphpx.png)
+#### Filling Inputs
 
-{% hint style="info" %}
-**NOTE**:\
-\
-Use our disposable email service, [https://inboxkitten.com/](https://inboxkitten.com/), to test the user sign-up flows in your online apps.
-{% endhint %}
-
-Now, let's have our user log in using their email.
-
-To specify where we want to fill in the form, we can use the following commands:
+To fill in an input, use the `I.fill` command, providing the field name and the input text.
 
 ```javascript
-I.fill("Email","youremail@inboxkitten.com")
-I.click("Continue")
+I.fill("Email", "bruce@waynecorp.com")
+I.fill("Password", "alfredmakesthebestpies")
 ```
 
-![Use the I.fill and I.click command to fill in user information.](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649712954/ui-licious/amazon-getting-started-example/Signup6\_yr353z.png)
+#### Validating Text on the Page
 
-Use the same commands for Password.
-
+Then use `I.click` to click the Sign in button to submit the form:
 ```javascript
-I.fill("Password","yourPasswordGoesHere")
 I.click("Sign in")
 ```
 
-![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649713638/ui-licious/amazon-getting-started-example/Signup-7\_qh5wxv\_copy\_oohvre.png)
-
-Now, let's confirm we have logged into our account. Use the `I.see` command to check that we see the name "Bruce".
+Finally, use `I.see` to validate that the expected text is shown on the page:
 
 ```javascript
 I.see("Hello, Bruce")
 ```
 
-Click the Blue **Run** button.
+![View of the script inside the editor](/static/img/Script Editor.png)
 
-![](https://res.cloudinary.com/di7y5b6ed/image/upload/v1649713944/ui-licious/amazon-getting-started-example/Signup-8\_v3yrht\_copy\_tzi51e.png)
+### Running Your Test
 
-Our test is a success!
+Once your script is ready, click the **Run** button. If everything is set up correctly, your test should execute, and you should see the outcome of the test with screenshots taken for every step.
+
+![Run your first test!](/static/img/getting-started/write-your-first-test/run-my-first-test-script.png)
+
+Congratulations, you've just written and run your first UI-licious test!
