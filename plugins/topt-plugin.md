@@ -5,7 +5,7 @@ description: How to generate time-based OTPs for 2FA testing
 
 # Generating Time-based OTPs 
 
-This article covers how to use the built-in `topt` plugin to generate **time-based OTPs** for handling **2-Factor Authentication (2FA)** login flows.
+This article covers how to use the built-in `totp` plugin to generate **time-based OTPs** for handling **2-Factor Authentication (2FA)** login flows.
 
 This can be applied to Single Sign On (SSO) logins that support using OAUTH authentication, e.g. Google login, Github login, PingID, etc.
 
@@ -38,17 +38,17 @@ As an example, the steps below shows you how to get the OATH key for Google Logi
 
 ## Generating the OTP in your test
 
-Once you have the OATH key, you can use the "topt" plugin to generate the OTP during test runs.
+Once you have the OATH key, you can use the "totp" plugin to generate the OTP during test runs.
 
-First, load the `topt` plugin into the test script.
+First, load the `totp` plugin into the test script.
 
 ```javascript
-let TOPT = TEST.loadPlugin("topt");
+let TOTP = TEST.loadPlugin("totp");
 ```
 
 Then, run `generateOTP`, passing in the OATH key, to generate the one-time password.
 ```javascript
-let otp = TOPT.generateOTP("<oath_key>")
+let otp = TOTP.generateOTP("<oath_key>")
 ```
 By default, this will generate an 6-digit OTP, with a period of 30 seconds, using "SHA-1" algorithm.
 
