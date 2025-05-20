@@ -1,7 +1,8 @@
 stages:
   - build
   - merge
-  - deploy
+  # - deploy # deployment is not longer done in this project
+  - trigger_deploy # instead, we trigger the deployment in the parent project
   - sonarqube-check
 
 #======================================================
@@ -40,9 +41,10 @@ vuepress-netlify-build:
   artifacts:
     paths:
       - dist/
+    # Do not expire the artifacts, as we will need to fetch the artifacts in the "fetch" stage of the "docs.uilicious.com" project
     # Package can get abit too big, 
     # so lets quickly discard it if possible
-    expire_in: 24 hour
+    # expire_in: 24 hour
 
 #======================================================
 # Asset merging template
@@ -130,6 +132,23 @@ prd-merge:
     - main
   # Trigger manually
   when: manual
+
+#======================================================
+# Trigger deploy
+#======================================================
+
+# Deploy by triggering the pipeline in the docs.uilicious.com parent project
+# - https://gitlab.uilicious-dev.com/documentation/docs.uilicious.com
+# - The parent project will merge assets from other documentation projects and deploy altogether as a single site
+trigger_deploy:
+  stage: trigger_deploy
+  image: alpine/curl:latest
+  variables:
+    DOCS_PROJECT_ID: 180
+  script:
+    - "curl -X POST --fail -F token=$DEPLOY_TRIGGER_TOKEN -F ref=main https://gitlab.uilicious-dev.com/api/v4/projects/$DOCS_PROJECT_ID/trigger/pipeline"
+  only:
+    - main
 
 # #======================================================
 # # Netlify deployment templates
