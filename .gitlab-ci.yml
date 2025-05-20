@@ -131,68 +131,73 @@ prd-merge:
   # Trigger manually
   when: manual
 
-#======================================================
-# Netlify deployment templates
-#======================================================
+# #======================================================
+# # Netlify deployment templates
+# #======================================================
 
-# Gitlab MATRIX does not work reliably with multistage pipeline
-# Despites what said here : https://gitlab.com/gitlab-org/gitlab/-/merge_requests/82734/diffs 
-.netlifydist-preview-deploy:
-  stage: deploy
-  image: uilicious/netlify-cli:8
-  variables:
-    # Disable the git submodule, as its not needed
-    GIT_SUBMODULE_STRATEGY: none
-  script:
-    # for some reason the latest versions of netlify cannot be installed in our gitlab CI/CD runners reliably
-    - cd dist && netlify deploy --dir=. --functions=./netlify/functions --auth "$NETLIFY_DEVOPS_DEPLOY_KEY" --site "$NETLIFY_SITE_KEY"
+# # !!! NOTE !!!
+# #   DEPLOYMENTS will now be managed by docs.uilicious.com project
+# #   which will merge /tami-studio and /v3 docs into a single site
+# #   and then deploy to staging and production environments
 
-# Gitlab MATRIX does not work reliably with multistage pipeline
-# Despites what said here : https://gitlab.com/gitlab-org/gitlab/-/merge_requests/82734/diffs 
-.netlifydist-prod-deploy:
-  stage: deploy
-  image: uilicious/netlify-cli:8
-  variables:
-    # Disable the git submodule, as its not needed
-    GIT_SUBMODULE_STRATEGY: none
-  script:
-    # for some reason the latest versions of netlify cannot be installed in our gitlab CI/CD runners reliably
-    - cd dist && netlify deploy --dir=. --functions=./netlify/functions --auth "$NETLIFY_DEVOPS_DEPLOY_KEY" --site "$NETLIFY_SITE_KEY" --prod
+# # Gitlab MATRIX does not work reliably with multistage pipeline
+# # Despites what said here : https://gitlab.com/gitlab-org/gitlab/-/merge_requests/82734/diffs 
+# .netlifydist-preview-deploy:
+#   stage: deploy
+#   image: uilicious/netlify-cli:8
+#   variables:
+#     # Disable the git submodule, as its not needed
+#     GIT_SUBMODULE_STRATEGY: none
+#   script:
+#     # for some reason the latest versions of netlify cannot be installed in our gitlab CI/CD runners reliably
+#     - cd dist && netlify deploy --dir=. --functions=./netlify/functions --auth "$NETLIFY_DEVOPS_DEPLOY_KEY" --site "$NETLIFY_SITE_KEY"
 
-#======================================================
-# Netlify deployments
-#======================================================
+# # Gitlab MATRIX does not work reliably with multistage pipeline
+# # Despites what said here : https://gitlab.com/gitlab-org/gitlab/-/merge_requests/82734/diffs 
+# .netlifydist-prod-deploy:
+#   stage: deploy
+#   image: uilicious/netlify-cli:8
+#   variables:
+#     # Disable the git submodule, as its not needed
+#     GIT_SUBMODULE_STRATEGY: none
+#   script:
+#     # for some reason the latest versions of netlify cannot be installed in our gitlab CI/CD runners reliably
+#     - cd dist && netlify deploy --dir=. --functions=./netlify/functions --auth "$NETLIFY_DEVOPS_DEPLOY_KEY" --site "$NETLIFY_SITE_KEY" --prod
 
-# Netlify deploy to our "stg" environment
-stg-env-deploy:
-  extends: .netlifydist-prod-deploy
-  variables:
-    NETLIFY_SITE_KEY: "${NETLIFY_DEV_SITEID}"
-  needs:
-    - stg-merge
-  only:
-    - main
+# #======================================================
+# # Netlify deployments
+# #======================================================
 
-# Netlify deploy to our "prd" environment
-prd-env-deploy:
-  extends: .netlifydist-prod-deploy
-  variables:
-    NETLIFY_SITE_KEY: "${NETLIFY_PRD_SITEID}"
-  needs:
-    - prd-merge
-  only:
-    - main
+# # Netlify deploy to our "stg" environment
+# stg-env-deploy:
+#   extends: .netlifydist-prod-deploy
+#   variables:
+#     NETLIFY_SITE_KEY: "${NETLIFY_DEV_SITEID}"
+#   needs:
+#     - stg-merge
+#   only:
+#     - main
 
-# Netlify deploy preview (for all other branches)
-preview-env-deploy:
-  extends: .netlifydist-preview-deploy
-  variables:
-    NETLIFY_SITE_KEY: "${NETLIFY_DEV_SITEID}"
-  needs:
-    - preview-merge
-  except:
-    - main
-    - sonarqube_integration
+# # Netlify deploy to our "prd" environment
+# prd-env-deploy:
+#   extends: .netlifydist-prod-deploy
+#   variables:
+#     NETLIFY_SITE_KEY: "${NETLIFY_PRD_SITEID}"
+#   needs:
+#     - prd-merge
+#   only:
+#     - main
+
+# # Netlify deploy preview (for all other branches)
+# preview-env-deploy:
+#   extends: .netlifydist-preview-deploy
+#   variables:
+#     NETLIFY_SITE_KEY: "${NETLIFY_DEV_SITEID}"
+#   needs:
+#     - preview-merge
+#   except:
+#     - main
+#     - sonarqube_integration
 
     
 #======================================================
