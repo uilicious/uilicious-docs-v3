@@ -142,14 +142,14 @@ If the test involves downloading a very large file, we recommend adding a genero
 
 After a file has been downloaded, you can use the file in `I.upload` commands to upload the file. 
 
-To upload a file from the virtual “downloads” directory, add a `//downloads/` prefix to the name of the file to upload, for example:
+To upload a file from the virtual “downloads” directory, add `//downloads/` prefix to the name of the file to upload, for example:
 
 ```jsx
 // this will upload "fileA.pdf" from the browser's "Downloads" folder
 I.upload("Supporting documents", "//downloads/fileA.pdf")
 ```
 
-Alternative, you can use the `path` of a file object, like this:
+Alternatively, you can use the `path` of a file object, like this:
 
 ```jsx
 // upload the first file
@@ -161,6 +161,25 @@ I.upload("Photo", UI.Downloads.files[1].path)
 // upload the most recently donwloaded file
 I.upload("Certificate", UI.Downloads.files.last.path)
 ```
+
+## Reading data from downloaded CSV / JSON file
+
+You can read data from an downloaded CSV or JSON file using the `TEST.loadDataFromCsv` and `TEST.loadDatafromJson` commands.
+
+To read a file from the virtual "downloads" directory, add `//downloads/` prefix to the name of the file to read, for example:
+
+```js
+TEST.loadDataFromJson("//downloads/data.json")
+TEST.loadDataFromCsv("//downloads/data.csv", { header : "row" })
+```
+
+Alternatively, you can use the `path` of the downloaded file object, like this:
+
+```js
+// read the most recently downloaded file
+TEST.loadDataFromJson(UI.Downloads.files.last.path)
+```
+
 
 ## Downloading the files downloaded by the test
 
