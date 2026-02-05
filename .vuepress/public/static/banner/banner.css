@@ -1,0 +1,56 @@
+/* push the navbar down */
+
+:root {
+	--site-banner-height: 50px;
+}
+
+.site-banner {
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	width: 100%;
+	height: var(--site-banner-height);
+
+	background-color: #d8f3fa;
+	color: #000;
+
+	padding: 10px 16px;
+	padding-right: 36px; /* extra padding for close button */
+	box-sizing: border-box;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	z-index: 1000;
+	
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+	/* text styles */
+	font-size: .85rem;
+	line-height: 1.15;
+	text-align: center;
+
+	
+
+}
+
+.site-banner a {
+	color: #007acc;
+	text-decoration: underline;
+}
+
+.site-banner ~ .navbar {
+	top: var(--site-banner-height);
+}
+
+.site-banner ~ .sidebar {
+	top: calc(var(--site-banner-height) + var(--navbar-height));
+}
+
+.site-banner ~ .page {
+	padding-top: calc(var(--site-banner-height) + var(--navbar-height));
+}

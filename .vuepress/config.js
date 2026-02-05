@@ -93,7 +93,12 @@ export default defineUserConfig({
     // ["script", {src: basePath + 'static/chat/UiChatBotSetup.js'}],
     //----------------------------------------
     // table of contents scroll fix (it breaks when chatbot is installed on page)
-    ["script", {src: basePath + 'static/toc-scroll-fix.js'}]
+    ["script", {src: basePath + 'static/toc-scroll-fix.js'}],
+    //----------------------------------------
+    // banner
+    ["link", {rel: "stylesheet", type: "text/css", href: basePath + 'static/banner/banner.css'}],
+    ["script", {src: basePath + 'static/banner/banner.js'}],
+    ["script", {src: basePath + 'static/banner/init.js'}]
   ],
 
   // Lets tweak the search plugin
