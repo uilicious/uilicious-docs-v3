@@ -89,8 +89,8 @@ export default defineUserConfig({
     // chat bot
     // ["link", {rel: "stylesheet", type: "text/css", href: basePath + 'static/chat/UiChatBot.css'}],
     // - using /styles/_UiChatBot.scss instead
-    ["script", {src: basePath + 'static/chat/UiChatBot.js'}],
-    ["script", {src: basePath + 'static/chat/UiChatBotSetup.js'}],
+    // ["script", {src: basePath + 'static/chat/UiChatBot.js'}],
+    // ["script", {src: basePath + 'static/chat/UiChatBotSetup.js'}],
     //----------------------------------------
     // table of contents scroll fix (it breaks when chatbot is installed on page)
     ["script", {src: basePath + 'static/toc-scroll-fix.js'}]
